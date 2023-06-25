@@ -5,4 +5,5 @@ export default {
   MONGODB_PASSWORD: process.env.MONGODB_PASSWORD,
   MONGODB_DB_NAME: process.env.MONGODB_DB_NAME,
   MONGODB_DB_DEV_NAME: process.env.MONGODB_DB_DEV_NAME,
+  MONGODB_URL: process.env.MONGODB_URL
 }
