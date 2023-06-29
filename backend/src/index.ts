@@ -30,6 +30,5 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
 app.use(errorHandler);
 
 app.listen(PORT, HOST, () => {
-  logger.error('err')
   logger.info(`[server]: Server is running at http://${HOST}:${PORT}`)
 });
