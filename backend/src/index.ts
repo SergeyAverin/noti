@@ -1,6 +1,6 @@
 import path from 'path';
 
-import express, { Express, Request, Response } from 'express';
+import express, { Express, ErrorRequestHandler } from 'express';
 import log4js from 'log4js';
 
 import routes from './routes/index';
@@ -20,6 +20,14 @@ app.use(
     level: 'auto',
   }),
 )
+
+// Error handler
+const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
+  logger.error(err.stack)
+  res.status(500).send('Something broke!');
+};
+
+app.use(errorHandler);
 
 app.listen(PORT, HOST, () => {
   logger.error('err')
