@@ -1,16 +1,20 @@
 import mongoose, { ConnectOptions } from 'mongoose'
+import log4js from 'log4js'
 
 import dbConfig from '../../conf/db.config'
 
 
-const connectToMongoDB = async () => {
+const logger = log4js.getLogger();
+
+const connectToMongoDB = async (isDev = false) => {
+  const dbName = isDev ? dbConfig.MONGODB_DB_DEV_NAME : dbConfig.MONGODB_DB_NAME
   mongoose
     .connect(
-      `mongodb://${dbConfig.MONGODB_USER}:${dbConfig.MONGODB_PASSWORD}@${dbConfig.MONGODB_HOST}:${dbConfig.MONGODB_PORT}/${dbConfig.MONGODB_DB_NAME}?authSource=admin`,
+      `mongodb://${dbConfig.MONGODB_USER}:${dbConfig.MONGODB_PASSWORD}@${dbConfig.MONGODB_HOST}:${dbConfig.MONGODB_PORT}/${dbName}?authSource=admin`,
       { useNewUrlParser: true, useUnifiedTopology: true } as ConnectOptions,
     )
     .catch((error) => console.log(error))
-    .then(() => console.log('Mongodb connect'))
+    .then(() => logger.info('Mongodb connect'))
 }
 
 export default connectToMongoDB;
