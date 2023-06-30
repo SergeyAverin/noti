@@ -1,10 +1,9 @@
-import { Request, Response } from "express";
-
+import { Request, Response } from 'express'
 
 class NotesController {
-    get(req:Request, res:Response) {
-        res.send('note list')
-    }
+  get(req: Request, res: Response) {
+    res.send('note list')
+  }
 }
 
-export default  new NotesController();
+export default new NotesController()
