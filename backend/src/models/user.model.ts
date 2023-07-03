@@ -1,5 +1,7 @@
 import mongoose, { Document } from 'mongoose'
 
+import { hashPassword } from '../utils/passwordUtils'
+
 const { Schema } = mongoose
 
 
@@ -12,7 +14,7 @@ export interface IUser extends Document  {
     dataUpdatedPassword: Date,
 }
 
-const UserScheme = new Schema<IUser>({
+const userScheme = new Schema<IUser>({
     username: {
       type: String,
       required: true,
@@ -44,4 +46,12 @@ const UserScheme = new Schema<IUser>({
     },
 })
 
-export const User = mongoose.model<IUser>('User', UserScheme)
+userScheme.pre('save', async function(next) {
+    // on save hashed password
+    const  hashedPassword = await hashPassword(this.password);
+    this.password = hashedPassword;
+    
+    next();
+});
+
+export const User = mongoose.model<IUser>('User', userScheme)
