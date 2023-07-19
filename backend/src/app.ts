@@ -1,21 +1,20 @@
-import path from 'path'
-
 import 'express-async-errors'
 import express, { Express, ErrorRequestHandler } from 'express'
 import log4js from 'log4js'
 import bodyParser from 'body-parser'
+import log4jsConfig from '../conf/log4js.config'
 
 import routes from './routes/index'
 
 const app: Express = express()
 
 // Create logger
-log4js.configure(path.join(__dirname, '../../conf/log4js.config.json'))
+log4js.configure(log4jsConfig)
 const logger = log4js.getLogger()
 
 // Middlewares
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded())
 app.use(
   log4js.connectLogger(log4js.getLogger('http'), {
     level: 'auto',
