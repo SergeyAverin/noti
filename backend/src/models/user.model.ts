@@ -1,6 +1,6 @@
 import mongoose, { Document } from 'mongoose'
 
-import { hashPassword } from '../utils/passwordUtils'
+import { hashPassword, comparePassword } from '../utils/passwordUtils'
 import { IToken } from './token.model'
 
 const { Schema } = mongoose
@@ -51,8 +51,10 @@ const userScheme = new Schema<IUser>({
 
 userScheme.pre('save', async function(next) {
     // on save hashed password
-    const  hashedPassword = await hashPassword(this.password);
-    this.password = hashedPassword;
+    if (this.isNew) {
+        const  hashedPassword = await hashPassword(this.password);
+        this.password = hashedPassword;
+    }
     
     next();
 });
