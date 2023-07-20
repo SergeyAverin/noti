@@ -1,7 +1,8 @@
 export class AuthorizationError extends Error {
-  constructor(message: string) {
-    super(message)
+  constructor() {
+    super()
     this.name = 'AuthorizationError'
+    this.message = 'Bad Request: Incorrect email or password'
     Object.setPrototypeOf(this, AuthorizationError.prototype)
   }
 }

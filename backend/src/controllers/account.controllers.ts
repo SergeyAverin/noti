@@ -17,12 +17,12 @@ export const login = async (req: Request, res: Response) => {
     logger.info(res.locals.user)
     if (!user) {
       logger.debug('no email')
-      throw new AuthorizationError('Incorrect email or password')
+      throw new AuthorizationError()
     }
 
     const isMatch = await comparePassword(req.body.password, user.password)
     if (!isMatch) {
-      throw new AuthorizationError('Incorrect email or password')
+      throw new AuthorizationError()
     }
 
     const token = new Token({
@@ -36,7 +36,10 @@ export const login = async (req: Request, res: Response) => {
     res.send({ token, user })
   } catch (error) {
     if (error instanceof AuthorizationError) {
-      res.status(StatusCodes.UNAUTHORIZED).send({ message: error.message })
+      res.status(StatusCodes.UNAUTHORIZED).send({
+        name: error.name,
+        message: error.message,
+      })
     }
   }
 }
