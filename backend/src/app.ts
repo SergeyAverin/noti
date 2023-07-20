@@ -5,6 +5,7 @@ import bodyParser from 'body-parser'
 import log4jsConfig from '../conf/log4js.config'
 
 import routes from './routes/index'
+import { acceptUserMiddleware } from './middlewares/acceptUserMiddleware'
 
 const app: Express = express()
 
@@ -20,6 +21,7 @@ app.use(
     level: 'auto',
   }),
 )
+app.use(acceptUserMiddleware)
 
 // Register router
 app.use('/api/v1.0', routes)
