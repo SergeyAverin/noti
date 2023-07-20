@@ -1,6 +1,8 @@
 import { Request, Response } from 'express'
+
 import jwt from 'jsonwebtoken'
 import log4js from 'log4js'
+import { StatusCodes } from 'http-status-codes'
 
 import { User } from '../models/user.model'
 import { Token } from '../models/token.model'
@@ -12,7 +14,7 @@ const logger = log4js.getLogger()
 export const login = async (req: Request, res: Response) => {
   try {
     const user = await User.findOne({ email: req.body.email })
-
+    logger.info(res.locals.user)
     if (!user) {
       logger.debug('no email')
       throw new AuthorizationError('Incorrect email or password')
@@ -34,7 +36,7 @@ export const login = async (req: Request, res: Response) => {
     res.send({ token, user })
   } catch (error) {
     if (error instanceof AuthorizationError) {
-      res.status(401).send({ message: error.message })
+      res.status(StatusCodes.UNAUTHORIZED).send({ message: error.message })
     }
   }
 }

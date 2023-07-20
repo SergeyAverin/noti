@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 
+import { StatusCodes } from 'http-status-codes';
 import jwt from 'jsonwebtoken';
+
 import { User } from '../models/user.model';
 
 
@@ -38,10 +40,10 @@ export const acceptUserMiddleware = async (
       };
       if (error instanceof jwt.TokenExpiredError) {
         // Token has expired
-        res.status(401).send(errorResponse);
+        res.status(StatusCodes.UNAUTHORIZED).send(errorResponse);
       } else if (error instanceof jwt.JsonWebTokenError) {
         // Invalid token
-        res.status(401).send(errorResponse);
+        res.status(StatusCodes.UNAUTHORIZED).send(errorResponse);
       } else {
         // Other errors
         throw error;

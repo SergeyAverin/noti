@@ -1,5 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 
+import { StatusCodes } from 'http-status-codes'
+
 import { PermissionError } from '../errors/PermissionError'
 
 export const authorizationRequireMiddleware = async (
@@ -15,7 +17,7 @@ export const authorizationRequireMiddleware = async (
     }
   } catch (error) {
     if (error instanceof PermissionError) {
-      res.status(401).send({
+      res.status(StatusCodes.UNAUTHORIZED).send({
         name: error.name,
         message: error.message,
       })
