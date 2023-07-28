@@ -14,6 +14,7 @@ const plugins = [
     template: "./index.html",
     inject: "body",
     hash: false,
+    publicPath: '/'
   }),
 ];
 
@@ -38,6 +39,7 @@ const config = {
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
+    publicPath: '/',
   },
 
   module: {
@@ -71,7 +73,9 @@ const config = {
     port: PORT,
     host: HOST,
     hot: true,
+    historyApiFallback: true,
   },
+  
 };
 
 module.exports = config;
