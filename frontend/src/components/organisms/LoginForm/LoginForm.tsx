@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm, Controller, Control, FieldValues } from "react-hook-form";
 
-import { LoginFormStyled } from "./loginFormStyled";
+import { LoginFormStyled, ErrorsStyled } from "./loginFormStyled";
 import { Margin, SubmitButton, ErrorText } from "@atoms/index";
 import { InputLabelController } from "@molecules/InputLabel";
 
@@ -47,9 +47,11 @@ export const LoginForm: React.FC = () => {
         <SubmitButton value="login" />
       </Margin>
       <Margin mt={30}>
-        {errors.email && <ErrorText>{errors.email.message}</ErrorText>}
-        <br />
-        {errors.password && <ErrorText>{errors.password.message}</ErrorText>}
+        <ErrorsStyled>
+          {errors.email && <ErrorText>{errors.email.message}</ErrorText>}
+          <br />
+          {errors.password && <ErrorText>{errors.password.message}</ErrorText>}
+        </ErrorsStyled>
       </Margin>
     </LoginFormStyled>
   );
