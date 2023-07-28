@@ -3,16 +3,19 @@ import { Controller, Control, FieldValues } from "react-hook-form";
 
 import { InputLabel } from "./InputLabel";
 
-type InputControllerProps = {
-  control: Control<FieldValues>;
+type InputLabelControllerProps = {
+  control: Control<FieldValues> | any;
   name: string;
+  text: string;
+  attrType?: string;
   rules?: Record<string, unknown>;
 };
 
-export 
-const InputController: React.FC<InputControllerProps> = ({
+export const InputLabelController: React.FC<InputLabelControllerProps> = ({
   control,
   name,
+  text,
+  attrType,
   rules,
 }) => {
   return (
@@ -21,15 +24,15 @@ const InputController: React.FC<InputControllerProps> = ({
       name={name}
       rules={rules}
       render={({ field: { onChange, onBlur, value } }) => (
-        <InputLabel labelText="f" attrName="text" onChange={onChange} onBlur={onBlur} value={value} />
+        <InputLabel
+          labelText={text}
+          attrName={name}
+          onChange={onChange}
+          onBlur={onBlur}
+          value={value}
+          attrType={attrType}
+        />
       )}
     />
   );
 };
-/*
-  attrName,
-  labelText,
-  attrType,
-  inputValues,
-  setInputValues,
-*/

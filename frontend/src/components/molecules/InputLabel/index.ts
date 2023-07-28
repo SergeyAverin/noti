@@ -1,2 +1,2 @@
 export { InputLabel } from "./InputLabel";
-export { InputController } from "./InputLabelController";
+export { InputLabelController } from "./InputLabelController";

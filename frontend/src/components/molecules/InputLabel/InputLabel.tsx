@@ -9,8 +9,8 @@ interface IInputProps {
   attrType?: string;
   labelText: string;
   value: string;
-  onBlur?: Function,
-  onChange?: Function;
+  onBlur: (...event: any[]) => void,
+  onChange: (...event: any[]) => void;
 }
 
 export const InputLabel: React.FC<IInputProps> = ({
@@ -32,8 +32,9 @@ export const InputLabel: React.FC<IInputProps> = ({
       <InputLabelStyled
         ref={inputRef}
         name={attrName}
-        required
         value={value}
+        onChange={onChange}
+        onBlur={onBlur}
         type={attrType}
       />
       <Label htmlFor={attrName} onClick={fucusOnInput}>
