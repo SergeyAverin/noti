@@ -30,6 +30,15 @@ const config = {
 
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
+    alias: {
+      "@atoms": path.resolve(__dirname, 'src/components/atoms'),
+      "@molecules": path.resolve(__dirname, 'src/components/atoms'),
+      "@organisms": path.resolve(__dirname, 'src/components/organisms'),
+      "@templates": path.resolve(__dirname, 'src/components/templates'),
+      "@pages": path.resolve(__dirname, 'src/components/pages'),
+      "@public": path.resolve(__dirname, 'public'),
+      "@redux": path.resolve(__dirname, 'src/redux')
+    },
   },
 
   context: path.resolve(__dirname, "src"),

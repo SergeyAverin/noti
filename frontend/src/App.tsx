@@ -2,6 +2,7 @@ import React from "react";
 
 import { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
 import GlobalStyleStyled from "./styles/globalStyle.styled";
 import { darkTheme } from "./styles/theme";
@@ -13,12 +14,12 @@ import "normalize.css";
 const App: React.FC = () => {
   return (
     <Provider store={store}>
-      <ThemeProvider theme={darkTheme}>
-          <GlobalStyleStyled /> 
-          <div className="App">
+      <BrowserRouter>
+        <ThemeProvider theme={darkTheme}>
+          <GlobalStyleStyled />
             <MainRouter />
-          </div>
-      </ThemeProvider>
+        </ThemeProvider>
+      </BrowserRouter>
     </Provider>
   );
 };

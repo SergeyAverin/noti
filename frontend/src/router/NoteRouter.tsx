@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import NotesPage from "../components/pages/NotesPage";
+import NotesPage from "@pages/NotesPage";
 
 const NoteRouter: React.FC = () => {
     return (

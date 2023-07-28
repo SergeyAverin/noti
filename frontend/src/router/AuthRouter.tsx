@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import LoginPage from "../components/pages/LoginPage";
-import LogoutPage from "../components/pages/LogoutPage";
+import LoginPage from "@pages/LoginPage";
+import LogoutPage from "@pages/LogoutPage";
 
 const AuthRouter: React.FC = () => {
     return (
