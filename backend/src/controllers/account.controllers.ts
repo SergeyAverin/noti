@@ -15,7 +15,7 @@ const logger = log4js.getLogger()
 export const login = async (req: Request, res: Response) => {
   try {
     const user = await User.findOne({ email: req.body.email })
-    
+
     if (!user) {
       throw new AuthorizationError()
     }
@@ -45,10 +45,13 @@ export const login = async (req: Request, res: Response) => {
 }
 
 export const logout = async (req: Request, res: Response) => {
-  const user = res.locals.user as IUser
-  const token = res.locals.token as IToken
+  const user = res.locals.user as IUser;
+  const token = res.locals.token as IToken;
   
   await removeToken(user, token)
-
   res.status(StatusCodes.NO_CONTENT).end()
+}
+
+export const profile = async (req: Request, res: Response) => {
+  res.status(StatusCodes.OK).send(res.locals.user)
 }
