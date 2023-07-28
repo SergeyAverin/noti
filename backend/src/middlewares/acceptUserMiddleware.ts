@@ -1,10 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
 
+import log4js from 'log4js'
 import { StatusCodes } from 'http-status-codes';
 import jwt from 'jsonwebtoken';
 
-import { User } from '../models/user.model';
+import { IUser, User } from '../models/user.model';
 
+const logger = log4js.getLogger()
 
 interface IDecoded {
   _id: undefined | string;
@@ -22,11 +24,24 @@ export const acceptUserMiddleware = async (
       const token = req.headers.authorization;
       const decoded = jwt.verify(token, 'mysecretkey') as IDecoded;
 
-      const user = await User.findOne({ _id: decoded._id });
+      const user = await User.findOne({ _id: decoded._id }).populate('tokens') as IUser;
 
-      res.locals.isAuthenticated = true;
-      res.locals.user = user;
-      res.locals.token = token;
+      if (user) {
+        for (const userToken of user.tokens) {
+          if (userToken.token == token) {
+            res.locals.isAuthenticated = true;
+            res.locals.user = user;
+            res.locals.token = userToken
+          } else {
+            res.locals.isAuthenticated = false;
+            res.locals.user = null;
+            res.locals.token = null;
+          }
+        }
+      } else {
+        res.locals.isAuthenticated = false;
+      }
+
     } else {
       res.locals.isAuthenticated = false;
     }
