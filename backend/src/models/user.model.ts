@@ -16,7 +16,7 @@ export interface IUser extends Document  {
     tokens: [IToken]
 }
 
-const userScheme = new Schema<IUser>({
+export const userScheme = new Schema<IUser>({
     username: {
       type: String,
       required: true,
