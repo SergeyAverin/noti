@@ -1,11 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
 
   body {
-    font-family: 'Poppins', sans-serif;
-    color: #000;
+    font-family: 'Rubik', sans-serif;
+    background: ${(props) => props.theme.color.bg};
+    color: ${(props) => props.theme.color.fg};
   }
 
 `;
