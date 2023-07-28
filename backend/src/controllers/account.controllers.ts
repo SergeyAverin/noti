@@ -4,19 +4,19 @@ import jwt from 'jsonwebtoken'
 import log4js from 'log4js'
 import { StatusCodes } from 'http-status-codes'
 
-import { User } from '../models/user.model'
-import { Token } from '../models/token.model'
+import { IUser, User } from '../models/user.model'
+import { IToken, Token } from '../models/token.model'
 import { comparePassword } from '../utils/passwordUtils'
 import { AuthorizationError } from '../errors/AuthorizationError'
+import { removeToken } from '../services/auth.service'
 
 const logger = log4js.getLogger()
 
 export const login = async (req: Request, res: Response) => {
   try {
     const user = await User.findOne({ email: req.body.email })
-    logger.info(res.locals.user)
+    
     if (!user) {
-      logger.debug('no email')
       throw new AuthorizationError()
     }
 
@@ -42,4 +42,13 @@ export const login = async (req: Request, res: Response) => {
       })
     }
   }
+}
+
+export const logout = async (req: Request, res: Response) => {
+  const user = res.locals.user as IUser
+  const token = res.locals.token as IToken
+  
+  await removeToken(user, token)
+
+  res.status(StatusCodes.NO_CONTENT).end()
 }

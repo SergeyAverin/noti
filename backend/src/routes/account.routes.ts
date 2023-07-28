@@ -1,10 +1,13 @@
 import express, { Router } from 'express'
 
-import { login } from '../controllers/account.controllers'
+import { login, logout } from '../controllers/account.controllers'
+import { authorizationRequireMiddleware } from '../middlewares/authorizationRequireMiddleware'
 
 const accountRouter: Router = express.Router()
 
 // Auth
 accountRouter.route('/login').post(login)
+accountRouter.use(authorizationRequireMiddleware)
+accountRouter.route('/logout').post(logout)
 
 export default accountRouter
