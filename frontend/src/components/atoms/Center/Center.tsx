@@ -8,19 +8,19 @@ interface IMarginProps {
 export const Center = styled.div<IMarginProps>`
   display: flex;
   position: absolute;
-
+  width: 100%;
+  height: 100%;
+  
   ${(props) =>
     props.harezontal &&
     css`
-      left: 50%;
-      transform: translateX(-50%);
+      justify-content: center;
     `}
 
   ${(props) =>
     props.vartekal &&
     css`
-      top: 50%;
-      transform: translateY(-50%);
+      align-items: center;
     `}
 `;
 
