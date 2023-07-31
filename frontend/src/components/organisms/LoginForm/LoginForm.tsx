@@ -5,6 +5,8 @@ import { LoginFormStyled, ErrorsStyled } from "./loginFormStyled";
 import { Margin, SubmitButton, ErrorText } from "@atoms/index";
 import { InputLabelController } from "@molecules/InputLabel";
 
+import { useLoginMutation } from "@redux/api/authApi";
+
 type FormValues = {
   email: string;
   password: string;
@@ -16,9 +18,9 @@ export const LoginForm: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
+  const [login] = useLoginMutation();
   const onSubmit = (data: FormValues) => {
-    console.log("data");
-    console.log(data);
+    login(data)
   };
   return (
     <LoginFormStyled onSubmit={handleSubmit(onSubmit)}>

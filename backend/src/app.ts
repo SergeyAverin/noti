@@ -2,11 +2,13 @@ import 'express-async-errors'
 import express, { Express } from 'express'
 import log4js from 'log4js'
 import bodyParser from 'body-parser'
-import log4jsConfig from '../conf/log4js.config'
+import cors from 'cors'
 
 import routes from './routes/index'
 import { acceptUserMiddleware } from './middlewares/acceptUserMiddleware'
 import { errorHandler } from './middlewares/errorHandlerMiddleware'
+
+import log4jsConfig from '../conf/log4js.config'
 
 const app: Express = express()
 
@@ -14,6 +16,10 @@ const app: Express = express()
 log4js.configure(log4jsConfig)
 
 // Middlewares
+const corsOptions: cors.CorsOptions = {
+  origin: 'http://localhost:3000',
+}
+app.use(cors(corsOptions))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())
 app.use(
