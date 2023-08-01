@@ -1,7 +1,8 @@
 import React from "react";
+import { withAuth } from "../../hocs/withAuth";
 
 const NotesPage: React.FC = () => {
   return <div>note</div>;
 };
 
-export default NotesPage;
+export default withAuth(NotesPage);
