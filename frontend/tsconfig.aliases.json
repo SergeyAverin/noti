@@ -8,7 +8,8 @@
       "@templates/*": ["src/components/templates/*"],
       "@pages/*": ["src/components/pages/*"],
       "@public/*": ["public/*"],
-      "@redux/*": ["src/redux/*"]
+      "@redux/*": ["src/redux/*"],
+      "@hocs/*": ["src/hocs/*"]
     }
   }
 }

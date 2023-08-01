@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { withAuth } from "../../hocs/withAuth";
+import { withAuth } from "@hocs/withAuth";
 
 const LogoutPage: React.FC = () => {
   const navigate = useNavigate();

@@ -45,6 +45,7 @@ const config = {
       "@pages": path.resolve(__dirname, "src/components/pages"),
       "@public": path.resolve(__dirname, "public"),
       "@redux": path.resolve(__dirname, "src/redux"),
+      "@hocs": path.resolve(__dirname, "src/hocs"),
     },
   },
 
