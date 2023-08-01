@@ -9,6 +9,7 @@ import { acceptUserMiddleware } from './middlewares/acceptUserMiddleware'
 import { errorHandler } from './middlewares/errorHandlerMiddleware'
 
 import log4jsConfig from '../conf/log4js.config'
+import corsConfig from '../conf/cors.config'
 
 const app: Express = express()
 
@@ -16,10 +17,7 @@ const app: Express = express()
 log4js.configure(log4jsConfig)
 
 // Middlewares
-const corsOptions: cors.CorsOptions = {
-  origin: 'http://localhost:3000',
-}
-app.use(cors(corsOptions))
+app.use(cors(corsConfig))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())
 app.use(
