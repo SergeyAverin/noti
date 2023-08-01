@@ -16,4 +16,13 @@ export const baseQuery: BaseQueryFn<
   FetchBaseQueryMeta
 > = fetchBaseQuery({
   baseUrl: BASE_URL,
+  prepareHeaders: (headers, { getState }) => {
+    const token = localStorage.getItem("token");
+
+    if (token !== null) {
+      headers.set("Authorization", `${token}`);
+    }
+
+    return headers;
+  },
 });
