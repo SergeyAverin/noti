@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
@@ -21,9 +21,17 @@ export const LoginForm: React.FC = () => {
   } = useForm<FormValues>();
   const [login, { isError, error }] = useLoginMutation();
   const navigate = useNavigate();
+  useEffect(()=>{
+    if (localStorage.getItem("token")) {
+      navigate('/')
+    }
+  })
   const onSubmit = (data: FormValues) => {
-    login(data);
-    navigate("/");
+    login(data).then(() => {
+      if (!isError) {
+        navigate("/");
+      }
+    });
   };
   return (
     <LoginFormStyled onSubmit={handleSubmit(onSubmit)}>
