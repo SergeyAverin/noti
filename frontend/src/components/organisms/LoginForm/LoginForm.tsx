@@ -1,5 +1,6 @@
 import React from "react";
-import { useForm, Controller, Control, FieldValues } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 import { LoginFormStyled, ErrorsStyled } from "./loginFormStyled";
 import { Margin, SubmitButton, ErrorText } from "@atoms/index";
@@ -18,9 +19,11 @@ export const LoginForm: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
-  const [login] = useLoginMutation();
+  const [login, { isError, error }] = useLoginMutation();
+  const navigate = useNavigate();
   const onSubmit = (data: FormValues) => {
-    login(data)
+    login(data);
+    navigate("/");
   };
   return (
     <LoginFormStyled onSubmit={handleSubmit(onSubmit)}>
@@ -53,6 +56,7 @@ export const LoginForm: React.FC = () => {
           {errors.email && <ErrorText>{errors.email.message}</ErrorText>}
           <br />
           {errors.password && <ErrorText>{errors.password.message}</ErrorText>}
+          {isError && <ErrorText>Wrong login or password</ErrorText>}
         </ErrorsStyled>
       </Margin>
     </LoginFormStyled>
