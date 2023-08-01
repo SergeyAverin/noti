@@ -1,12 +1,14 @@
 const path = require("path");
+const webpack = require("webpack");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const MODE = process.env.NODE_ENV;
 const PORT = process.env.FRONTEND_PORT;
-const HOST =   process.env.FRONTEND_HOST;
-
+const HOST = process.env.FRONTEND_HOST;
+const DEBUG = process.env.DEBUG;
+const API_BASE_URL = process.env.API_BASE_URL;
 
 const plugins = [
   new CleanWebpackPlugin(),
@@ -14,12 +16,17 @@ const plugins = [
     template: "./index.html",
     inject: "body",
     hash: false,
-    publicPath: '/'
+    publicPath: "/",
+  }),
+  new webpack.EnvironmentPlugin({
+    NODE_ENV: MODE,
+    DEBUG: DEBUG,
+    API_BASE_URL: API_BASE_URL,
   }),
 ];
 
 if (MODE === "development") {
-  // Development plugins 
+  // Development plugins
   // plugins.push(new PluginName());
 }
 
@@ -31,13 +38,13 @@ const config = {
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
     alias: {
-      "@atoms": path.resolve(__dirname, 'src/components/atoms'),
-      "@molecules": path.resolve(__dirname, 'src/components/molecules'),
-      "@organisms": path.resolve(__dirname, 'src/components/organisms'),
-      "@templates": path.resolve(__dirname, 'src/components/templates'),
-      "@pages": path.resolve(__dirname, 'src/components/pages'),
-      "@public": path.resolve(__dirname, 'public'),
-      "@redux": path.resolve(__dirname, 'src/redux')
+      "@atoms": path.resolve(__dirname, "src/components/atoms"),
+      "@molecules": path.resolve(__dirname, "src/components/molecules"),
+      "@organisms": path.resolve(__dirname, "src/components/organisms"),
+      "@templates": path.resolve(__dirname, "src/components/templates"),
+      "@pages": path.resolve(__dirname, "src/components/pages"),
+      "@public": path.resolve(__dirname, "public"),
+      "@redux": path.resolve(__dirname, "src/redux"),
     },
   },
 
@@ -48,16 +55,16 @@ const config = {
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
-    publicPath: '/',
+    publicPath: "/",
   },
 
   module: {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        use: 'ts-loader',
-        exclude: '/node_modules/'
-      },    
+        use: "ts-loader",
+        exclude: "/node_modules/",
+      },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
@@ -84,7 +91,6 @@ const config = {
     hot: true,
     historyApiFallback: true,
   },
-  
 };
 
 module.exports = config;
