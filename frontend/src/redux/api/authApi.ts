@@ -25,7 +25,7 @@ export const authApi = createApi({
         try {
           const res = await queryFulfilled;
           dispatch(setUser(res.data.user));
-          console.log(res.data.user);
+          localStorage.setItem("token", res.data.token.token);
         } catch (error) {}
       },
     }),
