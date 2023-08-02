@@ -7,3 +7,4 @@ export { SubmitButton } from "./Button/SubmitButton";
 export { ErrorText } from "./ErrorText/ErrorText";
 export { Spinner } from "./Spinner/Spinner";
 export { Form } from "./Form/Form";
+export { Position } from "./Position/Position";
