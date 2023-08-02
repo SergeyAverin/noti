@@ -6,7 +6,6 @@ import { useRedirectAuthorized } from "@hooks/useRedirectAuthorized";
 import { Margin, SubmitButton, ErrorText, Form, Position } from "@atoms/index";
 import { InputLabelController } from "@molecules/InputLabel";
 
-
 type FormValues = {
   username: string;
   email: string;
@@ -14,7 +13,7 @@ type FormValues = {
   password2: string;
 };
 
-export const LoginForm: React.FC = () => {
+export const RegistrationForm: React.FC = () => {
   const {
     control,
     handleSubmit,
@@ -22,12 +21,10 @@ export const LoginForm: React.FC = () => {
   } = useForm<FormValues>();
   const navigate = useNavigate();
   useRedirectAuthorized();
-  const onSubmit = (data: FormValues) => {
-    
-  };
+  const onSubmit = (data: FormValues) => {};
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-    <InputLabelController
+      <InputLabelController
         text="Username"
         control={control}
         name="username"
@@ -35,22 +32,24 @@ export const LoginForm: React.FC = () => {
           required: "Username is required",
         }}
       />
-      <InputLabelController
-        text="Email"
-        control={control}
-        name="email"
-        rules={{
-          required: "Email is required",
-          pattern: {
-            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message: "Invalid email address",
-          },
-        }}
-      />
+      <Margin mt={15}>
+        <InputLabelController
+          text="Email"
+          control={control}
+          name="email"
+          rules={{
+            required: "Email is required",
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "Invalid email address",
+            },
+          }}
+        />
+      </Margin>
       <Margin mt={15}>
         <InputLabelController
           text="Password"
-          attrType="password1"
+          attrType="password"
           control={control}
           name="password1"
           rules={{ required: "Password1 is required" }}
@@ -59,7 +58,7 @@ export const LoginForm: React.FC = () => {
       <Margin mt={15}>
         <InputLabelController
           text="Password2"
-          attrType="password2"
+          attrType="password"
           control={control}
           name="password2"
           rules={{ required: "Password2 is required" }}
@@ -74,9 +73,14 @@ export const LoginForm: React.FC = () => {
           <br />
           {errors.username && <ErrorText>{errors.username.message}</ErrorText>}
           <br />
-          {errors.password1 && <ErrorText>{errors.password1.message}</ErrorText>}
+          {errors.password1 && (
+            <ErrorText>{errors.password1.message}</ErrorText>
+          )}
           <br />
-          {errors.password2 && <ErrorText>{errors.password2.message}</ErrorText>}
+          {errors.password2 && (
+            <ErrorText>{errors.password2.message}</ErrorText>
+          )}
+          
         </Position>
       </Margin>
     </Form>
