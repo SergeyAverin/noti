@@ -46,6 +46,7 @@ const config = {
       "@public": path.resolve(__dirname, "public"),
       "@redux": path.resolve(__dirname, "src/redux"),
       "@hocs": path.resolve(__dirname, "src/hocs"),
+      "@hooks": path.resolve(__dirname, "src/hooks"),
     },
   },
 

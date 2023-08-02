@@ -9,7 +9,8 @@
       "@pages/*": ["src/components/pages/*"],
       "@public/*": ["public/*"],
       "@redux/*": ["src/redux/*"],
-      "@hocs/*": ["src/hocs/*"]
+      "@hocs/*": ["src/hocs/*"],
+      "@hooks/*": ["src/hooks/*"]
     }
   }
 }
