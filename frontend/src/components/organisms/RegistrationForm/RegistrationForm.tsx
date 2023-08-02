@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 import { useRedirectAuthorized } from "@hooks/useRedirectAuthorized";
-import { useLoginMutation } from "@redux/api/authApi";
 import { Margin, SubmitButton, ErrorText, Form, Position } from "@atoms/index";
 import { InputLabelController } from "@molecules/InputLabel";
 
 
 type FormValues = {
+  username: string;
   email: string;
-  password: string;
+  password1: string;
+  password2: string;
 };
 
 export const LoginForm: React.FC = () => {
@@ -19,19 +20,21 @@ export const LoginForm: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
-  useRedirectAuthorized();
-  const [login, { isError, error }] = useLoginMutation();
   const navigate = useNavigate();
- 
+  useRedirectAuthorized();
   const onSubmit = (data: FormValues) => {
-    login(data).then(() => {
-      if (!isError) {
-        navigate("/");
-      }
-    });
+    
   };
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+    <InputLabelController
+        text="Username"
+        control={control}
+        name="username"
+        rules={{
+          required: "Username is required",
+        }}
+      />
       <InputLabelController
         text="Email"
         control={control}
@@ -47,10 +50,19 @@ export const LoginForm: React.FC = () => {
       <Margin mt={15}>
         <InputLabelController
           text="Password"
-          attrType="password"
+          attrType="password1"
           control={control}
-          name="password"
-          rules={{ required: "Password is required" }}
+          name="password1"
+          rules={{ required: "Password1 is required" }}
+        />
+      </Margin>
+      <Margin mt={15}>
+        <InputLabelController
+          text="Password2"
+          attrType="password2"
+          control={control}
+          name="password2"
+          rules={{ required: "Password2 is required" }}
         />
       </Margin>
       <Margin mt={15}>
@@ -60,8 +72,11 @@ export const LoginForm: React.FC = () => {
         <Position position="absolute">
           {errors.email && <ErrorText>{errors.email.message}</ErrorText>}
           <br />
-          {errors.password && <ErrorText>{errors.password.message}</ErrorText>}
-          {isError && <ErrorText>Wrong login or password</ErrorText>}
+          {errors.username && <ErrorText>{errors.username.message}</ErrorText>}
+          <br />
+          {errors.password1 && <ErrorText>{errors.password1.message}</ErrorText>}
+          <br />
+          {errors.password2 && <ErrorText>{errors.password2.message}</ErrorText>}
         </Position>
       </Margin>
     </Form>
