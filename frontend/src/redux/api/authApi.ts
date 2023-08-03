@@ -5,6 +5,13 @@ import { IUser } from "@redux/types/user";
 import { setUser } from "@redux/features/userSlice";
 import { baseQuery } from "./baseQuery";
 
+interface createUserDTO {
+  username: string;
+  email: string;
+  password1: string;
+  password2: string;
+}
+
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: baseQuery,
@@ -29,7 +36,16 @@ export const authApi = createApi({
         } catch (error) {}
       },
     }),
+    registration: builder.mutation<IUser, createUserDTO>({
+      query(data) {
+        return {
+          url: "account/registration",
+          method: "POST",
+          body: data,
+        };
+      },
+    }),
   }),
 });
 
-export const { useLoginMutation } = authApi;
+export const { useLoginMutation, useRegistrationMutation } = authApi;
