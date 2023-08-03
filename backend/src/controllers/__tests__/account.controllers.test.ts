@@ -55,4 +55,7 @@ describe('GET /api/v1.0/account/login', () => {
 
     expect(res.statusCode).toBe(401)
   })
+  //ToDo: logout test
+  //ToDo: Logout without token test
+  //ToDo: Profile test
 })

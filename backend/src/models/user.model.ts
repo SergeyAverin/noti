@@ -1,6 +1,6 @@
 import mongoose, { Document } from 'mongoose'
 
-import { hashPassword, comparePassword } from '../utils/passwordUtils'
+import { hashPassword } from '../utils/passwordUtils'
 import { IToken } from './token.model'
 
 const { Schema } = mongoose

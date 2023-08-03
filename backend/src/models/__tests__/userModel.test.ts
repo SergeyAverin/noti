@@ -27,9 +27,9 @@ describe('User model', () => {
 
   it('should create and save a new user', async () => {
     const userData = {
-      username: 'UserName',
+      username: 'userModel',
       password: 'UserPassword',
-      email: 'test@gmail.com',
+      email: 'userModel@gmail.com',
     }
     const user = new User(userData)
     const savedUser = await user.save()
