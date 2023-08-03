@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useRedirectAuthorized } from "@hooks/useRedirectAuthorized";
 import { Margin, SubmitButton, ErrorText, Form, Position } from "@atoms/index";
 import { InputLabelController } from "@molecules/InputLabel";
+import { useRegistrationMutation } from "@redux/api/authApi";
 
 type FormValues = {
   username: string;
@@ -21,7 +22,11 @@ export const RegistrationForm: React.FC = () => {
   } = useForm<FormValues>();
   const navigate = useNavigate();
   useRedirectAuthorized();
-  const onSubmit = (data: FormValues) => {};
+  const [registration] = useRegistrationMutation();
+  const onSubmit = (data: FormValues) => {
+    registration(data)
+    navigate('/auth/login')
+  };
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <InputLabelController
