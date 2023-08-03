@@ -4,9 +4,15 @@ import { useNavigate } from "react-router-dom";
 
 import { useRedirectAuthorized } from "@hooks/useRedirectAuthorized";
 import { useLoginMutation } from "@redux/api/authApi";
-import { Margin, SubmitButton, ErrorText, Form, Position } from "@atoms/index";
+import {
+  Margin,
+  SubmitButton,
+  ErrorText,
+  Form,
+  Position,
+  LinkBG,
+} from "@atoms/index";
 import { InputLabelController } from "@molecules/InputLabel";
-
 
 type FormValues = {
   email: string;
@@ -22,7 +28,7 @@ export const LoginForm: React.FC = () => {
   useRedirectAuthorized();
   const [login, { isError, error }] = useLoginMutation();
   const navigate = useNavigate();
- 
+
   const onSubmit = (data: FormValues) => {
     login(data).then(() => {
       if (!isError) {
@@ -52,6 +58,9 @@ export const LoginForm: React.FC = () => {
           name="password"
           rules={{ required: "Password is required" }}
         />
+      </Margin>
+      <Margin mt={25} mb={15}>
+        <LinkBG href="/auth/registration" text="Registration" />
       </Margin>
       <Margin mt={15}>
         <SubmitButton value="login" />

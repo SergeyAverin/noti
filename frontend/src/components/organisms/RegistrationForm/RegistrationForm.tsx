@@ -1,9 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 import { useRedirectAuthorized } from "@hooks/useRedirectAuthorized";
-import { Margin, SubmitButton, ErrorText, Form, Position } from "@atoms/index";
+import {
+  Margin,
+  SubmitButton,
+  ErrorText,
+  Form,
+  Position,
+  LinkBG,
+} from "@atoms/index";
 import { InputLabelController } from "@molecules/InputLabel";
 import { useRegistrationMutation } from "@redux/api/authApi";
 
@@ -24,8 +31,8 @@ export const RegistrationForm: React.FC = () => {
   useRedirectAuthorized();
   const [registration] = useRegistrationMutation();
   const onSubmit = (data: FormValues) => {
-    registration(data)
-    navigate('/auth/login')
+    registration(data);
+    navigate("/auth/login");
   };
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -69,6 +76,9 @@ export const RegistrationForm: React.FC = () => {
           rules={{ required: "Password2 is required" }}
         />
       </Margin>
+      <Margin mt={25} mb={15}>
+        <LinkBG href="/auth/login" text="login" />
+      </Margin>
       <Margin mt={15}>
         <SubmitButton value="login" />
       </Margin>
@@ -85,7 +95,6 @@ export const RegistrationForm: React.FC = () => {
           {errors.password2 && (
             <ErrorText>{errors.password2.message}</ErrorText>
           )}
-          
         </Position>
       </Margin>
     </Form>

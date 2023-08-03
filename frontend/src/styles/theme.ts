@@ -7,6 +7,7 @@ export const darkTheme: DefaultTheme = {
     primary: "#0E0E10",
     secondary: "#1F1F23",
     highlight: "#C0EEF2",
+    highlightFaded: "rgba(192, 238, 242, 0.1)",
     dangerous: "#E76161",
   },
 };

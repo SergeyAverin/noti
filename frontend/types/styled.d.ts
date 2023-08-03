@@ -8,6 +8,7 @@ declare module "styled-components" {
       primary: string;
       secondary: string;
       highlight: string;
+      highlightFaded: string;
       dangerous: string;
     };
   }
