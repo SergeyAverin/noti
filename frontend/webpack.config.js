@@ -72,7 +72,11 @@ const config = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|jpe?g|gif|svg|webp|ico)$/i,
+        test: /\.svg$/,
+        use: ["react-svg-loader"],
+      },
+      {
+        test: /\.(png|jpe?g|gif|webp|ico)$/i,
         type: MODE === "production" ? "asset" : "asset/resource",
       },
       {
