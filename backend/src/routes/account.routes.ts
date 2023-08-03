@@ -12,7 +12,7 @@ const accountRouter: Router = express.Router()
 
 // Auth
 accountRouter.route('/login').post(login)
-accountRouter.route('/registration').get(registrationUserController)
+accountRouter.route('/registration').post(registrationUserController)
 accountRouter.use(authorizationRequireMiddleware)
 accountRouter.route('/logout').post(logout)
 accountRouter.route('/profile').get(profile)
