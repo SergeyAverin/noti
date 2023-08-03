@@ -28,9 +28,9 @@ describe('Token model', () => {
 
   it('should create token', async () => {
     const userData = {
-      username: 'UserName',
+      username: 'tokenModel',
       password: 'UserPassword',
-      email: 'test@gmail.com',
+      email: 'tokenModel@gmail.com',
     }
     const user = new User(userData)
     const savedUser = await user.save()

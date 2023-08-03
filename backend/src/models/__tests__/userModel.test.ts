@@ -49,9 +49,9 @@ describe('User model', () => {
 
   it('should not save a user with invalid email', async () => {
     const userData = {
-      username: 'UserName',
+      username: 'userModel',
       password: 'UserPassword',
-      email: 'test@gmailcom',
+      email: 'userModel@gmailcom',
     }
     const user = new User(userData)
     let error

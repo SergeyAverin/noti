@@ -15,9 +15,9 @@ import connectToMongoDB from '../../models/connectToMongoDB'
 
 describe('GET /api/v1.0/account/login', () => {
   const userData = {
-    username: 'test2',
+    username: 'accauntController',
     password: '123',
-    email: 'a@r.ru',
+    email: 'accauntController@r.ru',
   }
   beforeAll(async () => {
     connectToMongoDB()

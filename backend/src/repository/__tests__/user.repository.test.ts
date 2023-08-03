@@ -59,9 +59,9 @@ describe('User repository', () => {
 
   it('should find user by username', async () => {
     const userData = {
-      username: 'UserName',
+      username: 'UserRepository',
       password: 'UserPassword',
-      email: 'test@gmail.com',
+      email: 'UserRepository@gmail.com',
     }
     const userSaved = await new User(userData).save()
     const userRepository = new UserRepository()
@@ -72,9 +72,9 @@ describe('User repository', () => {
   })
   it('should throw NotFoundError', async () => {
     const userData = {
-      username: 'UserName',
+      username: 'UserRepository',
       password: 'UserPassword',
-      email: 'test@gmail.com',
+      email: 'UserRepository@gmail.com',
     }
     await new User(userData).save()
     const userRepository = new UserRepository()
@@ -89,9 +89,9 @@ describe('User repository', () => {
   })
   it('should find user by email', async () => {
     const userData = {
-      username: 'UserName',
+      username: 'UserRepository',
       password: 'UserPassword',
-      email: 'test@gmail.com',
+      email: 'UserRepository@gmail.com',
     }
     const userSaved = await new User(userData).save()
     const userRepository = new UserRepository()
@@ -102,9 +102,9 @@ describe('User repository', () => {
   })
   it('should throw NotFoundError', async () => {
     const userData = {
-      username: 'UserName',
+      username: 'UserRepository',
       password: 'UserPassword',
-      email: 'test@gmail.com',
+      email: 'UserRepository@gmail.com',
     }
     await new User(userData).save()
     const userRepository = new UserRepository()
