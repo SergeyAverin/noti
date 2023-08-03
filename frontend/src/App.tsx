@@ -1,11 +1,26 @@
 import React from "react";
 
+import { ThemeProvider } from "styled-components";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
-const App = () => {
+import GlobalStyleStyled from "./styles/globalStyle.styled";
+import { darkTheme } from "./styles/theme";
+import { store } from "./redux/store";
+import MainRouter from "./router";
+
+import "normalize.css";
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <h1>React Template</h1>
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <ThemeProvider theme={darkTheme}>
+          <GlobalStyleStyled />
+            <MainRouter />
+        </ThemeProvider>
+      </BrowserRouter>
+    </Provider>
   );
 };
 
