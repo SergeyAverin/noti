@@ -8,7 +8,7 @@ import { IUser, User } from '../models/user.model'
 import { IToken, Token } from '../models/token.model'
 import { comparePassword } from '../utils/passwordUtils'
 import { AuthorizationError } from '../errors/AuthorizationError'
-import { removeToken } from '../services/auth.service'
+import { removeToken, registrationUser } from '../services/auth.service'
 
 const logger = log4js.getLogger()
 
@@ -45,13 +45,26 @@ export const login = async (req: Request, res: Response) => {
 }
 
 export const logout = async (req: Request, res: Response) => {
-  const user = res.locals.user as IUser;
-  const token = res.locals.token as IToken;
-  
+  const user = res.locals.user as IUser
+  const token = res.locals.token as IToken
+
   await removeToken(user, token)
   res.status(StatusCodes.NO_CONTENT).end()
 }
 
 export const profile = async (req: Request, res: Response) => {
   res.status(StatusCodes.OK).send(res.locals.user)
+}
+
+export const registrationUserController = async (
+  req: Request,
+  res: Response,
+) => {
+  const user = await registrationUser(
+    req.body.username,
+    req.body.email,
+    req.body.password1,
+    req.body.password2,
+  )
+  res.status(StatusCodes.CREATED).send(user)
 }
