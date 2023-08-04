@@ -15,7 +15,7 @@ export interface IUser extends Document  {
     dataCreated: Date,
     dataUpdatedPassword: Date,
     tokens: [IToken]
-    notes: [INote]
+    notes:  INote[]
 }
 
 export const userScheme = new Schema<IUser>({

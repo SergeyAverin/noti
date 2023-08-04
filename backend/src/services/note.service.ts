@@ -46,4 +46,9 @@ export class NoteService {
     const trash = note.filter((note) => note.isTrash)
     return trash
   }
+
+  async cleanUserTrash(user: IUser) {
+    user.notes = []
+    await user.save()
+  }
 }
