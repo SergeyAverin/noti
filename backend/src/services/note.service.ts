@@ -30,9 +30,11 @@ export class NoteService {
   async removeBookmark(slug: string) {
     await this._setFlag(slug, 'isBookmark', false)
   }
-  async createRootNote(title: string): Promise<INote> {
+  async createRootNote(title: string, user: IUser): Promise<INote> {
     const noteData = new CreateNoteDTO(title)
     const note = await this.noteRepository.createNote(noteData)
+    user.notes.push(note)
+    await user.save()
     return note
   }
   async getUserNotes(user: IUser): Promise<[INote]> {

@@ -24,7 +24,6 @@ const noteScheme = new Schema<INote>({
   title: {
     type: String,
     required: true,
-    unique: true,
   },
   slug: {
     type: String,
