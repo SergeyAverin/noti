@@ -5,10 +5,12 @@ import {
   addTrash,
   cleanUsersTrash,
   createNote,
+  getUsersBookmark,
   getUsersNote,
   getUsersTrash,
   removeBookmark,
   removeNote,
+  removeNoteFromBookmark,
   removeNoteFromTrash,
   removeTrash,
 } from '../controllers/notes.controller'
@@ -29,6 +31,10 @@ noteRoute
   .post((req, res) => removeNoteFromTrash(req, res))
 noteRoute.route('/trash/:slug').delete((req, res) => removeNote(req, res))
 
+noteRoute.route('/bookmark').get((req, res) => getUsersBookmark(req, res))
+noteRoute
+  .route('/bookmark/:slug')
+  .post((req, res) => removeNoteFromBookmark(req, res))
 noteRoute.route('/:slug/bookmark').post((req, res) => addBookmark(req, res))
 noteRoute
   .route('/:slug/bookmark')
