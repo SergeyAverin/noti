@@ -2,6 +2,7 @@ import { NoteRepository } from '../repository/note.repository'
 import { UpdateNoteDTO } from '../repository/DTO/updateNoteDTO'
 import { CreateNoteDTO } from '../repository/DTO/createNoteDTO'
 import { INote } from '../models/note.model'
+import { IUser } from '../models/user.model'
 
 export class NoteService {
   noteRepository = new NoteRepository()
@@ -32,6 +33,10 @@ export class NoteService {
   async createRootNote(title: string): Promise<INote> {
     const noteData = new CreateNoteDTO(title)
     const note = await this.noteRepository.createNote(noteData)
+    return note
+  }
+  async getUserNotes(user: IUser): Promise<[INote]> {
+    const note = await this.noteRepository.getUserNotes(user)
     return note
   }
 }
