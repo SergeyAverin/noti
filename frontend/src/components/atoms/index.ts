@@ -9,3 +9,4 @@ export { Spinner } from "./Spinner/Spinner";
 export { Form } from "./Form/Form";
 export { Position } from "./Position/Position";
 export { LinkBG } from "./LinkBG/LinkBG";
+export { ToggleMenu } from "./ToggleMenu/ToggleMenu";

@@ -3,11 +3,16 @@ import React from "react";
 import { withAuth } from "@hocs/withAuth";
 import { Spinner, Center } from "@atoms/index";
 import {InputLabel} from '@molecules/InputLabel/InputLabel'
-import { AccountManager } from "@molecules/AccountManager/AccountManager";
+import { ToggleMenu } from "@atoms/index";
 
 const NotesPage: React.FC = () => {
   return <div>
-    <AccountManager />
+    <ToggleMenu text="sd">
+      <div>d</div>
+      <div>d</div>
+      <div>d</div>
+      <div>d</div>
+    </ToggleMenu>
   </div>;
 };
 
