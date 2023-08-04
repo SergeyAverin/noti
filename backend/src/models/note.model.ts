@@ -30,6 +30,14 @@ const noteScheme = new Schema<INote>({
     type: String,
     unique: true,
   },
+  isTrash: {
+    type: Boolean,
+    default: false,
+  },
+  isBookmark: {
+    type: Boolean,
+    default: false,
+  },
   metadata: {
     dataCreated: {
       type: Date,
