@@ -28,8 +28,11 @@ export class NoteRepository {
     const note = await new Note(noteField).save()
     return note
   }
-  async getUserNotes(user: IUser): Promise<[INote]> {
+  async getUserNotes(user: IUser): Promise<INote[]> {
     const userNote = await user.populate('notes')
     return userNote.notes
+  }
+  async removeNote(slug: string) {
+    await Note.findOneAndRemove({ slug: slug })
   }
 }

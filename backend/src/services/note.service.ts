@@ -37,7 +37,7 @@ export class NoteService {
     await user.save()
     return note
   }
-  async getUserNotes(user: IUser): Promise<[INote]> {
+  async getUserNotes(user: IUser): Promise<INote[]> {
     const note = await this.noteRepository.getUserNotes(user)
     return note
   }
@@ -54,5 +54,8 @@ export class NoteService {
 
   async removeNoteFromTrash(slug: string) {
     await this.removeTrash(slug)
+  }
+  async removeNote(slug: string) {
+    await this.noteRepository.removeNote(slug)
   }
 }

@@ -68,3 +68,9 @@ export const removeNoteFromTrash = async (req: Request, res: Response) => {
   await noteService.removeNoteFromTrash(req.params.slug)
   res.status(StatusCodes.NO_CONTENT).end()
 }
+
+export const removeNote = async (req: Request, res: Response) => {
+  const noteService = new NoteService()
+  await noteService.removeNote(req.params.slug)
+  res.status(StatusCodes.NO_CONTENT).end()
+}
