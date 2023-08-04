@@ -1,6 +1,7 @@
 import { Note, INote } from '../models/note.model'
 import { NotFoundError } from '../errors/NotFoundError'
 import { UpdateNoteDTO } from './DTO/updateNoteDTO'
+import { CreateNoteDTO } from './DTO/createNoteDTO'
 import log4js from 'log4js'
 
 const logger = log4js.getLogger()
@@ -20,7 +21,10 @@ export class NoteRepository {
     const fieldsToUpdate = {
       ...updatedFields,
     }
-    logger.info(fieldsToUpdate)
     await Note.updateOne({ slug: slug }, fieldsToUpdate)
+  }
+  async createNote(noteField: CreateNoteDTO): Promise<INote> {
+    const note = await new Note(noteField).save()
+    return note
   }
 }
