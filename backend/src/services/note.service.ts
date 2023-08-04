@@ -1,5 +1,7 @@
 import { NoteRepository } from '../repository/note.repository'
 import { UpdateNoteDTO } from '../repository/DTO/updateNoteDTO'
+import { CreateNoteDTO } from '../repository/DTO/createNoteDTO'
+import { INote } from '../models/note.model'
 
 export class NoteService {
   noteRepository = new NoteRepository()
@@ -26,5 +28,10 @@ export class NoteService {
   }
   async removeBookmark(slug: string) {
     await this._setFlag(slug, 'isBookmark', false)
+  }
+  async createRootNote(title: string): Promise<INote> {
+    const noteData = new CreateNoteDTO(title)
+    const note = await this.noteRepository.createNote(noteData)
+    return note
   }
 }
