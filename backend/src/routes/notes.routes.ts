@@ -8,6 +8,7 @@ import {
   getUsersNote,
   getUsersTrash,
   removeBookmark,
+  removeNoteFromTrash,
   removeTrash,
 } from '../controllers/notes.controller'
 import { authorizationRequireMiddleware } from '../middlewares/authorizationRequireMiddleware'
@@ -22,6 +23,9 @@ noteRoute.route('/trash').get((req, res) => getUsersTrash(req, res))
 noteRoute.route('/trash').delete((req, res) => cleanUsersTrash(req, res))
 noteRoute.route('/:slug/trash').post((req, res) => addTrash(req, res))
 noteRoute.route('/:slug/trash').delete((req, res) => removeTrash(req, res))
+noteRoute
+  .route('/trash/:slug')
+  .delete((req, res) => removeNoteFromTrash(req, res))
 
 noteRoute.route('/:slug/bookmark').post((req, res) => addBookmark(req, res))
 noteRoute

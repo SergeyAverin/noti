@@ -51,4 +51,8 @@ export class NoteService {
     user.notes = []
     await user.save()
   }
+
+  async removeNoteFromTrash(slug: string) {
+    await this.removeTrash(slug)
+  }
 }

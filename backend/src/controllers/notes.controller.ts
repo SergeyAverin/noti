@@ -62,3 +62,9 @@ export const cleanUsersTrash = async (req: Request, res: Response) => {
   await noteService.cleanUserTrash(res.locals.user)
   res.status(StatusCodes.NO_CONTENT).end()
 }
+
+export const removeNoteFromTrash = async (req: Request, res: Response) => {
+  const noteService = new NoteService()
+  await noteService.removeNoteFromTrash(req.params.slug)
+  res.status(StatusCodes.NO_CONTENT).end()
+}
