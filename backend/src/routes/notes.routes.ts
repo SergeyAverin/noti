@@ -3,8 +3,10 @@ import express, { Router } from 'express'
 import {
   addBookmark,
   addTrash,
+  cleanUsersTrash,
   createNote,
   getUsersNote,
+  getUsersTrash,
   removeBookmark,
   removeTrash,
 } from '../controllers/notes.controller'
@@ -15,8 +17,12 @@ const noteRoute: Router = express.Router()
 noteRoute.use(authorizationRequireMiddleware)
 noteRoute.route('/').get((req, res) => getUsersNote(req, res))
 noteRoute.route('/').post((req, res) => createNote(req, res))
+
+noteRoute.route('/trash').get((req, res) => getUsersTrash(req, res))
+noteRoute.route('/trash').delete((req, res) => cleanUsersTrash(req, res))
 noteRoute.route('/:slug/trash').post((req, res) => addTrash(req, res))
 noteRoute.route('/:slug/trash').delete((req, res) => removeTrash(req, res))
+
 noteRoute.route('/:slug/bookmark').post((req, res) => addBookmark(req, res))
 noteRoute
   .route('/:slug/bookmark')

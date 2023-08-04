@@ -48,5 +48,17 @@ export const createNote = async (req: Request, res: Response) => {
 export const getUsersNote = async (req: Request, res: Response) => {
   const noteService = new NoteService()
   const notes = await noteService.getUserNotes(res.locals.user)
-  res.status(StatusCodes.OK).send([notes])
+  res.status(StatusCodes.OK).send(notes)
+}
+
+export const getUsersTrash = async (req: Request, res: Response) => {
+  const noteService = new NoteService()
+  const notes = await noteService.getUserTrash(res.locals.user)
+  res.status(StatusCodes.OK).send(notes)
+}
+
+export const cleanUsersTrash = async (req: Request, res: Response) => {
+  const noteService = new NoteService()
+  await noteService.cleanUserTrash(res.locals.user)
+  res.status(StatusCodes.NO_CONTENT).end()
 }
