@@ -47,6 +47,12 @@ export class NoteService {
     return trash
   }
 
+  async getUserBookmark(user: IUser): Promise<INote[]> {
+    const note = await this.noteRepository.getUserNotes(user)
+    const trash = note.filter((note) => note.isBookmark)
+    return trash
+  }
+
   async cleanUserTrash(user: IUser) {
     user.notes = []
     await user.save()
@@ -55,6 +61,10 @@ export class NoteService {
   async removeNoteFromTrash(slug: string) {
     await this.removeTrash(slug)
   }
+  async removeNoteFromBookmark(slug: string) {
+    await this.removeBookmark(slug)
+  }
+
   async removeNote(slug: string) {
     await this.noteRepository.removeNote(slug)
   }

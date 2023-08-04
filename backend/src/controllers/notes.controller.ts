@@ -74,3 +74,15 @@ export const removeNote = async (req: Request, res: Response) => {
   await noteService.removeNote(req.params.slug)
   res.status(StatusCodes.NO_CONTENT).end()
 }
+
+export const getUsersBookmark = async (req: Request, res: Response) => {
+  const noteService = new NoteService()
+  const notes = await noteService.getUserBookmark(res.locals.user)
+  res.status(StatusCodes.OK).send(notes)
+}
+
+export const removeNoteFromBookmark = async (req: Request, res: Response) => {
+  const noteService = new NoteService()
+  await noteService.removeNoteFromTrash(req.params.slug)
+  res.status(StatusCodes.NO_CONTENT).end()
+}
