@@ -37,3 +37,10 @@ export const removeBookmark = async (req: Request, res: Response) => {
     message: `Note ${slug} removed in bookmark`,
   })
 }
+
+export const createNote = async (req: Request, res: Response) => {
+  const noteService = new NoteService()
+  const title = req.body.title
+  const note = await noteService.createRootNote(title)
+  res.status(StatusCodes.CREATED).send(note)
+}
