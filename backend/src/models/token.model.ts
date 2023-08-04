@@ -1,13 +1,10 @@
 import mongoose, { Document } from 'mongoose'
 
-import { IUser } from './user.model'
-
 const { Schema } = mongoose
 
 export interface IToken extends Document {
   token: string;
   dataCreated: Date;
-  user: IUser;
 }
 
 const tokenScheme = new Schema<IToken>({
