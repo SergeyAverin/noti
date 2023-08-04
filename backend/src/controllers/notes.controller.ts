@@ -44,3 +44,9 @@ export const createNote = async (req: Request, res: Response) => {
   const note = await noteService.createRootNote(title)
   res.status(StatusCodes.CREATED).send(note)
 }
+
+export const getUsersNote = async (req: Request, res: Response) => {
+  const noteService = new NoteService()
+  const notes = await noteService.getUserNotes(res.locals.user)
+  res.status(StatusCodes.OK).send([notes])
+}
