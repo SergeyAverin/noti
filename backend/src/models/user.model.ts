@@ -2,6 +2,7 @@ import mongoose, { Document } from 'mongoose'
 
 import { hashPassword } from '../utils/passwordUtils'
 import { IToken } from './token.model'
+import { INote } from './note.model'
 
 const { Schema } = mongoose
 
@@ -14,6 +15,7 @@ export interface IUser extends Document  {
     dataCreated: Date,
     dataUpdatedPassword: Date,
     tokens: [IToken]
+    notes: [INote]
 }
 
 export const userScheme = new Schema<IUser>({
@@ -47,6 +49,7 @@ export const userScheme = new Schema<IUser>({
         default: new Date()
     },
     tokens: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Token' }],
+    notes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Note' }],
 })
 
 userScheme.pre('save', async function(next) {
