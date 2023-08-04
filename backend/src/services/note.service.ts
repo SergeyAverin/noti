@@ -41,4 +41,9 @@ export class NoteService {
     const note = await this.noteRepository.getUserNotes(user)
     return note
   }
+  async getUserTrash(user: IUser): Promise<INote[]> {
+    const note = await this.noteRepository.getUserNotes(user)
+    const trash = note.filter((note) => note.isTrash)
+    return trash
+  }
 }
