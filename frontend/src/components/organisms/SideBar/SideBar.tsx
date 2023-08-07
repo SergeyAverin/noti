@@ -13,7 +13,9 @@ export const SideBar: React.FC = () => {
         <AccountManager></AccountManager>
       </Margin>
       <Trash />
-      <Bookmark />
+      <Margin mt={8}>
+        <Bookmark />
+      </Margin>
     </SideBarStyled>
   );
 };
