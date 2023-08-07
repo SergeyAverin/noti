@@ -13,6 +13,7 @@ import {
   removeNoteFromBookmark,
   removeNoteFromTrash,
   removeTrash,
+  getRootNote,
 } from '../controllers/notes.controller'
 import { authorizationRequireMiddleware } from '../middlewares/authorizationRequireMiddleware'
 
@@ -21,6 +22,8 @@ const noteRoute: Router = express.Router()
 noteRoute.use(authorizationRequireMiddleware)
 noteRoute.route('/').get((req, res) => getUsersNote(req, res))
 noteRoute.route('/').post((req, res) => createNote(req, res))
+
+noteRoute.route('/root').get((req, res) => getRootNote(req, res))
 
 noteRoute.route('/trash').get((req, res) => getUsersTrash(req, res))
 noteRoute.route('/trash').delete((req, res) => cleanUsersTrash(req, res))

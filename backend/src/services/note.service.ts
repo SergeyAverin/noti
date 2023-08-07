@@ -68,4 +68,10 @@ export class NoteService {
   async removeNote(slug: string) {
     await this.noteRepository.removeNote(slug)
   }
+
+  async getRootNote(user: IUser) {
+    const note = await this.noteRepository.getUserNotes(user)
+    const trash = note.filter((note) => note.parentNote == undefined)
+    return trash
+  }
 }
