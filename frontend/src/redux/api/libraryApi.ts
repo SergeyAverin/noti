@@ -17,7 +17,15 @@ export const libraryApi = baseApi.injectEndpoints({
         };
       },
     }),
+    getRoot: builder.query<INote[], void>({
+      query() {
+        return {
+          url: "notes/root",
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetTrashQuery, useGetBookmarkQuery } = libraryApi;
+export const { useGetTrashQuery, useGetBookmarkQuery, useGetRootQuery } =
+  libraryApi;
