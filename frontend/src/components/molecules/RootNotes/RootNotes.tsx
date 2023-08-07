@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ToggleMenu, Margin } from "@atoms/index";
+import { Note } from "@atoms/index";
 import { useGetRootQuery } from "@redux/api/libraryApi";
 
 export const RootNotes: React.FC = () => {
@@ -10,7 +10,7 @@ export const RootNotes: React.FC = () => {
       <div>
         {!isLoading &&
           data &&
-          data.map((note) => <li key={note.slug}>{note.title}</li>)}
+          data.map((note) => <Note href="/" key={note.slug}>{note.title}</Note>)}
       </div>
   );
 };
