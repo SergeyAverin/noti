@@ -10,7 +10,7 @@ export const RootNotes: React.FC = () => {
       <div>
         {!isLoading &&
           data &&
-          data.map((note) => <Note href="/" key={note.slug}>{note.title}</Note>)}
+          data.map((note) => <Note href={`/notes/${note.slug}`} key={note.slug}>{note.title}</Note>)}
       </div>
   );
 };

@@ -9,7 +9,7 @@ const MainRouter: React.FC = () => {
   return (
     <Routes>
       <Route path="/auth/*" element={<AuthRouter />} />
-      <Route path="/*" element={<NoteRouter />} />
+      <Route path="/notes/*" element={<NoteRouter />} />
     </Routes>
   );
 };
