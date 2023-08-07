@@ -10,7 +10,14 @@ export const libraryApi = baseApi.injectEndpoints({
         };
       },
     }),
+    getBookmark: builder.query<INote[], void>({
+      query() {
+        return {
+          url: "notes/bookmark",
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetTrashQuery } = libraryApi;
+export const { useGetTrashQuery, useGetBookmarkQuery } = libraryApi;
