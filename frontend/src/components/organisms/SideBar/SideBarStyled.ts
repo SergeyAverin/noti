@@ -8,4 +8,7 @@ export const SideBarStyled = styled.div`
   width: 300px;
   box-sizing: border-box;
   padding: 30px 50px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
 `;
