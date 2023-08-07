@@ -1,5 +1,6 @@
 import { baseApi } from "./baseApi";
 import { INote } from "../types/note";
+import { TAGS } from "./tags";
 
 export const libraryApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -9,6 +10,7 @@ export const libraryApi = baseApi.injectEndpoints({
           url: "notes/trash",
         };
       },
+      providesTags: [TAGS.NOTE],
     }),
     getBookmark: builder.query<INote[], void>({
       query() {
@@ -16,6 +18,7 @@ export const libraryApi = baseApi.injectEndpoints({
           url: "notes/bookmark",
         };
       },
+      providesTags: [TAGS.NOTE],
     }),
     getRoot: builder.query<INote[], void>({
       query() {
@@ -23,6 +26,7 @@ export const libraryApi = baseApi.injectEndpoints({
           url: "notes/root",
         };
       },
+      providesTags: [TAGS.NOTE],
     }),
   }),
 });
