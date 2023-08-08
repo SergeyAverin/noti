@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const NoteStyled = styled.div`
+export const NoteLinkStyled = styled.div`
   display: flex;
   align-items: center;
   a {
@@ -13,7 +13,7 @@ export const NoteStyled = styled.div`
   }
 `;
 
-export const NoteLinkStyled = styled.div`
+export const NoteLinkWrapperStyled = styled.div`
   display: flex;
   align-items: center;
 `;

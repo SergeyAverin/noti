@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ToggleMenu, Margin, Note } from "@atoms/index";
+import { ToggleMenu, Margin, NoteLink } from "@atoms/index";
 import { useGetTrashQuery } from "@redux/api/libraryApi";
 
 import TrashIcon from "@public/TrashIcon.svg";
@@ -14,9 +14,9 @@ export const Trash: React.FC = () => {
         {!isLoading &&
           data &&
           data.map((note) => (
-            <Note key={note.slug} href={`/note/${note.slug}`}>
+            <NoteLink key={note.slug} href={`/note/${note.slug}`}>
               {note.title}
-            </Note>
+            </NoteLink>
           ))}
       </Margin>
     </ToggleMenu>

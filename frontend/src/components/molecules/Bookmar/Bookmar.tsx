@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useGetBookmarkQuery } from "@redux/api/libraryApi";
-import { ToggleMenu, Margin, Note } from "@atoms/index";
+import { ToggleMenu, Margin, NoteLink } from "@atoms/index";
 
 import BookmarkIcon from "@public/BookmarkIcon.svg";
 
@@ -13,9 +13,9 @@ export const Bookmark: React.FC = () => {
         {!isLoading &&
           data &&
           data.map((note) => (
-            <Note key={note.slug} href={`/note/${note.slug}`}>
+            <NoteLink key={note.slug} href={`/note/${note.slug}`}>
               {note.title}
-            </Note>
+            </NoteLink>
           ))}
       </Margin>
     </ToggleMenu>

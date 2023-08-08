@@ -1,29 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { NoteLinkStyled, NoteStyled } from "./NoteStyled";
+import { NoteLinkStyled, NoteLinkWrapperStyled } from "./NoteLinkStyled";
 
 import NoteIcon from "@public/NoteIcon.svg";
 
-interface INoteProsp {
+interface INoteLinkProsp {
   href: string;
   children: React.ReactNode;
   icon?: any;
 }
 
-export const Note: React.FC<INoteProsp> = ({ children, href }) => {
+export const NoteLink: React.FC<INoteLinkProsp> = ({ children, href }) => {
   return (
-    <NoteStyled>
+    <NoteLinkStyled>
       <Link to={href}>
-        <NoteLinkStyled>
+        <NoteLinkWrapperStyled>
           <NoteIcon />
           {children}
-        </NoteLinkStyled>
+        </NoteLinkWrapperStyled>
       </Link>
-    </NoteStyled>
+    </NoteLinkStyled>
   );
 };
 
-Note.defaultProps = {
+NoteLink.defaultProps = {
   icon: <NoteIcon></NoteIcon>,
 };

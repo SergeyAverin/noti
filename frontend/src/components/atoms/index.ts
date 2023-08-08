@@ -10,4 +10,4 @@ export { Form } from "./Form/Form";
 export { Position } from "./Position/Position";
 export { LinkBG } from "./LinkBG/LinkBG";
 export { ToggleMenu } from "./ToggleMenu/ToggleMenu";
-export { Note } from "./Note/Note";
+export { NoteLink } from "./NoteLink/NoteLink";
