@@ -23,7 +23,6 @@ const noteRoute: Router = express.Router()
 noteRoute.use(authorizationRequireMiddleware)
 noteRoute.route('/').get((req, res) => getUsersNote(req, res))
 noteRoute.route('/').post((req, res) => createNote(req, res))
-noteRoute.route('/:slug').get((req, res) => getNoteBySlug(req, res))
 
 noteRoute.route('/root').get((req, res) => getRootNote(req, res))
 
@@ -44,5 +43,7 @@ noteRoute.route('/:slug/bookmark').post((req, res) => addBookmark(req, res))
 noteRoute
   .route('/:slug/bookmark')
   .delete((req, res) => removeBookmark(req, res))
+
+noteRoute.route('/:slug').get((req, res) => getNoteBySlug(req, res))
 
 export default noteRoute
