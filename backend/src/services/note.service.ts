@@ -74,4 +74,8 @@ export class NoteService {
     const trash = note.filter((note) => note.parentNote == undefined)
     return trash
   }
+
+  async getNoteBySlug(slug: string): Promise<INote> {
+    return await this.noteRepository.getNoteBySlug(slug)
+  }
 }

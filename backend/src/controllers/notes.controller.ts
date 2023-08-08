@@ -92,3 +92,9 @@ export const getRootNote = async (req: Request, res: Response) => {
   const notes = await noteService.getRootNote(res.locals.user)
   res.status(StatusCodes.OK).send(notes)
 }
+
+export const getNoteBySlug = async (req: Request, res: Response) => {
+  const noteService = new NoteService()
+  const note = await noteService.getNoteBySlug(req.params.slug)
+  res.status(StatusCodes.OK).send(note)
+}
