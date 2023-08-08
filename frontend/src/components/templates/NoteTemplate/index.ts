@@ -1,0 +1,1 @@
+import { NoteTemplate } from "./NoteTemplate";

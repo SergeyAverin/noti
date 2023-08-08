@@ -16,7 +16,7 @@ export const SideBar: React.FC = () => {
         <AccountManager></AccountManager>
       </Margin>
       <Trash />
-      <Margin mt={8}>
+      <Margin mt={25}>
         <Bookmark />
       </Margin>
       <Margin mt={30}>

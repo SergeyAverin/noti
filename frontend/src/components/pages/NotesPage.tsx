@@ -2,15 +2,20 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 import { withAuth } from "@hocs/withAuth";
-import { Title } from "@molecules/Title";
+import { useGetNoteQuery } from "@redux/api/noteApi";
+import { NoteTemplate } from "@templates/NoteTemplate/NoteTemplate";
 
 const NotesPage: React.FC = () => {
   const params = useParams();
-  const str  = params.slug as string
+  const slug  = params.slug as string
+  const { isLoading, data } = useGetNoteQuery(slug)
+
   return (
-    <div>
-      <Title title={str  } />
-    </div>
+    <>
+        { !isLoading && data &&
+        <NoteTemplate note={data} />
+       }
+    </>
   );
 };
 
