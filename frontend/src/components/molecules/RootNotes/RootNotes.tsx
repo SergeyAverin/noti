@@ -1,6 +1,6 @@
 import React from "react";
 
-import { NoteLink } from "@atoms/index";
+import { Margin, NoteLink } from "@atoms/index";
 import { useGetRootQuery } from "@redux/api/libraryApi";
 
 export const RootNotes: React.FC = () => {
@@ -11,9 +11,11 @@ export const RootNotes: React.FC = () => {
       {!isLoading &&
         data &&
         data.map((note) => (
-          <NoteLink href={`/notes/${note.slug}`} key={note.slug}>
-            {note.title}
-          </NoteLink>
+          <Margin mb={15}>
+            <NoteLink href={`/notes/${note.slug}`} key={note.slug}>
+              {note.title}
+            </NoteLink>
+          </Margin>
         ))}
     </div>
   );

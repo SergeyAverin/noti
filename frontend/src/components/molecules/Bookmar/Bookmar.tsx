@@ -17,6 +17,7 @@ export const Bookmark: React.FC = () => {
               {note.title}
             </NoteLink>
           ))}
+        {!isLoading && data?.length == 0 && <div>Bookmark is empty</div>}
       </Margin>
     </ToggleMenu>
   );

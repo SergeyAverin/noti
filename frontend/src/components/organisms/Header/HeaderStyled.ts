@@ -9,4 +9,9 @@ export const HeaderStyled = styled.div`
   position: absolute;
   top: 0;
   padding-left: ${(props) => props.theme.panelsSize.sideBarSize};
+  padding-right: 100px;
+  padding-top: 40px;
+  svg {
+    margin-left: 15px;
+  }
 `;

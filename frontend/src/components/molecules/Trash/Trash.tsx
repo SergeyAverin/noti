@@ -18,6 +18,7 @@ export const Trash: React.FC = () => {
               {note.title}
             </NoteLink>
           ))}
+        {!isLoading && data?.length == 0 && <div>Trash is empty</div>}
       </Margin>
     </ToggleMenu>
   );
