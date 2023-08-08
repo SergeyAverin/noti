@@ -10,4 +10,8 @@ export const darkTheme: DefaultTheme = {
     highlightFaded: "rgba(192, 238, 242, 0.1)",
     dangerous: "#E76161",
   },
+  panelsSize: {
+    sideBarSize: "300px",
+    headerSize: "80px",
+  },
 };

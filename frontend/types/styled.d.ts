@@ -11,5 +11,9 @@ declare module "styled-components" {
       highlightFaded: string;
       dangerous: string;
     };
+    panelsSize: {
+      sideBarSize: string;
+      headerSize: string;
+    };
   }
 }

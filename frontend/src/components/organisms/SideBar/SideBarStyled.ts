@@ -5,7 +5,7 @@ export const SideBarStyled = styled.div`
   position: absolute;
   left: 0;
   height: 100%;
-  width: 300px;
+  width: ${(props) => props.theme.panelsSize.sideBarSize};
   box-sizing: border-box;
   padding: 30px 50px;
   display: flex;
