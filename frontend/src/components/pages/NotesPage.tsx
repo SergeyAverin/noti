@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { withAuth } from "@hocs/withAuth";
 import { useGetNoteQuery } from "@redux/api/noteApi";
 import { NoteTemplate } from "@templates/NoteTemplate/NoteTemplate";
+import { Header } from "@organisms/Header";
 
 const NotesPage: React.FC = () => {
   const params = useParams();
@@ -12,6 +13,7 @@ const NotesPage: React.FC = () => {
 
   return (
     <>
+        <Header />
         { !isLoading && data &&
         <NoteTemplate note={data} />
        }

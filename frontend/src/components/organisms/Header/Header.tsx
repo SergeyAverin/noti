@@ -2,18 +2,19 @@ import React from "react";
 
 import { HeaderStyled } from './HeaderStyled'
 
-import BookmarkIcon from '@public/BookmarkIcon.svg';
-import TrashIcon from '@public/TrashIcon.svg'
+import { AddTrash } from "@molecules/AddTrash";
+import { AddBookmark } from "@molecules/AddBookmark";
+import { Flex } from "@atoms/index";
 
 export const Header: React.FC = () => {
 
     return (
         <HeaderStyled>
-            <div>s</div>
-            <div>
-                <BookmarkIcon />
-                <TrashIcon />
-            </div>
+            <div></div>
+            <Flex justifyContent="flex-start" alignItems="flex-start">
+                <AddTrash />
+                <AddBookmark />
+            </Flex>
         </HeaderStyled>
     )
 }

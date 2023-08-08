@@ -28,8 +28,51 @@ export const libraryApi = baseApi.injectEndpoints({
       },
       providesTags: [TAGS.NOTE],
     }),
+    addTrash: builder.mutation<void, string>({
+      query(slug) {
+        return {
+          url: `notes/${slug}/trash`,
+          method: "POST",
+        };
+      },
+      invalidatesTags: [TAGS.NOTE],
+    }),
+    removeTrash: builder.mutation<void, string>({
+      query(slug) {
+        return {
+          url: `notes/${slug}/trash`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: [TAGS.NOTE],
+    }),
+    addBookmark: builder.mutation<void, string>({
+      query(slug) {
+        return {
+          url: `notes/${slug}/bookmark`,
+          method: "POST",
+        };
+      },
+      invalidatesTags: [TAGS.NOTE],
+    }),
+    removeBookmark: builder.mutation<void, string>({
+      query(slug) {
+        return {
+          url: `notes/${slug}/bookmark`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: [TAGS.NOTE],
+    }),
   }),
 });
 
-export const { useGetTrashQuery, useGetBookmarkQuery, useGetRootQuery } =
-  libraryApi;
+export const {
+  useGetTrashQuery,
+  useGetBookmarkQuery,
+  useGetRootQuery,
+  useAddTrashMutation,
+  useRemoveTrashMutation,
+  useAddBookmarkMutation,
+  useRemoveBookmarkMutation,
+} = libraryApi;

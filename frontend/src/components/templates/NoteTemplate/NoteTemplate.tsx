@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from 'styled-components';
 
 import { Note } from "@organisms/Note/Note";
-import { INote } from "@redux/types/note"
+import { INote } from "@redux/types/note";
+
 
 interface INoteTemplateProps {
-  note: INote
+  note: INote;
 }
 
 export const NoteTemplate: React.FC<INoteTemplateProps> = ({ note }) => {
+  const theme = useContext(ThemeContext);
+
   return (
     <div>
       <Note note={note} />

@@ -11,3 +11,4 @@ export { Position } from "./Position/Position";
 export { LinkBG } from "./LinkBG/LinkBG";
 export { ToggleMenu } from "./ToggleMenu/ToggleMenu";
 export { NoteLink } from "./NoteLink/NoteLink";
+import { ToggleButton } from "./ToggleButton/ToggleButton";

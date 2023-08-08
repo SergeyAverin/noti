@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from 'styled-components';
 
 import { useGetBookmarkQuery } from "@redux/api/libraryApi";
 import { ToggleMenu, Margin, NoteLink } from "@atoms/index";
@@ -6,9 +7,11 @@ import { ToggleMenu, Margin, NoteLink } from "@atoms/index";
 import BookmarkIcon from "@public/BookmarkIcon.svg";
 
 export const Bookmark: React.FC = () => {
+  const theme = useContext(ThemeContext);
   const { data, isLoading, isError } = useGetBookmarkQuery();
+
   return (
-    <ToggleMenu text="Bookmark" icon={<BookmarkIcon />}>
+    <ToggleMenu text="Bookmark" icon={<BookmarkIcon stroke={theme?.color.fg} />}>
       <Margin ml={30}>
         {!isLoading &&
           data &&

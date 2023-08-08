@@ -8,7 +8,6 @@ import { Header } from "@organisms/Header";
 const NoteRouter: React.FC = () => {
   return (
     <>
-      <Header />
       <SideBar />
       <Routes>
         <Route path="/:slug" element={<NotesPage />} />

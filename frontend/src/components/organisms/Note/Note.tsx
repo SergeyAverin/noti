@@ -4,13 +4,13 @@ import { Title } from "@molecules/Title";
 import { INote } from "@redux/types/note";
 
 interface INoteProps {
-    note: INote
+  note: INote;
 }
 
 export const Note: React.FC<INoteProps> = ({ note }) => {
-    return (
-        <NoteStyled>
-            <Title title={note.title} />
-        </NoteStyled>
-    )
-}
+  return (
+    <NoteStyled>
+      <Title title={note.title} />
+    </NoteStyled>
+  );
+};
