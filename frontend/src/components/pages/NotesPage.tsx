@@ -10,12 +10,13 @@ const NotesPage: React.FC = () => {
   const params = useParams();
   const slug  = params.slug as string
   const { isLoading, data } = useGetNoteQuery(slug)
-
   return (
     <>
-        <Header />
         { !isLoading && data &&
-        <NoteTemplate note={data} />
+        <>
+          <Header note={data}  />
+          <NoteTemplate note={data} />
+        </>
        }
     </>
   );

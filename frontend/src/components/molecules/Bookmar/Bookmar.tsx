@@ -16,7 +16,7 @@ export const Bookmark: React.FC = () => {
         {!isLoading &&
           data &&
           data.map((note) => (
-            <NoteLink key={note.slug} href={`/note/${note.slug}`}>
+            <NoteLink key={note.slug} href={`/notes/${note.slug}`}>
               {note.title}
             </NoteLink>
           ))}

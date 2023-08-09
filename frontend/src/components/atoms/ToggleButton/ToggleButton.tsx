@@ -24,6 +24,9 @@ export const ToggleButton: React.FC<IToggleButtonProps> = ({
     setIsEnableState(prev => !prev)
     isEnableState == true ? onDisable() : onEnable();
   }
+  useEffect(()=> {
+    setIsEnableState(isEnable)
+  }, [isEnable])
 
   return (
     <ToggleButtonStyled isEnable={isEnableState} onClick={clickHeandler}>

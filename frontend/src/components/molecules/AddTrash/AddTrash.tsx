@@ -1,41 +1,44 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ThemeContext } from "styled-components";
-import { useParams } from "react-router-dom";
 
 import { ToggleButton } from "@atoms/ToggleButton/ToggleButton";
 import {
   useAddTrashMutation,
   useRemoveTrashMutation,
 } from "@redux/api/libraryApi";
+import { useGetNoteQuery } from "@redux/api/noteApi";
+import { INote } from "@redux/types/note";
 
 import TrashIcon from "@public/TrashIcon.svg";
 
-export const AddTrash: React.FC = () => {
+interface IAddTrashProps {
+  note: INote
+}
+
+export const AddTrash: React.FC<IAddTrashProps> = ({ note }) => {
   const theme = useContext(ThemeContext);
   const [addTrash] = useAddTrashMutation();
   const [removeTrash] = useRemoveTrashMutation();
-  const slug = useParams().slug as string;
-  console.log(slug);
 
   const onDisable = async (isEnable: boolean) => {
-    await removeTrash(slug);
+    await removeTrash(note.slug);
   };
   const onEnable = async (isDisable: boolean) => {
-    await addTrash(slug);
+    await addTrash(note.slug);
   };
 
   return (
-    <ToggleButton
-      iconDisable={<TrashIcon stroke={theme?.color.fg} />}
-      iconEnable={
-        <TrashIcon
-          fill={theme?.color.highlight}
-          stroke={theme?.color.highlight}
-        />
-      }
-      isEnable={false}
-      onDisable={onDisable}
-      onEnable={onEnable}
-    />
+      <ToggleButton
+        iconDisable={<TrashIcon stroke={theme?.color.fg} />}
+        iconEnable={
+          <TrashIcon
+            fill={theme?.color.highlight}
+            stroke={theme?.color.highlight}
+          />
+        }
+        isEnable={note.isTrash}
+        onDisable={onDisable}
+        onEnable={onEnable}
+      />
   );
 };

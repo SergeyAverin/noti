@@ -12,4 +12,5 @@ export const SideBarStyled = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+  overflow-y: auto;
 `;

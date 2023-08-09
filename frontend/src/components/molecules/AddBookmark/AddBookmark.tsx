@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "styled-components";
-import { useParams } from "react-router-dom";
 
+import { INote } from "@redux/types/note";
 import { ToggleButton } from "@atoms/ToggleButton/ToggleButton";
 import BookmakrIcon from "@public/BookmarkIcon.svg";
 import {
@@ -9,17 +9,20 @@ import {
   useRemoveBookmarkMutation,
 } from "@redux/api/libraryApi";
 
-export const AddBookmark: React.FC = () => {
+interface IAddBookmarkProps {
+  note: INote
+}
+
+export const AddBookmark: React.FC<IAddBookmarkProps> = ({ note }) => {
   const theme = useContext(ThemeContext);
   const [addBookmark] = useAddBookmarkMutation();
   const [removeBookmark] = useRemoveBookmarkMutation();
-  const slug = useParams().slug as string;
 
   const onDisable = async (isEnable: boolean) => {
-    await removeBookmark(slug);
+    await removeBookmark(note.slug);
   };
   const onEnable = async (isDisable: boolean) => {
-    await addBookmark(slug);
+    await addBookmark(note.slug);
   };
 
   return (
@@ -31,7 +34,7 @@ export const AddBookmark: React.FC = () => {
           stroke={theme?.color.highlight}
         />
       }
-      isEnable={false}
+      isEnable={note.isBookmark}
       onDisable={onDisable}
       onEnable={onEnable}
     />
