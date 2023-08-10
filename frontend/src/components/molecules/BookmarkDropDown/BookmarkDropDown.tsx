@@ -6,7 +6,7 @@ import { ToggleMenu, Margin, NoteLink } from "@atoms/index";
 
 import BookmarkIcon from "@public/BookmarkIcon.svg";
 
-export const Bookmark: React.FC = () => {
+export const BookmarkDropDown: React.FC = () => {
   const theme = useContext(ThemeContext);
   const { data, isLoading, isError } = useGetBookmarkQuery();
 
