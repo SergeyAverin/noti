@@ -64,6 +64,15 @@ export const libraryApi = baseApi.injectEndpoints({
       },
       invalidatesTags: [TAGS.NOTE],
     }),
+    cleanTrash: builder.mutation<void, void>({
+      query(slug) {
+        return {
+          url: `notes/trash`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: [TAGS.NOTE],
+    }),
   }),
 });
 
@@ -75,4 +84,5 @@ export const {
   useRemoveTrashMutation,
   useAddBookmarkMutation,
   useRemoveBookmarkMutation,
+  useCleanTrashMutation,
 } = libraryApi;

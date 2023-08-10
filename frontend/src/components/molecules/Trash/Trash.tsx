@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ThemeContext } from 'styled-components';
 
-import { ToggleMenu, Margin, NoteLink } from "@atoms/index";
+import { ToggleMenu, Margin, Width, NoteLink, LinkBG } from "@atoms/index";
 import { useGetTrashQuery } from "@redux/api/libraryApi";
 
 import TrashIcon from "@public/TrashIcon.svg";
@@ -21,6 +21,9 @@ export const Trash: React.FC = () => {
             </NoteLink>
           ))}
         {!isLoading && data?.length == 0 && <div>Trash is empty</div>}
+      </Margin>
+      <Margin ml={10} mt={25} >
+          <LinkBG href="/notes/trash" text="Trash table" />
       </Margin>
     </ToggleMenu>
   );
