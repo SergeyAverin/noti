@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { ThemeContext } from 'styled-components';
 
-import { ToggleMenu, Margin, Width, NoteLink, LinkBG } from "@atoms/index";
 import { useGetTrashQuery } from "@redux/api/libraryApi";
+import { ToggleMenu, Margin, Width, NoteLink, LinkBG } from "@atoms/index";
 
 import TrashIcon from "@public/TrashIcon.svg";
 
-export const Trash: React.FC = () => {
+export const TrashDropDown: React.FC = () => {
   const theme = useContext(ThemeContext);
   const { data, isLoading, isError } = useGetTrashQuery();
 

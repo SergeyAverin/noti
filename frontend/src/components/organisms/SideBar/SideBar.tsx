@@ -3,7 +3,7 @@ import React from "react";
 import { SideBarStyled } from "./SideBarStyled";
 
 import { Margin } from "@atoms/index";
-import { Trash } from "@molecules/Trash";
+import { TrashDropDown } from "@molecules/TrashDropDown";
 import { Bookmark } from "@molecules/Bookmar";
 import { RootNotes } from "@molecules/RootNotes"
 import { AccountManager } from "@molecules/AccountManager";
@@ -15,7 +15,7 @@ export const SideBar: React.FC = () => {
       <Margin mb={60}>
         <AccountManager></AccountManager>
       </Margin>
-      <Trash />
+      <TrashDropDown />
       <Margin mt={25}>
         <Bookmark />
       </Margin>
