@@ -2,6 +2,7 @@ import React from "react";
 
 import { Table } from "@atoms/index";
 import { Center } from "@atoms/index";
+import { useRemoveNoteMutation } from "@redux/api/libraryApi";
 
 interface ILibraryTableProps {
   columns: string[],
