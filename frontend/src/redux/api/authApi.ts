@@ -1,9 +1,7 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { userApi } from "./userApi";
 import { IToken } from "@redux/types/token";
 import { IUser } from "@redux/types/user";
 import { setUser } from "@redux/features/userSlice";
-import { baseQuery } from "./baseQuery";
+import { baseApi } from "./baseApi";
 
 interface createUserDTO {
   username: string;
@@ -12,9 +10,7 @@ interface createUserDTO {
   password2: string;
 }
 
-export const authApi = createApi({
-  reducerPath: "authApi",
-  baseQuery: baseQuery,
+export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation<
       { token: IToken; user: IUser },

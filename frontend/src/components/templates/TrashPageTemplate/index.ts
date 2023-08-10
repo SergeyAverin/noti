@@ -1,0 +1,1 @@
+export { TrashPageTemplate } from "./TrashPageTemplate";

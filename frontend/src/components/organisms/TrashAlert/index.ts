@@ -1,0 +1,1 @@
+export { TrashAlert } from "./TrashAlert";
