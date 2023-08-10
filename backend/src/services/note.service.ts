@@ -54,8 +54,10 @@ export class NoteService {
   }
 
   async cleanUserTrash(user: IUser) {
-    user.notes = []
-    await user.save()
+    const trash = await this.getUserTrash(user)
+    trash.forEach((note) => {
+      this.removeNote(note.slug)
+    })
   }
 
   async removeNoteFromTrash(slug: string) {
