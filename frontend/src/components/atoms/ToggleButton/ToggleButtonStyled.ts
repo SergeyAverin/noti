@@ -10,6 +10,7 @@ export const ToggleButtonStyled = styled.div<IToggleButtonStyledProps>`
   color: ${(props) => props.theme.color.fg};
   user-select: none;
   font-size: 18px;
+  cursor: pointer;
 
   ${(props) =>
     props.isEnable &&
