@@ -4,7 +4,7 @@ import { ThemeContext } from 'styled-components';
 import { Note } from "@organisms/Note/Note";
 import { INote } from "@redux/types/note";
 import { Button } from "@atoms/Button/Button";
-import { TrashMessage } from "@organisms/TrashMessage";
+import { TrashAlert } from "@organisms/TrashAlert";
 
 interface INoteTemplateProps {
   note: INote;
@@ -17,7 +17,7 @@ export const NoteTemplate: React.FC<INoteTemplateProps> = ({ note }) => {
     <div>
       <Note note={note} />
       { note.isTrash &&
-      <TrashMessage note={note} />
+      <TrashAlert note={note} />
        }
     </div>
   );

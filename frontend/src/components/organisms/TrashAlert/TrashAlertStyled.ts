@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const TrashMessageStyled = styled.div`
+export const TrashAlertStyled = styled.div`
   position: fixed;
   background: ${(props) => props.theme.color.dangerous};
   color: ${(props) => props.theme.color.fg};

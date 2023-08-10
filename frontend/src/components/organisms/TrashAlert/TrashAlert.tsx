@@ -1,20 +1,20 @@
 import React from "react";
 
-import { TrashMessageStyled } from "./TrashMessageStyled";
+import { TrashAlertStyled } from "./TrashAlertStyled";
 import { Flex, Margin, Button } from "@atoms/index";
 import { useRemoveNoteMutation, useRemoveTrashMutation } from "@redux/api/libraryApi";
 import { INote } from "@redux/types/note";
 
 
-interface ITrashMessageProps {
+interface ITrashAlertProps {
     note: INote
 }
 
-export const TrashMessage: React.FC<ITrashMessageProps> = ({ note }) => {
+export const TrashAlert: React.FC<ITrashAlertProps> = ({ note }) => {
     const [removeNote] = useRemoveNoteMutation()
     const [removeNoteFromTrash] = useRemoveTrashMutation()
 
-    return <TrashMessageStyled>
+    return <TrashAlertStyled>
         <Flex justifyContent="space-between" alignItems="center">
             <div>
                 Note in trash
@@ -26,5 +26,5 @@ export const TrashMessage: React.FC<ITrashMessageProps> = ({ note }) => {
                 </Margin>
             </Flex>
         </Flex>
-    </TrashMessageStyled>
+    </TrashAlertStyled>
 }

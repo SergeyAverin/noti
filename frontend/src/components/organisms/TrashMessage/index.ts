@@ -1,1 +1,0 @@
-export { TrashMessage } from "./TrashMessage";
