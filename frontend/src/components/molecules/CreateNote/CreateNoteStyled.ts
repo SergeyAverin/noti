@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const AddNoteStyled = styled.div`
+export const CreateNoteStyled = styled.div`
   color: ${(props) => props.theme.color.fg};
   font-size: 20px;
   font-style: normal;

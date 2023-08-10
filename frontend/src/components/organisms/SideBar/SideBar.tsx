@@ -7,7 +7,7 @@ import { TrashDropDown } from "@molecules/TrashDropDown";
 import { BookmarkDropDown } from "@molecules/BookmarkDropDown";
 import { RootNotes } from "@molecules/RootNotes"
 import { AccountManager } from "@molecules/AccountManager";
-import { AddNote } from "@molecules/AddNote";
+import { CreateNote } from "@molecules/CreateNote";
 
 export const SideBar: React.FC = () => {
   return (
@@ -23,7 +23,7 @@ export const SideBar: React.FC = () => {
         <RootNotes />
       </Margin>
       <Margin mt={30}>
-        <AddNote />
+        <CreateNote />
       </Margin>
     </SideBarStyled>
   );
