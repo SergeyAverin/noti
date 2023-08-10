@@ -1,15 +1,19 @@
-import React from "react";
+import React, { ChangeEventHandler, useState } from "react";
 
-import { TitleStyled, TitleLineStyled } from "./TitleStyled";
+import { TitleStyled, TitleLineStyled, TitleInputStyled } from "./TitleStyled";
 
 interface ITitleProps {
     title: string
 }
 
 export const Title: React.FC<ITitleProps> = ({ title }) => {
+    const [titleState, setTitleState] = useState(title) 
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setTitleState(event.target.value)
+    }
     return (
         <TitleStyled>
-            <h1>{ title }</h1>
+            <TitleInputStyled value={ titleState } onChange={onChange} />
             <TitleLineStyled />
         </TitleStyled>
     )
