@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ThemeContext } from 'styled-components';
 
 import { useGetBookmarkQuery } from "@redux/api/libraryApi";
-import { ToggleMenu, Margin, NoteLink } from "@atoms/index";
+import { DropDownMenu, Margin, NoteLink } from "@atoms/index";
 
 import BookmarkIcon from "@public/BookmarkIcon.svg";
 
@@ -11,7 +11,7 @@ export const BookmarkDropDown: React.FC = () => {
   const { data, isLoading, isError } = useGetBookmarkQuery();
 
   return (
-    <ToggleMenu text="Bookmark" icon={<BookmarkIcon stroke={theme?.color.fg} />}>
+    <DropDownMenu text="Bookmark" icon={<BookmarkIcon stroke={theme?.color.fg} />}>
       <Margin ml={30}>
         {!isLoading &&
           data &&
@@ -22,6 +22,6 @@ export const BookmarkDropDown: React.FC = () => {
           ))}
         {!isLoading && data?.length == 0 && <div>Bookmark is empty</div>}
       </Margin>
-    </ToggleMenu>
+    </DropDownMenu>
   );
 };

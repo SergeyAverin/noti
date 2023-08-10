@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ToggleMenuStyled = styled.div`
+export const DropDownMenuStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,7 +12,7 @@ export const ToggleMenuStyled = styled.div`
     transition: 0.3s;
   }
 `;
-export const ToggleMenuTextStyled = styled.div`
+export const DropDownMenuTextStyled = styled.div`
   display: flex;
   align-items: center;
   font-size: 18px;
@@ -23,7 +23,7 @@ export const ToggleMenuTextStyled = styled.div`
   }
 `;
 
-export const ToggleMenuWrapperStyled = styled.div`
+export const DropDownMenuWrapperStyled = styled.div`
   display: flex;
   flex-direction: column;
 `;

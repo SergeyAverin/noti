@@ -9,7 +9,7 @@ export { Spinner } from "./Spinner/Spinner";
 export { Form } from "./Form/Form";
 export { Position } from "./Position/Position";
 export { LinkBG } from "./LinkBG/LinkBG";
-export { ToggleMenu } from "./ToggleMenu/ToggleMenu";
+export { DropDownMenu } from "./DropDownMenu/DropDownMenu";
 export { NoteLink } from "./NoteLink/NoteLink";
 export { ToggleButton } from "./ToggleButton/ToggleButton";
 export { Table } from "./Table/Table";
