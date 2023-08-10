@@ -4,12 +4,13 @@ import { LibraryTable } from "@molecules/LibraryTable";
 import { withAuth } from "@hocs/withAuth";
 import { useGetTrashQuery, useCleanTrashMutation } from "@redux/api/libraryApi";
 import { Margin, Width, Button, Wrapper } from "@atoms/index";
-import { useRemoveNoteMutation } from "@redux/api/libraryApi";
+import { useRemoveNoteMutation, useRemoveTrashMutation } from "@redux/api/libraryApi";
 
 const TrashPage: React.FC = () => {
   const { isLoading, data } = useGetTrashQuery();
   const [cleanTrash] = useCleanTrashMutation();
   const [removeTrash] = useRemoveNoteMutation();
+  const [removeFromTrash] = useRemoveTrashMutation();
 
   return (
     <Wrapper>
@@ -31,7 +32,7 @@ const TrashPage: React.FC = () => {
                       danger
                       onClick={(event) => {
                         event.preventDefault();
-                        removeTrash(note.slug);
+                        removeFromTrash(note.slug);
                       }}
                       >
                       Remove from trash
