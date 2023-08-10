@@ -3,7 +3,12 @@ import React from "react";
 import { useCleanTrashMutation } from "@redux/api/libraryApi";
 import { Button } from "@atoms/index";
 
-export const CleanTrash: React.FC = () => {
+interface ICleanTrashProps {
+  danger?: boolean;
+  fill?: boolean;
+}
+
+export const CleanTrash: React.FC<ICleanTrashProps> = ({ danger, fill }) => {
   const [cleanTrash] = useCleanTrashMutation();
 
   const onClickHeandler = () => {
@@ -11,7 +16,7 @@ export const CleanTrash: React.FC = () => {
   };
 
   return (
-    <Button danger fill onClick={onClickHeandler}>
+    <Button danger={danger} fill={fill} onClick={onClickHeandler}>
       Clean trash
     </Button>
   );

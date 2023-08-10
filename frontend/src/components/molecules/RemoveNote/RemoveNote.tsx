@@ -5,9 +5,15 @@ import { Button } from "@atoms/index";
 
 interface IRemoveNoteProps {
   slug: string;
+  danger?: boolean;
+  fill?: boolean;
 }
 
-export const RemoveNote: React.FC<IRemoveNoteProps> = ({ slug }) => {
+export const RemoveNote: React.FC<IRemoveNoteProps> = ({
+  slug,
+  danger,
+  fill,
+}) => {
   const [removeTrash] = useRemoveNoteMutation();
 
   const onClickHeandler = (event: React.MouseEvent) => {
@@ -16,7 +22,7 @@ export const RemoveNote: React.FC<IRemoveNoteProps> = ({ slug }) => {
   };
 
   return (
-    <Button danger onClick={onClickHeandler}>
+    <Button danger={danger} fill={fill} onClick={onClickHeandler}>
       removeTrash
     </Button>
   );

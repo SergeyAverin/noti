@@ -16,7 +16,7 @@ export const TrashPageTemplate: React.FC<ITrashPageTemplateProps> = ({
   return (
     <Wrapper>
       <h1>Trash</h1>
-      {notes.length != 0 && <CleanTrash />}
+      {notes.length != 0 && <CleanTrash  danger={true} fill={true} />}
       <Margin mt={30}>
         <TrashTable notes={notes} />
         {notes.length == 0 && <h2>Trash is empty</h2>}

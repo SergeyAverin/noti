@@ -25,10 +25,10 @@ export const TrashTable: React.FC<ITrashTableProps> = ({ notes }) => {
           <tr>
             <td>{note.title}</td>
             <td>
-              <RestoreNote slug={note.slug} />
+              <RestoreNote slug={note.slug} danger={true} />
             </td>
             <td>
-              <RemoveNote slug={note.slug} />
+              <RemoveNote slug={note.slug} danger={true} fill={true} />
             </td>
           </tr>
         ))}

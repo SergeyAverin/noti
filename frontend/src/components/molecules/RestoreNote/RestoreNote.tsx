@@ -5,9 +5,15 @@ import { Button } from "@atoms/index";
 
 interface IRestoreNoteProps {
   slug: string;
+  danger?: boolean;
+  fill?: boolean;
 }
 
-export const RestoreNote: React.FC<IRestoreNoteProps> = ({ slug }) => {
+export const RestoreNote: React.FC<IRestoreNoteProps> = ({
+  slug,
+  danger,
+  fill,
+}) => {
   const [restoreTrash] = useRemoveTrashMutation();
 
   const onClickHeandler = (event: React.MouseEvent) => {
@@ -16,7 +22,7 @@ export const RestoreNote: React.FC<IRestoreNoteProps> = ({ slug }) => {
   };
 
   return (
-    <Button danger onClick={onClickHeandler}>
+    <Button danger={danger} fill={fill} onClick={onClickHeandler}>
       restoreTrash
     </Button>
   );
