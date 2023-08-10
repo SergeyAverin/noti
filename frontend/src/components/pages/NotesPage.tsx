@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { withAuth } from "@hocs/withAuth";
 import { useGetNoteQuery } from "@redux/api/noteApi";
-import { NoteTemplate } from "@templates/NoteTemplate/NoteTemplate";
+import { NotePageTemplate } from "@templates/NotePageTemplate";
 import { Header } from "@organisms/Header";
 
 const NotesPage: React.FC = () => {
@@ -15,7 +15,7 @@ const NotesPage: React.FC = () => {
         { !isLoading && data &&
         <>
           <Header note={data}  />
-          <NoteTemplate note={data} />
+          <NotePageTemplate note={data} />
         </>
        }
     </>
