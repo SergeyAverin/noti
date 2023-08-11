@@ -1,6 +1,10 @@
 import { Request, Response } from 'express'
+import log4js from 'log4js'
+
 import { NoteService } from '../services/note.service'
 import { StatusCodes } from 'http-status-codes'
+
+const logger = log4js.getLogger()
 
 export const addTrash = async (req: Request, res: Response) => {
   const noteService = new NoteService()
@@ -97,4 +101,12 @@ export const getNoteBySlug = async (req: Request, res: Response) => {
   const noteService = new NoteService()
   const note = await noteService.getNoteBySlug(req.params.slug)
   res.status(StatusCodes.OK).send(note)
+}
+
+export const uploadNote = async (req: Request, res: Response) => {
+  const noteService = new NoteService()
+  logger.debug('Before noteService.uploadNoteContent')
+  await noteService.uploadNoteContent(req.body, req.params.slug)
+  logger.debug('After noteService.uploadNoteContent')
+  res.status(StatusCodes.OK).send({ message: 'upload' })
 }

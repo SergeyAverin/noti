@@ -1,19 +1,21 @@
+import log4js from 'log4js'
+
 import { NoteRepository } from '../repository/note.repository'
+import { NotesEditorRepository } from '../repository/notesEditor.repository'
 import { UpdateNoteDTO } from '../repository/DTO/updateNoteDTO'
 import { CreateNoteDTO } from '../repository/DTO/createNoteDTO'
 import { INote } from '../models/note.model'
 import { IUser } from '../models/user.model'
+import { ICell } from '../models/cell'
+
+const logger = log4js.getLogger()
 
 export class NoteService {
   noteRepository = new NoteRepository()
+  noteEditorRepository = new NotesEditorRepository()
 
   async _setFlag(slug: string, flag: string, value: boolean) {
     const updateNoteData = new UpdateNoteDTO()
-    /*
-    Object.defineProperty(updateNoteData, flag, {
-      value: value,
-    })
-    */
     updateNoteData[flag] = value
     await this.noteRepository.updateBySlug(slug, updateNoteData)
   }
@@ -79,5 +81,11 @@ export class NoteService {
 
   async getNoteBySlug(slug: string): Promise<INote> {
     return await this.noteRepository.getNoteBySlug(slug)
+  }
+
+  async uploadNoteContent(content: ICell[], slug: string) {
+    logger.debug('Before noteEditorRepository.uploadNote')
+    await this.noteEditorRepository.uploadNote(content, slug)
+    logger.debug('After noteEditorRepository.uploadNote')
   }
 }
