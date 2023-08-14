@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const CellContentStyled = styled.div``;
 
@@ -10,8 +10,18 @@ export const CellToolsStyled = styled.div`
   transition: 0.2s;
 `;
 
-export const CellStyled = styled.div`
+interface ICellStyledProps {
+  isSelected: boolean;
+}
+export const CellStyled = styled.div<ICellStyledProps>`
   position: relative;
+
+  ${(props) =>
+    props.isSelected &&
+    process.env.DEBUG &&
+    css`
+      border: 2px solid red;
+    `}
 
   &:hover > ${CellToolsStyled} {
     opacity: 1;

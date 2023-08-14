@@ -8,12 +8,14 @@ interface INoteState {
   slug: string;
   content: ICell[];
   selectedCell: ICell | undefined;
+  cursorPosition: number | null;
 }
 
 const initialState: INoteState = {
   title: "Title",
   slug: "Slug",
   selectedCell: undefined,
+  cursorPosition: 0,
   content: [
     { id: 1, type: "string", props: {}, children: "test1" },
     { id: 2, type: "chekbox", props: {}, children: "test2" },
@@ -33,19 +35,24 @@ export const userSlice = createSlice({
       }
     },
     selectCell(state, action: PayloadAction<number>) {
-      state.selectedCell = state.content.find(
-        (cell) => cell.id == action.payload
-      );
+      const cell = state.content.find((cell) => cell.id == action.payload);
+      state.selectedCell = cell;
     },
+
+    setCursorPosition(state, action: PayloadAction<number | null>) {
+      console.log(action.payload);
+      state.cursorPosition = action.payload;
+    },
+
     pushCell(state, action: PayloadAction<void>) {
       if (
         state.selectedCell?.id == state.content[state.content.length - 1].id
       ) {
         state.content.push({
-          id: 7,
+          id: state.content.length + 1,
           type: "string",
           props: {},
-          children: "_",
+          children: "",
         });
       }
     },
@@ -54,4 +61,5 @@ export const userSlice = createSlice({
 
 export default userSlice.reducer;
 
-export const { changeCell, pushCell, selectCell } = userSlice.actions;
+export const { changeCell, pushCell, selectCell, setCursorPosition } =
+  userSlice.actions;
