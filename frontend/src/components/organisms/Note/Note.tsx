@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { NoteStyled } from "./NoteStyled";
 import { INote } from "@redux/types/note";
+import { useSaveNoteMutation } from "@redux/api/noteApi";
 import { RootState } from "@redux/store";
 import { Margin } from "@atoms/index";
 import { Title } from "@molecules/Title";
@@ -16,10 +17,16 @@ interface INoteProps {
 export const Note: React.FC<INoteProps> = ({ note }) => {
   const cells = useSelector((state: RootState) => state.noteState.content);
   const d = useSelector((state: RootState) => state.noteState.content);
+  const [saveNote] = useSaveNoteMutation()
+
   const selectedCell = useSelector(
     (state: RootState) => state.noteState.selectedCell
   );
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+    saveNote({slug: note.slug, content: cells})
+  }, [cells])
 
   useEffect(() => {
     console.log(d)

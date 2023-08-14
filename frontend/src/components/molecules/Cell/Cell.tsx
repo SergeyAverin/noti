@@ -20,6 +20,7 @@ export const Cell: React.FC<ICellComponentProps> = ({ cell }) => {
   const onClickHeandler = () => {
     dispatch(selectCell(cell.id));
   };
+
   return (
     <CellStyled onClick={onClickHeandler} isSelected={selectedCell?.id == cell.id}>
       <CellToolsStyled>

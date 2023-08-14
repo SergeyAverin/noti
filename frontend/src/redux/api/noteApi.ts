@@ -1,6 +1,7 @@
 import { baseApi } from "./baseApi";
 import { INote } from "../types/note";
 import { TAGS } from "./tags";
+import { ICell } from "@redux/types/cell";
 
 export const noteApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -24,7 +25,18 @@ export const noteApi = baseApi.injectEndpoints({
       },
       invalidatesTags: [TAGS.NOTE],
     }),
+    saveNote: builder.mutation<INote, { slug: string; content: ICell[] }>({
+      query({ slug, content }) {
+        return {
+          url: `notes/${slug}/content`,
+          method: "POST",
+          body: content,
+        };
+      },
+      invalidatesTags: [TAGS.NOTE],
+    }),
   }),
 });
 
-export const { useGetNoteQuery, useCreateNoteMutation } = noteApi;
+export const { useGetNoteQuery, useCreateNoteMutation, useSaveNoteMutation } =
+  noteApi;
