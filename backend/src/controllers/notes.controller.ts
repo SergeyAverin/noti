@@ -110,3 +110,11 @@ export const uploadNote = async (req: Request, res: Response) => {
   logger.debug('After noteService.uploadNoteContent')
   res.status(StatusCodes.OK).send({ message: 'upload' })
 }
+
+export const loadNoteContent = async (req: Request, res: Response) => {
+  const noteService = new NoteService()
+  logger.debug('Before noteService.loadNoteContent')
+  const json = await noteService.loadNoteContent(req.params.slug)
+  logger.debug('After noteService.loadNoteContent')
+  res.status(StatusCodes.OK).send(json)
+}

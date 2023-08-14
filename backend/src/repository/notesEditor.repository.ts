@@ -19,6 +19,8 @@ export class NotesEditorRepository {
   async uploadNote(note: ICell[], slug: string) {
     logger.debug('NotesEditorRepository uploadNote')
     const jsonBuffer = Buffer.from(JSON.stringify(note))
+    logger.debug('===')
+    logger.debug(JSON.stringify(note))
     await this.s3.putObject(
       BACKET_NAME,
       `${slug}.json`,
@@ -31,5 +33,32 @@ export class NotesEditorRepository {
       },
     )
     logger.debug(`Put ${slug}.json in ${BACKET_NAME}`)
+  }
+
+  async loadNote(slug: string) {
+    return new Promise((resolve, reject) => {
+      this.s3.getObject(BACKET_NAME, `${slug}.json`, (err, dataStream) => {
+        if (err) {
+          logger.debug('Error retrieving JSON file:', err)
+          reject(err)
+        }
+
+        let jsonData = ''
+
+        dataStream.on('data', (chunk) => {
+          jsonData += chunk
+        })
+
+        dataStream.on('end', () => {
+          try {
+            const json = JSON.parse(jsonData)
+            resolve(json)
+          } catch (error) {
+            logger.debug('Error parsing JSON:', error)
+            reject(error)
+          }
+        })
+      })
+    })
   }
 }

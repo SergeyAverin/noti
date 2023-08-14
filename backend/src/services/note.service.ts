@@ -88,4 +88,10 @@ export class NoteService {
     await this.noteEditorRepository.uploadNote(content, slug)
     logger.debug('After noteEditorRepository.uploadNote')
   }
+  async loadNoteContent(slug: string) {
+    logger.debug('Before noteEditorRepository.loadNote')
+    const json = await this.noteEditorRepository.loadNote(slug)
+    logger.debug('After noteEditorRepository.loadNote')
+    return json
+  }
 }
