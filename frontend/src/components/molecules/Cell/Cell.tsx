@@ -29,7 +29,7 @@ export const Cell: React.FC<ICellComponentProps> = ({ cell }) => {
       </CellToolsStyled>
       <div>
         {cell.type == "string" && <CellString cell={cell} />}
-        {cell.type == "chekbox" && <CellCheckbox text={"sd"} />}
+        {cell.type == "checkbox" && <CellCheckbox cell={cell} />}
       </div>
     </CellStyled>
   );

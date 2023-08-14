@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components";
 
-export const CellContentStyled = styled.div``;
+export const CellContentStyled = styled.div`
+  display: block;
+`;
 
 export const CellToolsStyled = styled.div`
   position: absolute;
@@ -53,10 +55,11 @@ export const CellCheckboxStyled = styled.input.attrs({ type: "checkbox" })`
   border: none;
   color: ${(props) => props.theme.color.fg};
   outline: 0;
-  width: 100%;
-  white-space: nowrap;
-  overflow-y: auto;
-  text-overflow: ellipsis;
+  margin-right: 14px;
+  display: block;
+  align-items: center;
+  width: 20px;
+  height: 20px;
 `;
 
 export const CellCheckboxWrapperStyled = styled.div`
