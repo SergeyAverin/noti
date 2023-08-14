@@ -10,7 +10,7 @@ export const libraryApi = baseApi.injectEndpoints({
           url: "notes/trash",
         };
       },
-      providesTags: [TAGS.NOTE],
+      providesTags: [TAGS.TRASH],
     }),
     getBookmark: builder.query<INote[], void>({
       query() {
@@ -18,7 +18,7 @@ export const libraryApi = baseApi.injectEndpoints({
           url: "notes/bookmark",
         };
       },
-      providesTags: [TAGS.NOTE],
+      providesTags: [TAGS.BOOKMARK],
     }),
     getRoot: builder.query<INote[], void>({
       query() {
@@ -26,7 +26,7 @@ export const libraryApi = baseApi.injectEndpoints({
           url: "notes/root",
         };
       },
-      providesTags: [TAGS.NOTE],
+      providesTags: [TAGS.ROOT_NOTES],
     }),
     addTrash: builder.mutation<void, string>({
       query(slug) {
@@ -35,7 +35,7 @@ export const libraryApi = baseApi.injectEndpoints({
           method: "POST",
         };
       },
-      invalidatesTags: [TAGS.NOTE],
+      invalidatesTags: [TAGS.TRASH],
     }),
     removeTrash: builder.mutation<void, string>({
       query(slug) {
@@ -44,7 +44,7 @@ export const libraryApi = baseApi.injectEndpoints({
           method: "DELETE",
         };
       },
-      invalidatesTags: [TAGS.NOTE],
+      invalidatesTags: [TAGS.TRASH],
     }),
     addBookmark: builder.mutation<void, string>({
       query(slug) {
@@ -53,7 +53,7 @@ export const libraryApi = baseApi.injectEndpoints({
           method: "POST",
         };
       },
-      invalidatesTags: [TAGS.NOTE],
+      invalidatesTags: [TAGS.BOOKMARK],
     }),
     removeBookmark: builder.mutation<void, string>({
       query(slug) {
@@ -62,7 +62,7 @@ export const libraryApi = baseApi.injectEndpoints({
           method: "DELETE",
         };
       },
-      invalidatesTags: [TAGS.NOTE],
+      invalidatesTags: [TAGS.BOOKMARK],
     }),
     cleanTrash: builder.mutation<void, void>({
       query(slug) {
@@ -71,7 +71,7 @@ export const libraryApi = baseApi.injectEndpoints({
           method: "DELETE",
         };
       },
-      invalidatesTags: [TAGS.NOTE],
+      invalidatesTags: [TAGS.TRASH],
     }),
     removeNote: builder.mutation<void, string>({
       query(slug) {
@@ -80,7 +80,7 @@ export const libraryApi = baseApi.injectEndpoints({
           method: "DELETE",
         };
       },
-      invalidatesTags: [TAGS.NOTE],
+      invalidatesTags: [TAGS.TRASH],
     }),
   }),
 });

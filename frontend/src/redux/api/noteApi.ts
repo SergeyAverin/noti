@@ -32,7 +32,7 @@ export const noteApi = baseApi.injectEndpoints({
           },
         };
       },
-      invalidatesTags: [TAGS.NOTE],
+      invalidatesTags: [TAGS.NOTE, TAGS.ROOT_NOTES],
     }),
     saveNote: builder.mutation<INote, { slug: string; content: ICell[] }>({
       query({ slug, content }) {
