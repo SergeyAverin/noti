@@ -28,12 +28,17 @@ export const CellStyled = styled.div<ICellStyledProps>`
   }
 `;
 
-export const CellStringStyled = styled.input`
+interface ICellStringStyledProps {
+  color?: string;
+  bgColor?: string;
+}
+export const CellStringStyled = styled.input<ICellStringStyledProps>`
   font-size: 18px;
 
   background: none;
   border: none;
-  color: ${(props) => props.theme.color.fg};
+  color: ${(props) => (props.color ? props.color : props.theme.color.fg)};
+  background: ${(props) => props.bgColor};
   outline: 0;
   width: 100%;
   white-space: nowrap;

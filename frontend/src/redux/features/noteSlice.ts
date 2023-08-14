@@ -16,7 +16,9 @@ const initialState: INoteState = {
   slug: "Slug",
   selectedCell: undefined,
   cursorPosition: 0,
-  content: [{ id: 1, type: "string", props: {}, children: "_" }],
+  content: [
+    { id: 1, type: "string", property: { bgColor: "red" }, children: "_" },
+  ],
 };
 
 export const userSlice = createSlice({
@@ -53,7 +55,7 @@ export const userSlice = createSlice({
         state.content.push({
           id: state.content.length + 1,
           type: "string",
-          props: {},
+          property: {},
           children: "",
         });
       }

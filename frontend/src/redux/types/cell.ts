@@ -1,6 +1,6 @@
 export interface ICell {
   id: number;
   type: string;
-  props: object;
+  property: object;
   children: string;
 }

@@ -50,6 +50,7 @@ export const CellString: React.FC<ICellStringProps> = ({ cell }) => {
       onChange={changeHeandler}
       onKeyDown={handleKeyDown}
       onFocus={onFocus}
+      {...cell.property}
     />
   );
 };
