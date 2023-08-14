@@ -37,28 +37,40 @@ export class NotesEditorRepository {
 
   async loadNote(slug: string) {
     return new Promise((resolve, reject) => {
-      this.s3.getObject(BACKET_NAME, `${slug}.json`, (err, dataStream) => {
-        if (err) {
-          logger.debug('Error retrieving JSON file:', err)
-          reject(err)
-        }
-
-        let jsonData = ''
-
-        dataStream.on('data', (chunk) => {
-          jsonData += chunk
-        })
-
-        dataStream.on('end', () => {
-          try {
-            const json = JSON.parse(jsonData)
-            resolve(json)
-          } catch (error) {
-            logger.debug('Error parsing JSON:', error)
-            reject(error)
+      try {
+        this.s3.statObject(BACKET_NAME, `${slug}.json`, async (err, stat) => {
+          if (err) {
+            logger.debug(
+              `Object ${slug}.json does not exist in bucket ${BACKET_NAME}`,
+            )
+            resolve([])
+          } else {
+            logger.debug(
+              `Retrieved object ${slug}.json from bucket ${BACKET_NAME}`,
+            )
+            const dataStream = await this.s3.getObject(
+              BACKET_NAME,
+              `${slug}.json`,
+            )
+            let jsonData = ''
+            dataStream.on('data', (chunk) => {
+              jsonData += chunk
+            })
+            dataStream.on('end', () => {
+              try {
+                const json = JSON.parse(jsonData)
+                resolve(json)
+              } catch (error) {
+                logger.debug('Error parsing JSON:', error)
+                reject(error)
+              }
+            })
           }
         })
-      })
+      } catch (error) {
+        logger.debug('Error retrieving JSON file:', error)
+        reject(error)
+      }
     })
   }
 }
