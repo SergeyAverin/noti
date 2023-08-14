@@ -35,7 +35,7 @@ export const Note: React.FC<INoteProps> = ({ note }) => {
   useEffect(()=>{
     saveNote({slug: note.slug, content: cells})
   }, [cells])
-
+  
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Enter") {

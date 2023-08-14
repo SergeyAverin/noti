@@ -36,7 +36,6 @@ interface ICellStringStyledProps {
 }
 export const CellStringStyled = styled.input<ICellStringStyledProps>`
   font-size: 18px;
-
   background: none;
   border: none;
   color: ${(props) => (props.color ? props.color : props.theme.color.fg)};
@@ -48,9 +47,16 @@ export const CellStringStyled = styled.input<ICellStringStyledProps>`
   text-overflow: ellipsis;
 `;
 
-export const CellCheckboxStyled = styled.input.attrs({ type: "checkbox" })`
+interface ICellCheckboxStyledProps {
+  color?: string;
+  bgColor?: string;
+}
+export const CellCheckboxStyled = styled.input.attrs<ICellCheckboxStyledProps>({
+  type: "checkbox",
+})`
   font-size: 18px;
-
+  color: ${(props) => (props.color ? props.color : props.theme.color.fg)};
+  background: ${(props) => props.bgColor};
   background: none;
   border: none;
   color: ${(props) => props.theme.color.fg};
@@ -65,4 +71,42 @@ export const CellCheckboxStyled = styled.input.attrs({ type: "checkbox" })`
 export const CellCheckboxWrapperStyled = styled.div`
   display: flex;
 `;
-export const CellLineStyled = styled.hr``;
+
+interface ICellLineStyled {
+  color?: string;
+}
+export const CellLineStyled = styled.hr`
+  color: ${(props) => (props.color ? props.color : props.theme.color.fg)};
+`;
+
+interface ICellHeadingStyledProps {
+  variant?: string;
+  color?: string;
+  bgColor?: string;
+}
+export const CellHeadingStyled = styled.input<ICellHeadingStyledProps>`
+  ${(props) =>
+    props.variant == "big" &&
+    css`
+      font-size: 48px;
+    `}
+  ${(props) =>
+    props.variant == "medium" &&
+    css`
+      font-size: 40px;
+    `}
+    ${(props) =>
+    props.variant == "small" &&
+    css`
+      font-size: 30px;
+    `}
+  background: none;
+  border: none;
+  outline: 0;
+  margin-right: 14px;
+  width: 100%;
+  color: ${(props) => (props.color ? props.color : props.theme.color.fg)};
+  background: ${(props) => props.bgColor};
+`;
+
+export const CellListStyled = styled.div``;

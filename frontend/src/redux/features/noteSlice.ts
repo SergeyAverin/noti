@@ -17,7 +17,16 @@ const initialState: INoteState = {
   selectedCell: undefined,
   cursorPosition: 0,
   content: [
-    { id: 1, type: "line", property: { bgColor: "red" }, children: "_" },
+    {
+      id: 1,
+      type: "heading",
+      property: { variant: "big", color: "red" },
+      children: "_",
+    },
+    { id: 2, type: "heading", property: { variant: "medium" }, children: "_" },
+    { id: 3, type: "heading", property: { variant: "small" }, children: "_" },
+    { id: 4, type: "line", property: { color: "red" }, children: "" },
+    { id: 4, type: "list", property: { color: "red" }, children: "ddd" },
   ],
 };
 
