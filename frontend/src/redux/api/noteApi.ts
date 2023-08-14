@@ -12,7 +12,7 @@ export const noteApi = baseApi.injectEndpoints({
           url: `notes/${slug}`,
         };
       },
-      providesTags: [TAGS.NOTE],
+      providesTags: [TAGS.NOTE, TAGS.TRASH],
     }),
 
     loadNote: builder.mutation<ICell[], string>({
@@ -23,6 +23,20 @@ export const noteApi = baseApi.injectEndpoints({
         };
       },
       invalidatesTags: [TAGS.NOTE],
+    }),
+
+    changeNoteTitle: builder.mutation<void, { slug: string; title: string }>({
+      query({ slug, title }) {
+        return {
+          url: `notes/${slug}`,
+          method: "PATCH",
+          body: {
+            slug,
+            title,
+          },
+        };
+      },
+      invalidatesTags: [TAGS.NOTE, TAGS.ROOT_NOTES, TAGS.TRASH, TAGS.BOOKMARK],
     }),
 
     createNote: builder.mutation<INote, { title: string }>({
@@ -55,4 +69,5 @@ export const {
   useCreateNoteMutation,
   useLoadNoteMutation,
   useSaveNoteMutation,
+  useChangeNoteTitleMutation,
 } = noteApi;

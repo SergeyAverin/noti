@@ -65,7 +65,9 @@ export const Note: React.FC<INoteProps> = ({ note }) => {
 
   return (
     <NoteStyled>
-      <Title title={note.title} />
+      <Margin mb={80}>
+        <Title title={note.title} slug={note.slug} />
+      </Margin>
       {
       cells.map((cell) => (
         <Margin mt={20}>

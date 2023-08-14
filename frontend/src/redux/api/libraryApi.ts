@@ -26,7 +26,7 @@ export const libraryApi = baseApi.injectEndpoints({
           url: "notes/root",
         };
       },
-      providesTags: [TAGS.ROOT_NOTES],
+      providesTags: [TAGS.ROOT_NOTES, TAGS.TRASH],
     }),
     addTrash: builder.mutation<void, string>({
       query(slug) {
