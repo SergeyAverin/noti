@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { NoteStyled } from "./NoteStyled";
 import { INote } from "@redux/types/note";
-import { useSaveNoteMutation } from "@redux/api/noteApi";
+import { useSaveNoteMutation, useLoadNoteQuery } from "@redux/api/noteApi";
 import { RootState } from "@redux/store";
 import { Margin } from "@atoms/index";
 import { Title } from "@molecules/Title";
 import { Cell } from "@molecules/Cell";
-import { pushCell, selectCell } from "@redux/features/noteSlice";
+import { pushCell, selectCell, setNote } from "@redux/features/noteSlice";
 
 interface INoteProps {
   note: INote;
@@ -18,11 +18,20 @@ export const Note: React.FC<INoteProps> = ({ note }) => {
   const cells = useSelector((state: RootState) => state.noteState.content);
   const d = useSelector((state: RootState) => state.noteState.content);
   const [saveNote] = useSaveNoteMutation()
+  const {data, isLoading} = useLoadNoteQuery(note.slug)
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    if(!isLoading && data) {
+      dispatch(setNote(data))
+      console.log('213123123')
+      console.log(data)
+    }
+  }, [isLoading])
+  
   const selectedCell = useSelector(
     (state: RootState) => state.noteState.selectedCell
   );
-  const dispatch = useDispatch();
 
   useEffect(()=>{
     saveNote({slug: note.slug, content: cells})
@@ -59,11 +68,13 @@ export const Note: React.FC<INoteProps> = ({ note }) => {
   return (
     <NoteStyled>
       <Title title={note.title} />
-      {cells.map((cell) => (
+      {!isLoading && data && 
+      cells.map((cell) => (
         <Margin mt={20}>
           <Cell cell={cell} />
         </Margin>
-      ))}
+      ))
+      }
     </NoteStyled>
   );
 };

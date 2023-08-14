@@ -2,6 +2,7 @@ import { baseApi } from "./baseApi";
 import { INote } from "../types/note";
 import { TAGS } from "./tags";
 import { ICell } from "@redux/types/cell";
+import { setNote } from "@redux/features/noteSlice";
 
 export const noteApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -9,6 +10,14 @@ export const noteApi = baseApi.injectEndpoints({
       query(slug: string) {
         return {
           url: `notes/${slug}`,
+        };
+      },
+      providesTags: [TAGS.NOTE],
+    }),
+    loadNote: builder.query<ICell[], string>({
+      query(slug: string) {
+        return {
+          url: `notes/${slug}/content`,
         };
       },
       providesTags: [TAGS.NOTE],
@@ -38,5 +47,9 @@ export const noteApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetNoteQuery, useCreateNoteMutation, useSaveNoteMutation } =
-  noteApi;
+export const {
+  useGetNoteQuery,
+  useCreateNoteMutation,
+  useLoadNoteQuery,
+  useSaveNoteMutation,
+} = noteApi;
