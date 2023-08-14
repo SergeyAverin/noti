@@ -16,12 +16,7 @@ const initialState: INoteState = {
   slug: "Slug",
   selectedCell: undefined,
   cursorPosition: 0,
-  content: [
-    { id: 1, type: "string", props: {}, children: "test1" },
-    { id: 2, type: "chekbox", props: {}, children: "test2" },
-    { id: 3, type: "string", props: {}, children: "test3" },
-    { id: 4, type: "string", props: {}, children: "test4" },
-  ],
+  content: [{ id: 1, type: "string", props: {}, children: "_" }],
 };
 
 export const userSlice = createSlice({
@@ -34,23 +29,26 @@ export const userSlice = createSlice({
         cell.children = action.payload.value;
       }
     },
+
     selectCell(state, action: PayloadAction<number>) {
       const cell = state.content.find((cell) => cell.id == action.payload);
       state.selectedCell = cell;
     },
 
     setCursorPosition(state, action: PayloadAction<number | null>) {
-      console.log(action.payload);
       state.cursorPosition = action.payload;
     },
 
     setNote(state, action: PayloadAction<ICell[]>) {
-      state.content = action.payload;
+      if (action.payload.length > 0) {
+        state.content = action.payload;
+      }
     },
 
     pushCell(state, action: PayloadAction<void>) {
       if (
-        state.selectedCell?.id == state.content[state.content.length - 1].id
+        state.selectedCell?.id == state.content[state.content.length - 1].id ||
+        state.content.length == 0
       ) {
         state.content.push({
           id: state.content.length + 1,

@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { NoteStyled } from "./NoteStyled";
 import { INote } from "@redux/types/note";
-import { useSaveNoteMutation, useLoadNoteQuery } from "@redux/api/noteApi";
+import { useSaveNoteMutation, useLoadNoteMutation } from "@redux/api/noteApi";
 import { RootState } from "@redux/store";
 import { Margin } from "@atoms/index";
 import { Title } from "@molecules/Title";
 import { Cell } from "@molecules/Cell";
 import { pushCell, selectCell, setNote } from "@redux/features/noteSlice";
+import { ICell } from "@redux/types/cell";
 
 interface INoteProps {
   note: INote;
@@ -16,19 +17,17 @@ interface INoteProps {
 
 export const Note: React.FC<INoteProps> = ({ note }) => {
   const cells = useSelector((state: RootState) => state.noteState.content);
-  const d = useSelector((state: RootState) => state.noteState.content);
   const [saveNote] = useSaveNoteMutation()
-  const {data, isLoading} = useLoadNoteQuery(note.slug)
   const dispatch = useDispatch();
+  const [loadNote] = useLoadNoteMutation()
 
   useEffect(() => {
-    if(!isLoading && data) {
-      dispatch(setNote(data))
-      console.log('213123123')
-      console.log(data)
-    }
-  }, [isLoading])
-  
+    loadNote(note.slug).then(data => {
+      data = data as { data: ICell[] }
+      dispatch(setNote(data.data))
+    })
+  }, [note.slug])
+
   const selectedCell = useSelector(
     (state: RootState) => state.noteState.selectedCell
   );
@@ -38,10 +37,10 @@ export const Note: React.FC<INoteProps> = ({ note }) => {
   }, [cells])
 
   useEffect(() => {
-    console.log(d)
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Enter") {
         dispatch(pushCell());
+        dispatch(selectCell(cells.length+1));
       }
       if (event.key === "ArrowUp") {
         if (selectedCell && selectedCell.id - 1 >= 1) {
@@ -57,7 +56,6 @@ export const Note: React.FC<INoteProps> = ({ note }) => {
         }
       }
     }
-
     document.addEventListener("keydown", handleKeyDown);
 
     return () => {
@@ -68,7 +66,7 @@ export const Note: React.FC<INoteProps> = ({ note }) => {
   return (
     <NoteStyled>
       <Title title={note.title} />
-      {!isLoading && data && 
+      {
       cells.map((cell) => (
         <Margin mt={20}>
           <Cell cell={cell} />
