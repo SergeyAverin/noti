@@ -65,3 +65,4 @@ export const CellCheckboxStyled = styled.input.attrs({ type: "checkbox" })`
 export const CellCheckboxWrapperStyled = styled.div`
   display: flex;
 `;
+export const CellLineStyled = styled.hr``;

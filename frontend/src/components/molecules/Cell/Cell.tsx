@@ -7,6 +7,7 @@ import { CellString } from "./CellString";
 import { CellCheckbox } from "./CellCheckbox";
 import { selectCell } from "@redux/features/noteSlice";
 import { RootState } from "@redux/store";
+import { CellLine } from "./CellLine";
 
 interface ICellComponentProps {
   cell: ICell;
@@ -30,6 +31,7 @@ export const Cell: React.FC<ICellComponentProps> = ({ cell }) => {
       <div>
         {cell.type == "string" && <CellString cell={cell} />}
         {cell.type == "checkbox" && <CellCheckbox cell={cell} />}
+        {cell.type == "line" && <CellLine cell={cell} />}
       </div>
     </CellStyled>
   );

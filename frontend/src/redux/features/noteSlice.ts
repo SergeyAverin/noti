@@ -17,7 +17,7 @@ const initialState: INoteState = {
   selectedCell: undefined,
   cursorPosition: 0,
   content: [
-    { id: 1, type: "checkbox", property: { bgColor: "red" }, children: "_" },
+    { id: 1, type: "line", property: { bgColor: "red" }, children: "_" },
   ],
 };
 
