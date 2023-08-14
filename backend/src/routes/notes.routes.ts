@@ -17,6 +17,7 @@ import {
   getNoteBySlug,
   uploadNote,
   loadNoteContent,
+  changeNoteTitle,
 } from '../controllers/notes.controller'
 import { authorizationRequireMiddleware } from '../middlewares/authorizationRequireMiddleware'
 
@@ -47,6 +48,7 @@ noteRoute
   .delete((req, res) => removeBookmark(req, res))
 
 noteRoute.route('/:slug').get((req, res) => getNoteBySlug(req, res))
+noteRoute.route('/:slug').patch((req, res) => changeNoteTitle(req, res))
 
 noteRoute.route('/:slug/content').get((req, res) => loadNoteContent(req, res))
 noteRoute.route('/:slug/content').post((req, res) => uploadNote(req, res))

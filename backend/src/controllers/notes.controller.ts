@@ -118,3 +118,9 @@ export const loadNoteContent = async (req: Request, res: Response) => {
   logger.debug('After noteService.loadNoteContent')
   res.status(StatusCodes.OK).send(json)
 }
+
+export const changeNoteTitle = async (req: Request, res: Response) => {
+  const noteService = new NoteService()
+  await noteService.changeNoteTitle(req.body.slug, req.body.title)
+  res.status(StatusCodes.NO_CONTENT).end()
+}

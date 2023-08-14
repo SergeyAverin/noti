@@ -94,4 +94,9 @@ export class NoteService {
     logger.debug('After noteEditorRepository.loadNote')
     return json
   }
+  async changeNoteTitle(slug: string, title: string) {
+    const updateNoteData = new UpdateNoteDTO()
+    updateNoteData.title = title
+    await this.noteRepository.updateBySlug(slug, updateNoteData)
+  }
 }
