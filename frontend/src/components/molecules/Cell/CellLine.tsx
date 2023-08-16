@@ -9,8 +9,10 @@ interface ICellLineProps {
 
 export const CellLine: React.FC<ICellLineProps> = ({ cell }) => {
   return (
+    <>
     <CellLineStyled
       {...cell.property}
-    />
+      />
+    </>
   );
 };
