@@ -9,7 +9,7 @@ import { pushCell, selectCell, setNote } from "@redux/features/noteSlice";
 import { ICell } from "@redux/types/cell";
 import { Margin } from "@atoms/index";
 import { Title } from "@molecules/Title";
-import { Cell } from "@molecules/Cell";
+import { Cell } from "@organisms/Cell";
 import { TrashAlert } from "@organisms/TrashAlert";
 import { NoteStyled } from "./NotePageTemplateStyled";
 
