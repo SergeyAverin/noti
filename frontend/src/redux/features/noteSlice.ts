@@ -56,16 +56,17 @@ export const userSlice = createSlice({
       }
     },
 
-    pushCell(state, action: PayloadAction<void>) {
+    pushCell(state, action: PayloadAction<{ cell: ICell; isMenu: boolean }>) {
       if (
         state.selectedCell?.id == state.content[state.content.length - 1].id ||
-        state.content.length == 0
+        state.content.length == 0 ||
+        action.payload.isMenu
       ) {
         state.content.push({
           id: state.content.length + 1,
-          type: "string",
-          property: {},
-          children: "",
+          type: action.payload.cell.type,
+          property: action.payload.cell.property,
+          children: action.payload.cell.children,
         });
       }
     },

@@ -24,6 +24,7 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({ note }) => 
   const [saveNote] = useSaveNoteMutation()
   const dispatch = useDispatch();
   const [loadNote] = useLoadNoteMutation()
+  const cell =  {type: 'string', children: '_', property:{}, id: 2 };
 
   useEffect(() => {
     loadNote(note.slug).then(data => {
@@ -43,7 +44,7 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({ note }) => 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Enter") {
-        dispatch(pushCell());
+        dispatch(pushCell({cell: cell, isMenu: false}));
         dispatch(selectCell(cells.length+1));
       }
       if (event.key === "ArrowUp") {
@@ -55,7 +56,7 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({ note }) => 
         if (selectedCell && selectedCell.id + 1 <= cells.length) {
           dispatch(selectCell(selectedCell.id + 1));
         } else if (selectedCell && selectedCell.id == cells.length) {
-          dispatch(pushCell());
+          dispatch(pushCell({cell: cell, isMenu: false}));
           dispatch(selectCell(selectedCell.id + 1));
         }
       }

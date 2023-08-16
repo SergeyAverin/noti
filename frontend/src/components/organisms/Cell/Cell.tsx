@@ -10,6 +10,7 @@ import { RootState } from "@redux/store";
 import { CellLine } from "./CellLine";
 import { CellHeading } from "./CellHeading";
 import { CellList } from "./CellList";
+import { AddCell } from "@molecules/AddCell";
 
 interface ICellComponentProps {
   cell: ICell;
@@ -27,7 +28,7 @@ export const Cell: React.FC<ICellComponentProps> = ({ cell }) => {
   return (
     <CellStyled onClick={onClickHeandler} isSelected={selectedCell?.id == cell.id}>
       <CellToolsStyled>
-        <div>+</div>
+        <AddCell cell={cell} />
         <div>-</div>
       </CellToolsStyled>
       <div>
