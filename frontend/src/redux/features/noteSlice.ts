@@ -56,6 +56,18 @@ export const userSlice = createSlice({
       }
     },
 
+    editProperty(
+      state,
+      action: PayloadAction<{ property: object; id: number }>
+    ) {
+      const cell = state.content.find((cell) => cell.id == action.payload.id);
+      if (cell) {
+        console.log(action.payload.property);
+        cell.property = action.payload.property;
+        console.log(cell.property);
+      }
+    },
+
     pushCell(state, action: PayloadAction<{ cell: ICell; isMenu: boolean }>) {
       if (
         state.selectedCell?.id == state.content[state.content.length - 1].id ||
@@ -75,5 +87,11 @@ export const userSlice = createSlice({
 
 export default userSlice.reducer;
 
-export const { changeCell, pushCell, selectCell, setCursorPosition, setNote } =
-  userSlice.actions;
+export const {
+  changeCell,
+  pushCell,
+  selectCell,
+  setCursorPosition,
+  setNote,
+  editProperty,
+} = userSlice.actions;
