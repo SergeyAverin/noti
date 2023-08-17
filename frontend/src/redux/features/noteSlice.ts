@@ -68,6 +68,12 @@ export const userSlice = createSlice({
       }
     },
 
+    removeCell(state, action: PayloadAction<{ id: number }>) {
+      state.content = state.content.filter(
+        (cell) => cell.id !== action.payload.id
+      );
+    },
+
     pushCell(state, action: PayloadAction<{ cell: ICell; isMenu: boolean }>) {
       if (
         state.selectedCell?.id == state.content[state.content.length - 1].id ||
@@ -94,4 +100,5 @@ export const {
   setCursorPosition,
   setNote,
   editProperty,
+  removeCell,
 } = userSlice.actions;
