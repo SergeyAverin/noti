@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { HeaderStyled } from './HeaderStyled'
 
@@ -13,6 +13,10 @@ interface IHeaderProps {
 }
 
 export const Header: React.FC<IHeaderProps> = ({ note }) => {
+    useEffect(() => {
+        console.log('note')
+        console.log(note)
+    })
     return (
         <HeaderStyled>
             <div></div>

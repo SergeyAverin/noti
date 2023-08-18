@@ -1,6 +1,6 @@
 import { IUser } from "./user";
 
-export interface INote extends Document {
+export interface INote {
   title: string;
   slug: string;
   isTrash: boolean;

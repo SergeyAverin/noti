@@ -1,19 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUser } from "../types/user";
 
 import { ICell } from "@redux/types/cell";
+import { INote } from "@redux/types/note";
 
 interface INoteState {
-  title: string;
-  slug: string;
+  note: INote | undefined;
   content: ICell[];
   selectedCell: ICell | undefined;
   cursorPosition: number | null;
 }
 
 const initialState: INoteState = {
-  title: "Title",
-  slug: "Slug",
+  note: undefined,
   selectedCell: undefined,
   cursorPosition: 0,
   content: [
@@ -50,10 +48,14 @@ export const userSlice = createSlice({
       state.cursorPosition = action.payload;
     },
 
-    setNote(state, action: PayloadAction<ICell[]>) {
+    setContent(state, action: PayloadAction<ICell[]>) {
       if (action.payload.length > 0) {
         state.content = action.payload;
       }
+    },
+
+    setNote(state, action: PayloadAction<INote>) {
+      state.note = action.payload;
     },
 
     editProperty(
@@ -98,7 +100,8 @@ export const {
   pushCell,
   selectCell,
   setCursorPosition,
-  setNote,
+  setContent,
   editProperty,
   removeCell,
+  setNote,
 } = userSlice.actions;

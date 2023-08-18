@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useState } from "react";
+import React, { ChangeEventHandler, useEffect, useState } from "react";
 
 import { TitleStyled, TitleLineStyled, TitleInputStyled } from "./TitleStyled";
 import { useChangeNoteTitleMutation } from "@redux/api/noteApi";
@@ -10,6 +10,9 @@ interface ITitleProps {
 
 export const Title: React.FC<ITitleProps> = ({ title, slug }) => {
     const [titleState, setTitleState] = useState(title) 
+    useEffect(() => {
+        setTitleState(title)
+    }, [title])
     const [changeNoteTitle] = useChangeNoteTitleMutation()
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitleState(event.target.value)

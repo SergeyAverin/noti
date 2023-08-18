@@ -2,7 +2,6 @@ import { baseApi } from "./baseApi";
 import { INote } from "../types/note";
 import { TAGS } from "./tags";
 import { ICell } from "@redux/types/cell";
-import { setNote } from "@redux/features/noteSlice";
 
 export const noteApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
