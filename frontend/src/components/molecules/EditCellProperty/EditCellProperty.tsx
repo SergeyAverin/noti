@@ -5,6 +5,7 @@ import { MenuMode } from "@organisms/Cell/MenuMode";
 import { ICell } from "@redux/types/cell";
 import { EditCellPropertyMenuStyled, ToolStyled, EditCellPropertyStyled } from "./EditCellPropertyStyled";
 import { editProperty, removeCell } from "@redux/features/noteSlice";
+import { ContextMenuItemDropDown, ContextMenuItem } from "@atoms/index";
 
 
 interface IEditCellPropertyProps {
@@ -32,16 +33,20 @@ export const EditCellProperty: React.FC<IEditCellPropertyProps> = ({ menuMode, s
       <div onClick={onClickHeandler}>+</div>
       {menuMode == MenuMode.EDIT_PROPERTY && (
         <EditCellPropertyMenuStyled>
-          <ToolStyled onClick={removeCellHeandler} >remove cell</ToolStyled>
+          <ContextMenuItem onClick={removeCellHeandler} >remove cell</ContextMenuItem>
 
-          <div>FG Color</div>
-          <ToolStyled onClick={() => editPropertyHeandler({color: 'red'})} >red</ToolStyled>
-          <ToolStyled onClick={() => editPropertyHeandler({color: 'green'})} >green</ToolStyled>
-          <ToolStyled onClick={() => editPropertyHeandler({color: 'blue'})} >blue</ToolStyled>
-          <div>BG Color</div>
-          <ToolStyled onClick={() => editPropertyHeandler({bgColor: 'red'})} >red</ToolStyled>
-          <ToolStyled onClick={() => editPropertyHeandler({bgColor: 'green'})} >green</ToolStyled>
-          <ToolStyled onClick={() => editPropertyHeandler({bgColor: 'blue'})} >blue</ToolStyled>
+          <ContextMenuItemDropDown text="FG Color">
+            <ContextMenuItem onClick={() => editPropertyHeandler({color: 'red'})} >red</ContextMenuItem>
+            <ContextMenuItem onClick={() => editPropertyHeandler({color: 'green'})} >green</ContextMenuItem>
+            <ContextMenuItem onClick={() => editPropertyHeandler({color: 'blue'})} >blue</ContextMenuItem>
+          </ContextMenuItemDropDown>
+
+          <ContextMenuItemDropDown text="BG Color">
+            <ContextMenuItem onClick={() => editPropertyHeandler({bgColor: 'red'})} >red</ContextMenuItem>
+            <ContextMenuItem onClick={() => editPropertyHeandler({bgColor: 'green'})} >green</ContextMenuItem>
+            <ContextMenuItem onClick={() => editPropertyHeandler({bgColor: 'blue'})} >blue</ContextMenuItem>
+          </ContextMenuItemDropDown>
+
         </EditCellPropertyMenuStyled>
       )}
     </div>

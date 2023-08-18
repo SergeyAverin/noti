@@ -16,3 +16,5 @@ export { Table } from "./Table/Table";
 export { Button } from "./Button/Button";
 export { Width } from "./Width/Width";
 export { Wrapper } from "./Wrapper/Wrapper";
+export { ContextMenuItem } from "./ContextMenuItem/ContextMenuItem";
+export { ContextMenuItemDropDown } from "./ContextMenuItem/ContextMenuItemDropDown";
