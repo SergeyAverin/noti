@@ -34,6 +34,7 @@ export const AddCell: React.FC<IAddCellProps> = ({ menuMode, setMenuMode }) => {
           <ToolStyled onClick={() => addCellHeandler({type: 'heading', children: '_', property:{ variant: "small" }, id: 2 })}>Heading 3</ToolStyled>
           <ToolStyled onClick={() => addCellHeandler({type: 'line', children: '_', property:{}, id: 2 })}>Line</ToolStyled>
           <ToolStyled onClick={() => addCellHeandler({type: 'list', children: '_', property:{}, id: 2 })}>List</ToolStyled>
+          <ToolStyled onClick={() => addCellHeandler({type: 'checkbox', children: '_', property:{}, id: 2 })}>List</ToolStyled>
         </AddCellMenuStyled>
       )}
     </div>

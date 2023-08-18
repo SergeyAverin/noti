@@ -109,4 +109,19 @@ export const CellHeadingStyled = styled.input<ICellHeadingStyledProps>`
   background: ${(props) => props.bgColor};
 `;
 
-export const CellListStyled = styled.div``;
+interface ICellListStyledProps {
+  color?: string;
+  bgColor?: string;
+}
+export const CellListStyled = styled.input<ICellListStyledProps>`
+  font-size: 18px;
+  background: none;
+  border: none;
+  color: ${(props) => (props.color ? props.color : props.theme.color.fg)};
+  background: ${(props) => props.bgColor};
+  outline: 0;
+  width: 100%;
+  white-space: nowrap;
+  overflow-y: auto;
+  text-overflow: ellipsis;
+`;
