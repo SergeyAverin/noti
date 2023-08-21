@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { MenuMode } from "@organisms/Cell/MenuMode";
+import { EditCellPropertyMenuStyled, EditCellPropertyProppertyStyled, EditCellPropertyButtonStyled } from "./EditCellPropertyStyled";
 import { ICell } from "@redux/types/cell";
-import { EditCellPropertyMenuStyled, ToolStyled, EditCellPropertyStyled } from "./EditCellPropertyStyled";
 import { editProperty, removeCell } from "@redux/features/noteSlice";
 import { ContextMenuItemDropDown, ContextMenuItem } from "@atoms/index";
+import { MenuMode } from "@organisms/Cell/MenuMode";
 
+import EditIcoin from '@public/EditIcon.svg'
 
 interface IEditCellPropertyProps {
   cell: ICell;
@@ -29,8 +30,10 @@ export const EditCellProperty: React.FC<IEditCellPropertyProps> = ({ menuMode, s
   };
 
   return (
-    <div>
-      <div onClick={onClickHeandler}>+</div>
+    <EditCellPropertyProppertyStyled>
+      <EditCellPropertyButtonStyled onClick={onClickHeandler}>
+        <EditIcoin />
+      </EditCellPropertyButtonStyled>
       {menuMode == MenuMode.EDIT_PROPERTY && (
         <EditCellPropertyMenuStyled>
           <ContextMenuItem onClick={removeCellHeandler} >remove cell</ContextMenuItem>
@@ -49,6 +52,6 @@ export const EditCellProperty: React.FC<IEditCellPropertyProps> = ({ menuMode, s
 
         </EditCellPropertyMenuStyled>
       )}
-    </div>
+    </EditCellPropertyProppertyStyled>
   );
 };

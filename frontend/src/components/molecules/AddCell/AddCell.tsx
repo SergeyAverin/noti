@@ -7,6 +7,8 @@ import { ICell } from "@redux/types/cell";
 import { ContextMenuItem } from "@atoms/index";
 import { MenuMode } from "@organisms/Cell/MenuMode";
 
+import AddCellIcon from '@public/AddIcon.svg'
+
 
 interface IAddCellProps {
   cell: ICell;
@@ -27,7 +29,9 @@ export const AddCell: React.FC<IAddCellProps> = ({ menuMode, setMenuMode }) => {
 
   return (
     <div>
-      <div onClick={onClickHeandler}>+</div>
+      <div onClick={onClickHeandler}>
+        <AddCellIcon />
+      </div>
       {menuMode == MenuMode.ADD_CELL  && (
         <AddCellMenuStyled>
           <ContextMenuItem onClick={() => addCellHeandler({type: 'string', children: '_', property:{}, id: 2 })} >Text</ContextMenuItem>

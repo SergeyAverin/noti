@@ -6,7 +6,7 @@ export const CellContentStyled = styled.div`
 
 export const CellToolsStyled = styled.div`
   position: absolute;
-  left: -30px;
+  left: -8%;
   display: flex;
   opacity: 0;
   transition: 0.2s;
@@ -17,6 +17,9 @@ interface ICellStyledProps {
 }
 export const CellStyled = styled.div<ICellStyledProps>`
   position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 
   ${(props) =>
     props.isSelected &&
@@ -24,7 +27,9 @@ export const CellStyled = styled.div<ICellStyledProps>`
     css`
       border: 2px solid red;
     `}
+`;
 
+export const EditCellPropertyProppertyStyled = styled.div`
   &:hover > ${CellToolsStyled} {
     opacity: 1;
   }

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const EditCellPropertyStyled = styled.div``;
+export const EditCellPropertyButtonStyled = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const EditCellPropertyMenuStyled = styled.div`
   background: ${(props) => props.theme.color.primary};
