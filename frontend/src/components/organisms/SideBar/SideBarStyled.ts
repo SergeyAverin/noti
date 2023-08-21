@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SideBarStyled = styled.div`
   background: ${(props) => props.theme.color.secondary};
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   height: 100%;
