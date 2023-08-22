@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { EditCellPropertyMenuStyled, EditCellPropertyProppertyStyled, EditCellPropertyButtonStyled } from "./EditCellPropertyStyled";
+import { EditCellPropertyMenuStyled, EditCellPropertyButtonStyled,  } from "./EditCellPropertyStyled";
 import { ICell } from "@redux/types/cell";
 import { editProperty, removeCell } from "@redux/features/noteSlice";
 import { ContextMenuItemDropDown, ContextMenuItem } from "@atoms/index";
 import { MenuMode } from "@organisms/Cell/MenuMode";
 
 import EditIcoin from '@public/EditIcon.svg'
+import { EditCellPropertyProppertyStyled } from "@organisms/Cell/CellStyled";
 
 interface IEditCellPropertyProps {
   cell: ICell;

@@ -18,3 +18,4 @@ export { Width } from "./Width/Width";
 export { Wrapper } from "./Wrapper/Wrapper";
 export { ContextMenuItem } from "./ContextMenuItem/ContextMenuItem";
 export { ContextMenuItemDropDown } from "./ContextMenuItem/ContextMenuItemDropDown";
+export { Popup } from "./Popup/Popup";

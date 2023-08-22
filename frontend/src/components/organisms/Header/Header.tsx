@@ -4,9 +4,10 @@ import { HeaderStyled } from './HeaderStyled'
 
 import { AddTrash } from "@molecules/AddTrash";
 import { AddBookmark } from "@molecules/AddBookmark";
-import { Flex } from "@atoms/index";
+import { Flex, Margin } from "@atoms/index";
 import { INote } from "@redux/types/note";
 import { DataCreated } from "@molecules/DataCreated/DataCreated";
+import { ShareButton } from "@molecules/ShareButton"; 
 
 
 interface IHeaderProps {
@@ -14,15 +15,14 @@ interface IHeaderProps {
 }
 
 export const Header: React.FC<IHeaderProps> = ({ note }) => {
-    useEffect(() => {
-        console.log('note')
-        console.log(note)
-    })
     return (
         <HeaderStyled>
             <div></div>
             <Flex justifyContent="flex-start" alignItems="center">
-                <DataCreated dataCreated={new Date(note.metadata.dataCreated)} dataEdited={new Date(note.metadata.dataUpdate)}  />
+                <Margin mr={30}>
+                  <DataCreated dataCreated={new Date(note.metadata.dataCreated)} dataEdited={new Date(note.metadata.dataUpdate)}  />
+                </Margin>
+                <ShareButton />
                 <AddTrash note={note} />
                 <AddBookmark note={note}  />
             </Flex>

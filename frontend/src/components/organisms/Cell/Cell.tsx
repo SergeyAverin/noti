@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CellLine } from "./CellLine";
 import { CellHeading } from "./CellHeading";
 import { CellList } from "./CellList";
-import { CellStyled, CellToolsStyled } from "./CellStyled";
+import { CellStyled, CellToolsStyled, EditCellPropertyProppertyStyled } from "./CellStyled";
 import { CellString } from "./CellString";
 import { CellCheckbox } from "./CellCheckbox";
 import { MenuMode } from "./MenuMode";
@@ -39,6 +39,7 @@ export const Cell: React.FC<ICellComponentProps> = ({ cell }) => {
       onClick={onClickHeandler}
       isSelected={selectedCell?.id == cell.id}
     >
+      <EditCellPropertyProppertyStyled>
       <CellToolsStyled>
         <Margin mr={8}>
         <AddCell cell={cell} menuMode={menuMode} setMenuMode={setMenuMode} />
@@ -56,6 +57,7 @@ export const Cell: React.FC<ICellComponentProps> = ({ cell }) => {
         {cell.type == "heading" && <CellHeading cell={cell} />}
         {cell.type == "list" && <CellList cell={cell} />}
       </div>
+      </EditCellPropertyProppertyStyled>
     </CellStyled>
   );
 };

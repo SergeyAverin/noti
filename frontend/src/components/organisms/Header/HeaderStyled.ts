@@ -11,7 +11,6 @@ export const HeaderStyled = styled.div`
   padding-left: ${(props) => props.theme.panelsSize.sideBarSize};
   padding-right: 100px;
   padding-top: 40px;
-  z-index: -1;
   svg {
     margin-left: 15px;
   }

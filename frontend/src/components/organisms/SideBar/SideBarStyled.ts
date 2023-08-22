@@ -13,4 +13,5 @@ export const SideBarStyled = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   overflow-y: auto;
+  z-index: 5;
 `;

@@ -6,10 +6,10 @@ export const CellContentStyled = styled.div`
 
 export const CellToolsStyled = styled.div`
   position: absolute;
-  left: -8%;
-  display: flex;
+  left: -5%;
   opacity: 0;
   transition: 0.2s;
+  display: flex;
 `;
 
 interface ICellStyledProps {
