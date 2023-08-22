@@ -18,6 +18,7 @@ export const DataCreatedStyled = styled.div`
   font-size: 18px;
   color: ${(props) => props.theme.color.fg};
   position: relative;
+  z-index: 5;
   &:hover ${DataCreatedMoreStyled} {
     opacity: 1;
     transition: 0.3s;
