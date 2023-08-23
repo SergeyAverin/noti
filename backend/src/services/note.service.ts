@@ -7,6 +7,9 @@ import { CreateNoteDTO } from '../repository/DTO/createNoteDTO'
 import { INote } from '../models/note.model'
 import { IUser } from '../models/user.model'
 import { ICell } from '../models/cell'
+import { NotePermissionEnum } from '../constants/NotePermissionEnum'
+import { NoteOperationsEnum } from '../constants/NoteOperationsEnum'
+import { PermissionError } from '../errors/PermissionError'
 
 const logger = log4js.getLogger()
 
@@ -79,16 +82,23 @@ export class NoteService {
     return trash
   }
 
-  async getNoteBySlug(slug: string): Promise<INote> {
-    return await this.noteRepository.getNoteBySlug(slug)
+  async getNoteBySlug(slug: string, user: IUser): Promise<INote> {
+    const note = await this.noteRepository.getNoteBySlug(slug)
+    this.checkPermission(note, user, NoteOperationsEnum.READ)
+    return note
   }
 
-  async uploadNoteContent(content: ICell[], slug: string) {
+  async uploadNoteContent(content: ICell[], slug: string, user: IUser) {
+    const note = await this.getNoteBySlug(slug, user)
+    this.checkPermission(note, user, NoteOperationsEnum.UPDATE)
     logger.debug('Before noteEditorRepository.uploadNote')
     await this.noteEditorRepository.uploadNote(content, slug)
     logger.debug('After noteEditorRepository.uploadNote')
   }
-  async loadNoteContent(slug: string) {
+  async loadNoteContent(slug: string, user: IUser) {
+    const note = await this.getNoteBySlug(slug, user)
+    this.checkPermission(note, user, NoteOperationsEnum.UPDATE)
+    this.checkPermission(note, user, NoteOperationsEnum.READ)
     logger.debug('Before noteEditorRepository.loadNote')
     const json = await this.noteEditorRepository.loadNote(slug)
     logger.debug('After noteEditorRepository.loadNote')
@@ -98,5 +108,29 @@ export class NoteService {
     const updateNoteData = new UpdateNoteDTO()
     updateNoteData.title = title
     await this.noteRepository.updateBySlug(slug, updateNoteData)
+  }
+  async checkPermission(
+    note: INote,
+    user: IUser,
+    operation: NoteOperationsEnum,
+  ) {
+    switch (note.metadata.permission) {
+      case NotePermissionEnum.ALL_PERMISSION:
+        throw new PermissionError()
+        break
+      case NotePermissionEnum.OWNER_ONLY:
+        if (note.metadata.author != user) {
+          throw new PermissionError()
+        }
+        break
+      case NotePermissionEnum.OWNER_ONLY_OR_READ_ONLY:
+        if (
+          note.metadata.author != user &&
+          operation != NoteOperationsEnum.READ
+        ) {
+          throw new PermissionError()
+        }
+        break
+    }
   }
 }

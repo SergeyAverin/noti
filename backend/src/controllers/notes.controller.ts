@@ -99,14 +99,18 @@ export const getRootNote = async (req: Request, res: Response) => {
 
 export const getNoteBySlug = async (req: Request, res: Response) => {
   const noteService = new NoteService()
-  const note = await noteService.getNoteBySlug(req.params.slug)
+  const note = await noteService.getNoteBySlug(req.params.slug, res.locals.user)
   res.status(StatusCodes.OK).send(note)
 }
 
 export const uploadNote = async (req: Request, res: Response) => {
   const noteService = new NoteService()
   logger.debug('Before noteService.uploadNoteContent')
-  await noteService.uploadNoteContent(req.body, req.params.slug)
+  await noteService.uploadNoteContent(
+    req.body,
+    req.params.slug,
+    res.locals.user,
+  )
   logger.debug('After noteService.uploadNoteContent')
   res.status(StatusCodes.OK).send({ message: 'upload' })
 }
@@ -114,7 +118,10 @@ export const uploadNote = async (req: Request, res: Response) => {
 export const loadNoteContent = async (req: Request, res: Response) => {
   const noteService = new NoteService()
   logger.debug('Before noteService.loadNoteContent')
-  const json = await noteService.loadNoteContent(req.params.slug)
+  const json = await noteService.loadNoteContent(
+    req.params.slug,
+    res.locals.user,
+  )
   logger.debug('After noteService.loadNoteContent')
   res.status(StatusCodes.OK).send(json)
 }
