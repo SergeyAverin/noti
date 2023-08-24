@@ -17,6 +17,7 @@ import { Title } from "@molecules/Title";
 import { Cell } from "@organisms/Cell";
 import { TrashAlert } from "@organisms/TrashAlert";
 import { NoteStyled } from "./NotePageTemplateStyled";
+import { EditInput } from "@atoms/EditInput/EditInput";
 
 interface INotePageTemplateProps {
   note: INote;
@@ -85,6 +86,7 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
             <Cell cell={cell} />
           </Margin>
         ))}
+      <EditInput />
       </NoteStyled>
       {note.isTrash && <TrashAlert note={note} />}
     </div>

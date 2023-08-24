@@ -84,21 +84,21 @@ export class NoteService {
 
   async getNoteBySlug(slug: string, user: IUser): Promise<INote> {
     const note = await this.noteRepository.getNoteBySlug(slug)
-    this.checkPermission(note, user, NoteOperationsEnum.READ)
+    // this.checkPermission(note, user, NoteOperationsEnum.READ)
     return note
   }
 
   async uploadNoteContent(content: ICell[], slug: string, user: IUser) {
     const note = await this.getNoteBySlug(slug, user)
-    this.checkPermission(note, user, NoteOperationsEnum.UPDATE)
+    //  this.checkPermission(note, user, NoteOperationsEnum.UPDATE)
     logger.debug('Before noteEditorRepository.uploadNote')
     await this.noteEditorRepository.uploadNote(content, slug)
     logger.debug('After noteEditorRepository.uploadNote')
   }
   async loadNoteContent(slug: string, user: IUser) {
     const note = await this.getNoteBySlug(slug, user)
-    this.checkPermission(note, user, NoteOperationsEnum.UPDATE)
-    this.checkPermission(note, user, NoteOperationsEnum.READ)
+    // this.checkPermission(note, user, NoteOperationsEnum.UPDATE)
+    // this.checkPermission(note, user, NoteOperationsEnum.READ)
     logger.debug('Before noteEditorRepository.loadNote')
     const json = await this.noteEditorRepository.loadNote(slug)
     logger.debug('After noteEditorRepository.loadNote')
