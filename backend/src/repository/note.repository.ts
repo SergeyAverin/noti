@@ -37,4 +37,10 @@ export class NoteRepository {
   async removeNote(slug: string) {
     await Note.findOneAndRemove({ slug: slug })
   }
+
+  async changeLastEditDate(slug: string) {
+    const note = await this.getNoteBySlug(slug)
+    note.metadata.dataUpdate = new Date()
+    await note.save()
+  }
 }

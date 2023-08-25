@@ -38,7 +38,7 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
       data = data as { data: ICell[] };
       dispatch(setContent(data.data));
     });
-  }, [note]);
+  }, [note.slug]);
 
   const selectedCell = useSelector(
     (state: RootState) => state.noteState.selectedCell

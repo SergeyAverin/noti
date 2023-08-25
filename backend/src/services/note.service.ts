@@ -94,6 +94,7 @@ export class NoteService {
     logger.debug('Before noteEditorRepository.uploadNote')
     await this.noteEditorRepository.uploadNote(content, slug)
     logger.debug('After noteEditorRepository.uploadNote')
+    await this.noteRepository.changeLastEditDate(slug)
   }
   async loadNoteContent(slug: string, user: IUser) {
     const note = await this.getNoteBySlug(slug, user)
@@ -108,6 +109,7 @@ export class NoteService {
     const updateNoteData = new UpdateNoteDTO()
     updateNoteData.title = title
     await this.noteRepository.updateBySlug(slug, updateNoteData)
+    await this.noteRepository.changeLastEditDate(slug)
   }
   async checkPermission(
     note: INote,
