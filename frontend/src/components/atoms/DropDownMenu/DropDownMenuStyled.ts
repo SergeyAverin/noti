@@ -7,17 +7,22 @@ export const DropDownMenuStyled = styled.div`
   cursor: pointer;
   font-size: 18px;
   user-select: none;
-
+  transition: 0.3s;
+  padding: 15px;
   svg {
     transition: 0.3s;
+  }
+  &:hover {
+    transition: 0.3s;
+    background: ${(props) => props.theme.color.highlightFaded};
+    border-radius: 15px;
   }
 `;
 export const DropDownMenuTextStyled = styled.div`
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   font-size: 18px;
-  margin-bottom: 15px;
-
   svg {
     margin-right: 15px;
   }

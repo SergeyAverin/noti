@@ -11,11 +11,9 @@ export const RootNotes: React.FC = () => {
       {!isLoading &&
         data &&
         data.map((note) => (
-          <Margin mb={15}>
-            <NoteLink href={`/notes/${note.slug}`} key={note.slug}>
+            <NoteLink haveBackground={true} href={`/notes/${note.slug}`} key={note.slug}>
               {note.title}
             </NoteLink>
-          </Margin>
         ))}
     </div>
   );

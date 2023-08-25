@@ -9,7 +9,13 @@ export const CreateNoteStyled = styled.div`
 
   cursor: pointer;
 
+  border-radius: 10px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  transition: 0.3s;
+  &:hover {
+    background: ${(props) => props.theme.color.highlightFaded};
+    transition: 0.3s;
+  }
 `;

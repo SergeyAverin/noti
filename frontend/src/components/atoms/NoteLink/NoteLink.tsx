@@ -9,11 +9,12 @@ interface INoteLinkProsp {
   href: string;
   children: React.ReactNode;
   icon?: any;
+  haveBackground?: boolean
 }
 
-export const NoteLink: React.FC<INoteLinkProsp> = ({ children, href }) => {
+export const NoteLink: React.FC<INoteLinkProsp> = ({ children, href, haveBackground }) => {
   return (
-    <NoteLinkStyled>
+    <NoteLinkStyled  haveBackground={haveBackground}>
       <Link to={href}>
         <NoteLinkWrapperStyled>
           <NoteIcon />
@@ -26,4 +27,5 @@ export const NoteLink: React.FC<INoteLinkProsp> = ({ children, href }) => {
 
 NoteLink.defaultProps = {
   icon: <NoteIcon></NoteIcon>,
+  haveBackground: false
 };

@@ -1,8 +1,13 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const NoteLinkStyled = styled.div`
+interface INoteLinkStyledProps {
+  haveBackground?: boolean;
+}
+export const NoteLinkStyled = styled.div<INoteLinkStyledProps>`
   display: flex;
   align-items: center;
+  transition: 0.3s;
+
   a {
     text-decoration: none;
     font-size: 20px;
@@ -11,6 +16,16 @@ export const NoteLinkStyled = styled.div`
   svg {
     margin-right: 10px;
   }
+  padding: 14px;
+  ${(props) =>
+    props.haveBackground &&
+    css`
+      &:hover {
+        background: ${(props) => props.theme.color.highlightFaded};
+        transition: 0.3s;
+        border-radius: 15px;
+      }
+    `}
 `;
 
 export const NoteLinkWrapperStyled = styled.div`

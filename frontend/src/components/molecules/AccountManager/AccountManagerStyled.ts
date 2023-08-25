@@ -12,10 +12,18 @@ export const AccountManagerHeaderStyled = styled.div`
   font-weight: 600;
   cursor: pointer;
   user-select: none;
+  transition: 0.3s;
+  padding: 15px;
+
   & > *:first-child,
   & > *:last-child {
     margin-left: -10px;
     margin-right: -10px;
+  }
+  &:hover {
+    transition: 0.3s;
+    background: ${(props) => props.theme.color.highlightFaded};
+    border-radius: 15px;
   }
 `;
 
