@@ -10,6 +10,10 @@ export const ShareButton: React.FC = () => {
   const openPopupHeandler = () => {
     setIsOpen((prev) => !prev);
   };
+  const copyLink  = () => {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url);
+  }
   return (
     <div>
       <ShareButtonStyled onClick={openPopupHeandler}>
@@ -27,7 +31,7 @@ export const ShareButton: React.FC = () => {
                         <option>All permission</option>
                     </SelectPermission>
                     <Margin ml={30}>
-                    <CopyButtonStyled>
+                    <CopyButtonStyled onClick={copyLink}>
                         <ShareIcon />
                         Coppy link
                     </CopyButtonStyled>
