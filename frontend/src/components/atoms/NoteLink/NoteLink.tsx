@@ -14,14 +14,14 @@ interface INoteLinkProsp {
 
 export const NoteLink: React.FC<INoteLinkProsp> = ({ children, href, haveBackground }) => {
   return (
-    <NoteLinkStyled  haveBackground={haveBackground}>
       <Link to={href}>
+    <NoteLinkStyled  haveBackground={haveBackground}>
         <NoteLinkWrapperStyled>
           <NoteIcon />
           {children}
         </NoteLinkWrapperStyled>
-      </Link>
     </NoteLinkStyled>
+      </Link>
   );
 };
 

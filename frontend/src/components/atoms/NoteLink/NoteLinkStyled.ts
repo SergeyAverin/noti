@@ -8,11 +8,10 @@ export const NoteLinkStyled = styled.div<INoteLinkStyledProps>`
   align-items: center;
   transition: 0.3s;
 
-  a {
-    text-decoration: none;
-    font-size: 20px;
-    color: ${(props) => props.theme.color.fg};
-  }
+  text-decoration: none;
+  font-size: 20px;
+  color: ${(props) => props.theme.color.fg};
+
   svg {
     margin-right: 10px;
   }

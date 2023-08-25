@@ -8,4 +8,7 @@ export default createGlobalStyle`
     background: ${(props) => props.theme.color.bg};
     color: ${(props) => props.theme.color.fg};
   }
+  a {
+    text-decoration: none;
+  }
 `;
