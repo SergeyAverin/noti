@@ -19,3 +19,4 @@ export { Wrapper } from "./Wrapper/Wrapper";
 export { ContextMenuItem } from "./ContextMenuItem/ContextMenuItem";
 export { ContextMenuItemDropDown } from "./ContextMenuItem/ContextMenuItemDropDown";
 export { Popup } from "./Popup/Popup";
+export { Tooltip } from "./Tooltip/Tooltip";

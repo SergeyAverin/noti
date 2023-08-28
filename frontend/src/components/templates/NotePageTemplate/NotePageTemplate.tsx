@@ -12,12 +12,12 @@ import {
   setNote,
 } from "@redux/features/noteSlice";
 import { ICell } from "@redux/types/cell";
-import { Margin } from "@atoms/index";
+import { Margin, Tooltip } from "@atoms/index";
 import { Title } from "@molecules/Title";
 import { Cell } from "@organisms/Cell";
 import { TrashAlert } from "@organisms/TrashAlert";
 import { NoteStyled } from "./NotePageTemplateStyled";
-import { EditInput } from "@atoms/EditInput/EditInput";
+
 
 interface INotePageTemplateProps {
   note: INote;
@@ -78,7 +78,7 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
   return (
     <div>
       <NoteStyled>
-        <Margin mb={80}>
+        <Margin mt={50} mb={80}>
           <Title title={note.title} slug={note.slug} />
         </Margin>
         {cells.map((cell) => (
@@ -86,7 +86,9 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
             <Cell cell={cell} />
           </Margin>
         ))}
-      <EditInput />
+      <div>
+        <Tooltip>sdf</Tooltip>
+      </div>
       </NoteStyled>
       {note.isTrash && <TrashAlert note={note} />}
     </div>
