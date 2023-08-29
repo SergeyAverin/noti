@@ -16,11 +16,13 @@ export const Title: React.FC<ITitleProps> = ({ title, slug }) => {
     const [changeNoteTitle] = useChangeNoteTitleMutation()
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitleState(event.target.value)
+    }
+    const onBlur = (event: React.ChangeEvent<HTMLInputElement>) => {
         changeNoteTitle({slug, title: event.target.value})
     }
     return (
         <TitleStyled>
-            <TitleInputStyled value={ titleState } onChange={onChange} />
+            <TitleInputStyled value={ titleState } onChange={onChange} onBlur={onBlur} />
             <TitleLineStyled />
         </TitleStyled>
     )
