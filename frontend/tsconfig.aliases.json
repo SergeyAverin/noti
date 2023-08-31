@@ -10,6 +10,7 @@
       "@public/*": ["public/*"],
       "@redux/*": ["src/redux/*"],
       "@hocs/*": ["src/hocs/*"],
+      "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/hooks/*"]
     }
   }
