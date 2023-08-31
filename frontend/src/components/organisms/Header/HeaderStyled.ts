@@ -7,7 +7,7 @@ export const HeaderStyled = styled.div`
   box-sizing: border-box;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: 0;
   padding-left: ${(props) => props.theme.panelsSize.sideBarSize};
   padding: 40px;

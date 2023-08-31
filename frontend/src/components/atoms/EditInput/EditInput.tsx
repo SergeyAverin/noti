@@ -7,7 +7,7 @@ export const EditInput: React.FC = () => {
 
 
   return (
-    <EditInputStyled>
+    <EditInputStyled contentEditable={true}>
       {text}
     </EditInputStyled>
   );

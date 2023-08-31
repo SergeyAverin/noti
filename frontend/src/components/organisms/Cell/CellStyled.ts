@@ -17,9 +17,10 @@ interface ICellStyledProps {
 }
 export const CellStyled = styled.div<ICellStyledProps>`
   position: relative;
-  display: flex;
   justify-content: flex-start;
   align-items: center;
+  width: 100%;
+  height: 100%;
 
   ${(props) =>
     props.isSelected &&
@@ -39,17 +40,16 @@ interface ICellStringStyledProps {
   color?: string;
   bgColor?: string;
 }
-export const CellStringStyled = styled.input<ICellStringStyledProps>`
+export const CellStringStyled = styled.p.attrs({
+  contentEditable: true,
+})<ICellStringStyledProps>`
   font-size: 18px;
   background: none;
   border: none;
   color: ${(props) => (props.color ? props.color : props.theme.color.fg)};
   background: ${(props) => props.bgColor};
-  outline: 0;
   width: 100%;
-  white-space: nowrap;
-  overflow-y: auto;
-  text-overflow: ellipsis;
+  outline: 0;
 `;
 
 interface ICellCheckboxStyledProps {

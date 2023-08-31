@@ -45,11 +45,12 @@ const inputRef = useRef<HTMLInputElement>(null);
   return <CellCheckboxWrapperStyled>
         <CellCheckboxStyled  { ...cell.property } />
         <CellStringStyled
-          value={cell.children as string}
           onChange={changeHeandler}
           ref={inputRef}
           onKeyDown={handleKeyDown}
           onFocus={onFocus}
-        />
+        >
+          {cell.children as string}
+        </CellStringStyled>
     </CellCheckboxWrapperStyled>;
 };

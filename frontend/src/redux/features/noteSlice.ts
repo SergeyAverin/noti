@@ -17,14 +17,10 @@ const initialState: INoteState = {
   content: [
     {
       id: 1,
-      type: "heading",
-      property: { variant: "big", color: "red" },
+      type: "string",
+      property: {},
       children: "_",
     },
-    { id: 2, type: "heading", property: { variant: "medium" }, children: "_" },
-    { id: 3, type: "heading", property: { variant: "small" }, children: "_" },
-    { id: 4, type: "line", property: { color: "red" }, children: "" },
-    { id: 4, type: "list", property: { color: "red" }, children: "ddd" },
   ],
 };
 
@@ -77,6 +73,17 @@ export const userSlice = createSlice({
     },
 
     pushCell(state, action: PayloadAction<{ cell: ICell; isMenu: boolean }>) {
+      if (state.selectedCell?.id) {
+        let firstPart = state.content.slice(0, state.selectedCell.id);
+        let secondPart = state.content.slice(state.selectedCell.id);
+        secondPart.unshift({
+          id: state.content.length + 1,
+          type: action.payload.cell.type,
+          property: action.payload.cell.property,
+          children: action.payload.cell.children,
+        });
+        state.content = firstPart.concat(secondPart);
+      }
       if (
         state.selectedCell?.id == state.content[state.content.length - 1].id ||
         state.content.length == 0 ||

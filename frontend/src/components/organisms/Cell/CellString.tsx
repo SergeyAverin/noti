@@ -26,31 +26,38 @@ export const CellString: React.FC<ICellStringProps> = ({ cell }) => {
 
   useEffect(() => {
     if (selectedCell?.id == cell.id && inputRef.current) {
-      inputRef.current.focus();
-      inputRef.current.setSelectionRange(cursorPosition, cursorPosition)
+      //inputRef.current.focus();
+      //inputRef.current.setSelectionRange(cursorPosition, cursorPosition)
     }
   }, [selectedCell]);
-  const changeHeandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.value;
-    dispatch(changeCell({ id: cell.id, value: newValue }));
+  const onInput = (event: React.SyntheticEvent<HTMLDivElement>) => {
+    const newValue = event.currentTarget.innerHTML;
+    const selection = window.getSelection();
+    if (selection) {
+      const range = selection.getRangeAt(0);
+      const startOffset = range.startOffset;
+      const endOffset = range.endOffset;
+    }
+    //dispatch(changeCell({ id: cell.id, value: newValue }));
   };
   const onFocus = (event: React.FocusEvent<HTMLInputElement>) => {
-    dispatch(setCursorPosition(event.target.selectionStart));
+   // dispatch(setCursorPosition(event.target.selectionStart));
   };
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (inputRef.current) {
-      dispatch(setCursorPosition(inputRef.current.selectionStart));
+     // dispatch(setCursorPosition(inputRef.current.selectionStart));
     }
   };
 
   return (
     <CellStringStyled
       ref={inputRef}
-      value={inputValue?.children as string}
-      onChange={changeHeandler}
+      onInput={onInput}
       onKeyDown={handleKeyDown}
       onFocus={onFocus}
       {...cell.property}
-    />
+    >
+      {inputValue?.children as string}
+    </CellStringStyled>
   );
 };
