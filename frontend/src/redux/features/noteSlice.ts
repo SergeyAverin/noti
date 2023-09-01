@@ -29,6 +29,8 @@ export const userSlice = createSlice({
   name: "userSlice",
   reducers: {
     changeCell(state, action: PayloadAction<{ value: string; id: number }>) {
+      //const cell = state.content.find((item) => item.id == action.payload.id);
+
       const cell = state.content.find((item) => item.id == action.payload.id);
       if (cell) {
         cell.children = action.payload.value;
@@ -60,9 +62,7 @@ export const userSlice = createSlice({
     ) {
       const cell = state.content.find((cell) => cell.id == action.payload.id);
       if (cell) {
-        console.log(action.payload.property);
         cell.property = action.payload.property;
-        console.log(cell.property);
       }
     },
 
@@ -70,6 +70,10 @@ export const userSlice = createSlice({
       state.content = state.content.filter(
         (cell) => cell.id !== action.payload.id
       );
+    },
+
+    addCell(state, action: PayloadAction<{ id: number }>) {
+      console.log(state.content);
     },
 
     pushCell(state, action: PayloadAction<{ cell: ICell; isMenu: boolean }>) {
