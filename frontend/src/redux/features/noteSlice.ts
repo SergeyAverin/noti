@@ -27,9 +27,13 @@ const initialState: INoteState = {
 export const userSlice = createSlice({
   initialState,
   name: "userSlice",
-  reducers: {},
+  reducers: {
+    setNote(state, action: PayloadAction<INote>) {
+      state.note = action.payload;
+    },
+  },
 });
 
 export default userSlice.reducer;
 
-export const {} = userSlice.actions;
+export const { setNote } = userSlice.actions;
