@@ -15,7 +15,7 @@ export const NotificationList = () => {
           <NotificationListStyled>
             { notifications.map(notification => 
                 <Margin mt={15}>
-                    <Notification notification={notification} />
+                    <Notification notification={notification} secondsToAutoClose={notification.secondsToAutoClose}/>
                 </Margin>
             )}
           </NotificationListStyled>,
