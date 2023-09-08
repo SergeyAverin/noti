@@ -13,6 +13,13 @@ const initialState: INotificationsState = {
       title: "title",
       description: "text",
       variant: NotificationVariant.DANGER,
+      date: new Date(),
+    },
+    {
+      title: "title2",
+      description: "text",
+      variant: NotificationVariant.DANGER,
+      date: new Date(),
     },
   ],
 };
@@ -22,10 +29,16 @@ export const notificationsSlice = createSlice({
   name: "notificationsSlice",
   reducers: {
     pushNotification: (state, action: PayloadAction<INotification>) => {},
-    removeNotification: (state, action: PayloadAction<INotification>) => {},
+    removeNotification: (state, action: PayloadAction<INotification>) => {
+      state.notifications = state.notifications.filter(
+        (notification) =>
+          notification.title != action.payload.title &&
+          notification.date != action.payload.date
+      );
+    },
   },
 });
 
 export default notificationsSlice.reducer;
 
-export const { pushNotification } = notificationsSlice.actions;
+export const { removeNotification } = notificationsSlice.actions;

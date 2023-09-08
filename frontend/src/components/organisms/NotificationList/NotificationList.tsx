@@ -15,9 +15,9 @@ export const NotificationList = () => {
           <NotificationListStyled>
             { notifications.map(notification => 
                 <Margin mt={15}>
-                    <Notification title={notification.title} description={notification.description} />
+                    <Notification notification={notification} />
                 </Margin>
-            ) }
+            )}
           </NotificationListStyled>,
           document.getElementById('notification-root') as  HTMLElement 
         )
