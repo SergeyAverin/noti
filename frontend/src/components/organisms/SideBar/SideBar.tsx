@@ -12,19 +12,20 @@ import { CreateNote } from "@molecules/CreateNote";
 export const SideBar: React.FC = () => {
   return (
     <SideBarStyled>
-      <Margin mb={60}>
-        <AccountManager></AccountManager>
-      </Margin>
-      <TrashDropDown />
-      <Margin mt={25}>
-        <BookmarkDropDown />
-      </Margin>
-      <Margin mt={30}>
-        <RootNotes />
-      </Margin>
-      <Margin mt={30}>
-        <CreateNote />
-      </Margin>
+        <Margin mb={60}>
+          <AccountManager></AccountManager>
+        </Margin>
+        <TrashDropDown />
+        <Margin mt={25}>
+          <BookmarkDropDown />
+        </Margin>
+        <Margin mt={30}>
+          <RootNotes />
+        </Margin>
+        <Margin mt={30}>
+          <CreateNote />
+        </Margin>
     </SideBarStyled>
   );
 };
+     

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { INotification } from "@redux/types/notification";
@@ -15,12 +15,16 @@ interface INotificationProps {
 }
 
 export const Notification: React.FC<INotificationProps> = ({ notification, buttonsSlot }) => {
+    const [fadeOutAnimation, setFadeOutAnimation] = useState(false);
     const dispatch = useDispatch();
     const onClose = () => {
+        setFadeOutAnimation(true);
+        setTimeout(() => {
         dispatch(removeNotification(notification))
+        }, 500);
     }
     return (
-        <NotificationStyled>
+        <NotificationStyled fadeOutAnimation={fadeOutAnimation}>
             <NotificationCloseStyled onClick={onClose}>
                 <CloseIcon />
             </NotificationCloseStyled>
