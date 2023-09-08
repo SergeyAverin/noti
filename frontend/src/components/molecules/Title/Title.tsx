@@ -1,7 +1,10 @@
 import React, { ChangeEventHandler, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
-import { TitleStyled, TitleLineStyled, TitleInputStyled } from "./TitleStyled";
 import { useChangeNoteTitleMutation } from "@redux/api/noteApi";
+import { pushNotification } from "@redux/features/notificationsSlice";
+import { TitleStyled, TitleLineStyled, TitleInputStyled } from "./TitleStyled";
+import { NotificationVariant } from "@redux/types/notificationVariant";
 
 interface ITitleProps {
     title: string,
@@ -9,7 +12,8 @@ interface ITitleProps {
 }
 
 export const Title: React.FC<ITitleProps> = ({ title, slug }) => {
-    const [titleState, setTitleState] = useState(title) 
+    const [titleState, setTitleState] = useState(title) ;
+    const dispatch = useDispatch()
     useEffect(() => {
         setTitleState(title)
     }, [title])
@@ -19,6 +23,13 @@ export const Title: React.FC<ITitleProps> = ({ title, slug }) => {
     }
     const onBlur = (event: React.ChangeEvent<HTMLInputElement>) => {
         changeNoteTitle({slug, title: event.target.value})
+        const notification ={
+            title: "Saved title",
+            description:`new title is ${title}`,
+            variant: NotificationVariant.DANGER,
+            date: new Date(),
+          }
+        dispatch(pushNotification(notification))
     }
     return (
         <TitleStyled>

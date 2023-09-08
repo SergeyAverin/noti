@@ -8,27 +8,16 @@ interface INotificationsState {
 }
 
 const initialState: INotificationsState = {
-  notifications: [
-    {
-      title: "title",
-      description: "text",
-      variant: NotificationVariant.DANGER,
-      date: new Date(),
-    },
-    {
-      title: "title2",
-      description: "text",
-      variant: NotificationVariant.DANGER,
-      date: new Date(),
-    },
-  ],
+  notifications: [],
 };
 
 export const notificationsSlice = createSlice({
   initialState,
   name: "notificationsSlice",
   reducers: {
-    pushNotification: (state, action: PayloadAction<INotification>) => {},
+    pushNotification: (state, action: PayloadAction<INotification>) => {
+      state.notifications.push(action.payload);
+    },
     removeNotification: (state, action: PayloadAction<INotification>) => {
       state.notifications = state.notifications.filter(
         (notification) =>
@@ -41,4 +30,5 @@ export const notificationsSlice = createSlice({
 
 export default notificationsSlice.reducer;
 
-export const { removeNotification } = notificationsSlice.actions;
+export const { removeNotification, pushNotification } =
+  notificationsSlice.actions;
