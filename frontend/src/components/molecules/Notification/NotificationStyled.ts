@@ -6,6 +6,7 @@ export const NotificationStyled = styled.div`
   border-radius: 15px;
   padding: 30px;
   position: relative;
+  min-width: 550px;
 `;
 
 export const NotificationTitleStyled = styled.div`

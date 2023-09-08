@@ -6,11 +6,13 @@ import { RootState } from "@redux/store";
 import { INote } from "@redux/types/note";
 import { useSaveNoteMutation, useLoadNoteMutation } from "@redux/api/noteApi";
 import { ICell } from "@redux/types/cell";
-import { Margin, Tooltip } from "@atoms/index";
+import { Margin, Tooltip, Button } from "@atoms/index";
 import { Title } from "@molecules/Title";
 import { TrashAlert } from "@organisms/TrashAlert";
 import { NoteStyled } from "./NotePageTemplateStyled";
 import { EditInput } from '@atoms/EditInput/EditInput'
+import { Notification } from "@molecules/Notification/Notification";
+import { NotificationList } from "@organisms/NotificationList";
 
 
 interface INotePageTemplateProps {
@@ -28,6 +30,7 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
         </Margin>
       </NoteStyled>
       {note.isTrash && <TrashAlert note={note} />}
+      <NotificationList />
     </div>
   );
 };
