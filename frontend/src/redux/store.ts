@@ -6,6 +6,7 @@ import { authApi } from "./api/authApi";
 
 import userReducer from "./features/userSlice";
 import noteReducer from "./features/noteSlice";
+import notificationsSlice from "./features/notificationsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     userState: userReducer,
     noteState: noteReducer,
+    notificationState: notificationsSlice,
   },
   devTools: process.env.NODE_ENV === "development",
   middleware: (getDefaultMiddleware) =>
