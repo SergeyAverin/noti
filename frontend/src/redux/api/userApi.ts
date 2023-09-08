@@ -1,4 +1,4 @@
-import { baseApi } from "./baseApi";
+import { baseApi } from "../baseApi";
 import { setUser } from "../features/userSlice";
 import { IUser } from "../types/user";
 

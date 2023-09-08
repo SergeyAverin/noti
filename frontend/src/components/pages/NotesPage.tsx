@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { withAuth } from "@hocs/withAuth";
 import { useGetNoteQuery } from "@redux/api/noteApi";
+import { Spinner, Center } from "@atoms/index";
 import { NotePageTemplate } from "@templates/NotePageTemplate";
 import { Header } from "@organisms/Header";
 import { RootState } from '@redux/store'
@@ -25,11 +26,15 @@ const NotesPage: React.FC = () => {
   
   return (
     <>
-        { !isLoading && note &&
+        { !isLoading && note ?
         <>
           <Header note={note}  />
           <NotePageTemplate note={note} />
         </>
+        :
+        <Center>
+          <Spinner />
+        </Center>
        }
     </>
   );

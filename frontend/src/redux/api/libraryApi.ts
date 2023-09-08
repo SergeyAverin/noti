@@ -1,6 +1,6 @@
-import { baseApi } from "./baseApi";
+import { baseApi } from "../baseApi";
 import { INote } from "../types/note";
-import { TAGS } from "./tags";
+import { TAGS } from "../tags";
 
 export const libraryApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

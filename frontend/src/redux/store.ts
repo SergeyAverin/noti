@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import { userApi } from "./api/userApi";
 import { authApi } from "./api/authApi";

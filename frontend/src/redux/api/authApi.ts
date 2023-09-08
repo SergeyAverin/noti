@@ -1,7 +1,7 @@
 import { IToken } from "@redux/types/token";
 import { IUser } from "@redux/types/user";
 import { setUser } from "@redux/features/userSlice";
-import { baseApi } from "./baseApi";
+import { baseApi } from "../baseApi";
 
 interface createUserDTO {
   username: string;
