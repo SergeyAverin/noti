@@ -19,7 +19,7 @@ export const NoteLink: React.FC<INoteLinkProsp> = ({ children, href, haveBackgro
     <NoteLinkStyled  haveBackground={haveBackground}>
         <NoteLinkWrapperStyled>
           <NoteIcon />
-          {shortenString(children as string, 15)}
+          {shortenString(children as string, 20)}
         </NoteLinkWrapperStyled>
     </NoteLinkStyled>
       </Link>

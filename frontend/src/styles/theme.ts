@@ -11,7 +11,7 @@ export const darkTheme: DefaultTheme = {
     dangerous: "#E76161",
   },
   panelsSize: {
-    sideBarSize: "300px",
+    sideBarSize: "400px",
     headerSize: "80px",
   },
 };
