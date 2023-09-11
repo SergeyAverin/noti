@@ -16,10 +16,22 @@ const initialState: INoteState = {
   cursorPosition: 0,
   content: [
     {
+      children: "test",
       id: 1,
-      type: "string",
       property: {},
-      children: "_",
+      type: "string",
+    },
+    {
+      children: "tes3t",
+      id: 1,
+      property: {},
+      type: "string",
+    },
+    {
+      children: "test",
+      id: 1,
+      property: {},
+      type: "string",
     },
   ],
 };
