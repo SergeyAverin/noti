@@ -66,10 +66,36 @@ export const userSlice = createSlice({
         state.content.splice(selectedIndex + 1, 0, newCell);
       }
     },
+    selectNext(state, action: PayloadAction<void>) {
+      if (state.selectedCell) {
+        const selectedIndex = state.content.findIndex(
+          (cell) => state.selectedCell?.id == cell.id
+        );
+        if (selectedIndex + 1 < state.content.length) {
+          state.selectedCell = state.content[selectedIndex + 1];
+        }
+      }
+    },
+    selectPrev(state, action: PayloadAction<void>) {
+      if (state.selectedCell) {
+        const selectedIndex = state.content.findIndex(
+          (cell) => state.selectedCell?.id == cell.id
+        );
+        if (selectedIndex - 1 >= 0) {
+          state.selectedCell = state.content[selectedIndex - 1];
+        }
+      }
+    },
   },
 });
 
 export default userSlice.reducer;
 
-export const { setNote, selectCell, changeCellChildren, addCell } =
-  userSlice.actions;
+export const {
+  setNote,
+  selectCell,
+  changeCellChildren,
+  addCell,
+  selectNext,
+  selectPrev,
+} = userSlice.actions;

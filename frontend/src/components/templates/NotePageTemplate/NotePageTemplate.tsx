@@ -15,7 +15,7 @@ import { EditInput } from "@atoms/EditInput/EditInput";
 import { Notification } from "@molecules/Notification/Notification";
 import { NotificationList } from "@organisms/NotificationList";
 import { Cell } from "@organisms/Cell";
-import { addCell } from "@redux/features/noteSlice";
+import { addCell, selectNext, selectPrev } from "@redux/features/noteSlice";
 
 interface INotePageTemplateProps {
   note: INote;
@@ -32,6 +32,11 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
       if (event.key === "Enter") {
         event.preventDefault()
         dispatch(addCell())
+        dispatch(selectNext())
+      } else if (event.key === "ArrowDown") {
+        dispatch(selectNext())
+      } else if (event.key === "ArrowUp") {
+        dispatch(selectPrev())
       }
     }
     document.addEventListener("keydown", handleKeyDown);
@@ -48,7 +53,7 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
           <Title title={note.title} slug={note.slug} />
         </Margin>
         {cells.map((cell) => (
-          <Cell cell={cell} />
+          <Cell cell={cell} key={cell.id} />
         ))}
       </NoteStyled>
       {note.isTrash && <TrashAlert note={note} />}
