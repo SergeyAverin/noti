@@ -52,9 +52,24 @@ export const userSlice = createSlice({
         state.selectedCell.children = action.payload;
       }
     },
+    addCell(state, action: PayloadAction<void>) {
+      if (state.selectedCell) {
+        const selectedIndex = state.content.findIndex(
+          (cell) => state.selectedCell?.id == cell.id
+        );
+        const newCell = {
+          children: "new test",
+          id: uuidv4(),
+          property: {},
+          type: "string",
+        };
+        state.content.splice(selectedIndex + 1, 0, newCell);
+      }
+    },
   },
 });
 
 export default userSlice.reducer;
 
-export const { setNote, selectCell, changeCellChildren } = userSlice.actions;
+export const { setNote, selectCell, changeCellChildren, addCell } =
+  userSlice.actions;

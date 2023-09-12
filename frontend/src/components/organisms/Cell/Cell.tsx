@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { CellSelection } from "./CellSelection";
 import { ICell } from "@redux/types/cell";
-import { selectCell } from "@redux/features/noteSlice";
+import { selectCell, addCell } from "@redux/features/noteSlice";
 
 
 interface ICellProps {

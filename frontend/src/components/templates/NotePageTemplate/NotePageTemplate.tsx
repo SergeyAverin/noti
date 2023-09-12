@@ -15,6 +15,7 @@ import { EditInput } from "@atoms/EditInput/EditInput";
 import { Notification } from "@molecules/Notification/Notification";
 import { NotificationList } from "@organisms/NotificationList";
 import { Cell } from "@organisms/Cell";
+import { addCell } from "@redux/features/noteSlice";
 
 interface INotePageTemplateProps {
   note: INote;
@@ -23,9 +24,23 @@ interface INotePageTemplateProps {
 export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
   note,
 }) => {
+  const dispatch = useDispatch()
   const cells = useSelector((state: RootState) => state.noteState.content);
-  const id = uuidv4();
-  console.log(id)
+
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Enter") {
+        event.preventDefault()
+        dispatch(addCell())
+      }
+    }
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [cells]);
+
   return (
     <div>
       <NoteStyled>
