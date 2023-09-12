@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 
 import { ICell } from "@redux/types/cell";
 import { INote } from "@redux/types/note";
@@ -17,19 +18,19 @@ const initialState: INoteState = {
   content: [
     {
       children: "test",
-      id: 1,
+      id: uuidv4(),
       property: {},
       type: "string",
     },
     {
       children: "tes3t",
-      id: 1,
+      id: uuidv4(),
       property: {},
       type: "string",
     },
     {
       children: "test",
-      id: 1,
+      id: uuidv4(),
       property: {},
       type: "string",
     },
@@ -43,9 +44,12 @@ export const userSlice = createSlice({
     setNote(state, action: PayloadAction<INote>) {
       state.note = action.payload;
     },
+    selectCell(state, action: PayloadAction<ICell>) {
+      state.selectedCell = action.payload;
+    },
   },
 });
 
 export default userSlice.reducer;
 
-export const { setNote } = userSlice.actions;
+export const { setNote, selectCell } = userSlice.actions;

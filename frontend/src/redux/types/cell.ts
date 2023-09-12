@@ -1,5 +1,5 @@
 export interface ICell {
-  id: number;
+  id: string;
   type: string;
   property: object;
   children: string;

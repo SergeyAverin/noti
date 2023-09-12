@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ThemeContext } from "styled-components";
+import { v4 as uuidv4 } from 'uuid';
 
 import { RootState } from "@redux/store";
 import { INote } from "@redux/types/note";
@@ -23,7 +24,8 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
   note,
 }) => {
   const cells = useSelector((state: RootState) => state.noteState.content);
-
+  const id = uuidv4();
+  console.log(id)
   return (
     <div>
       <NoteStyled>
