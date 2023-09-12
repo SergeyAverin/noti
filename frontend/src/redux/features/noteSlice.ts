@@ -47,9 +47,14 @@ export const userSlice = createSlice({
     selectCell(state, action: PayloadAction<ICell>) {
       state.selectedCell = action.payload;
     },
+    changeCellChildren(state, action: PayloadAction<string>) {
+      if (state.selectedCell) {
+        state.selectedCell.children = action.payload;
+      }
+    },
   },
 });
 
 export default userSlice.reducer;
 
-export const { setNote, selectCell } = userSlice.actions;
+export const { setNote, selectCell, changeCellChildren } = userSlice.actions;
