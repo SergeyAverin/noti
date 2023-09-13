@@ -8,13 +8,15 @@ interface INoteState {
   note: INote | undefined;
   content: ICell[];
   selectedCell: ICell | undefined;
-  cursorPosition: number | null;
+  selectRangeStart: number;
+  selectRangeEnd: number;
 }
 
 const initialState: INoteState = {
   note: undefined,
   selectedCell: undefined,
-  cursorPosition: 0,
+  selectRangeStart: 0,
+  selectRangeEnd: 0,
   content: [
     {
       children: "test",
@@ -57,13 +59,27 @@ export const userSlice = createSlice({
         const selectedIndex = state.content.findIndex(
           (cell) => state.selectedCell?.id == cell.id
         );
-        const newCell = {
-          children: "new test",
-          id: uuidv4(),
-          property: {},
-          type: "string",
-        };
-        state.content.splice(selectedIndex + 1, 0, newCell);
+        if (state.selectRangeStart == state.selectedCell.children.length) {
+          const newCell = {
+            children: "",
+            id: uuidv4(),
+            property: {},
+            type: "string",
+          };
+          state.content.splice(selectedIndex + 1, 0, newCell);
+        } else {
+          const newCell = {
+            children: state.selectedCell.children.slice(state.selectRangeStart),
+            id: uuidv4(),
+            property: {},
+            type: "string",
+          };
+          state.selectedCell.children = state.selectedCell.children.slice(
+            0,
+            state.selectRangeStart
+          );
+          state.content.splice(selectedIndex + 1, 0, newCell);
+        }
       }
     },
     selectNext(state, action: PayloadAction<void>) {
@@ -86,6 +102,14 @@ export const userSlice = createSlice({
         }
       }
     },
+    setSelectRange(
+      state,
+      action: PayloadAction<{ rangeStart: number; rangeEnd: number }>
+    ) {
+      state.selectRangeStart = action.payload.rangeStart;
+      state.selectRangeEnd = action.payload.rangeEnd;
+      console.log(state.selectRangeStart);
+    },
   },
 });
 
@@ -98,4 +122,5 @@ export const {
   addCell,
   selectNext,
   selectPrev,
+  setSelectRange,
 } = userSlice.actions;

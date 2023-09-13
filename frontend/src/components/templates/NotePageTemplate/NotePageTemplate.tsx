@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ThemeContext } from "styled-components";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 import { RootState } from "@redux/store";
 import { INote } from "@redux/types/note";
@@ -24,19 +24,19 @@ interface INotePageTemplateProps {
 export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
   note,
 }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const cells = useSelector((state: RootState) => state.noteState.content);
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Enter") {
-        event.preventDefault()
-        dispatch(addCell())
-        dispatch(selectNext())
+        event.preventDefault();
+        dispatch(addCell());
+        dispatch(selectNext());
       } else if (event.key === "ArrowDown") {
-        dispatch(selectNext())
+        dispatch(selectNext());
       } else if (event.key === "ArrowUp") {
-        dispatch(selectPrev())
+        dispatch(selectPrev());
       }
     }
     document.addEventListener("keydown", handleKeyDown);
