@@ -11,7 +11,7 @@ interface ICellString {
 }
 
 const CellStringStyled = styled.p`
-  font-size: 24px;
+  font-size: ${(props) => props.theme.fontSizes.small};
   outline: none;
 `;
 

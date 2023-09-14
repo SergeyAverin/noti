@@ -11,7 +11,7 @@ export const TitleLineStyled = styled.hr`
 export const TitleInputStyled = styled.input`
   background: none;
   border: none;
-  font-size: 48px;
+  font-size: ${(props) => props.theme.fontSizes.headlineLarge};
   color: ${(props) => props.theme.color.fg};
   outline: 0;
   width: 100%;

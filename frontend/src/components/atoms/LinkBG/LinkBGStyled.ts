@@ -7,7 +7,7 @@ export const LinkBGStyled = styled.div`
     padding: 15px;
     border-radius: 14px;
     transition: 0.2s;
-    font-size: 16px;
+    font-size: ${(props) => props.theme.fontSizes.large};
     &:hover {
       background: ${(props) => props.theme.color.highlightFaded};
       transition: 0.2s;

@@ -3,22 +3,18 @@ import styled, { keyframes, css } from "styled-components";
 const fadeIn = keyframes` 
   from {
     opacity: 0;
-    right: -50%;
   }
   to {
     opacity: 1;
-    right: 0;
   }
 `;
 const fadeOut = keyframes`
   from {
     opacity: 1;
-    right: 0;
     
   }
   to {
     opacity: 0;
-    right: -50%;
   }
 `;
 interface INotificationStyledProps {
@@ -28,9 +24,9 @@ export const NotificationStyled = styled.div<INotificationStyledProps>`
   background: ${(props) => props.theme.color.primary};
   color: ${(props) => props.theme.color.fg};
   border-radius: 15px;
-  padding: 30px;
+  padding: 20px;
   position: relative;
-  min-width: 550px;
+  min-width: 350px;
   animation: 1s ${fadeIn} ease;
   ${(props) =>
     props.fadeOutAnimation &&
@@ -41,11 +37,11 @@ export const NotificationStyled = styled.div<INotificationStyledProps>`
 `;
 
 export const NotificationTitleStyled = styled.div`
-  font-size: 28px;
+  font-size: ${(props) => props.theme.fontSizes.headlineMedium};
 `;
 
 export const NotificationDescriptionStyled = styled.div`
-  font-size: 18px;
+  font-size: ${(props) => props.theme.fontSizes.medium};
   margin-top: 15px;
 `;
 

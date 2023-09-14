@@ -49,7 +49,7 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
   return (
     <div>
       <NoteStyled>
-        <Margin mt={50} mb={80}>
+        <Margin mt={50} mb={30}>
           <Title title={note.title} slug={note.slug} />
         </Margin>
         {cells.map((cell) => (

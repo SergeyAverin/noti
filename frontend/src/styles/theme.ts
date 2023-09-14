@@ -11,7 +11,15 @@ export const darkTheme: DefaultTheme = {
     dangerous: "#E76161",
   },
   panelsSize: {
-    sideBarSize: "400px",
+    sideBarSize: "300px",
     headerSize: "80px",
+  },
+  fontSizes: {
+    small: "14px",
+    medium: "16px",
+    large: "18px",
+    headlineSmall: "24px",
+    headlineMedium: "28px",
+    headlineLarge: "32px",
   },
 };

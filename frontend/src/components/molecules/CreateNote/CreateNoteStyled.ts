@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CreateNoteStyled = styled.div`
   color: ${(props) => props.theme.color.fg};
-  font-size: 20px;
+  font-size: ${(props) => props.theme.fontSizes.medium};
   font-style: normal;
   font-weight: 400;
   line-height: normal;

@@ -14,7 +14,7 @@ export const InputLabelWrapper = styled.div`
 export const InputLabelStyled = styled(InputStyled)`
   &:focus + ${Label}, &:valid + ${Label} {
     top: 15px;
-    font-size: 16px;
+    font-size: ${(props) => props.theme.fontSizes.medium};
   }
   &:focus + ${Label} {
     color: ${(props) => props.theme.color.highlight};

@@ -15,5 +15,13 @@ declare module "styled-components" {
       sideBarSize: string;
       headerSize: string;
     };
+    fontSizes: {
+      small: string;
+      medium: string;
+      large: string;
+      headlineSmall: string;
+      headlineMedium: string;
+      headlineLarge: string;
+    };
   }
 }

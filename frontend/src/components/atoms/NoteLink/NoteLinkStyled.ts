@@ -9,13 +9,13 @@ export const NoteLinkStyled = styled.div<INoteLinkStyledProps>`
   transition: 0.3s;
 
   text-decoration: none;
-  font-size: 20px;
+  font-size: ${(props) => props.theme.fontSizes.small};
   color: ${(props) => props.theme.color.fg};
+  padding: 14px;
 
   svg {
     margin-right: 10px;
   }
-  padding: 14px;
   ${(props) =>
     props.haveBackground &&
     css`

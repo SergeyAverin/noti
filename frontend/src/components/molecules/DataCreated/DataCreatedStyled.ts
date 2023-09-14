@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DataCreatedMoreStyled = styled.div`
-  font-size: 18px;
+  font-size: ${(props) => props.theme.fontSizes.small};
   color: ${(props) => props.theme.color.fg};
   background: ${(props) => props.theme.color.secondary};
   padding: 15px;
@@ -15,7 +15,7 @@ export const DataCreatedMoreStyled = styled.div`
 `;
 
 export const DataCreatedStyled = styled.div`
-  font-size: 18px;
+  font-size: ${(props) => props.theme.fontSizes.small};
   color: ${(props) => props.theme.color.fg};
   position: relative;
   z-index: 5;

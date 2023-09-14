@@ -6,7 +6,7 @@ interface ITooltipStyledProps {
   placement: TooltipPlacement;
 }
 export const TooltipStyled = styled.div<ITooltipStyledProps>`
-  font-size: 18px;
+  font-size: ${(props) => props.theme.fontSizes.small};
   color: ${(props) => props.theme.color.fg};
   background: ${(props) => props.theme.color.secondary};
   padding: 15px;

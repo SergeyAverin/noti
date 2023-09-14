@@ -5,7 +5,6 @@ export const DropDownMenuStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  font-size: 18px;
   user-select: none;
   transition: 0.3s;
   padding: 15px;
@@ -22,7 +21,8 @@ export const DropDownMenuTextStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: 18px;
+  font-size: ${(props) => props.theme.fontSizes.medium};
+  font-weight: 600;
   svg {
     margin-right: 15px;
   }

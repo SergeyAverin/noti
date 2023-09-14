@@ -5,7 +5,7 @@ export const Label = styled.label`
   position: absolute;
   top: 50%;
   transform: translate(0px, -50%);
-  font-size: 24px;
+  font-size: ${(props) => props.theme.fontSizes.large};
   transition: all 0.2s ease;
   z-index: 1;
 `;

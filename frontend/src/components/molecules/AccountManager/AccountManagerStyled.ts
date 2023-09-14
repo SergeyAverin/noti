@@ -8,7 +8,7 @@ export const AccountManagerHeaderStyled = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-size: 20px;
+  font-size: ${(props) => props.theme.fontSizes.medium};
   font-weight: 600;
   cursor: pointer;
   user-select: none;

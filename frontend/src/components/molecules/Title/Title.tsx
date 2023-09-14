@@ -27,8 +27,8 @@ export const Title: React.FC<ITitleProps> = ({ title, slug }) => {
             title: "Saved title",
             description:`new title is ${title}`,
             variant: NotificationVariant.DANGER,
-            date: new Date(),
-            secondsToAutoClose: 1500
+            date: new Date()
+            // secondsToAutoClose: 1500,
           }
         dispatch(pushNotification(notification))
     }
