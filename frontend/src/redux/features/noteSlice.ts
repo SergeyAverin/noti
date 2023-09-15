@@ -89,6 +89,7 @@ export const userSlice = createSlice({
         );
         if (selectedIndex + 1 < state.content.length) {
           state.selectedCell = state.content[selectedIndex + 1];
+          console.log(state.selectedCell.children);
         }
       }
     },

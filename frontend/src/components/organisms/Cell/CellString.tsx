@@ -17,11 +17,13 @@ const CellStringStyled = styled.p`
 
 export const CellString: React.FC<ICellString> = ({ cell }) => {
   const dispatch = useDispatch();
-  const [value, setValue] = useState(cell.children)
-  useEffect(()=>{
-    setValue(cell.children)
-  }, [cell])
-  const selectRangeStart = useSelector((state: RootState) => state.noteState.selectRangeStart)
+  const [value, setValue] = useState(cell.children);
+  useEffect(() => {
+    setValue(cell.children);
+  }, [cell]);
+  const selectRangeStart = useSelector(
+    (state: RootState) => state.noteState.selectRangeStart
+  );
   const cellRef = useRef<HTMLInputElement>(null);
   const setCursor = () => {
     const selection = window.getSelection();
@@ -29,7 +31,9 @@ export const CellString: React.FC<ICellString> = ({ cell }) => {
       const range = selection.getRangeAt(0);
       const startOffset = range.startOffset;
       const endOffset = range.endOffset;
-      dispatch(setSelectRange({rangeStart: startOffset, rangeEnd: endOffset}));
+      dispatch(
+        setSelectRange({ rangeStart: startOffset, rangeEnd: endOffset })
+      );
     }
   };
   const onInput = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -37,7 +41,7 @@ export const CellString: React.FC<ICellString> = ({ cell }) => {
     setCursor();
   };
   const onFocus = () => {
-    // 
+    //
   };
   const selectedCell = useSelector(
     (state: RootState) => state.noteState.selectedCell

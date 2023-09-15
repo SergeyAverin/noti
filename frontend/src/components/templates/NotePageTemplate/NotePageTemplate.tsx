@@ -15,7 +15,13 @@ import { EditInput } from "@atoms/EditInput/EditInput";
 import { Notification } from "@molecules/Notification/Notification";
 import { NotificationList } from "@organisms/NotificationList";
 import { Cell } from "@organisms/Cell";
-import { addCell, selectNext, selectPrev } from "@redux/features/noteSlice";
+import {
+  addCell,
+  selectCell,
+  selectNext,
+  selectPrev,
+  setSelectRange,
+} from "@redux/features/noteSlice";
 
 interface INotePageTemplateProps {
   note: INote;
@@ -38,6 +44,22 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
       } else if (event.key === "ArrowUp") {
         dispatch(selectPrev());
       }
+      try {
+        const selection = window.getSelection();
+        if (selection) {
+          const range = selection.getRangeAt(0);
+          const startOffset = range.startOffset;
+          const endOffset = range.endOffset;
+          dispatch(
+            setSelectRange({ rangeStart: startOffset, rangeEnd: endOffset })
+          );
+          dispatch(selectCell(cells[0]));
+        }
+      } catch (error) {
+        if (error instanceof DOMException) {
+          dispatch(setSelectRange({ rangeStart: 0, rangeEnd: 0 }));
+        }
+      }
     }
     document.addEventListener("keydown", handleKeyDown);
 
@@ -49,14 +71,14 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
   return (
     <div>
       <NoteStyled>
-          <Width width="50%" isMarginAuto={true}>
-                  <Margin mt={50} mb={30}>
-                    <Title title={note.title} slug={note.slug} />
-                  </Margin>
-                  {cells.map((cell) => (
-                    <Cell cell={cell} key={cell.id} />
-                    ))}
-          </Width>
+        <Width width="50%" isMarginAuto={true}>
+          <Margin mt={50} mb={30}>
+            <Title title={note.title} slug={note.slug} />
+          </Margin>
+          {cells.map((cell) => (
+            <Cell cell={cell} key={cell.id} />
+          ))}
+        </Width>
       </NoteStyled>
       {note.isTrash && <TrashAlert note={note} />}
       <NotificationList />
