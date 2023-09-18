@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { CellSelection } from "./CellSelection";
-import { ICell } from "@redux/types/cell";
-import { selectCell, addCell } from "@redux/features/noteSlice";
-import { RootState } from "@redux/store";
 import { CellStyled } from "./CellStyled";
-
+import { ICell } from "@redux/types/cell";
+import { selectCell } from "@redux/features/noteSlice";
+import { selectedCellSelector } from "@redux/selectors/note";
 
 interface ICellProps {
     cell: ICell
@@ -14,10 +13,12 @@ interface ICellProps {
 
 export const Cell: React.FC<ICellProps> = ({ cell }) => {
     const dispatch = useDispatch()
-    const activeCell = useSelector((state: RootState) => state.noteState.selectedCell)
+    const activeCell = useSelector(selectedCellSelector)
+
     const onClick: React.MouseEventHandler = () => {
         dispatch(selectCell(cell))
     }
+    
     return (
         <CellStyled isActive={activeCell != undefined && activeCell.id == cell.id}>
             <CellSelection cell={cell} onClick={onClick} />

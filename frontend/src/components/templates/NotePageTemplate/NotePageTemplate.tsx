@@ -8,7 +8,7 @@ import { TrashAlert } from "@organisms/TrashAlert";
 import { NotificationList } from "@organisms/NotificationList";
 import { Cell } from "@organisms/Cell";
 import { INote } from "@redux/types/note";
-import { RootState } from "@redux/store";
+import { cellsSelector } from "@redux/selectors/note";
 import { useCellNavigation } from "@hooks/useCellNavigation";
 import { useCreateCellHotKey } from "@hooks/useCreateCellHotKey";
 
@@ -20,7 +20,7 @@ interface INotePageTemplateProps {
 export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
   note,
 }) => {
-  const cells = useSelector((state: RootState) => state.noteState.content);
+  const cells = useSelector(cellsSelector);
 
   useCellNavigation(cells)
   useCreateCellHotKey()

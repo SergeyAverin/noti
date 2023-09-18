@@ -7,15 +7,15 @@ import { useGetNoteQuery } from "@redux/api/noteApi";
 import { Spinner, Center } from "@atoms/index";
 import { NotePageTemplate } from "@templates/NotePageTemplate";
 import { Header } from "@organisms/Header";
-import { RootState } from '@redux/store'
 import { setNote } from "@redux/features/noteSlice";
+import { noteSelector } from "@redux/selectors/note";
 
 
 const NotesPage: React.FC = () => {
   const params = useParams();
   const slug  = params.slug as string
   const { isLoading, data } = useGetNoteQuery(slug)
-  const note = useSelector((state: RootState) => state.noteState.note)
+  const note = useSelector(noteSelector)
 
   const dispatch = useDispatch()
   useEffect(() => {

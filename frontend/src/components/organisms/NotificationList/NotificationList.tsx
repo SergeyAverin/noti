@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import { useSelector } from "react-redux";
 
-import { RootState } from "@redux/store";
 import { NotificationListStyled } from "./NotificationListStyled";
 import { Margin } from "@atoms/index";
 import { Notification } from "@molecules/Notification";
+import { notificationsSelector } from "@redux/selectors/notifications";
 
 
 export const NotificationList = () => {
-    const notifications = useSelector((state: RootState) => state.notificationState.notifications)
+    const notifications = useSelector(notificationsSelector)
     return (
         ReactDOM.createPortal(
           <NotificationListStyled>

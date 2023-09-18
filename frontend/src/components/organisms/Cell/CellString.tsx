@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ICell } from "@redux/types/cell";
 import { changeCellChildren, setSelectRange } from "@redux/features/noteSlice";
 import { RootState } from "@redux/store";
+import { selectedCellSelector } from "@redux/selectors/note";
 
 interface ICellString {
   cell: ICell;
@@ -43,9 +44,7 @@ export const CellString: React.FC<ICellString> = ({ cell }) => {
   const onFocus = () => {
     //
   };
-  const selectedCell = useSelector(
-    (state: RootState) => state.noteState.selectedCell
-  );
+  const selectedCell = useSelector(selectedCellSelector);
 
   useEffect(() => {
     if (selectedCell && cell.id == selectedCell.id) {
