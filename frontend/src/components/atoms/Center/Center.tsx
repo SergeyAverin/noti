@@ -1,11 +1,11 @@
 import styled, { css } from "styled-components";
 
-interface IMarginProps {
+interface ICenterProps {
   harezontal?: boolean;
   vertical?: boolean;
 }
 
-export const Center = styled.div<IMarginProps>`
+export const Center = styled.div<ICenterProps>`
   display: flex;
   position: absolute;
   width: 100%;

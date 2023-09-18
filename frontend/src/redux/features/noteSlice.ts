@@ -89,7 +89,6 @@ export const userSlice = createSlice({
         );
         if (selectedIndex + 1 < state.content.length) {
           state.selectedCell = state.content[selectedIndex + 1];
-          console.log(state.selectedCell.children);
         }
       }
     },
@@ -109,7 +108,6 @@ export const userSlice = createSlice({
     ) {
       state.selectRangeStart = action.payload.rangeStart;
       state.selectRangeEnd = action.payload.rangeEnd;
-      console.log(state.selectRangeStart);
     },
   },
 });

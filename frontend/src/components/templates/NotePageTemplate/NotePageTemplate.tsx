@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { NoteStyled } from "./NotePageTemplateStyled";
 import { Margin, Width } from "@atoms/index";
 import { Title } from "@molecules/Title";
+import { DebugAlert } from "@molecules/DebugAlert";
 import { TrashAlert } from "@organisms/TrashAlert";
 import { NotificationList } from "@organisms/NotificationList";
 import { Cell } from "@organisms/Cell";
@@ -39,6 +40,7 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
       </NoteStyled>
       {note.isTrash && <TrashAlert note={note} />}
       <NotificationList />
+      <DebugAlert />
     </div>
   );
 };

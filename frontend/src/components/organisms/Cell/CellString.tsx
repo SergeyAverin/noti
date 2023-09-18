@@ -55,10 +55,11 @@ export const CellString: React.FC<ICellString> = ({ cell }) => {
     <CellStringStyled
       contentEditable={true}
       onInput={onInput}
+      suppressContentEditableWarning={true}
       onFocus={onFocus}
       ref={cellRef}
     >
-      {value}
+      { cell.children }
     </CellStringStyled>
   );
 };
