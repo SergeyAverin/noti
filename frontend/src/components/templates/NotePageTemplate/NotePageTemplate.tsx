@@ -10,6 +10,7 @@ import { Cell } from "@organisms/Cell";
 import { INote } from "@redux/types/note";
 import { RootState } from "@redux/store";
 import { useCellNavigation } from "@hooks/useCellNavigation";
+import { useCreateCellHotKey } from "@hooks/useCreateCellHotKey";
 
 
 interface INotePageTemplateProps {
@@ -22,6 +23,7 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
   const cells = useSelector((state: RootState) => state.noteState.content);
 
   useCellNavigation(cells)
+  useCreateCellHotKey()
 
   return (
     <div>
