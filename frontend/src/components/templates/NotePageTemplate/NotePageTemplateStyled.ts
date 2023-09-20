@@ -5,3 +5,7 @@ export const NoteStyled = styled.div`
   padding-top: ${(props) => props.theme.panelsSize.headerSize};
   margin: auto;
 `;
+
+export const NoteContentStyled = styled.div`
+  outline: none;
+`;

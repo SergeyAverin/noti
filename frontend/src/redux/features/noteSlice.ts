@@ -7,28 +7,22 @@ import { INote } from "@redux/types/note";
 interface INoteState {
   note: INote | undefined;
   content: ICell[];
-  selectedCell: ICell | undefined;
-  selectRangeStart: number;
-  selectRangeEnd: number;
 }
 
 const initialState: INoteState = {
   note: undefined,
-  selectedCell: undefined,
-  selectRangeStart: 0,
-  selectRangeEnd: 0,
   content: [
     {
-      children: "test",
+      children: "=",
       id: uuidv4(),
       property: {},
       type: "string",
     },
     {
-      children: "tes3t",
+      children: "666",
       id: uuidv4(),
       property: {},
-      type: "string",
+      type: "div",
     },
     {
       children: "test",
@@ -46,80 +40,27 @@ export const userSlice = createSlice({
     setNote(state, action: PayloadAction<INote>) {
       state.note = action.payload;
     },
-    selectCell(state, action: PayloadAction<ICell>) {
-      state.selectedCell = action.payload;
-    },
     changeCellChildren(state, action: PayloadAction<string>) {
-      if (state.selectedCell) {
-        state.selectedCell.children = action.payload;
-      }
+      console.log(2);
     },
-    addCell(state, action: PayloadAction<void>) {
-      if (state.selectedCell) {
-        const selectedIndex = state.content.findIndex(
-          (cell) => state.selectedCell?.id == cell.id
-        );
-        if (state.selectRangeStart == state.selectedCell.children.length) {
-          const newCell = {
-            children: "",
-            id: uuidv4(),
-            property: {},
-            type: "string",
-          };
-          state.content.splice(selectedIndex + 1, 0, newCell);
-        } else {
-          const newCell = {
-            children: state.selectedCell.children.slice(state.selectRangeStart),
-            id: uuidv4(),
-            property: {},
-            type: "string",
-          };
-          state.selectedCell.children = state.selectedCell.children.slice(
-            0,
-            state.selectRangeStart
-          );
-          state.content.splice(selectedIndex + 1, 0, newCell);
-        }
-      }
-    },
-    selectNext(state, action: PayloadAction<void>) {
-      if (state.selectedCell) {
-        const selectedIndex = state.content.findIndex(
-          (cell) => state.selectedCell?.id == cell.id
-        );
-        if (selectedIndex + 1 < state.content.length) {
-          state.selectedCell = state.content[selectedIndex + 1];
-        }
-      }
-    },
-    selectPrev(state, action: PayloadAction<void>) {
-      if (state.selectedCell) {
-        const selectedIndex = state.content.findIndex(
-          (cell) => state.selectedCell?.id == cell.id
-        );
-        if (selectedIndex - 1 >= 0) {
-          state.selectedCell = state.content[selectedIndex - 1];
-        }
-      }
-    },
-    setSelectRange(
+    addCell(
       state,
-      action: PayloadAction<{ rangeStart: number; rangeEnd: number }>
+      action: PayloadAction<{ newCell: ICell; oldCellId: string }>
     ) {
-      state.selectRangeStart = action.payload.rangeStart;
-      state.selectRangeEnd = action.payload.rangeEnd;
+      const selectedIndex = state.content.findIndex(
+        (cell) => action.payload.oldCellId == cell.id
+      );
+      const newCell = {
+        children: action.payload.newCell.children,
+        id: action.payload.newCell.id,
+        property: action.payload.newCell.property,
+        type: action.payload.newCell.type,
+      };
+      state.content.splice(selectedIndex + 1, 0, newCell);
     },
   },
 });
 
 export default userSlice.reducer;
 
-export const {
-  setNote,
-  selectCell,
-  changeCellChildren,
-  addCell,
-  selectNext,
-  selectPrev,
-  setSelectRange,
-} = userSlice.actions;
+export const { setNote, changeCellChildren, addCell } = userSlice.actions;

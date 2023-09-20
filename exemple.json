@@ -1,0 +1,113 @@
+{
+    "object": "page",
+    "id": "your-page-id-here",
+    "created_time": "2022-09-20T12:34:56.000Z",
+    "last_edited_time": "2022-09-20T12:34:56.000Z",
+    "parent": {
+      "type": "database_id",
+      "database_id": "your-database-id-here"
+    },
+    "properties": {
+      "title": {
+        "title": [
+          {
+            "text": {
+              "content": "Example Page Title"
+            }
+          }
+        ]
+      },
+      "description": {
+        "rich_text": [
+          {
+            "text": {
+              "content": "Example page description."
+            }
+          }
+        ]
+      },
+      "tags": {
+        "multi_select": [
+          {
+            "name": "Tag 1"
+          },
+          {
+            "name": "Tag 2"
+          }
+        ]
+      }
+    },
+    "content": [
+      {
+        "object": "block",
+        "id": "your-block-id-here",
+        "created_time": "2022-09-20T12:34:56.000Z",
+        "last_edited_time": "2022-09-20T12:34:56.000Z",
+        "has_children": true,
+        "type": "paragraph",
+        "paragraph": {
+          "text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "This is an example paragraph."
+              }
+            }
+          ]
+        },
+        "children": [
+          {
+            "object": "block",
+            "id": "your-child-block-id-here",
+            "created_time": "2022-09-20T12:34:56.000Z",
+            "last_edited_time": "2022-09-20T12:34:56.000Z",
+            "type": "bulleted_list_item",
+            "bulleted_list_item": {
+              "text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "This is a bulleted list item."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "id": "your-child-block-id-here",
+            "created_time": "2022-09-20T12:34:56.000Z",
+            "last_edited_time": "2022-09-20T12:34:56.000Z",
+            "type": "numbered_list_item",
+            "numbered_list_item": {
+              "text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "This is a numbered list item."
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "object": "block",
+        "id": "your-block-id-here",
+        "created_time": "2022-09-20T12:34:56.000Z",
+        "last_edited_time": "2022-09-20T12:34:56.000Z",
+        "type": "heading_2",
+        "heading_2": {
+          "text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "This is a heading."
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
