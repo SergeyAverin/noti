@@ -22,7 +22,7 @@ const initialState: INoteState = {
       children: "666",
       id: uuidv4(),
       property: {},
-      type: "div",
+      type: "string",
     },
     {
       children: "test",
@@ -40,8 +40,16 @@ export const userSlice = createSlice({
     setNote(state, action: PayloadAction<INote>) {
       state.note = action.payload;
     },
-    changeCellChildren(state, action: PayloadAction<string>) {
-      console.log(2);
+    changeCellChildren(
+      state,
+      action: PayloadAction<{ cellId: string; value: string }>
+    ) {
+      const cell = state.content.find(
+        (cell) => action.payload.cellId == cell.id
+      );
+      if (cell) {
+        cell.children = action.payload.value;
+      }
     },
     addCell(
       state,

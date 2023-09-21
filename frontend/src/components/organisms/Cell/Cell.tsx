@@ -34,7 +34,8 @@ export const Cell: React.FC<ICellProps> = ({ cell }) => {
               const newCell: ICell = {
                 children: addedNode.textContent ? addedNode.textContent: '_',
                 property: {},
-                type: cellType ? cellType : 'string',
+                // type: cellType ? cellType : 'string',
+                type: 'string',
                 id: uuidv4()
               }
               dispatch(addCell({newCell, oldCellId: cell.id}));
@@ -45,7 +46,7 @@ export const Cell: React.FC<ICellProps> = ({ cell }) => {
     }
     return (
         <CellStyled ref={parentDivRef}>
-                <CellSelection cell={cell} />
+                <CellSelection cell={cell}  />
         </CellStyled>
     )
 }
