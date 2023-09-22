@@ -8,7 +8,7 @@ export const CellTools = styled.div`
     position: absolute;
     right: 100%;
     opacity: 0;
-    transition: .3s;
+    transition: .4s;
 `;
 
 export const CellWrapper = styled.div`

@@ -1,11 +1,21 @@
-import React  from 'react';
+import React from "react";
 
-import { OpenContextMenuButton } from '@atoms/index';
-import { ContextMenu } from './ContextMenu';
-import AddIcon from '@public/AddIcon.svg'
+import { OpenContextMenuButton } from "@atoms/index";
+import { ContextMenu } from "./ContextMenu";
+import AddIcon from "@public/AddIcon.svg";
+import { ICell } from "@redux/types/cell";
 
-export const AddCellContextMenu: React.FC = () => {
-    return (
-       <OpenContextMenuButton contextMenu={<ContextMenu />} icon={<AddIcon />} />
-    );
+interface IAddCellContextMenuProps {
+  cell: ICell;
 }
+
+export const AddCellContextMenu: React.FC<IAddCellContextMenuProps> = ({
+  cell,
+}) => {
+  return (
+    <OpenContextMenuButton
+      contextMenu={<ContextMenu cell={cell} />}
+      icon={<AddIcon />}
+    />
+  );
+};

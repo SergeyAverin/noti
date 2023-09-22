@@ -1,29 +1,74 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 
 import {
   ContextMenuStyled,
   MenuListStyled,
-  MenuItemStyled
+  MenuItemStyled,
 } from "../../atoms/ContextMenu/ContextMenuStled";
+import { addCell } from "@redux/features/noteSlice";
+import { ICell } from "@redux/types/cell";
 
-export const ContextMenu = () => {
+
+interface IContextMenuProps {
+  cell: ICell
+}
+
+export const ContextMenu: React.FC<IContextMenuProps> = ({ cell }) => {
+  const dispatch = useDispatch();
+  const addCellHandler = (cellType: string) => {
+    const newCell: ICell = {
+      children: "_",
+      property: {},
+      type: cellType,
+      id: uuidv4(),
+    };
+    dispatch(addCell({ newCell, oldCellId: cell.id }));
+  };
   return (
     <ContextMenuStyled>
-        <MenuListStyled>
-            <MenuItemStyled>String</MenuItemStyled>
-            <MenuItemStyled>H1</MenuItemStyled>
-            <MenuItemStyled>H2</MenuItemStyled>
-            <MenuItemStyled>H3</MenuItemStyled>
-            <MenuItemStyled>Checkbox</MenuItemStyled>
-            <MenuItemStyled>Line</MenuItemStyled>
-            <MenuItemStyled>Quote</MenuItemStyled>
-            <MenuItemStyled>Toggle list</MenuItemStyled>
-            <MenuItemStyled>Page</MenuItemStyled>
-            <MenuItemStyled>Image</MenuItemStyled>
-            <MenuItemStyled>Table</MenuItemStyled>
-            <MenuItemStyled>Number list</MenuItemStyled>
-            <MenuItemStyled>Mark list</MenuItemStyled>
-        </MenuListStyled>
+      <MenuListStyled>
+        <MenuItemStyled onClick={() => addCellHandler("string")}>
+          String
+        </MenuItemStyled>
+        <MenuItemStyled onClick={() => addCellHandler("h1")}>
+          H1
+        </MenuItemStyled>
+        <MenuItemStyled onClick={() => addCellHandler("h2")}>
+          H2
+        </MenuItemStyled>
+        <MenuItemStyled onClick={() => addCellHandler("h3")}>
+          H3
+        </MenuItemStyled>
+        <MenuItemStyled onClick={() => addCellHandler("string")}>
+          Checkbox
+        </MenuItemStyled>
+        <MenuItemStyled onClick={() => addCellHandler("line")}>
+          Line
+        </MenuItemStyled>
+        <MenuItemStyled onClick={() => addCellHandler("string")}>
+          Quote
+        </MenuItemStyled>
+        <MenuItemStyled onClick={() => addCellHandler("string")}>
+          Toggle list
+        </MenuItemStyled>
+        <MenuItemStyled onClick={() => addCellHandler("string")}>
+          Page
+        </MenuItemStyled>
+        <MenuItemStyled onClick={() => addCellHandler("string")}>
+          Image
+        </MenuItemStyled>
+        <MenuItemStyled onClick={() => addCellHandler("string")}>
+          Table
+        </MenuItemStyled>
+        <MenuItemStyled onClick={() => addCellHandler("string")}>
+          Number list
+        </MenuItemStyled>
+        <MenuItemStyled onClick={() => addCellHandler("string")}>
+          Mark list
+        </MenuItemStyled>
+      </MenuListStyled>
     </ContextMenuStyled>
   );
 };

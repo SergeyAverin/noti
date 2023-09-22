@@ -55,7 +55,7 @@ export const Cell: React.FC<ICellProps> = ({ cell }) => {
           <CellSelection cell={cell} />
         </CellStyled>
         <CellTools>
-            <AddCellContextMenu />
+            <AddCellContextMenu cell={cell} />
             <CellPropertyContextMenu />
         </CellTools>
     </CellWrapper>
