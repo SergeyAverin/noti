@@ -2,7 +2,7 @@ import React  from "react";
 import { useSelector } from "react-redux";
 
 import { NoteContentStyled, NoteStyled } from "./NotePageTemplateStyled";
-import { Margin, Width } from "@atoms/index";
+import { Flex, Margin, Width } from "@atoms/index";
 import { Title } from "@molecules/Title";
 import { DebugAlert } from "@molecules/DebugAlert";
 import { TrashAlert } from "@organisms/TrashAlert";

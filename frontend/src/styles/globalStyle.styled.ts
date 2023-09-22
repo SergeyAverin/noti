@@ -11,4 +11,9 @@ export default createGlobalStyle`
   a {
     text-decoration: none;
   }
+  *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+  }
 `;
