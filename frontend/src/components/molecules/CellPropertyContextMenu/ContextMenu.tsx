@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
 import {
   ContextMenuStyled,
@@ -6,12 +7,23 @@ import {
   MenuItemStyled,
   SubMenuListStyled,
 } from "../../atoms/ContextMenu/ContextMenuStled";
+import { removeCell } from "@redux/features/noteSlice";
+import { ICell } from "@redux/types/cell";
 
-export const ContextMenu = () => {
+
+interface IContextMenuProps {
+  cell: ICell
+}
+
+export const ContextMenu: React.FC<IContextMenuProps> = ({ cell }) => {
+  const dispatch = useDispatch()
+  const removeCellHeandler = () => {
+    dispatch(removeCell({id: cell.id}))
+  }
   return (
     <ContextMenuStyled>
       <MenuListStyled>
-        <MenuItemStyled>Delete cell</MenuItemStyled>
+        <MenuItemStyled onClick={removeCellHeandler}>Delete cell</MenuItemStyled>
         <MenuItemStyled>Replace to</MenuItemStyled>
         <MenuItemStyled>Dublicate</MenuItemStyled>
       </MenuListStyled>

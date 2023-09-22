@@ -66,9 +66,15 @@ export const userSlice = createSlice({
       };
       state.content.splice(selectedIndex + 1, 0, newCell);
     },
+    removeCell(state, action: PayloadAction<{ id: string }>) {
+      state.content = state.content.filter(
+        (cell) => cell.id !== action.payload.id
+      );
+    },
   },
 });
 
 export default userSlice.reducer;
 
-export const { setNote, changeCellChildren, addCell } = userSlice.actions;
+export const { setNote, changeCellChildren, addCell, removeCell } =
+  userSlice.actions;
