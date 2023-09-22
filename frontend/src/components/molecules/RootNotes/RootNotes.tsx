@@ -10,7 +10,7 @@ export const RootNotes: React.FC = () => {
     <div>
       {!isLoading &&
         data &&
-        data.map((note) => (
+        data.slice().reverse().map((note) => (
             <NoteLink haveBackground={true} href={`/notes/${note.slug}`} key={note.slug}>
               {note.title}
             </NoteLink>

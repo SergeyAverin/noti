@@ -8,7 +8,7 @@ interface IToggleButtonProps {
   isEnable: boolean;
   onEnable: Function;
   onDisable: Function;
-  text: string | React.ReactNode;
+  text?: string;
 }
 
 export const ToggleButton: React.FC<IToggleButtonProps> = ({

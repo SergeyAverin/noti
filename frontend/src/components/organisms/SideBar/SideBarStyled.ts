@@ -15,3 +15,9 @@ export const SideBarStyled = styled.div`
   overflow-y: auto;
   z-index: 5;
 `;
+
+export const RootNotesWrapperStyled = styled.div`
+  height: 500px;
+  width: 100%;
+  overflow-y: auto;
+`;

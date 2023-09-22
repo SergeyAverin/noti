@@ -14,6 +14,10 @@ const CellStringStyled = styled.div`
   &::placeholder {
     color: red;
   }
+  &::selection {
+      background-color: ${props => props.theme.color.highlightFaded};
+      width: 50px;
+    }
 `;
 
 export const CellString: React.FC<ICellString> = ({ cell }) => {
