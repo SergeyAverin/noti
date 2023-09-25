@@ -70,3 +70,8 @@ export const ContextMenu: React.FC<IContextMenuProps> = ({ cell }) => {
     </ContextMenuStyled>
   );
 };
+for (let a of [1 ,3,4]) {
+  if (a > 0) {
+    console.log(123)
+  }
+}

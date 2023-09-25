@@ -21,9 +21,10 @@ const NotesPage: React.FC = () => {
   useEffect(() => {
     if (data) {
       dispatch(setNote(data))
+      document.title = data.title;
     }
   }, [isLoading, data])
-  
+
   return (
     <>
         { !isLoading && note ?
