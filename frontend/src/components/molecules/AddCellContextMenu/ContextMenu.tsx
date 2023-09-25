@@ -32,13 +32,13 @@ export const ContextMenu: React.FC<IContextMenuProps> = ({ cell }) => {
         <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.STRING)}>
           String
         </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.HEADING_1)}>
+        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.HEADING_LARGE)}>
           H1
         </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.HEADING_2)}>
+        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.HEADING_MEDIUM)}>
           H2
         </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.HEADING_3)}>
+        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.HEADING_SMALL)}>
           H3
         </MenuItemStyled>
         <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.CHECKBOX)}>

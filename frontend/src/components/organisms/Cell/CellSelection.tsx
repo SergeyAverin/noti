@@ -1,6 +1,7 @@
 import React from "react";
 
 import { ICell, CellTypeEnum} from "@redux/types/cell";
+import { HeadingLarge, HeadingMedium, HeadingSmall, Checkbox, Line, Quote } from "./CellStyled";
 import { CellString } from "./CellString";
 
 interface ICellSelectionProps {
@@ -11,12 +12,12 @@ export const CellSelection: React.FC<ICellSelectionProps> = ({ cell }) => {
   return (
     <>
       {cell.type == CellTypeEnum.STRING && <CellString data-cell-type={cell.type} cell={cell} />}
-      {cell.type == CellTypeEnum.HEADING_1 && <h1 data-cell-type={cell.type} >{ cell.children }</h1>}
-      {cell.type == CellTypeEnum.HEADING_2 && <h2 data-cell-type={cell.type} >{ cell.children }</h2>}
-      {cell.type == CellTypeEnum.HEADING_3 && <h3 data-cell-type={cell.type} >{ cell.children }</h3>}
-      {cell.type == CellTypeEnum.CHECKBOX && <input data-cell-type={cell.type} type="checkbox" />}
-      {cell.type == CellTypeEnum.LINE && <hr data-cell-type={cell.type} />}
-      {cell.type == CellTypeEnum.QUOTE && <blockquote data-cell-type={cell.type}>{ cell.children }</blockquote>}
+      {cell.type == CellTypeEnum.HEADING_LARGE && <HeadingLarge data-cell-type={cell.type} >{ cell.children }</HeadingLarge>}
+      {cell.type == CellTypeEnum.HEADING_MEDIUM && <HeadingMedium data-cell-type={cell.type} >{ cell.children }</HeadingMedium>}
+      {cell.type == CellTypeEnum.HEADING_SMALL && <HeadingSmall data-cell-type={cell.type} >{ cell.children }</HeadingSmall>}
+      {cell.type == CellTypeEnum.CHECKBOX && <Checkbox data-cell-type={cell.type} value={cell.children } />}
+      {cell.type == CellTypeEnum.LINE && <Line data-cell-type={cell.type} />}
+      {cell.type == CellTypeEnum.QUOTE && <Quote data-cell-type={cell.type}>{ cell.children }</Quote>}
     </>
     );
 };

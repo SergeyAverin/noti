@@ -1,8 +1,8 @@
 export enum CellTypeEnum {
   STRING = "string",
-  HEADING_1 = "heading1",
-  HEADING_2 = "heading2",
-  HEADING_3 = "heading3",
+  HEADING_LARGE = "heading_large",
+  HEADING_MEDIUM = "heading_medium",
+  HEADING_SMALL = "heading_small",
   CHECKBOX = "checkbox",
   LINE = "line",
   QUOTE = "quote",
