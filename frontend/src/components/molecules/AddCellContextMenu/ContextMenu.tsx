@@ -8,7 +8,7 @@ import {
   MenuItemStyled,
 } from "../../atoms/ContextMenu/ContextMenuStled";
 import { addCell } from "@redux/features/noteSlice";
-import { ICell } from "@redux/types/cell";
+import { ICell, CellTypeEnum } from "@redux/types/cell";
 
 
 interface IContextMenuProps {
@@ -29,27 +29,32 @@ export const ContextMenu: React.FC<IContextMenuProps> = ({ cell }) => {
   return (
     <ContextMenuStyled>
       <MenuListStyled>
-        <MenuItemStyled onClick={() => addCellHandler("string")}>
+        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.STRING)}>
           String
         </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler("h1")}>
+        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.HEADING_1)}>
           H1
         </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler("h2")}>
+        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.HEADING_2)}>
           H2
         </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler("h3")}>
+        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.HEADING_3)}>
           H3
         </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler("string")}>
+        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.CHECKBOX)}>
           Checkbox
         </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler("line")}>
+        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.LINE)}>
           Line
         </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler("string")}>
+        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.QUOTE)}>
           Quote
         </MenuItemStyled>
+      </MenuListStyled>
+    </ContextMenuStyled>
+  );
+};
+/*
         <MenuItemStyled onClick={() => addCellHandler("string")}>
           Toggle list
         </MenuItemStyled>
@@ -68,7 +73,4 @@ export const ContextMenu: React.FC<IContextMenuProps> = ({ cell }) => {
         <MenuItemStyled onClick={() => addCellHandler("string")}>
           Mark list
         </MenuItemStyled>
-      </MenuListStyled>
-    </ContextMenuStyled>
-  );
-};
+*/
