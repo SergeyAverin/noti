@@ -1,24 +1,12 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 
-import { ICell } from "@redux/types/cell";
+import { CellPropertyColor, ICell } from "@redux/types/cell";
 import { useCellInput } from "@hooks/useCellInput";
+import {CellStringStyled } from './CellStyled'
 
 interface ICellString {
   cell: ICell;
 }
-
-const CellStringStyled = styled.div`
-  font-size: ${(props) => props.theme.fontSizes.small};
-  outline: none;
-  &::placeholder {
-    color: red;
-  }
-  &::selection {
-      background-color: ${props => props.theme.color.highlightFaded};
-      width: 50px;
-    }
-`;
 
 export const CellString: React.FC<ICellString> = ({ cell }) => {
   const [value, setValue] = useCellInput(cell.children, cell.id);
@@ -30,6 +18,7 @@ export const CellString: React.FC<ICellString> = ({ cell }) => {
   };
   return (
     <CellStringStyled
+      color={cell.property.color} styleMode={cell.property.styleMode}
       onInput={handleChange}
       contentEditable={true}
       suppressContentEditableWarning={true}

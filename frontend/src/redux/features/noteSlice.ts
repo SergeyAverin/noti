@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
-import { ICell } from "@redux/types/cell";
+import { CellPropertyColor, CellStyleMode, ICell } from "@redux/types/cell";
 import { INote } from "@redux/types/note";
 
 interface INoteState {
@@ -15,8 +15,11 @@ const initialState: INoteState = {
     {
       children: "=",
       id: uuidv4(),
-      property: {},
-      type: "string",
+      property: {
+        color: CellPropertyColor.BLUE,
+        styleMode: CellStyleMode.BACKGROUND,
+      },
+      type: "heading_large",
     },
     {
       children: "666",
@@ -71,10 +74,26 @@ export const userSlice = createSlice({
         (cell) => cell.id !== action.payload.id
       );
     },
+    changeProperty(
+      state,
+      action: PayloadAction<{ cellId: string; property: object }>
+    ) {
+      const cell = state.content.find(
+        (cell) => action.payload.cellId == cell.id
+      );
+      if (cell) {
+        cell.property = action.payload.property;
+      }
+    },
   },
 });
 
 export default userSlice.reducer;
 
-export const { setNote, changeCellChildren, addCell, removeCell } =
-  userSlice.actions;
+export const {
+  setNote,
+  changeCellChildren,
+  addCell,
+  removeCell,
+  changeProperty,
+} = userSlice.actions;
