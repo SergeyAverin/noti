@@ -7,8 +7,8 @@ import {
   MenuItemStyled,
   SubMenuListStyled,
 } from "../../atoms/ContextMenu/ContextMenuStled";
-import { addCell, removeCell, changeProperty } from "@redux/features/noteSlice";
-import { ICell, CellStyleMode, CellPropertyColor } from "@redux/types/cell";
+import { addCell, removeCell, changeProperty, changeCellType } from "@redux/features/noteSlice";
+import { ICell, CellStyleMode, CellPropertyColor, CellTypeEnum } from "@redux/types/cell";
 
 
 interface IContextMenuProps {
@@ -25,12 +25,27 @@ export const ContextMenu: React.FC<IContextMenuProps> = ({ cell }) => {
   }
   const changePropertyHeandler = (property: Object) => {
     dispatch(changeProperty({cellId: cell.id, property}))
+  }  
+  const changeTypeHeandler = (cellType: CellTypeEnum) => {
+    dispatch(changeCellType({cellId: cell.id, cellType }))
   }
   return (
     <ContextMenuStyled>
       <MenuListStyled>
         <MenuItemStyled onClick={removeCellHeandler}>Delete cell</MenuItemStyled>
-        <MenuItemStyled>Replace to</MenuItemStyled>
+        <MenuItemStyled>
+          Replace to
+          <SubMenuListStyled>
+            <MenuItemStyled onClick={() => changeTypeHeandler(CellTypeEnum.STRING)}>string</MenuItemStyled>
+            <MenuItemStyled onClick={() => changeTypeHeandler(CellTypeEnum.HEADING_LARGE)}>heading_large</MenuItemStyled>
+            <MenuItemStyled onClick={() => changeTypeHeandler(CellTypeEnum.HEADING_MEDIUM)}>heading_medium</MenuItemStyled>
+            <MenuItemStyled onClick={() => changeTypeHeandler(CellTypeEnum.HEADING_SMALL)}>heading_small</MenuItemStyled>
+            <MenuItemStyled onClick={() => changeTypeHeandler(CellTypeEnum.CHECKBOX)}>checkbox</MenuItemStyled>
+            <MenuItemStyled onClick={() => changeTypeHeandler(CellTypeEnum.LINE)}>line</MenuItemStyled>
+            <MenuItemStyled onClick={() => changeTypeHeandler(CellTypeEnum.QUOTE)}>quote</MenuItemStyled>
+              
+            </SubMenuListStyled>  
+        </MenuItemStyled>
         <MenuItemStyled onClick={dublicateCellHeandler}>Dublicate</MenuItemStyled>
       </MenuListStyled>
       <MenuListStyled>

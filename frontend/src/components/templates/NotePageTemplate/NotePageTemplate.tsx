@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 
 import { NoteContentStyled, NoteStyled } from "./NotePageTemplateStyled";
@@ -26,16 +26,14 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
       <NoteStyled>
         <Width width="50%" isMarginAuto={true}>
           <Position position="relative">
-          <TextFormattingTools />
-          <Margin mt={50} mb={30}>
-            <Title title={note.title} slug={note.slug} />
-          </Margin>
-          <NoteContentStyled contentEditable={true}>
+            <TextFormattingTools />
+            <Margin mt={50} mb={30}>
+              <Title title={note.title} slug={note.slug} />
+            </Margin>
             {cells.map((cell) => (
               <Cell cell={cell} key={cell.id} />
             ))}
-          </NoteContentStyled>
-        </Position>
+          </Position>
         </Width>
       </NoteStyled>
       {note.isTrash && <TrashAlert note={note} />}

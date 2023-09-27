@@ -1,7 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
-import { CellPropertyColor, CellStyleMode, ICell } from "@redux/types/cell";
+import {
+  CellPropertyColor,
+  CellStyleMode,
+  CellTypeEnum,
+  ICell,
+} from "@redux/types/cell";
 import { INote } from "@redux/types/note";
 
 interface INoteState {
@@ -85,6 +90,17 @@ export const userSlice = createSlice({
         cell.property = action.payload.property;
       }
     },
+    changeCellType(
+      state,
+      action: PayloadAction<{ cellId: string; cellType: CellTypeEnum }>
+    ) {
+      const cell = state.content.find(
+        (cell) => action.payload.cellId == cell.id
+      );
+      if (cell) {
+        cell.type = action.payload.cellType;
+      }
+    },
   },
 });
 
@@ -96,4 +112,5 @@ export const {
   addCell,
   removeCell,
   changeProperty,
+  changeCellType,
 } = userSlice.actions;

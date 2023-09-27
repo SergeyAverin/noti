@@ -31,4 +31,5 @@ export interface ICell {
     color?: CellPropertyColor;
   };
   children: string;
+  selected?: boolean;
 }
