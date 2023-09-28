@@ -4,7 +4,7 @@ import { ButtonStyled } from "./ButtonStyled";
 
 interface IButtonProps {
   onClick?: React.MouseEventHandler;
-  children: string;
+  children: React.ReactNode;
   fill?: boolean;
   danger?: boolean;
 }

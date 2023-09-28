@@ -15,6 +15,7 @@ export const ButtonStyled = styled.button<IButtonStyledProps>`
   color: ${(props) => props.theme.color.highlight};
   border: 2px solid ${(props) => props.theme.color.highlight};
   font-size: ${(props) => props.theme.fontSizes.medium};
+  width: 100%;
 
   ${(props) =>
     props.fill &&
