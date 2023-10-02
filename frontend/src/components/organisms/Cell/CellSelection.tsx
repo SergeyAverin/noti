@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { ICell, CellTypeEnum} from "@redux/types/cell";
 import { HeadingLarge, HeadingMedium, HeadingSmall, Checkbox, Line, Quote } from "./CellStyled";

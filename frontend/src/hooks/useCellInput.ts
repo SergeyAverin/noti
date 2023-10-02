@@ -8,7 +8,6 @@ export function useCellInput(
   cellId: string
 ): [string, (event: React.SyntheticEvent<HTMLDivElement>) => void] {
   const dispatch = useDispatch();
-  console.log(12213);
   const [value, setValue] = useState(initialValue);
   const handleChange = useCallback(
     (event: React.SyntheticEvent<HTMLDivElement>) => {

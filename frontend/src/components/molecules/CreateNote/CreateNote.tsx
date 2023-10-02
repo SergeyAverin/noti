@@ -1,7 +1,6 @@
 import React from "react";
 
 import AddIcon from "@public/AddIcon.svg";
-import { CreateNoteStyled } from "./CreateNoteStyled";
 import { Button, Flex, Width } from "@atoms/index";
 import { useCreateNoteMutation } from "@redux/api/noteApi";
 
