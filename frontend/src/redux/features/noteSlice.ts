@@ -45,6 +45,18 @@ export const userSlice = createSlice({
   initialState,
   name: "userSlice",
   reducers: {
+    changeCellPosition(
+      state,
+      action: PayloadAction<{ cell: ICell; index: number }>
+    ) {
+      let arr = state.content;
+      const draggable_cell = action.payload.cell;
+      const index = action.payload.index;
+      arr = arr.filter((item: ICell) => item.id != draggable_cell.id);
+      let left_cells = arr.slice(0, index);
+      let right_cells = arr.slice(index);
+      state.content = [...left_cells, draggable_cell, ...right_cells];
+    },
     setNote(state, action: PayloadAction<INote>) {
       state.note = action.payload;
     },
@@ -113,4 +125,5 @@ export const {
   removeCell,
   changeProperty,
   changeCellType,
+  changeCellPosition,
 } = userSlice.actions;
