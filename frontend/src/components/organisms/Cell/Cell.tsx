@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState }  from "react";
+
+import { useDrag } from 'react-dnd';
 
 import { CellSelection } from "./CellSelection";
 import { CellStyled, CellTools, CellWrapper } from "./CellStyled";
@@ -12,17 +14,29 @@ interface ICellProps {
 }
 
 export const Cell: React.FC<ICellProps> = ({ cell }) => {
-  const parentDivRef = useCreateCell(cell)
-  
+  const parentDivRef = useCreateCell(cell);
+  const [isDraggingStarted, setIsDraggingStarted]= useState(false)
+const [{ isDragging }, drag] = useDrag({
+        type: "cell",
+        item: {cell},
+        collect: (monitor: any) => ({
+          isDragging: monitor.isDragging(),
+        }),
+      })
+
   return (
-      <CellWrapper>
-        <CellStyled ref={parentDivRef}>
-            <CellSelection cell={cell} />
-          </CellStyled>
-          <CellTools>
-              <AddCellContextMenu cell={cell} />
-              <CellPropertyContextMenu cell={cell} />
-          </CellTools>
-      </CellWrapper>
+    <CellWrapper
+    ref={isDraggingStarted?drag:null}
+    >
+      <CellStyled ref={parentDivRef} style={{ opacity: isDragging ? 0.5 : 1 }}>
+        <CellSelection cell={cell} />
+      </CellStyled>
+      <CellTools>
+        <AddCellContextMenu cell={cell} />
+        <div onMouseDown={() => setIsDraggingStarted(true)} onMouseLeave={()=>setIsDraggingStarted(false)}>
+          <CellPropertyContextMenu cell={cell} />
+        </div>
+      </CellTools>
+    </CellWrapper>
   );
 };
