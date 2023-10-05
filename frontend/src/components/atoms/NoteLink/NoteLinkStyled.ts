@@ -11,7 +11,8 @@ export const NoteLinkStyled = styled.div<INoteLinkStyledProps>`
   text-decoration: none;
   font-size: ${(props) => props.theme.fontSizes.small};
   color: ${(props) => props.theme.color.fg};
-  padding: 14px;
+  padding: 8px;
+  border-radius: 5px;
 
   svg {
     margin-right: 10px;
@@ -22,7 +23,6 @@ export const NoteLinkStyled = styled.div<INoteLinkStyledProps>`
       &:hover {
         background: ${(props) => props.theme.color.highlightFaded};
         transition: 0.3s;
-        border-radius: 15px;
       }
     `}
 `;

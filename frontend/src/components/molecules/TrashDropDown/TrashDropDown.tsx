@@ -12,6 +12,9 @@ export const TrashDropDown: React.FC = () => {
 
   return (
     <DropDownMenu text="Trash" icon={<TrashIcon stroke={theme?.color.fg} />}>
+      <Margin ml={10} mb={25} >
+          <LinkBG href="/notes/trash" text="Trash table" />
+      </Margin>
       <Margin ml={30}>
         {!isLoading &&
           data &&
@@ -21,9 +24,6 @@ export const TrashDropDown: React.FC = () => {
             </NoteLink>
           ))}
         {!isLoading && data?.length == 0 && <div>Trash is empty</div>}
-      </Margin>
-      <Margin ml={10} mt={25} >
-          <LinkBG href="/notes/trash" text="Trash table" />
       </Margin>
     </DropDownMenu>
   );
