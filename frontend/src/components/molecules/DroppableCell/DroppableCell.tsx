@@ -26,6 +26,7 @@ export const DroppableCell:React.FC<DroppableCellProps> =({ onDrop })  => {
   return (
     <DroppableCellStyled
       ref={drop}
+      contentEditable={false}
       isOver={isOver}
     ></DroppableCellStyled>
   );

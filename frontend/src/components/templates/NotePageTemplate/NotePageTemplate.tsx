@@ -38,12 +38,15 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
               <Title title={note.title} slug={note.slug} />
             </Margin>
             <DroppableCell onDrop={(item:  {cell: ICell}) => handleDrop(item, 0)} />
-            {cells.map((cell, index) => (
-              <div key={cell.id}>
-                <Cell cell={cell} />
-                <DroppableCell onDrop={(item:  {cell: ICell}) => handleDrop(item, index+1)} />
-              </div>
-            ))}
+            <div contentEditable={true} style={{outline: 'none'}}>
+              {cells.map((cell, index) => (
+                <>
+                  <Cell cell={cell}  key={cell.id} />
+                  <DroppableCell onDrop={(item:  {cell: ICell}) => handleDrop(item, index+1)} />
+                </>
+
+              ))}
+            </div>
           </Position>
         </Width>
       </NoteStyled>
