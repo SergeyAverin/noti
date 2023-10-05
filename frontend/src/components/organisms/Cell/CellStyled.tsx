@@ -20,6 +20,10 @@ export const CellWrapper = styled.div`
   &:hover ${CellTools} {
     opacity: 1;
   }
+  & * {
+    margin: 0;
+    outline: none;
+  }
 `;
 
 export const CellStyled = styled.div`
@@ -116,7 +120,6 @@ export const CellStringStyled = styled.div<IbgMixinProps>`
   ${(props) => props.styleMode == CellStyleMode.FONT_COLOR && fgMixin(props)}
 
   font-size: ${(props) => props.theme.fontSizes.small};
-  outline: none;
   &::placeholder {
     color: red;
   }

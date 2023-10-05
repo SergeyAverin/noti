@@ -10,16 +10,11 @@ interface ICellString {
 
 export const CellString: React.FC<ICellString> = ({ cell }) => {
   const [value, setValue] = useCellInput(cell.children, cell.id);
-  const [content, setContent] = useState("");
 
-  const handleChange = (evt: React.FormEvent<HTMLDivElement>): void => {
-    console.log(content);
-    setContent(evt.currentTarget.innerHTML);
-  };
   return (
     <CellStringStyled
       color={cell.property.color} styleMode={cell.property.styleMode}
-      onInput={handleChange}
+      onBlur={setValue}
       contentEditable={true}
       suppressContentEditableWarning={true}
       placeholder="placeholder"

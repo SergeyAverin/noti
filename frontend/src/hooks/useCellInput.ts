@@ -6,11 +6,11 @@ import { changeCellChildren } from "@redux/features/noteSlice";
 export function useCellInput(
   initialValue: string,
   cellId: string
-): [string, (event: React.SyntheticEvent<HTMLDivElement>) => void] {
+): [string, (event: React.FocusEvent<HTMLHeadingElement>) => void] {
   const dispatch = useDispatch();
   const [value, setValue] = useState(initialValue);
   const handleChange = useCallback(
-    (event: React.SyntheticEvent<HTMLDivElement>) => {
+    (event: React.FocusEvent<HTMLHeadingElement>) => {
       setValue(event.currentTarget.innerHTML);
       dispatch(
         changeCellChildren({
