@@ -54,7 +54,6 @@ export const MenuItemStyled = styled.li`
   position: relative;
   list-style: none;
   padding: 8px 8px;
-  padding-right: 36px;
   width: 100%;
   border-radius: 8px;
   text-align: left;

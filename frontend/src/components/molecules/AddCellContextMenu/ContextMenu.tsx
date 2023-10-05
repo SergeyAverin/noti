@@ -4,11 +4,11 @@ import { v4 as uuidv4 } from "uuid";
 
 import {
   ContextMenuStyled,
-  MenuListStyled,
-  MenuItemStyled,
+  MenuListStyled
 } from "../../atoms/ContextMenu/ContextMenuStled";
 import { addCell } from "@redux/features/noteSlice";
 import { ICell, CellTypeEnum } from "@redux/types/cell";
+import { MenuItem } from "@atoms/ContextMenu";
 
 
 interface IContextMenuProps {
@@ -29,48 +29,48 @@ export const ContextMenu: React.FC<IContextMenuProps> = ({ cell }) => {
   return (
     <ContextMenuStyled>
       <MenuListStyled>
-        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.STRING)}>
+        <MenuItem onClickHeandler={() => addCellHandler(CellTypeEnum.STRING)}>
           String
-        </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.HEADING_LARGE)}>
+        </MenuItem>
+        <MenuItem onClickHeandler={() => addCellHandler(CellTypeEnum.HEADING_LARGE)}>
           H1
-        </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.HEADING_MEDIUM)}>
+        </MenuItem>
+        <MenuItem onClickHeandler={() => addCellHandler(CellTypeEnum.HEADING_MEDIUM)}>
           H2
-        </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.HEADING_SMALL)}>
+        </MenuItem>
+        <MenuItem onClickHeandler={() => addCellHandler(CellTypeEnum.HEADING_SMALL)}>
           H3
-        </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.CHECKBOX)}>
+        </MenuItem>
+        <MenuItem onClickHeandler={() => addCellHandler(CellTypeEnum.CHECKBOX)}>
           Checkbox
-        </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.LINE)}>
+        </MenuItem>
+        <MenuItem onClickHeandler={() => addCellHandler(CellTypeEnum.LINE)}>
           Line
-        </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler(CellTypeEnum.QUOTE)}>
+        </MenuItem>
+        <MenuItem onClickHeandler={() => addCellHandler(CellTypeEnum.QUOTE)}>
           Quote
-        </MenuItemStyled>
+        </MenuItem>
       </MenuListStyled>
     </ContextMenuStyled>
   );
 };
 /*
-        <MenuItemStyled onClick={() => addCellHandler("string")}>
+        <MenuItem onClickHeandler={() => addCellHandler("string")}>
           Toggle list
-        </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler("string")}>
+        </MenuItem>
+        <MenuItem onClickHeandler={() => addCellHandler("string")}>
           Page
-        </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler("string")}>
+        </MenuItem>
+        <MenuItem onClickHeandler={() => addCellHandler("string")}>
           Image
-        </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler("string")}>
+        </MenuItem>
+        <MenuItem onClickHeandler={() => addCellHandler("string")}>
           Table
-        </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler("string")}>
+        </MenuItem>
+        <MenuItem onClickHeandler={() => addCellHandler("string")}>
           Number list
-        </MenuItemStyled>
-        <MenuItemStyled onClick={() => addCellHandler("string")}>
+        </MenuItem>
+        <MenuItem onClickHeandler={() => addCellHandler("string")}>
           Mark list
-        </MenuItemStyled>
+        </MenuItem>
 */

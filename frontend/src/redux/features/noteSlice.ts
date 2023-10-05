@@ -16,7 +16,17 @@ interface INoteState {
 
 const initialState: INoteState = {
   note: undefined,
-  content: [],
+  content: [
+    {
+      children: "=",
+      id: uuidv4(),
+      property: {
+        color: CellPropertyColor.BLUE,
+        styleMode: CellStyleMode.BACKGROUND,
+      },
+      type: "heading_large",
+    },
+  ],
 };
 
 export const userSlice = createSlice({

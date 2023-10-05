@@ -4,11 +4,17 @@ import { useDispatch } from "react-redux";
 import {
   ContextMenuStyled,
   MenuListStyled,
-  MenuItemStyled,
   SubMenuListStyled,
 } from "../../atoms/ContextMenu/ContextMenuStled";
+import { Flex, Width } from "@atoms/index";
+import { MenuItem } from "@atoms/ContextMenu";
 import { addCell, removeCell, changeProperty, changeCellType } from "@redux/features/noteSlice";
 import { ICell, CellStyleMode, CellPropertyColor, CellTypeEnum } from "@redux/types/cell";
+
+import ArrowIcon from '@public/ArrowIcon.svg'
+import TrashIcon from '@public/TrashIcon.svg'
+import DublicateIcon from '@public/DublicateIcon.svg'
+import ReplacceIcon from '@public/ReplacceIcon.svg'
 
 
 interface IContextMenuProps {
@@ -32,55 +38,71 @@ export const ContextMenu: React.FC<IContextMenuProps> = ({ cell }) => {
   return (
     <ContextMenuStyled>
       <MenuListStyled>
-        <MenuItemStyled onClick={removeCellHeandler}>Delete cell</MenuItemStyled>
-        <MenuItemStyled>
+        <MenuItem onClickHeandler={() => removeCellHeandler()} icon={<TrashIcon width="20px" stroke='#fff' />}>Delete cell</MenuItem>
+        <MenuItem icon={<ReplacceIcon   stroke='#fff' />}>
+        <Width width="100%">
+        <Flex justifyContent="space-between" alignItems="center">
           Replace to
+          <ArrowIcon transform={"rotate(-90 0 0)"} />
+        </Flex>
+        </Width>
           <SubMenuListStyled>
-            <MenuItemStyled onClick={() => changeTypeHeandler(CellTypeEnum.STRING)}>string</MenuItemStyled>
-            <MenuItemStyled onClick={() => changeTypeHeandler(CellTypeEnum.HEADING_LARGE)}>heading_large</MenuItemStyled>
-            <MenuItemStyled onClick={() => changeTypeHeandler(CellTypeEnum.HEADING_MEDIUM)}>heading_medium</MenuItemStyled>
-            <MenuItemStyled onClick={() => changeTypeHeandler(CellTypeEnum.HEADING_SMALL)}>heading_small</MenuItemStyled>
-            <MenuItemStyled onClick={() => changeTypeHeandler(CellTypeEnum.CHECKBOX)}>checkbox</MenuItemStyled>
-            <MenuItemStyled onClick={() => changeTypeHeandler(CellTypeEnum.LINE)}>line</MenuItemStyled>
-            <MenuItemStyled onClick={() => changeTypeHeandler(CellTypeEnum.QUOTE)}>quote</MenuItemStyled>
-              
+            <MenuItem onClickHeandler={() => changeTypeHeandler(CellTypeEnum.STRING)}>string</MenuItem>
+            <MenuItem onClickHeandler={() => changeTypeHeandler(CellTypeEnum.HEADING_LARGE)}>heading_large</MenuItem>
+            <MenuItem onClickHeandler={() => changeTypeHeandler(CellTypeEnum.HEADING_MEDIUM)}>heading_medium</MenuItem>
+            <MenuItem onClickHeandler={() => changeTypeHeandler(CellTypeEnum.HEADING_SMALL)}>heading_small</MenuItem>
+            <MenuItem onClickHeandler={() => changeTypeHeandler(CellTypeEnum.CHECKBOX)}>checkbox</MenuItem>
+            <MenuItem onClickHeandler={() => changeTypeHeandler(CellTypeEnum.LINE)}>line</MenuItem>
+            <MenuItem onClickHeandler={() => changeTypeHeandler(CellTypeEnum.QUOTE)}>quote</MenuItem>
             </SubMenuListStyled>  
-        </MenuItemStyled>
-        <MenuItemStyled onClick={dublicateCellHeandler}>Dublicate</MenuItemStyled>
+        </MenuItem>
+        <MenuItem onClickHeandler={() => dublicateCellHeandler()} icon={<DublicateIcon  width="20px" stroke='#fff' />}>Dublicate</MenuItem>
       </MenuListStyled>
       <MenuListStyled>
-        <MenuItemStyled>
-          Select bg color
+        <MenuItem>
+          
+          <Width width="100%">
+        <Flex justifyContent="space-between" alignItems="center">
+        Select bg color
+          <ArrowIcon transform={"rotate(-90 0 0)"} />
+        </Flex>
+        </Width>
           <SubMenuListStyled>
-            <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.RED, styleMode: CellStyleMode.BACKGROUND})}>red</MenuItemStyled>
-            <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.BLUE, styleMode: CellStyleMode.BACKGROUND})}>blue</MenuItemStyled>
-            <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.GREEN, styleMode: CellStyleMode.BACKGROUND})}>green</MenuItemStyled>
+            <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.RED, styleMode: CellStyleMode.BACKGROUND})}>red</MenuItem>
+            <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.BLUE, styleMode: CellStyleMode.BACKGROUND})}>blue</MenuItem>
+            <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.GREEN, styleMode: CellStyleMode.BACKGROUND})}>green</MenuItem>
 
-            <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.YELLOW, styleMode: CellStyleMode.BACKGROUND})}>yellow</MenuItemStyled>
-            <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.PINK, styleMode: CellStyleMode.BACKGROUND})}>pink</MenuItemStyled>
-            <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.ORANGE, styleMode: CellStyleMode.BACKGROUND})}>orange</MenuItemStyled>
+            <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.YELLOW, styleMode: CellStyleMode.BACKGROUND})}>yellow</MenuItem>
+            <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.PINK, styleMode: CellStyleMode.BACKGROUND})}>pink</MenuItem>
+            <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.ORANGE, styleMode: CellStyleMode.BACKGROUND})}>orange</MenuItem>
 
-            <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.PURPLE, styleMode: CellStyleMode.BACKGROUND})}>purple</MenuItemStyled>
-            <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.BROWN, styleMode: CellStyleMode.BACKGROUND})}>brown</MenuItemStyled>
-            <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.GREY, styleMode: CellStyleMode.BACKGROUND})}>greu</MenuItemStyled>
+            <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.PURPLE, styleMode: CellStyleMode.BACKGROUND})}>purple</MenuItem>
+            <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.BROWN, styleMode: CellStyleMode.BACKGROUND})}>brown</MenuItem>
+            <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.GREY, styleMode: CellStyleMode.BACKGROUND})}>greu</MenuItem>
           </SubMenuListStyled>
-        </MenuItemStyled>
-        <MenuItemStyled>
+        </MenuItem>
+        <MenuItem>
+         
+          <Width width="100%">
+        <Flex justifyContent="space-between" alignItems="center">
           Select fg color
+          <ArrowIcon transform={"rotate(-90 0 0)"} />
+        </Flex>
+        </Width>
           <SubMenuListStyled>
-          <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.RED, styleMode: CellStyleMode.FONT_COLOR})}>red</MenuItemStyled>
-            <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.BLUE, styleMode: CellStyleMode.FONT_COLOR})}>blue</MenuItemStyled>
-            <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.GREEN, styleMode: CellStyleMode.FONT_COLOR})}>green</MenuItemStyled>
+          <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.RED, styleMode: CellStyleMode.FONT_COLOR})}>red</MenuItem>
+            <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.BLUE, styleMode: CellStyleMode.FONT_COLOR})}>blue</MenuItem>
+            <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.GREEN, styleMode: CellStyleMode.FONT_COLOR})}>green</MenuItem>
 
-            <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.YELLOW, styleMode: CellStyleMode.FONT_COLOR})}>yellow</MenuItemStyled>
-            <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.PINK, styleMode: CellStyleMode.FONT_COLOR})}>pink</MenuItemStyled>
-            <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.ORANGE, styleMode: CellStyleMode.FONT_COLOR})}>orange</MenuItemStyled>
+            <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.YELLOW, styleMode: CellStyleMode.FONT_COLOR})}>yellow</MenuItem>
+            <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.PINK, styleMode: CellStyleMode.FONT_COLOR})}>pink</MenuItem>
+            <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.ORANGE, styleMode: CellStyleMode.FONT_COLOR})}>orange</MenuItem>
 
-            <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.PURPLE, styleMode: CellStyleMode.FONT_COLOR})}>purple</MenuItemStyled>
-            <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.BROWN, styleMode: CellStyleMode.FONT_COLOR})}>brown</MenuItemStyled>
-            <MenuItemStyled onClick={() => changePropertyHeandler({color: CellPropertyColor.GREY, styleMode: CellStyleMode.FONT_COLOR})}>grey</MenuItemStyled>
+            <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.PURPLE, styleMode: CellStyleMode.FONT_COLOR})}>purple</MenuItem>
+            <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.BROWN, styleMode: CellStyleMode.FONT_COLOR})}>brown</MenuItem>
+            <MenuItem onClickHeandler={() => changePropertyHeandler({color: CellPropertyColor.GREY, styleMode: CellStyleMode.FONT_COLOR})}>grey</MenuItem>
           </SubMenuListStyled>
-        </MenuItemStyled>
+        </MenuItem>
       </MenuListStyled>
     </ContextMenuStyled>
   );
