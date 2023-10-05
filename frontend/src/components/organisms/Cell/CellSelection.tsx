@@ -26,6 +26,7 @@ export const CellSelection: React.FC<ICellSelectionProps> = ({ cell }) => {
           color={cell.property.color}
           styleMode={cell.property.styleMode}
           data-cell-type={cell.type}
+          contentEditable={true}
           onBlur={setValue}
         >
           {value}
@@ -36,6 +37,7 @@ export const CellSelection: React.FC<ICellSelectionProps> = ({ cell }) => {
           color={cell.property.color}
           styleMode={cell.property.styleMode}
           data-cell-type={cell.type}
+          contentEditable={true}
           onBlur={setValue}
         >
           {value}
@@ -46,6 +48,7 @@ export const CellSelection: React.FC<ICellSelectionProps> = ({ cell }) => {
           color={cell.property.color}
           styleMode={cell.property.styleMode}
           data-cell-type={cell.type}
+          contentEditable={true}
           onBlur={setValue}
         >
           {value}
@@ -56,6 +59,7 @@ export const CellSelection: React.FC<ICellSelectionProps> = ({ cell }) => {
           color={cell.property.color}
           styleMode={cell.property.styleMode}
           data-cell-type={cell.type}
+          contentEditable={true}
           onBlur={setValue}
         >
           {value}
@@ -81,6 +85,7 @@ export const CellSelection: React.FC<ICellSelectionProps> = ({ cell }) => {
           color={cell.property.color}
           styleMode={cell.property.styleMode}
           data-cell-type={cell.type}
+          contentEditable={true}
         >
           {value}
         </Quote>

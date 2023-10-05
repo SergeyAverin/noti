@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { NoteContentStyled, NoteStyled } from "./NotePageTemplateStyled";
@@ -11,9 +11,10 @@ import { Cell } from "@organisms/Cell";
 import { INote } from "@redux/types/note";
 import { cellsSelector } from "@redux/selectors/note";
 import { TextFormattingTools } from "@molecules/TextFormattingTools";
-import { changeCellPosition } from "@redux/features/noteSlice";
+import { changeCellPosition, setContent, setNote } from "@redux/features/noteSlice";
 import { ICell } from "@redux/types/cell";
 import { DroppableCell } from "@molecules/DroppableCell";
+import { useLoadNoteMutation, useSaveNoteMutation } from "@redux/api/noteApi";
 
 interface INotePageTemplateProps {
   note: INote;
@@ -24,7 +25,20 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
   note,
 }) => {
   const dispatch = useDispatch();
+  const [saveNote] = useSaveNoteMutation()
+  const [loadNote] = useLoadNoteMutation()
   const cells = useSelector(cellsSelector);
+
+  useEffect(()=>{
+    saveNote({slug: note.slug, content: cells})
+  }, [cells])
+  useEffect(()=>{
+    loadNote(note.slug).then(data => {
+      data = data as { data: ICell[] }
+      dispatch(setContent(data.data))
+    })
+  }, [note.slug])
+
   const handleDrop = (item: {cell: ICell}, index: number) => {
     dispatch(changeCellPosition({cell: item.cell, index: index}))
   };

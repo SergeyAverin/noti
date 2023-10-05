@@ -16,29 +16,7 @@ interface INoteState {
 
 const initialState: INoteState = {
   note: undefined,
-  content: [
-    {
-      children: "=",
-      id: uuidv4(),
-      property: {
-        color: CellPropertyColor.BLUE,
-        styleMode: CellStyleMode.BACKGROUND,
-      },
-      type: "heading_large",
-    },
-    {
-      children: "666",
-      id: uuidv4(),
-      property: {},
-      type: "string",
-    },
-    {
-      children: "test",
-      id: uuidv4(),
-      property: {},
-      type: "string",
-    },
-  ],
+  content: [],
 };
 
 export const userSlice = createSlice({
@@ -59,6 +37,9 @@ export const userSlice = createSlice({
     },
     setNote(state, action: PayloadAction<INote>) {
       state.note = action.payload;
+    },
+    setContent(state, action: PayloadAction<ICell[]>) {
+      state.content = action.payload;
     },
     changeCellChildren(
       state,
@@ -126,4 +107,5 @@ export const {
   changeProperty,
   changeCellType,
   changeCellPosition,
+  setContent,
 } = userSlice.actions;

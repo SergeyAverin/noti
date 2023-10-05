@@ -27,11 +27,12 @@ const [{ isDragging }, drag] = useDrag({
   return (
     <CellWrapper
     ref={isDraggingStarted?drag:null}
+    contentEditable={false}
     >
-      <CellStyled ref={parentDivRef} style={{ opacity: isDragging ? 0.5 : 1 }}>
+      <CellStyled ref={parentDivRef} style={{ opacity: isDragging ? 0.5 : 1 }}  contentEditable={false}>
         <CellSelection cell={cell} />
       </CellStyled>
-      <CellTools>
+      <CellTools contentEditable={false}>
         <AddCellContextMenu cell={cell} />
         <div onMouseDown={() => setIsDraggingStarted(true)} onMouseLeave={()=>setIsDraggingStarted(false)}>
           <CellPropertyContextMenu cell={cell} />
