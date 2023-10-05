@@ -8,8 +8,8 @@ import {
   Checkbox,
   Line,
   Quote,
+  CellStringStyled,
 } from "./CellStyled";
-import { CellString } from "./CellString";
 import { useCellInput } from "@hooks/useCellInput";
 
 interface ICellSelectionProps {
@@ -22,7 +22,15 @@ export const CellSelection: React.FC<ICellSelectionProps> = ({ cell }) => {
   return (
     <>
       {cell.type == CellTypeEnum.STRING && (
-        <CellString data-cell-type={cell.type} cell={cell} />
+        <CellStringStyled
+          color={cell.property.color}
+          styleMode={cell.property.styleMode}
+          data-cell-type={cell.type}
+          contentEditable={true}
+          onBlur={setValue}
+        >
+          {value}
+        </CellStringStyled>
       )}
       {cell.type == CellTypeEnum.HEADING_LARGE && (
         <HeadingLarge
