@@ -35,7 +35,7 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
   useEffect(()=>{
     loadNote(note.slug).then(data => {
       data = data as { data: ICell[] }
-      //dispatch(setContent(data.data))
+      dispatch(setContent(data.data))
     })
   }, [note.slug])
 

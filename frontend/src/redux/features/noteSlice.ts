@@ -16,17 +16,7 @@ interface INoteState {
 
 const initialState: INoteState = {
   note: undefined,
-  content: [
-    {
-      children: "=",
-      id: uuidv4(),
-      property: {
-        color: CellPropertyColor.BLUE,
-        styleMode: CellStyleMode.BACKGROUND,
-      },
-      type: "heading_large",
-    },
-  ],
+  content: [],
 };
 
 export const userSlice = createSlice({
@@ -49,7 +39,17 @@ export const userSlice = createSlice({
       state.note = action.payload;
     },
     setContent(state, action: PayloadAction<ICell[]>) {
-      state.content = action.payload;
+      if (action.payload.length != 0) {
+        state.content = action.payload;
+      } else {
+        const cell = {
+          children: "=",
+          id: uuidv4(),
+          property: {},
+          type: CellTypeEnum.STRING,
+        };
+        state.content = [cell];
+      }
     },
     changeCellChildren(
       state,
