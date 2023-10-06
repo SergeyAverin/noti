@@ -11,6 +11,7 @@ import {
   CellStringStyled,
 } from "./CellStyled";
 import { useCellInput } from "@hooks/useCellInput";
+import { CheckBox } from "./CheckBox";
 
 interface ICellSelectionProps {
   cell: ICell;
@@ -66,12 +67,7 @@ export const CellSelection: React.FC<ICellSelectionProps> = ({ cell }) => {
         </HeadingSmall>
       )}
       {cell.type == CellTypeEnum.CHECKBOX && (
-        <Checkbox
-          color={cell.property.color}
-          styleMode={cell.property.styleMode}
-          data-cell-type={cell.type}
-          value={cell.children}
-        />
+        <CheckBox cell={cell} setValue={setValue}/>
       )}
       {cell.type == CellTypeEnum.LINE && (
         <Line
