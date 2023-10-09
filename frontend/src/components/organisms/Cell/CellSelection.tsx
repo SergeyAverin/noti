@@ -67,7 +67,7 @@ export const CellSelection: React.FC<ICellSelectionProps> = ({ cell }) => {
         </HeadingSmall>
       )}
       {cell.type == CellTypeEnum.CHECKBOX && (
-        <CheckBox cell={cell} setValue={setValue}/>
+        <CheckBox cell={cell} setValue={setValue} data-cell-type={cell.type}/>
       )}
       {cell.type == CellTypeEnum.LINE && (
         <Line

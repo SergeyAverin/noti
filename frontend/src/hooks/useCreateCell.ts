@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { addCell } from "@redux/features/noteSlice";
 import { Flex, Position } from "@atoms/index";
-import { ICell } from "@redux/types/cell";
+import { CellTypeEnum, ICell } from "@redux/types/cell";
 
 export const useCreateCell = (cell: ICell) => {
   const parentDivRef = useRef<HTMLDivElement>(null);
@@ -25,17 +25,19 @@ export const useCreateCell = (cell: ICell) => {
         for (const addedNode of mutation.addedNodes) {
           if (addedNode && addedNode.nodeName === "DIV") {
             (addedNode as HTMLElement).remove();
-            const cellType = (addedNode as HTMLElement).getAttribute(
-              "data-cell-type"
-            );
-            const newCell: ICell = {
+            const newCell = {
               children: addedNode.textContent ? addedNode.textContent : "_",
               property: {},
               // type: cellType ? cellType : 'string',
-              type: "string",
+              type: CellTypeEnum.STRING,
               id: uuidv4(),
             };
-            dispatch(addCell({ newCell, oldCellId: cell.id }));
+            if (cell.type == CellTypeEnum.CHECKBOX) {
+              newCell.type = CellTypeEnum.CHECKBOX;
+              dispatch(addCell({ newCell, oldCellId: cell.id }));
+            } else {
+              dispatch(addCell({ newCell, oldCellId: cell.id }));
+            }
           }
         }
       }
