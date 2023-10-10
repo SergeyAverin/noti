@@ -12,10 +12,12 @@ import { INote } from "@redux/types/note";
 interface INoteState {
   note: INote | undefined;
   content: ICell[];
+  newCell: ICell | null;
 }
 
 const initialState: INoteState = {
   note: undefined,
+  newCell: null,
   content: [],
 };
 
@@ -76,6 +78,7 @@ export const userSlice = createSlice({
         type: action.payload.newCell.type,
       };
       state.content.splice(selectedIndex + 1, 0, newCell);
+      state.newCell = newCell;
     },
     removeCell(state, action: PayloadAction<{ id: string }>) {
       state.content = state.content.filter(

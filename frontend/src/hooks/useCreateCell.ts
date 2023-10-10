@@ -26,7 +26,7 @@ export const useCreateCell = (cell: ICell) => {
           if (addedNode && addedNode.nodeName === "DIV") {
             (addedNode as HTMLElement).remove();
             const newCell = {
-              children: addedNode.textContent ? addedNode.textContent : "_",
+              children: addedNode.textContent ? addedNode.textContent : "",
               property: {},
               // type: cellType ? cellType : 'string',
               type: CellTypeEnum.STRING,
