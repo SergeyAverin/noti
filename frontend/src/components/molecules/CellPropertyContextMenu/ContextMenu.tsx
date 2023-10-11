@@ -39,7 +39,7 @@ export const ContextMenu: React.FC<IContextMenuProps> = ({ cell }) => {
     <ContextMenuStyled>
       <MenuListStyled>
         <MenuItem onClickHeandler={() => removeCellHeandler()} icon={<TrashIcon width="20px" stroke='#fff' />}>Delete cell</MenuItem>
-        <MenuItem icon={<ReplacceIcon   stroke='#fff' />}>
+        <MenuItem icon={<ReplacceIcon transform={"rotate(-90 0 0)"}  stroke='#fff' />}>
         <Width width="100%">
         <Flex justifyContent="space-between" alignItems="center">
           Replace to
