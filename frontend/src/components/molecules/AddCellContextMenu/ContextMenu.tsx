@@ -17,7 +17,7 @@ interface IContextMenuProps {
 
 export const ContextMenu: React.FC<IContextMenuProps> = ({ cell }) => {
   const dispatch = useDispatch();
-  const addCellHandler = (cellType: string) => {
+  const addCellHandler = (cellType: CellTypeEnum) => {
     const newCell: ICell = {
       children: "_",
       property: {},
