@@ -25,7 +25,7 @@ export enum CellStyleMode {
 }
 export interface ICell {
   id: string;
-  type: string;
+  type: CellTypeEnum;
   property: {
     styleMode?: CellStyleMode;
     color?: CellPropertyColor;

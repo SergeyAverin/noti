@@ -18,7 +18,14 @@ interface INoteState {
 const initialState: INoteState = {
   note: undefined,
   newCell: null,
-  content: [],
+  content: [
+    {
+      id: uuidv4(),
+      type: CellTypeEnum.STRING,
+      property: { color: CellPropertyColor.RED },
+      children: "_",
+    },
+  ],
 };
 
 export const userSlice = createSlice({
@@ -71,14 +78,17 @@ export const userSlice = createSlice({
       const selectedIndex = state.content.findIndex(
         (cell) => action.payload.oldCellId == cell.id
       );
+
       const newCell = {
         children: action.payload.newCell.children,
         id: action.payload.newCell.id,
         property: action.payload.newCell.property,
         type: action.payload.newCell.type,
       };
-      state.content.splice(selectedIndex + 1, 0, newCell);
+
+      state.content.splice(selectedIndex + 1, 0, action.payload.newCell);
       state.newCell = newCell;
+      console.log(state.content);
     },
     removeCell(state, action: PayloadAction<{ id: string }>) {
       state.content = state.content.filter(
