@@ -16,15 +16,5 @@ export { Table } from "./Table/Table";
 export { Button } from "./Button/Button";
 export { Width } from "./Width/Width";
 export { Wrapper } from "./Wrapper/Wrapper";
-export { ContextMenuItem } from "./ContextMenuItem/ContextMenuItem";
-export { ContextMenuItemDropDown } from "./ContextMenuItem/ContextMenuItemDropDown";
 export { Popup } from "./Popup/Popup";
 export { Tooltip } from "./Tooltip/Tooltip";
-
-export {
-  ContextMenuStyled,
-  MenuItemStyled,
-  MenuListStyled,
-  SubMenuListStyled,
-} from "./ContextMenu/ContextMenuStled";
-export { OpenContextMenuButton } from "./ContextMenu/OpenContextMenuButton";
