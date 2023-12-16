@@ -23,7 +23,8 @@ export const DropDownMenu: React.FC<IDropDownMenuProsp> = ({
   isOpenDefaultValue
 }) => {
   const [isOpen, setIsOpen] = useState(isOpenDefaultValue);
-  const onClickHeandler = () => {
+  const onClickHeandler = (event: React.MouseEvent) => {
+    event.preventDefault();
     setIsOpen((prev) => !prev);
   };
   return (

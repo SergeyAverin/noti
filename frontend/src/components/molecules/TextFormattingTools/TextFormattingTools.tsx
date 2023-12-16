@@ -6,6 +6,7 @@ import {
 } from "./TextFormattingToolsStyled";
 import { Flex, Margin, Position } from "@atoms/index";
 import { Tool } from "./Tool";
+import { DropDownTool, BackgroundColor } from "./DropDownTool";
 
 import AlignLeftIcon from '@public/AlignLeftIcon.svg';
 import AlignRightIcon from '@public/AlignRightIcon.svg';
@@ -42,6 +43,7 @@ export const TextFormattingTools: React.FC = () => {
         })
     }
   }
+
   return (
     <TextFormattingToolsStyled>
       <Flex alignItems="center" justifyContent="flex-start">
@@ -56,6 +58,18 @@ export const TextFormattingTools: React.FC = () => {
             <ArrowAfterIcon />
           </Tool>
         </Margin>
+
+        <SeparatorStyled />
+
+        <Margin>
+          <DropDownTool />
+        </Margin>
+        <SeparatorStyled />
+
+        <Margin>
+          <BackgroundColor />
+        </Margin>
+        
 
         <SeparatorStyled />
 
