@@ -11,6 +11,9 @@ import AlignLeftIcon from '@public/AlignLeftIcon.svg';
 import AlignRightIcon from '@public/AlignRightIcon.svg';
 import AlignCenterIcon from '@public/AlignCenterIcon.svg';
 import AlignFullIcon from '@public/AlignFullIcon.svg';
+import MarkerListIcon from '@public/MarkerListIcon.svg';
+import NumberListIcon from '@public/NumberListIcon.svg'
+
 
 
 export const TextFormattingTools: React.FC = () => {
@@ -72,9 +75,23 @@ export const TextFormattingTools: React.FC = () => {
           </Tool>
         </Margin>
 
-        <Margin ml={15}>
+        <Margin ml={15} mr={15}>
           <Tool isActive={commandsStates.isStrikethrough}  onClick={() => {getSelect('justifyFull')}}>
            <AlignFullIcon />
+          </Tool>
+        </Margin>
+
+        <SeparatorStyled />
+
+        <Margin ml={15}>
+          <Tool isActive={commandsStates.isStrikethrough}  onClick={() => {getSelect('insertOrderedList')}}>
+            <MarkerListIcon />
+          </Tool>
+        </Margin>
+
+        <Margin ml={15}>
+          <Tool isActive={commandsStates.isStrikethrough}  onClick={() => {getSelect('insertUnorderedList')}}>
+            <NumberListIcon />
           </Tool>
         </Margin>
 
