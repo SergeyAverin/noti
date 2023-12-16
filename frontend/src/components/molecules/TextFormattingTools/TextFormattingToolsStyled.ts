@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 
 export const TextFormattingToolsStyled = styled.div`
-  position: absolute;
-  right: 0;
-  top: 0;
+  margin-bottom: 15px;
+  border-bottom: 1px solid ${(props) => props.theme.color.fg};
+  padding-bottom: 15px;
 `;
 
 interface IToolStyledProps {
@@ -25,4 +25,9 @@ export const ToolStyled = styled.div<IToolStyledProps>`
   height: 30px;
   transition: 0.3s;
   user-select: none;
+`;
+
+export const SeparatorStyled = styled.div`
+  border-right: 1px solid ${(props) => props.theme.color.fg};
+  height: 25px;
 `;

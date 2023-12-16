@@ -4,17 +4,18 @@ import { ToolStyled } from "./TextFormattingToolsStyled";
 
 interface IToolProps {
     children: React.ReactNode,
-    onClick: Function
+    onClick: Function, 
+    isActive: boolean
 }
-export const Tool: React.FC<IToolProps> = ({ children, onClick }) => {
-    const [isActive, setIsActive] = useState(false)
+export const Tool: React.FC<IToolProps> = ({ children, onClick, isActive }) => {
     const onClickHeandler = () => {
         onClick()
-        setIsActive((prev) => !prev)
     }
     return (
         <ToolStyled isActive={isActive} onClick={onClickHeandler}>
-            { children }
+            <div>
+                { children }
+            </div>
         </ToolStyled>
     )
 }

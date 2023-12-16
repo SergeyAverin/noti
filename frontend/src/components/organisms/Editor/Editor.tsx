@@ -4,6 +4,7 @@ import Markdown from "react-markdown";
 import { Marked } from "@ts-stack/markdown";
 
 import { ICell } from "@redux/types/cell";
+import { TextFormattingTools } from "@molecules/TextFormattingTools";
 
 interface IEditorProps {
   cells: ICell[];
@@ -33,13 +34,12 @@ export const Editor: React.FC<IEditorProps> = ({ cells }) => {
   };
 
   const handleBlur = () => {
-    setContent(Marked.parse(content));
-    console.log(Marked.parse(content));
+    console.log(content)
   };
 
   return (
     <>
-      <button onClick={toMarkDown}>to mark down</button>
+      <TextFormattingTools />
       <ContentEditable
         onKeyDown={handleKeyPress}
         html={content}
