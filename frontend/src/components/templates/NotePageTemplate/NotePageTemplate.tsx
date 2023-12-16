@@ -12,7 +12,6 @@ import { cellsSelector } from "@redux/selectors/note";
 import { TextFormattingTools } from "@molecules/TextFormattingTools";
 import { changeCellPosition, setContent, setNote } from "@redux/features/noteSlice";
 import { ICell } from "@redux/types/cell";
-import { DroppableCell } from "@molecules/DroppableCell";
 import { useLoadNoteMutation, useSaveNoteMutation } from "@redux/api/noteApi";
 import { Editor } from "@organisms/Editor/Editor";
 
@@ -49,11 +48,9 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
       <NoteStyled>
         <Width width="50%" isMarginAuto={true}>
           <Position position="relative">
-            <TextFormattingTools />
             <Margin mt={50} mb={30}>
               <Title title={note.title} slug={note.slug} />
             </Margin>
-            <DroppableCell onDrop={(item:  {cell: ICell}) => handleDrop(item, 0)} />
             <Editor cells={cells} />
           </Position>
         </Width>    
