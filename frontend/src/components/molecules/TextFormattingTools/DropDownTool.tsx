@@ -5,7 +5,7 @@ import { DropDownMenu, Position } from "@atoms/index";
 
 import AlignFullIcon from "@public/AlignFullIcon.svg";
 
-const DropDownToolItem = styled.div`
+export const DropDownToolItem = styled.div`
   background: ${(props) => props.theme.color.secondary};
   padding: 15px;
   border-bottom: 1px solid ${(props) => props.theme.color.fg};

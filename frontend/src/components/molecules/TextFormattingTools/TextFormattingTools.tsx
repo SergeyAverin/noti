@@ -7,6 +7,7 @@ import {
 import { Flex, Margin, Position } from "@atoms/index";
 import { Tool } from "./Tool";
 import { DropDownTool, BackgroundColor } from "./DropDownTool";
+import { FormatBlock } from "./FormatBlock";
 
 import AlignLeftIcon from '@public/AlignLeftIcon.svg';
 import AlignRightIcon from '@public/AlignRightIcon.svg';
@@ -68,6 +69,12 @@ export const TextFormattingTools: React.FC = () => {
 
         <Margin>
           <BackgroundColor />
+        </Margin>
+
+        <SeparatorStyled />
+
+        <Margin>
+          <FormatBlock />
         </Margin>
         
 
