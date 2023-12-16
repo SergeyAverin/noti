@@ -7,7 +7,6 @@ import { Title } from "@molecules/Title";
 import { DebugAlert } from "@molecules/DebugAlert";
 import { TrashAlert } from "@organisms/TrashAlert";
 import { NotificationList } from "@organisms/NotificationList";
-import { Cell } from "@organisms/Cell";
 import { INote } from "@redux/types/note";
 import { cellsSelector } from "@redux/selectors/note";
 import { TextFormattingTools } from "@molecules/TextFormattingTools";
@@ -15,6 +14,7 @@ import { changeCellPosition, setContent, setNote } from "@redux/features/noteSli
 import { ICell } from "@redux/types/cell";
 import { DroppableCell } from "@molecules/DroppableCell";
 import { useLoadNoteMutation, useSaveNoteMutation } from "@redux/api/noteApi";
+import { Editor } from "@organisms/Editor/Editor";
 
 interface INotePageTemplateProps {
   note: INote;
@@ -29,6 +29,7 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
   const [loadNote] = useLoadNoteMutation()
   const cells = useSelector(cellsSelector);
 
+  /*
   useEffect(()=>{
     saveNote({slug: note.slug, content: cells})
   }, [cells])
@@ -38,6 +39,7 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
       dispatch(setContent(data.data))
     })
   }, [note.slug])
+  */
 
   const handleDrop = (item: {cell: ICell}, index: number) => {
     dispatch(changeCellPosition({cell: item.cell, index: index}))
@@ -52,17 +54,9 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
               <Title title={note.title} slug={note.slug} />
             </Margin>
             <DroppableCell onDrop={(item:  {cell: ICell}) => handleDrop(item, 0)} />
-            <div contentEditable={true} style={{outline: 'none'}}>
-              {cells.map((cell, index) => (
-                <>
-                  <Cell cell={cell}  key={cell.id} />
-                  <DroppableCell onDrop={(item:  {cell: ICell}) => handleDrop(item, index+1)} />
-                </>
-
-              ))}
-            </div>
+            <Editor cells={cells} />
           </Position>
-        </Width>
+        </Width>    
       </NoteStyled>
       {note.isTrash && <TrashAlert note={note} />}
       <NotificationList />
