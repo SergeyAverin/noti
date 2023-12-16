@@ -13,6 +13,8 @@ import AlignCenterIcon from '@public/AlignCenterIcon.svg';
 import AlignFullIcon from '@public/AlignFullIcon.svg';
 import MarkerListIcon from '@public/MarkerListIcon.svg';
 import NumberListIcon from '@public/NumberListIcon.svg'
+import ArrowBeforeIcon from '@public/ArrowBeforeIcon.svg'
+import ArrowAfterIcon from '@public/ArrowAfterIcon.svg'
 
 
 
@@ -43,6 +45,19 @@ export const TextFormattingTools: React.FC = () => {
   return (
     <TextFormattingToolsStyled>
       <Flex alignItems="center" justifyContent="flex-start">
+
+        <Margin>
+            <Tool isActive={commandsStates.isUnderline}  onClick={() => {getSelect('undo')}}>
+              <ArrowBeforeIcon />
+            </Tool>
+          </Margin>
+        <Margin ml={15} mr={15}>
+          <Tool isActive={commandsStates.isStrikethrough}  onClick={() => {getSelect('redo')}}>
+            <ArrowAfterIcon />
+          </Tool>
+        </Margin>
+
+        <SeparatorStyled />
 
         <Tool isActive={commandsStates.isItalic} onClick={() => {getSelect('italic')}}>I</Tool>
         <Margin ml={15}>
@@ -89,7 +104,7 @@ export const TextFormattingTools: React.FC = () => {
           </Tool>
         </Margin>
 
-        <Margin ml={15}>
+        <Margin ml={15} mr={15}>
           <Tool isActive={commandsStates.isStrikethrough}  onClick={() => {getSelect('insertUnorderedList')}}>
             <NumberListIcon />
           </Tool>
