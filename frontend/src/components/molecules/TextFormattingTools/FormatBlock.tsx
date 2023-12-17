@@ -19,6 +19,16 @@ export const FormatBlock: React.FC = () => {
       event.preventDefault();
       blur();
     };
+
+    const ChackBox = () => {
+      const selection = window.getSelection();
+      if (selection) 
+      {
+        const text = selection.toString()
+        console.log(text)
+        document.execCommand('insertHTML', false, '<input type="checkbox" id="myCheckbox">');
+      }
+    }
   
     return (
       <Position position="relative" top="0" left="0">
@@ -29,6 +39,14 @@ export const FormatBlock: React.FC = () => {
               <DropDownToolItem
                 onClick={(event: React.MouseEvent) => {
                   changeFormatBlock('H1');
+                }}
+              >
+                h1
+              </DropDownToolItem>
+
+              <DropDownToolItem
+                onClick={(event: React.MouseEvent) => {
+                  ChackBox();
                 }}
               >
                 h1
