@@ -3,6 +3,7 @@ import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
 
 import { ICell } from "@redux/types/cell";
 import { TextFormattingTools } from "@molecules/TextFormattingTools";
+import { EditorStyled } from "./EditorStyled";
 
 interface IEditorProps {
   cells: ICell[];
@@ -22,10 +23,13 @@ export const Editor: React.FC<IEditorProps> = ({ cells }) => {
   return (
     <>
       <TextFormattingTools />
-      <ContentEditable
-        html={content}
-        onChange={onContentChange}
-      />
+      <EditorStyled>
+        <ContentEditable
+          html={content}
+          onChange={onContentChange}
+          placeholder="Write your text"
+        />
+      </EditorStyled>
     </>
   );
 };
