@@ -18,3 +18,7 @@ export { Width } from "./Width/Width";
 export { Wrapper } from "./Wrapper/Wrapper";
 export { Popup } from "./Popup/Popup";
 export { Tooltip } from "./Tooltip/Tooltip";
+export { ToolButton } from "./ToolButton/ToolButton";
+export { Separator } from "./Separator/Separator";
+export { ToolButtonDropDown } from "./ToolButtonDropDown/ToolButtonDropDown";
+export { ToolButtonDropDownItem } from "./ToolButtonDropDown/ToolButtonDropDownItem";

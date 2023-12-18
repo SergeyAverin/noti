@@ -9,8 +9,8 @@ import { NotePageTemplate } from "@templates/NotePageTemplate";
 import { Header } from "@organisms/Header";
 import { setNote } from "@redux/features/noteSlice";
 import { noteSelector } from "@redux/selectors/note";
-import { TextFormattingTools } from "@molecules/TextFormattingTools";
 import { useTheme } from "styled-components";
+import { ToolsBar } from "@organisms/ToolsBar";
 
 
 const NotesPage: React.FC = () => {
@@ -34,7 +34,7 @@ const NotesPage: React.FC = () => {
         <>
           <Header note={note}  />
           <Margin ml={parseInt(theme.panelsSize.sideBarSize)} mt={parseInt(theme.panelsSize.headerSize)}>
-            <TextFormattingTools />
+            <ToolsBar />
           </Margin>
           <NotePageTemplate note={note} />
         </>
