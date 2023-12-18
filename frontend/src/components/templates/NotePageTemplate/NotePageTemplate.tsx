@@ -44,11 +44,11 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
     dispatch(changeCellPosition({cell: item.cell, index: index}))
   };
   return (
-    <div>
+    <>
       <NoteStyled>
         <Width width="50%" isMarginAuto={true}>
           <Position position="relative">
-            <Margin mt={50} mb={30}>
+            <Margin  mb={30}>
               <Title title={note.title} slug={note.slug} />
             </Margin>
             <Editor cells={cells} />
@@ -58,6 +58,6 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
       {note.isTrash && <TrashAlert note={note} />}
       <NotificationList />
       <DebugAlert />
-    </div>
+    </>
   );
 };

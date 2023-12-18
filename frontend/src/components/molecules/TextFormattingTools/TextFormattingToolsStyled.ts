@@ -1,9 +1,10 @@
 import styled, { css } from "styled-components";
 
 export const TextFormattingToolsStyled = styled.div`
-  margin-bottom: 15px;
   border-bottom: 1px solid ${(props) => props.theme.color.fg};
-  padding-bottom: 15px;
+  padding-bottom: 8px;
+  display: flex;
+  justify-content: center;
 `;
 
 interface IToolStyledProps {

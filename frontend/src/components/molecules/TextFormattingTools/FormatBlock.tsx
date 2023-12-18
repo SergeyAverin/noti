@@ -26,7 +26,7 @@ export const FormatBlock: React.FC = () => {
       {
         const text = selection.toString()
         console.log(text)
-        document.execCommand('insertHTML', false, '<input type="checkbox" id="myCheckbox">');
+        document.execCommand('insertHTML', false, '<input type="checkbox" id="myCheckbox" contenteditable="false">');
       }
     }
   

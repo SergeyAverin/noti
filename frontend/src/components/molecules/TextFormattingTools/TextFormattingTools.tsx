@@ -18,6 +18,13 @@ import NumberListIcon from "@public/NumberListIcon.svg";
 import ArrowBeforeIcon from "@public/ArrowBeforeIcon.svg";
 import ArrowAfterIcon from "@public/ArrowAfterIcon.svg";
 
+
+for (let i of [3,5,6]) {
+  if (i == 0) {
+    console.log('3')
+  }
+}
+
 export const TextFormattingTools: React.FC = () => {
   const [commandsStates, setCommandsStates] = useState({
     isItalic: false,
@@ -55,14 +62,6 @@ export const TextFormattingTools: React.FC = () => {
         false,
         '<input type="checkbox" id="myCheckbox">'
       );
-      /*
-      if (selection.rangeCount > 0) {
-        const start = selection.getRangeAt(0);
-        const end = selection.g(selection.rangeCount);
-        const newContent = content.slice(0, start) + '<input type="checkbox" id="myCheckbox">' + content.slice(end);
-        setContent(newContent);
-      }
-    */
     }
   };
   const onMouseDown = (event: React.MouseEvent) => {
@@ -76,8 +75,7 @@ export const TextFormattingTools: React.FC = () => {
     {
       const text = selection.toString()
       console.log(text)
-      //document.execCommand('insertHTML', false, '<input type="checkbox" id="myCheckbox">');
-      document.execCommand('insertHTML', false, '<hr />');
+      document.execCommand('insertHTML', false, '<hr  contenteditable="false" />');
     }
   }
 

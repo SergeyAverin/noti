@@ -2,7 +2,6 @@ import React, { useCallback, useState } from "react";
 import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
 
 import { ICell } from "@redux/types/cell";
-import { TextFormattingTools } from "@molecules/TextFormattingTools";
 import { EditorStyled } from "./EditorStyled";
 
 interface IEditorProps {
@@ -22,7 +21,6 @@ export const Editor: React.FC<IEditorProps> = ({ cells }) => {
 
   return (
     <>
-      <TextFormattingTools />
       <EditorStyled>
         <ContentEditable
           html={content}
