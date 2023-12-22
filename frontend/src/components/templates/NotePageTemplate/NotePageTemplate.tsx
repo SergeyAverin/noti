@@ -1,19 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 
-import { NoteContentStyled, NoteStyled } from "./NotePageTemplateStyled";
-import { Flex, Margin, Position, Width } from "@atoms/index";
+import { NoteStyled } from "./NotePageTemplateStyled";
+import { Margin, Position, Spinner, Width } from "@atoms/index";
 import { Title } from "@molecules/Title";
 import { DebugAlert } from "@molecules/DebugAlert";
 import { TrashAlert } from "@organisms/TrashAlert";
 import { NotificationList } from "@organisms/NotificationList";
 import { INote } from "@redux/types/note";
-import { cellsSelector } from "@redux/selectors/note";
-import { TextFormattingTools } from "@molecules/TextFormattingTools";
-import { changeCellPosition, setContent, setNote } from "@redux/features/noteSlice";
-import { ICell } from "@redux/types/cell";
-import { useLoadNoteMutation, useSaveNoteMutation } from "@redux/api/noteApi";
 import { Editor } from "@organisms/Editor/Editor";
+import { useLoadNote } from "@hooks/useLoadNote";
+import { useSaveNote } from "@hooks/useSaveNote";
 
 interface INotePageTemplateProps {
   note: INote;
@@ -23,26 +19,10 @@ interface INotePageTemplateProps {
 export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
   note,
 }) => {
-  const dispatch = useDispatch();
-  const [saveNote] = useSaveNoteMutation()
-  const [loadNote] = useLoadNoteMutation()
-  const cells = useSelector(cellsSelector);
 
-  /*
-  useEffect(()=>{
-    saveNote({slug: note.slug, content: cells})
-  }, [cells])
-  useEffect(()=>{
-    loadNote(note.slug).then(data => {
-      data = data as { data: ICell[] }
-      dispatch(setContent(data.data))
-    })
-  }, [note.slug])
-  */
+  useLoadNote(note.slug);
+  useSaveNote();
 
-  const handleDrop = (item: {cell: ICell}, index: number) => {
-    dispatch(changeCellPosition({cell: item.cell, index: index}))
-  };
   return (
     <>
       <NoteStyled>
@@ -51,7 +31,7 @@ export const NotePageTemplate: React.FC<INotePageTemplateProps> = ({
             <Margin  mb={30}>
               <Title title={note.title} slug={note.slug} />
             </Margin>
-            <Editor cells={cells} />
+            <Editor />
           </Position>
         </Width>    
       </NoteStyled>
