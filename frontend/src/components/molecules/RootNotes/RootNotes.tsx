@@ -10,12 +10,10 @@ export const RootNotes: React.FC = () => {
     <div>
       {!isLoading &&
         data &&
-        data.map((note) => (
-          <Margin mb={15}>
-            <NoteLink href={`/notes/${note.slug}`} key={note.slug}>
+        data.slice().reverse().map((note) => (
+            <NoteLink haveBackground={true} href={`/notes/${note.slug}`} key={note.slug}>
               {note.title}
             </NoteLink>
-          </Margin>
         ))}
     </div>
   );

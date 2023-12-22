@@ -1,6 +1,10 @@
 import { Request, Response } from 'express'
+import log4js from 'log4js'
+
 import { NoteService } from '../services/note.service'
 import { StatusCodes } from 'http-status-codes'
+
+const logger = log4js.getLogger()
 
 export const addTrash = async (req: Request, res: Response) => {
   const noteService = new NoteService()
@@ -95,6 +99,31 @@ export const getRootNote = async (req: Request, res: Response) => {
 
 export const getNoteBySlug = async (req: Request, res: Response) => {
   const noteService = new NoteService()
-  const note = await noteService.getNoteBySlug(req.params.slug)
+  const note = await noteService.getNoteBySlug(req.params.slug, res.locals.user)
   res.status(StatusCodes.OK).send(note)
+}
+
+export const uploadNote = async (req: Request, res: Response) => {
+  const noteService = new NoteService()
+  await noteService.uploadNoteContent(
+    req.body.content,
+    req.params.slug,
+    res.locals.user,
+  )
+  res.status(StatusCodes.OK).send({ message: 'upload' })
+}
+
+export const loadNoteContent = async (req: Request, res: Response) => {
+  const noteService = new NoteService()
+  const content = await noteService.loadNoteContent(
+    req.params.slug,
+    res.locals.user,
+  )
+  res.status(StatusCodes.OK).send(JSON.stringify({ data: content }))
+}
+
+export const changeNoteTitle = async (req: Request, res: Response) => {
+  const noteService = new NoteService()
+  await noteService.changeNoteTitle(req.body.slug, req.body.title)
+  res.status(StatusCodes.NO_CONTENT).end()
 }

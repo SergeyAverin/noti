@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ThemeContext } from 'styled-components';
+import { ThemeContext } from "styled-components";
 
 import { useGetBookmarkQuery } from "@redux/api/libraryApi";
 import { DropDownMenu, Margin, NoteLink } from "@atoms/index";
@@ -11,12 +11,20 @@ export const BookmarkDropDown: React.FC = () => {
   const { data, isLoading, isError } = useGetBookmarkQuery();
 
   return (
-    <DropDownMenu text="Bookmark" icon={<BookmarkIcon stroke={theme?.color.fg} />}>
+    <DropDownMenu
+      text="Bookmark"
+      icon={<BookmarkIcon stroke={theme?.color.fg} />}
+      isOpenDefaultValue={true}
+    >
       <Margin ml={30}>
         {!isLoading &&
           data &&
           data.map((note) => (
-            <NoteLink key={note.slug} href={`/notes/${note.slug}`}>
+            <NoteLink
+              haveBackground={true}
+              key={note.slug}
+              href={`/notes/${note.slug}`}
+            >
               {note.title}
             </NoteLink>
           ))}

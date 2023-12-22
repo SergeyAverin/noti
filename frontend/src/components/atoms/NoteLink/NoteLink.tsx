@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { NoteLinkStyled, NoteLinkWrapperStyled } from "./NoteLinkStyled";
+import { shortenString } from "@utils/shortenString";
 
 import NoteIcon from "@public/NoteIcon.svg";
 
@@ -9,21 +10,23 @@ interface INoteLinkProsp {
   href: string;
   children: React.ReactNode;
   icon?: any;
+  haveBackground?: boolean
 }
 
-export const NoteLink: React.FC<INoteLinkProsp> = ({ children, href }) => {
+export const NoteLink: React.FC<INoteLinkProsp> = ({ children, href, haveBackground }) => {
   return (
-    <NoteLinkStyled>
       <Link to={href}>
+    <NoteLinkStyled  haveBackground={haveBackground}>
         <NoteLinkWrapperStyled>
           <NoteIcon />
-          {children}
+          {shortenString(children as string, 20)}
         </NoteLinkWrapperStyled>
-      </Link>
     </NoteLinkStyled>
+      </Link>
   );
 };
 
 NoteLink.defaultProps = {
   icon: <NoteIcon></NoteIcon>,
+  haveBackground: false
 };

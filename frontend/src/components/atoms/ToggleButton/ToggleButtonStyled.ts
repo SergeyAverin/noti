@@ -9,7 +9,7 @@ export const ToggleButtonStyled = styled.div<IToggleButtonStyledProps>`
   align-items: center;
   color: ${(props) => props.theme.color.fg};
   user-select: none;
-  font-size: 18px;
+  font-size: ${(props) => props.theme.fontSizes.medium};
   cursor: pointer;
 
   ${(props) =>

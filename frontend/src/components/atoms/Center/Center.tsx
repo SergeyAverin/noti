@@ -1,11 +1,11 @@
 import styled, { css } from "styled-components";
 
-interface IMarginProps {
+interface ICenterProps {
   harezontal?: boolean;
-  vartekal?: boolean;
+  vertical?: boolean;
 }
 
-export const Center = styled.div<IMarginProps>`
+export const Center = styled.div<ICenterProps>`
   display: flex;
   position: absolute;
   width: 100%;
@@ -18,7 +18,7 @@ export const Center = styled.div<IMarginProps>`
     `}
 
   ${(props) =>
-    props.vartekal &&
+    props.vertical &&
     css`
       align-items: center;
     `}
@@ -26,5 +26,5 @@ export const Center = styled.div<IMarginProps>`
 
 Center.defaultProps = {
   harezontal: true,
-  vartekal: true,
+  vertical: true,
 };

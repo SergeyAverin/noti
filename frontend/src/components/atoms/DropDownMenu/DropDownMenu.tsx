@@ -12,6 +12,7 @@ import NoteIcon from "@public/NoteIcon.svg";
 interface IDropDownMenuProsp {
   text: string;
   children: React.ReactNode;
+  isOpenDefaultValue?: boolean;
   icon?: any;
 }
 
@@ -19,9 +20,11 @@ export const DropDownMenu: React.FC<IDropDownMenuProsp> = ({
   text,
   icon,
   children,
+  isOpenDefaultValue
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const onClickHeandler = () => {
+  const [isOpen, setIsOpen] = useState(isOpenDefaultValue);
+  const onClickHeandler = (event: React.MouseEvent) => {
+    event.preventDefault();
     setIsOpen((prev) => !prev);
   };
   return (
@@ -40,4 +43,5 @@ export const DropDownMenu: React.FC<IDropDownMenuProsp> = ({
 
 DropDownMenu.defaultProps = {
   icon: <NoteIcon></NoteIcon>,
+  isOpenDefaultValue: false
 };

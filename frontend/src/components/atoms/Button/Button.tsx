@@ -1,10 +1,10 @@
-import React, { ReactNode } from "react";
+import React from "react";
 
 import { ButtonStyled } from "./ButtonStyled";
 
 interface IButtonProps {
   onClick?: React.MouseEventHandler;
-  children: string;
+  children: React.ReactNode;
   fill?: boolean;
   danger?: boolean;
 }
@@ -21,3 +21,8 @@ export const Button: React.FC<IButtonProps> = ({
     </ButtonStyled>
   );
 };
+
+Button.defaultProps = {
+  fill: false,
+  danger: false
+}

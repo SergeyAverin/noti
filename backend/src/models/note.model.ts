@@ -3,6 +3,7 @@ import crypto from 'crypto'
 import slugify from 'slugify'
 
 import { IUser } from './user.model'
+import { NotePermissionEnum } from '../constants/NotePermissionEnum'
 
 const { Schema } = mongoose
 
@@ -15,6 +16,7 @@ export interface INote extends Document {
     author: IUser,
     dataCreated: Date,
     dataUpdate: Date,
+    permission: NotePermissionEnum,
   };
   parentNote?: INote['_id'];
   childNotes?: [INote['_id']];
@@ -47,6 +49,11 @@ const noteScheme = new Schema<INote>({
       type: Date,
       required: true,
       default: new Date(),
+    },
+    permission: {
+      type: String,
+      enum: NotePermissionEnum,
+      default: NotePermissionEnum.OWNER_ONLY,
     },
   },
   parentNote: {

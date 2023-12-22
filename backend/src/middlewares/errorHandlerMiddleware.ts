@@ -9,7 +9,6 @@ const logger = log4js.getLogger()
 /* eslint-disable @typescript-eslint/no-unused-vars */
 export const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
   logger.error(err.stack)
-
   if (process.env.NODE_ENV === 'development') {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
       name: err.name,

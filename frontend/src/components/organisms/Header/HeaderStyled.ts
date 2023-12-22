@@ -6,12 +6,13 @@ export const HeaderStyled = styled.div`
   display: flex;
   box-sizing: border-box;
   justify-content: space-between;
-  position: absolute;
+  align-items: center;
+  position: fixed;
   top: 0;
   padding-left: ${(props) => props.theme.panelsSize.sideBarSize};
+  padding: 40px;
   padding-right: 100px;
-  padding-top: 40px;
-  z-index: -1;
+  background-color: ${(props) => props.theme.color.primary};
   svg {
     margin-left: 15px;
   }

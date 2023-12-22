@@ -7,6 +7,7 @@ interface IPositionProps {
     right?: string,
     bottom?: string,
     left?: string,
+    zIndex?: number,
 }
 
 export const Position = styled.div<IPositionProps>`
@@ -15,6 +16,7 @@ export const Position = styled.div<IPositionProps>`
     right: ${props => props.right};
     bottom: ${props => props.bottom};
     left: ${props => props.left};
+    z-index: ${props => props.zIndex};
 `;
 
 Position.defaultProps = {

@@ -11,6 +11,7 @@ services:
       - ./backend:/app
     depends_on:
       - "mongodb"
+      - "s3minio"
     ports:
       - 8080:8080
     env_file:
@@ -46,5 +47,15 @@ services:
       - "mongodb"
     ports:
       - 8081:8081
+    env_file:
+      - .env
+
+  s3minio:
+    container_name: s3minio
+    image: 'minio/minio:latest'
+    command: server /data --console-address ":9001"
+    ports:
+      - '9000:9000'
+      - '9001:9001'
     env_file:
       - .env

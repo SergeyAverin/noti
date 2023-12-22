@@ -8,14 +8,22 @@ export const AccountManagerHeaderStyled = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-size: 20px;
+  font-size: ${(props) => props.theme.fontSizes.medium};
   font-weight: 600;
   cursor: pointer;
   user-select: none;
+  transition: 0.3s;
+  padding: 15px;
+
   & > *:first-child,
   & > *:last-child {
     margin-left: -10px;
     margin-right: -10px;
+  }
+  &:hover {
+    transition: 0.3s;
+    background: ${(props) => props.theme.color.highlightFaded};
+    border-radius: 15px;
   }
 `;
 
