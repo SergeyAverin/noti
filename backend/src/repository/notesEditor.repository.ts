@@ -2,7 +2,6 @@ import * as Minio from 'minio'
 import log4js from 'log4js'
 
 import minioS3Config from '../../conf/minioS3.config'
-import { ICell } from '../models/cell'
 
 const logger = log4js.getLogger()
 
@@ -12,63 +11,52 @@ export class NotesEditorRepository {
   s3: Minio.Client
 
   constructor() {
-    logger.debug('NotesEditorRepository constructor')
     this.s3 = new Minio.Client(minioS3Config)
-    logger.debug('NotesEditorRepository end constructor')
   }
-  async uploadNote(note: ICell[], slug: string) {
-    logger.debug('NotesEditorRepository uploadNote')
-    const jsonBuffer = Buffer.from(JSON.stringify(note))
-    logger.debug('===')
-    logger.debug(JSON.stringify(note))
+  async uploadNote(content: string, slug: string) {
+    const buffer = Buffer.from(content.toString())
     await this.s3.putObject(
       BACKET_NAME,
-      `${slug}.json`,
-      jsonBuffer,
+      `${slug}.txt`,
+      buffer,
+      buffer.length,
       (err, etag) => {
         if (err) {
-          return console.log(err)
+          return logger.error(err)
         }
-        console.log(`File uploaded successfully. ETag: ${etag}`)
+        logger.info(`uploadded file ${slug}.txt`)
+        logger.info(slug)
       },
     )
-    logger.debug(`Put ${slug}.json in ${BACKET_NAME}`)
   }
 
   async loadNote(slug: string) {
     return new Promise((resolve, reject) => {
       try {
-        this.s3.statObject(BACKET_NAME, `${slug}.json`, async (err, stat) => {
+        logger.info(`loadded file ${slug}.txt`)
+        this.s3.statObject(BACKET_NAME, `${slug}.txt`, async (err) => {
           if (err) {
-            logger.debug(
-              `Object ${slug}.json does not exist in bucket ${BACKET_NAME}`,
-            )
-            resolve([])
+            logger.error(err)
+            resolve('')
           } else {
-            logger.debug(
-              `Retrieved object ${slug}.json from bucket ${BACKET_NAME}`,
-            )
             const dataStream = await this.s3.getObject(
               BACKET_NAME,
-              `${slug}.json`,
+              `${slug}.txt`,
             )
-            let jsonData = ''
+            let content = ''
             dataStream.on('data', (chunk) => {
-              jsonData += chunk
+              content += chunk
             })
             dataStream.on('end', () => {
               try {
-                const json = JSON.parse(jsonData)
-                resolve(json)
+                resolve(content)
               } catch (error) {
-                logger.debug('Error parsing JSON:', error)
                 reject(error)
               }
             })
           }
         })
       } catch (error) {
-        logger.debug('Error retrieving JSON file:', error)
         reject(error)
       }
     })

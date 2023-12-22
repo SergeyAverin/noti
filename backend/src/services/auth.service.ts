@@ -13,7 +13,6 @@ export const removeToken = async (
   token: IToken,
 ): Promise<void> => {
   await User.updateOne({ _id: user.id }, { $pull: { tokens: token.id } })
-  logger.debug(token._id)
 }
 
 export const registrationUser = async (

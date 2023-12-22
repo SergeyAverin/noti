@@ -105,25 +105,21 @@ export const getNoteBySlug = async (req: Request, res: Response) => {
 
 export const uploadNote = async (req: Request, res: Response) => {
   const noteService = new NoteService()
-  logger.debug('Before noteService.uploadNoteContent')
   await noteService.uploadNoteContent(
-    req.body,
+    req.body.content,
     req.params.slug,
     res.locals.user,
   )
-  logger.debug('After noteService.uploadNoteContent')
   res.status(StatusCodes.OK).send({ message: 'upload' })
 }
 
 export const loadNoteContent = async (req: Request, res: Response) => {
   const noteService = new NoteService()
-  logger.debug('Before noteService.loadNoteContent')
-  const json = await noteService.loadNoteContent(
+  const content = await noteService.loadNoteContent(
     req.params.slug,
     res.locals.user,
   )
-  logger.debug('After noteService.loadNoteContent')
-  res.status(StatusCodes.OK).send(json)
+  res.status(StatusCodes.OK).send(JSON.stringify({ data: content }))
 }
 
 export const changeNoteTitle = async (req: Request, res: Response) => {

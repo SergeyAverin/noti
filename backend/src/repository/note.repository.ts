@@ -22,8 +22,6 @@ export class NoteRepository {
     const fieldsToUpdate = {
       ...updatedFields,
     }
-    logger.error(slug)
-    logger.error(updatedFields.title)
     await Note.updateOne({ slug: slug }, fieldsToUpdate)
   }
   async createNote(noteField: CreateNoteDTO): Promise<INote> {

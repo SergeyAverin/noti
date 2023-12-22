@@ -88,22 +88,18 @@ export class NoteService {
     return note
   }
 
-  async uploadNoteContent(content: ICell[], slug: string, user: IUser) {
+  async uploadNoteContent(content: string, slug: string, user: IUser) {
     const note = await this.getNoteBySlug(slug, user)
     //  this.checkPermission(note, user, NoteOperationsEnum.UPDATE)
-    logger.debug('Before noteEditorRepository.uploadNote')
     await this.noteEditorRepository.uploadNote(content, slug)
-    logger.debug('After noteEditorRepository.uploadNote')
     await this.noteRepository.changeLastEditDate(slug)
   }
   async loadNoteContent(slug: string, user: IUser) {
     const note = await this.getNoteBySlug(slug, user)
     // this.checkPermission(note, user, NoteOperationsEnum.UPDATE)
     // this.checkPermission(note, user, NoteOperationsEnum.READ)
-    logger.debug('Before noteEditorRepository.loadNote')
-    const json = await this.noteEditorRepository.loadNote(slug)
-    logger.debug('After noteEditorRepository.loadNote')
-    return json
+    const content = await this.noteEditorRepository.loadNote(slug)
+    return content
   }
   async changeNoteTitle(slug: string, title: string) {
     const updateNoteData = new UpdateNoteDTO()
