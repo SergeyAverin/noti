@@ -1,22 +1,18 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
 
-import { ICell } from "@redux/types/cell";
 import { EditorStyled } from "./EditorStyled";
+import { contentSelector } from "@redux/selectors/note";
+import { setContent } from "@redux/features/noteSlice";
 
-interface IEditorProps {
-  cells: ICell[];
-}
 
-export const Editor: React.FC<IEditorProps> = ({ cells }) => {
-  const [content, setContent] = useState("");
+export const Editor: React.FC = () => {
+  const dispatch = useDispatch();
+  const content = useSelector(contentSelector)
 
   const onContentChange = useCallback((evt: ContentEditableEvent) => {
-    const sanitizeConf = {
-      allowedTags: ["b", "i", "a", "p"],
-      allowedAttributes: { a: ["href"] },
-    };
-    setContent(evt.currentTarget.innerHTML);
+    dispatch(setContent(evt.currentTarget.innerHTML));
   }, []);
 
   return (
