@@ -9,6 +9,7 @@ import { BookmarkDropDown } from "@molecules/BookmarkDropDown";
 import { RootNotes } from "@molecules/RootNotes"
 import { AccountManager } from "@molecules/AccountManager";
 import { CreateNote } from "@molecules/CreateNote";
+import { SearchPanel } from "@organisms/SearchPanel";
 
 export const SideBar: React.FC = () => {
   return (
@@ -16,12 +17,15 @@ export const SideBar: React.FC = () => {
         <Margin mb={30}>
           <AccountManager></AccountManager>
         </Margin>
-        <TrashDropDown />
-        <Margin mt={5}>
-          <BookmarkDropDown />
-        </Margin>
         <Margin mt={5}>
           <CreateNote />
+        </Margin>
+        <Margin mt={5}>
+          <SearchPanel />
+        </Margin>
+        <TrashDropDown />
+        <Margin mt={30}>
+          <BookmarkDropDown />
         </Margin>
         <Margin mt={30}>
             <RootNotesWrapperStyled>

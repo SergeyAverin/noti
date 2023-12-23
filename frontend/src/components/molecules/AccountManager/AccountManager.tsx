@@ -10,7 +10,7 @@ import {
 
 import SelectIcon from "@public/SelectIcon.svg";
 import UserIcon from "@public/UserIcon.svg";
-import { Position, Width } from "@atoms/index";
+import { Position } from "@atoms/index";
 
 export const AccountManager: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
