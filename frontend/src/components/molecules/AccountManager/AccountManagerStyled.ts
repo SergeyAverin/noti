@@ -14,7 +14,7 @@ export const AccountManagerHeaderStyled = styled.div`
   user-select: none;
   transition: 0.3s;
   padding: 15px;
-
+  border-radius: 15px;
   & > *:first-child,
   & > *:last-child {
     margin-left: -10px;
@@ -23,7 +23,6 @@ export const AccountManagerHeaderStyled = styled.div`
   &:hover {
     transition: 0.3s;
     background: ${(props) => props.theme.color.highlightFaded};
-    border-radius: 15px;
   }
 `;
 
@@ -33,7 +32,8 @@ export const AccountManagerPanelStyled = styled.div`
   align-items: center;
   flex-direction: column;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
-  position: absolute;
+  position: relative;
+  width: 100%;
   bottom: -130%;
 `;
 
@@ -44,6 +44,15 @@ export const AccountManagerItemStyled = styled.div`
   line-height: normal;
   cursor: pointer;
   padding: 8px;
+  padding: 10px;
+  font-size: 18px;
+  padding-left: 20px;
+  background: ${(props) => props.theme.color.bg};
+  transition: 0.3s;
+  &:hover {
+    background: ${(props) => props.theme.color.primary};
+    transition: 0.3s;
+  }
   a {
     text-decoration: none;
     color: ${(props) => props.theme.color.fg};
