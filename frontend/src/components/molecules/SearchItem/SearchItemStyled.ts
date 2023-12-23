@@ -19,6 +19,7 @@ export const BreadcrumbsStyled = styled.div`
 export const ContentStyled = styled.div`
   font-size: 16px;
   margin-top: 15px;
+  line-height: 2;
 `;
 
 export const SeporatorStyled = styled.hr`
@@ -33,4 +34,9 @@ export const SearchItomTitleStyled = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+`;
+
+export const MarkerStyled = styled.span`
+  padding: 8px;
+  background: ${(props) => props.theme.color.highlightFaded};
 `;
