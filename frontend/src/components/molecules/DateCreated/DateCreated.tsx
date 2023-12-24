@@ -1,26 +1,26 @@
 import React from "react";
 
-import { DataCreatedStyled, DataCreatedMoreStyled } from "./DataCreatedStyled";
+import { DateCreatedStyled, DateCreatedMoreStyled } from "./DateCreatedStyled";
 import { formatDate } from "@utils/formatedDate";
 
-interface IDataCreatedProps {
+interface IDateCreatedProps {
   dataCreated: Date;
   dataEdited: Date;
 }
-export const DataCreated: React.FC<IDataCreatedProps> = ({
+export const DateCreated: React.FC<IDateCreatedProps> = ({
   dataCreated,
   dataEdited,
 }) => {
   return (
-    <DataCreatedStyled>
+    <DateCreatedStyled>
       <div>
         Last edit at {formatDate(dataEdited)}
       </div>
-      <DataCreatedMoreStyled>
+      <DateCreatedMoreStyled>
         Created at {formatDate(dataCreated)}
         <br />
         Last edit at {formatDate(dataEdited)}
-      </DataCreatedMoreStyled>
-    </DataCreatedStyled>
+      </DateCreatedMoreStyled>
+    </DateCreatedStyled>
   );
 };
