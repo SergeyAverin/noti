@@ -74,19 +74,19 @@ const noteScheme = new Schema<INote>({
 noteScheme.pre<INote>('save', async function (next) {
   if (this.isNew) {
     const uniqueId = crypto.randomBytes(15).toString('hex')
-    this.slug = `${slugify(this.title, { lower: true })}-${uniqueId}`
+    this.slug = uniqueId
   }
 
-  const searchRepository = new SearchElasticsearchRepository()
-  const notesEditorRepository = new NotesEditorMinioRepository()
-  const searchService = new SearchService(
-    searchRepository,
-    notesEditorRepository,
-  )
+  // const searchRepository = new SearchElasticsearchRepository()
+  // const notesEditorRepository = new NotesEditorMinioRepository()
+  // const searchService = new SearchService(
+  //   searchRepository,
+  //   notesEditorRepository,
+  // )
 
   // await searchRepository.createIndexIfNotExists('note')
 
-  await searchService.createDocument(this)
+  //await searchService.createDocument(this)
 
   next()
 })
