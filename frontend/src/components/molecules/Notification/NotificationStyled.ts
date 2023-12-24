@@ -27,13 +27,15 @@ export const NotificationStyled = styled.div<INotificationStyledProps>`
   padding: 20px;
   position: relative;
   min-width: 350px;
+  /*
   animation: 1s ${fadeIn} ease;
   ${(props) =>
     props.fadeOutAnimation &&
     css`
       animation: 0.5s ${fadeOut} ease;
     `}
-  transition: 1s;
+    transition: 1s;
+    */
 `;
 
 export const NotificationTitleStyled = styled.div`
