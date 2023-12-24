@@ -13,7 +13,9 @@ export const DataCreated: React.FC<IDataCreatedProps> = ({
 }) => {
   return (
     <DataCreatedStyled>
-      Last edit at {formatDate(dataEdited)}
+      <div>
+        Last edit at {formatDate(dataEdited)}
+      </div>
       <DataCreatedMoreStyled>
         Created at {formatDate(dataCreated)}
         <br />

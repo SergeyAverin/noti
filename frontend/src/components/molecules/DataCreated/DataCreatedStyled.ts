@@ -9,9 +9,11 @@ export const DataCreatedMoreStyled = styled.div`
   opacity: 0;
   transition: 0.3s;
   position: absolute;
-  width: 250px;
+  width: 100%;
   top: 0;
   z-index: -1;
+  text-align: center;
+  box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.05);
 `;
 
 export const DataCreatedStyled = styled.div`
@@ -19,6 +21,10 @@ export const DataCreatedStyled = styled.div`
   color: ${(props) => props.theme.color.fg};
   position: relative;
   z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 220px;
   &:hover ${DataCreatedMoreStyled} {
     opacity: 1;
     transition: 0.3s;
