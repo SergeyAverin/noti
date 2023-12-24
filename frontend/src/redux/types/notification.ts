@@ -6,4 +6,5 @@ export interface INotification {
   variant: NotificationVariant;
   date: Date;
   secondsToAutoClose?: number;
+  id: string;
 }

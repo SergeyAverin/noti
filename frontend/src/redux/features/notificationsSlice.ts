@@ -20,9 +20,7 @@ export const notificationsSlice = createSlice({
     },
     removeNotification: (state, action: PayloadAction<INotification>) => {
       state.notifications = state.notifications.filter(
-        (notification) =>
-          notification.title != action.payload.title &&
-          notification.date != action.payload.date
+        (notification) => notification.id != action.payload.id
       );
     },
   },

@@ -5,6 +5,7 @@ import { useChangeNoteTitleMutation } from "@redux/api/noteApi";
 import { pushNotification } from "@redux/features/notificationsSlice";
 import { TitleStyled, TitleLineStyled, TitleInputStyled } from "./TitleStyled";
 import { NotificationVariant } from "@redux/types/notificationVariant";
+import { v4 as uuidv4 } from 'uuid';
 
 interface ITitleProps {
     title: string,
@@ -25,6 +26,7 @@ export const Title: React.FC<ITitleProps> = ({ title, slug }) => {
         changeNoteTitle({slug, title: event.target.value})
         const notification ={
             title: "Saved title",
+            id: uuidv4(),
             description:`new title is ${title}`,
             variant: NotificationVariant.DANGER,
             date: new Date()
