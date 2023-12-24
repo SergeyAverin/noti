@@ -2,7 +2,7 @@ import React from "react";
 
 import NoteIcon from '@public/NoteIcon.svg'
 import { BreadcrumbsStyled, ContentStyled, SearchItemStyled, SearchItomTitleStyled, MarkerStyled } from "./SearchItemStyled";
-import { TextMarker } from "./TextMarket";
+import { TextMarker } from "./TextMarker";
 
 
 export const SearchItem: React.FC = () => {
