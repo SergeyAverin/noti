@@ -15,7 +15,7 @@ export class SearchService {
         this.notesEditorRepository = notesEditorRepository;
     }
     search(searchString: string) {
-        this.searchRepository.search(searchString);
+        return this.searchRepository.search(searchString);
     }
     async createDocument(note: INote) {
         const content = await this.notesEditorRepository.loadNote(note.slug)

@@ -7,7 +7,7 @@ const logger = log4js.getLogger()
 const NOTE_INDEX_NAME = 'notes'
 
 export interface ISearchRepository {
-  search(searchString: string):  Promise<undefined>;
+  search(searchString: string):  Promise<any>;
   createDocument(note: INote, content: unknown): void;
   updateDocument(note: INote): void;
   removeDocument(noteSlug: string): void;
@@ -27,18 +27,28 @@ export class SearchElasticsearchRepository implements ISearchRepository {
     }
   }
   async search(searchString: string) {
-    const response = await this.client.search({
-      index: NOTE_INDEX_NAME,
-      body: {
-        query: {
-          match_all: {}
-        },
-        size: 10000
+    const body = {
+      query: {
+        match: {
+          title: {
+            query: searchString,
+          }
+        }
       }
-    });
-    logger.error('response')
-    logger.error(response.hits.hits.length)
-    return undefined
+    }
+    const bodyContent = {
+      query: {
+        match: {
+          content: {
+            query: searchString,
+          }
+        }
+      }
+    }
+  
+    const response = await this.client.search({ index: NOTE_INDEX_NAME, body });
+    const response2 = await this.client.search({ index: NOTE_INDEX_NAME, body :bodyContent});
+    return [...response.hits.hits, ...response2.hits.hits];
   }
   async createDocument(note: INote, content: unknown | string) {
     const isExist =  await this.client.exists({ index: NOTE_INDEX_NAME, id: note.slug });
