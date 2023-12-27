@@ -1,6 +1,5 @@
 import mongoose, { Document } from 'mongoose'
 import crypto from 'crypto'
-import slugify from 'slugify'
 
 import { IUser } from './user.model'
 import { NotePermissionEnum } from '../constants/NotePermissionEnum'
