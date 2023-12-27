@@ -9,6 +9,7 @@ export const SearchItemStyled = styled.div`
     transition: 0.3s;
     background: ${(props) => props.theme.color.highlightFaded};
   }
+  color: ${(props) => props.theme.color.fg};
 `;
 
 export const BreadcrumbsStyled = styled.div`
@@ -22,11 +23,11 @@ export const ContentStyled = styled.div`
   line-height: 2;
 `;
 
-export const SeporatorStyled = styled.hr`
+export const SeparatorStyled = styled.hr`
   color: 1px solid ${(props) => props.theme.color.fg};
 `;
 
-export const SearchItomTitleStyled = styled.div`
+export const SearchItemTitleStyled = styled.div`
   svg {
     margin-right: 10px;
   }

@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { SerachInputWrapperStyled, SerachInputStyled } from "./SearchInputStyled";
 
 import SearchIcon from '@public/Search.svg'
 
 
-export const SearchInput: React.FC = () => {
+interface ISearchInputProps {
+    onSearch: Function,
+    searchString: string,
+    setSearchString: Function
+}
+export const SearchInput: React.FC<ISearchInputProps> = ({onSearch, searchString, setSearchString}) => {
+    const onChange = (event : React.ChangeEvent<HTMLInputElement>) => {
+        setSearchString(event.target.value)
+        onSearch(searchString)
+    }
     return (
         <SerachInputWrapperStyled>
             <SearchIcon />
-            <SerachInputStyled placeholder="write search query" />
+            <SerachInputStyled placeholder="write search query" value={searchString} onChange={onChange} />
         </SerachInputWrapperStyled>
     )
 }
