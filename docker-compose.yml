@@ -39,17 +39,6 @@ services:
     env_file:
       - .env
 
-  mongo-express:
-    container_name: mongodb_admin
-    image: mongo-express
-    restart: always
-    depends_on:
-      - "mongodb"
-    ports:
-      - 8081:8081
-    env_file:
-      - .env
-
   s3minio:
     container_name: s3minio
     image: 'minio/minio:latest'
@@ -59,3 +48,11 @@ services:
       - '9001:9001'
     env_file:
       - .env
+
+  elasticsearch:
+    image: elasticsearch:7.17.10
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 9200:9200

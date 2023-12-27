@@ -28,17 +28,13 @@ export const Notification: React.FC<INotificationProps> = ({
   const dispatch = useDispatch();
   const onClose = () => {
     setFadeOutAnimation(true);
-    setTimeout(() => {
-      dispatch(removeNotification(notification));
-    }, 500);
+    dispatch(removeNotification(notification));
   };
   useEffect(() => {
     if (secondsToAutoClose) {
       setTimeout(() => {
         setFadeOutAnimation(true);
-        setTimeout(() => {
-          dispatch(removeNotification(notification));
-        }, 500);
+        dispatch(removeNotification(notification));
       }, secondsToAutoClose);
     }
   });

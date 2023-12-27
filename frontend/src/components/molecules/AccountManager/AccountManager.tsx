@@ -10,6 +10,7 @@ import {
 
 import SelectIcon from "@public/SelectIcon.svg";
 import UserIcon from "@public/UserIcon.svg";
+import { Position } from "@atoms/index";
 
 export const AccountManager: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,9 +28,14 @@ export const AccountManager: React.FC = () => {
       </AccountManagerHeaderStyled>
       {isOpen && (
         <AccountManagerPanelStyled>
-          <AccountManagerItemStyled>
-            <Link to="/auth/logout">Logout</Link>
-          </AccountManagerItemStyled>
+          <Position position="absolute" top="0">
+              <AccountManagerItemStyled>
+                <Link to="/auth/logout">Logout</Link>
+              </AccountManagerItemStyled>
+              <AccountManagerItemStyled>
+                <Link to="/auth/logout">Settings</Link>
+              </AccountManagerItemStyled>
+          </Position>
         </AccountManagerPanelStyled>
       )}
     </AccountManagerStyled>

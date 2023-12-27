@@ -4,4 +4,5 @@ export const TAGS = {
   TRASH: "Trash",
   BOOKMARK: "Bookmark",
   ROOT_NOTES: "RootNote",
+  SEARCH: "Search",
 };

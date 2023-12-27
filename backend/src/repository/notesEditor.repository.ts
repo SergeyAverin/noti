@@ -7,7 +7,12 @@ const logger = log4js.getLogger()
 
 const BACKET_NAME = 'notes'
 
-export class NotesEditorRepository {
+export interface INotesEditorRepository {
+  uploadNote(content: string, slug: string): void;
+  loadNote(slug: string): Promise<unknown>;
+}
+
+export class NotesEditorMinioRepository implements INotesEditorRepository {
   s3: Minio.Client
 
   constructor() {

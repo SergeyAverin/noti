@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import { userApi } from "./api/userApi";
 import { authApi } from "./api/authApi";
+import { searchApi } from "./api/searchApi";
 
 import userReducer from "./features/userSlice";
 import noteReducer from "./features/noteSlice";
@@ -11,6 +12,7 @@ export const store = configureStore({
   reducer: {
     [userApi.reducerPath]: userApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
+    [searchApi.reducerPath]: searchApi.reducer,
     userState: userReducer,
     noteState: noteReducer,
     notificationState: notificationsSlice,

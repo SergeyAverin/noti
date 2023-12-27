@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { INotification } from "../types/notification";
-import { NotificationVariant } from "@redux/types/notificationVariant";
 
 interface INotificationsState {
   notifications: INotification[];
@@ -20,9 +19,7 @@ export const notificationsSlice = createSlice({
     },
     removeNotification: (state, action: PayloadAction<INotification>) => {
       state.notifications = state.notifications.filter(
-        (notification) =>
-          notification.title != action.payload.title &&
-          notification.date != action.payload.date
+        (notification) => notification.id != action.payload.id
       );
     },
   },

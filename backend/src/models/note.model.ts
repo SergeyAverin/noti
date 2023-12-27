@@ -1,9 +1,11 @@
 import mongoose, { Document } from 'mongoose'
 import crypto from 'crypto'
-import slugify from 'slugify'
 
 import { IUser } from './user.model'
 import { NotePermissionEnum } from '../constants/NotePermissionEnum'
+import { SearchService } from '../services/search.service'
+import { SearchElasticsearchRepository } from '../repository/search.repository'
+import { NotesEditorMinioRepository } from '../repository/notesEditor.repository'
 
 const { Schema } = mongoose
 
@@ -68,11 +70,23 @@ const noteScheme = new Schema<INote>({
   ],
 })
 
-noteScheme.pre<INote>('save', function (next) {
+noteScheme.pre<INote>('save', async function (next) {
   if (this.isNew) {
     const uniqueId = crypto.randomBytes(15).toString('hex')
-    this.slug = `${slugify(this.title, { lower: true })}-${uniqueId}`
+    this.slug = uniqueId
   }
+
+  // const searchRepository = new SearchElasticsearchRepository()
+  // const notesEditorRepository = new NotesEditorMinioRepository()
+  // const searchService = new SearchService(
+  //   searchRepository,
+  //   notesEditorRepository,
+  // )
+
+  // await searchRepository.createIndexIfNotExists('note')
+
+  //await searchService.createDocument(this)
+
   next()
 })
 

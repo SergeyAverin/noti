@@ -18,6 +18,6 @@ export const PopupContent = styled.div`
   border-radius: 15px;
   background: ${(props) => props.theme.color.primary};
   z-index: 15;
-  min-width: 800px;
+  width: 800px;
   min-height: 800px;
 `;

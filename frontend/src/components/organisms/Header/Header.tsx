@@ -6,7 +6,7 @@ import { AddTrash } from "@molecules/AddTrash";
 import { AddBookmark } from "@molecules/AddBookmark";
 import { Flex, Margin } from "@atoms/index";
 import { INote } from "@redux/types/note";
-import { DataCreated } from "@molecules/DataCreated/DataCreated";
+import { DateCreated } from "@molecules/DateCreated/DateCreated";
 import { ShareButton } from "@molecules/ShareButton"; 
 
 
@@ -20,7 +20,7 @@ export const Header: React.FC<IHeaderProps> = ({ note }) => {
             <div></div>
             <Flex justifyContent="flex-start" alignItems="center">
                 <Margin mr={30}>
-                  <DataCreated dataCreated={new Date(note.metadata.dataCreated)} dataEdited={new Date(note.metadata.dataUpdate)}  />
+                  <DateCreated dataCreated={new Date(note.metadata.dataCreated)} dataEdited={new Date(note.metadata.dataUpdate)}  />
                 </Margin>
                 <ShareButton />
                 <AddTrash note={note} />

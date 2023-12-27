@@ -1,7 +1,7 @@
 import log4js from 'log4js'
 
 import { NoteRepository } from '../repository/note.repository'
-import { NotesEditorRepository } from '../repository/notesEditor.repository'
+import { INotesEditorRepository, NotesEditorMinioRepository } from '../repository/notesEditor.repository'
 import { UpdateNoteDTO } from '../repository/DTO/updateNoteDTO'
 import { CreateNoteDTO } from '../repository/DTO/createNoteDTO'
 import { INote } from '../models/note.model'
@@ -15,7 +15,11 @@ const logger = log4js.getLogger()
 
 export class NoteService {
   noteRepository = new NoteRepository()
-  noteEditorRepository = new NotesEditorRepository()
+  private noteEditorRepository: INotesEditorRepository;
+
+  constructor () {
+    this.noteEditorRepository = new NotesEditorMinioRepository();
+  }
 
   async _setFlag(slug: string, flag: string, value: boolean) {
     const updateNoteData = new UpdateNoteDTO()
