@@ -7,6 +7,7 @@ import { searchApi } from "./api/searchApi";
 import userReducer from "./features/userSlice";
 import noteReducer from "./features/noteSlice";
 import notificationsSlice from "./features/notificationsSlice";
+import themeSlice from "./features/themeSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     userState: userReducer,
     noteState: noteReducer,
     notificationState: notificationsSlice,
+    themeState: themeSlice,
   },
   devTools: process.env.NODE_ENV === "development",
   middleware: (getDefaultMiddleware) =>
