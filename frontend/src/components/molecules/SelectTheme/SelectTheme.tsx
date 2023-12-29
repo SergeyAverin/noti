@@ -14,7 +14,7 @@ export const SelectTheme: React.FC = () => {
   const selectedTheme = theme == darkTheme ? 'dark' : 'light';
   const onSelect = (selected: string) => {
     const theme = selected=='dark'  ? darkTheme : lightTheme;
-    dispatch(setTheme(theme))
+    dispatch(setTheme({theme, themeName: selected}))
   }
   return (
     <>
