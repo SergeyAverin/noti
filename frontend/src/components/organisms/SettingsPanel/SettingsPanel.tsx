@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { SettingsPanelTabsStyled } from "./SettingsPanelStyled";
 import { Popup } from "@atoms/index";
 import { AccountManagerItemStyled } from "@molecules/AccountManager";
+import { SelectTheme } from "@molecules/SelectTheme/SelectTheme";
 
 
 export const SettingsPanel: React.FC = () => {
@@ -18,6 +19,7 @@ export const SettingsPanel: React.FC = () => {
       {isOpen && (
         <Popup closeFunction={clickHandler}>
           <SettingsPanelTabsStyled>sfd</SettingsPanelTabsStyled>
+          <SelectTheme />
         </Popup>
       )}
     </>
