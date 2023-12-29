@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ThemeContext } from "styled-components";
 
 import { useGetTrashQuery } from "@redux/api/libraryApi";
-import { DropDownMenu, Margin, NoteLink } from "@atoms/index";
+import { DropDownMenu, Icon, Margin, NoteLink } from "@atoms/index";
 import { SideBarTool } from "@atoms/SideBarTools/SideBarTool";
 
 import TrashIcon from "@public/TrashIcon.svg";
@@ -14,11 +14,11 @@ export const TrashDropDown: React.FC = () => {
   const { data, isLoading } = useGetTrashQuery();
 
   return (
-    <DropDownMenu text="Trash" icon={<TrashIcon stroke={theme?.color.fg} />}>
+    <DropDownMenu text="Trash" icon={<Icon icon={<TrashIcon stroke={theme?.color.fg} />} />}>
       <Margin ml={15} mb={5}>
         <Link to="/notes/trash">
           <SideBarTool
-            icon={<TableIcon />}
+            icon={<Icon icon={<TableIcon />} />}
             onClick={() => {}}
             text="Trash table"
           />

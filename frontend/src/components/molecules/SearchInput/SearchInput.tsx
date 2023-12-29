@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { SerachInputWrapperStyled, SerachInputStyled } from "./SearchInputStyled";
 
 import SearchIcon from '@public/Search.svg'
+import { Icon } from "@atoms/index";
 
 
 interface ISearchInputProps {
@@ -17,7 +18,7 @@ export const SearchInput: React.FC<ISearchInputProps> = ({onSearch, searchString
     }
     return (
         <SerachInputWrapperStyled>
-            <SearchIcon />
+            <Icon icon={<SearchIcon />} />
             <SerachInputStyled placeholder="write search query" value={searchString} onChange={onChange} />
         </SerachInputWrapperStyled>
     )

@@ -4,6 +4,7 @@ import { useCreateNoteMutation } from "@redux/api/noteApi";
 import { SideBarTool } from "@atoms/SideBarTools/SideBarTool";
 
 import AddIcon from "@public/AddIcon.svg";
+import { Icon } from "@atoms/index";
 
 export const CreateNote: React.FC = () => {
   const [createMutation] = useCreateNoteMutation();
@@ -11,6 +12,6 @@ export const CreateNote: React.FC = () => {
     createMutation({title: 'New note'})
   }
   return (
-    <SideBarTool onClick={clickHeandler} icon={<AddIcon />} text="Create note" />
+    <SideBarTool onClick={clickHeandler} icon={<Icon icon={<AddIcon />} />} text="Create note" />
   );
 };

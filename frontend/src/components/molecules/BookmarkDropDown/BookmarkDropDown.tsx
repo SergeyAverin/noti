@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ThemeContext } from "styled-components";
 
 import { useGetBookmarkQuery } from "@redux/api/libraryApi";
-import { DropDownMenu, Margin, NoteLink } from "@atoms/index";
+import { DropDownMenu, Icon, Margin, NoteLink } from "@atoms/index";
 
 import BookmarkIcon from "@public/BookmarkIcon.svg";
 
@@ -13,7 +13,7 @@ export const BookmarkDropDown: React.FC = () => {
   return (
     <DropDownMenu
       text="Bookmark"
-      icon={<BookmarkIcon stroke={theme?.color.fg} />}
+      icon={<Icon icon={<BookmarkIcon />} />}
       isOpenDefaultValue={true}
     >
       <Margin ml={30}>

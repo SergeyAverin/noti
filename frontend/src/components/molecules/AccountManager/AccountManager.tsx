@@ -7,10 +7,11 @@ import {
   AccountManagerStyled,
   AccountManagerItemStyled,
 } from "./AccountManagerStyled";
+import { Icon, Position } from "@atoms/index";
+import { SettingsPanel } from "@organisms/SettingsPanel";
 
 import SelectIcon from "@public/SelectIcon.svg";
 import UserIcon from "@public/UserIcon.svg";
-import { Position } from "@atoms/index";
 
 export const AccountManager: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,9 +23,9 @@ export const AccountManager: React.FC = () => {
   return (
     <AccountManagerStyled>
       <AccountManagerHeaderStyled onClick={clickHeandler}>
-        <UserIcon />
+        <Icon icon={<UserIcon />} />
         Username
-        <SelectIcon />
+        <Icon icon={<SelectIcon />} />
       </AccountManagerHeaderStyled>
       {isOpen && (
         <AccountManagerPanelStyled>
@@ -32,9 +33,7 @@ export const AccountManager: React.FC = () => {
               <AccountManagerItemStyled>
                 <Link to="/auth/logout">Logout</Link>
               </AccountManagerItemStyled>
-              <AccountManagerItemStyled>
-                <Link to="/auth/logout">Settings</Link>
-              </AccountManagerItemStyled>
+              <SettingsPanel />
           </Position>
         </AccountManagerPanelStyled>
       )}

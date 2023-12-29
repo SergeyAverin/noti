@@ -10,6 +10,7 @@ import { useGetNoteQuery } from "@redux/api/noteApi";
 import { INote } from "@redux/types/note";
 
 import TrashIcon from "@public/TrashIcon.svg";
+import { Icon } from "@atoms/index";
 
 interface IAddTrashProps {
   note: INote
@@ -31,10 +32,10 @@ export const AddTrash: React.FC<IAddTrashProps> = ({ note }) => {
       <ToggleButton
         iconDisable={<TrashIcon stroke={theme?.color.fg} />}
         iconEnable={
-          <TrashIcon
+          <Icon icon={<TrashIcon
             fill={theme?.color.highlight}
             stroke={theme?.color.highlight}
-          />
+          />} />
         }
         isEnable={note.isTrash}
         onDisable={onDisable}

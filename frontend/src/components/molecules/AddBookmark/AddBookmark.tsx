@@ -3,14 +3,15 @@ import { ThemeContext } from "styled-components";
 
 import { INote } from "@redux/types/note";
 import { ToggleButton } from "@atoms/ToggleButton/ToggleButton";
-import BookmakrIcon from "@public/BookmarkIcon.svg";
+import BookmarkIcon from "@public/BookmarkIcon.svg";
 import {
   useAddBookmarkMutation,
   useRemoveBookmarkMutation,
 } from "@redux/api/libraryApi";
+import { Icon } from "@atoms/index";
 
 interface IAddBookmarkProps {
-  note: INote
+  note: INote;
 }
 
 export const AddBookmark: React.FC<IAddBookmarkProps> = ({ note }) => {
@@ -27,11 +28,15 @@ export const AddBookmark: React.FC<IAddBookmarkProps> = ({ note }) => {
 
   return (
     <ToggleButton
-      iconDisable={<BookmakrIcon stroke={theme?.color.fg} />}
+      iconDisable={<Icon icon={<BookmarkIcon stroke={theme?.color.fg} />} />}
       iconEnable={
-        <BookmakrIcon
-          fill={theme?.color.highlight}
-          stroke={theme?.color.highlight}
+        <Icon
+          icon={
+            <BookmarkIcon
+              fill={theme?.color.highlight}
+              stroke={theme?.color.highlight}
+            />
+          }
         />
       }
       isEnable={note.isBookmark}

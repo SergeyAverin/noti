@@ -22,3 +22,4 @@ export { ToolButton } from "./ToolButton/ToolButton";
 export { Separator } from "./Separator/Separator";
 export { ToolButtonDropDown } from "./ToolButtonDropDown/ToolButtonDropDown";
 export { ToolButtonDropDownItem } from "./ToolButtonDropDown/ToolButtonDropDownItem";
+export { Icon } from "./Icon/Icon";

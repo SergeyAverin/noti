@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Popup, Button, Flex, Margin } from "@atoms/index";
+import { Popup, Button, Flex, Margin, Icon } from "@atoms/index";
 import { CopyButtonStyled, ShareButtonStyled } from "./ShareButtonStyled";
 import ShareIcon from "@public/ShareIcon.svg";
 import { SelectPermission } from "./ShareButtonStyled";
@@ -17,7 +17,7 @@ export const ShareButton: React.FC = () => {
   return (
     <div>
       <ShareButtonStyled onClick={openPopupHeandler}>
-        <ShareIcon />
+        <Icon icon={<ShareIcon />} />
       </ShareButtonStyled>
       {isOpen && (
         <Popup closeFunction={openPopupHeandler}>

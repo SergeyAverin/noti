@@ -5,6 +5,7 @@ import { NoteLinkStyled, NoteLinkWrapperStyled } from "./NoteLinkStyled";
 import { shortenString } from "@utils/shortenString";
 
 import NoteIcon from "@public/NoteIcon.svg";
+import { Icon } from "..";
 
 interface INoteLinkProsp {
   href: string;
@@ -18,7 +19,7 @@ export const NoteLink: React.FC<INoteLinkProsp> = ({ children, href, haveBackgro
       <Link to={href}>
     <NoteLinkStyled  haveBackground={haveBackground}>
         <NoteLinkWrapperStyled>
-          <NoteIcon />
+          <Icon icon={<NoteIcon />} />
           {shortenString(children as string, 20)}
         </NoteLinkWrapperStyled>
     </NoteLinkStyled>

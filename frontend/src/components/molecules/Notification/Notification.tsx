@@ -9,7 +9,7 @@ import {
   NotificationStyled,
   NotificationCloseStyled,
 } from "./NotificationStyled";
-import { Margin } from "@atoms/index";
+import { Icon, Margin } from "@atoms/index";
 
 import CloseIcon from "@public/CloseIcon.svg";
 
@@ -41,7 +41,7 @@ export const Notification: React.FC<INotificationProps> = ({
   return (
     <NotificationStyled fadeOutAnimation={fadeOutAnimation}>
       <NotificationCloseStyled onClick={onClose}>
-        <CloseIcon />
+        <Icon icon={<CloseIcon />} />
       </NotificationCloseStyled>
       <NotificationTitleStyled>{notification.title}</NotificationTitleStyled>
       <NotificationDescriptionStyled>
