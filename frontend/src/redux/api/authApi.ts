@@ -1,6 +1,6 @@
 import { IToken } from "@redux/types/token";
 import { IUser } from "@redux/types/user";
-import { setUser } from "@redux/features/userSlice";
+import { setActiveUser } from "@redux/features/userSlice";
 import { baseApi } from "../baseApi";
 
 interface createUserDTO {
@@ -27,7 +27,7 @@ export const authApi = baseApi.injectEndpoints({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const res = await queryFulfilled;
-          dispatch(setUser(res.data.user));
+          dispatch(setActiveUser(res.data.user));
           const authUsersFromLocalStorage = localStorage.getItem("users");
           let authUsers = [];
           if (authUsersFromLocalStorage) {
