@@ -27,13 +27,23 @@ export const authApi = baseApi.injectEndpoints({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const res = await queryFulfilled;
-          dispatch(setActiveUser(res.data.user));
+          const user = res.data.user as IUser;
+
+          dispatch(setActiveUser(user));
+
           const authUsersFromLocalStorage = localStorage.getItem("users");
-          let authUsers = [];
+          let authUsers: Array<IUser> = [];
           if (authUsersFromLocalStorage) {
             authUsers = JSON.parse(authUsersFromLocalStorage);
           }
-          authUsers.push(res.data.user);
+
+          const index = authUsers.findIndex(
+            (item) => item.email === user.email
+          );
+          if (index < 0) {
+            authUsers.push(res.data.user);
+          }
+
           localStorage.setItem("users", JSON.stringify(authUsers));
           localStorage.setItem("activeUser", JSON.stringify(res.data.user));
           localStorage.setItem("token", res.data.token.token);

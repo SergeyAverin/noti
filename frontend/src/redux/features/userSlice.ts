@@ -21,9 +21,16 @@ export const userSlice = createSlice({
     setAccounts: (state, action: PayloadAction<Array<IUser>>) => {
       state.accounts = action.payload;
     },
+    removeUser: (state, action: PayloadAction<IUser>) => {
+      const indexToDelete = state.accounts.findIndex(
+        (item) => item.email === action.payload.email
+      );
+      state.accounts.splice(indexToDelete, 1);
+      localStorage.setItem("users", JSON.stringify(state.accounts));
+    },
   },
 });
 
 export default userSlice.reducer;
 
-export const { setActiveUser, setAccounts } = userSlice.actions;
+export const { setActiveUser, setAccounts, removeUser } = userSlice.actions;

@@ -8,14 +8,18 @@ import {
   AccountManagerStyled,
   AccountManagerItemStyled,
 } from "./AccountManagerStyled";
-import { Icon, Position, Separator } from "@atoms/index";
+import { Flex, Icon, Position, Separator, ToolButton } from "@atoms/index";
 import { SettingsPanel } from "@organisms/SettingsPanel";
-import { setAccounts, setActiveUser } from "@redux/features/userSlice";
+import { removeUser } from "@redux/features/userSlice";
 import { activeUserSelector, accountsSelector } from "@redux/selectors/user";
+import { IUser } from "@redux/types/user";
 import { shortenString } from "@utils/shortenString";
 
 import SelectIcon from "@public/SelectIcon.svg";
 import UserIcon from "@public/UserIcon.svg";
+import TrashIcon from '@public/TrashIcon.svg'
+import { useLoadAccounts } from "@hooks/useLoadAccounts";
+
 
 export const AccountManager: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,24 +27,15 @@ export const AccountManager: React.FC = () => {
   const accounts = useSelector(accountsSelector);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const authUsersFromLocalStorage = localStorage.getItem("users");
-    const activeUserFromLocalStorage = localStorage.getItem("activeUser");
-    let authUsers = [];
-    let activeUser = null
-    if (authUsersFromLocalStorage) {
-      authUsers = JSON.parse(authUsersFromLocalStorage);
-    }
-    if (activeUserFromLocalStorage) {
-      activeUser = JSON.parse(activeUserFromLocalStorage);
-    }
-    dispatch(setAccounts(authUsers));
-    dispatch(setActiveUser(activeUser));
-  }, []);
+  useLoadAccounts();
+
 
   const clickHeandler = () => {
     setIsOpen((prev) => !prev);
   };
+  const removeAccountHandler  = (user: IUser) => {
+    dispatch(removeUser(user));
+  }
 
   return (
     <AccountManagerStyled>
@@ -54,10 +49,18 @@ export const AccountManager: React.FC = () => {
           <Position position="absolute" top="0">
             {accounts.map((user) => (
               <AccountManagerItemStyled>
-                <Link to="/auth/logout">{shortenString(user.username, 20)}</Link>
+                  <Flex justifyContent="flex-start" alignItems="center" >
+                    {shortenString(user.username, 20)}
+                  <ToolButton isActive={false} onClick={() => removeAccountHandler(user)}>
+                    <Icon icon={<TrashIcon />} />
+                  </ToolButton>
+                  </Flex>
               </AccountManagerItemStyled>
             ))}
             <Separator isHorizontal={true} />
+            <AccountManagerItemStyled>
+              <Link to="/auth/login">add account</Link>
+            </AccountManagerItemStyled>
             <AccountManagerItemStyled>
               <Link to="/auth/logout">logout</Link>
             </AccountManagerItemStyled>
