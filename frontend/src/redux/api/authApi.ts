@@ -35,6 +35,7 @@ export const authApi = baseApi.injectEndpoints({
           }
           authUsers.push(res.data.user);
           localStorage.setItem("users", JSON.stringify(authUsers));
+          localStorage.setItem("activeUser", JSON.stringify(res.data.user));
           localStorage.setItem("token", res.data.token.token);
         } catch (error) {}
       },
