@@ -28,6 +28,13 @@ export const authApi = baseApi.injectEndpoints({
         try {
           const res = await queryFulfilled;
           dispatch(setUser(res.data.user));
+          const authUsersFromLocalStorage = localStorage.getItem("users");
+          let authUsers = [];
+          if (authUsersFromLocalStorage) {
+            authUsers = JSON.parse(authUsersFromLocalStorage);
+          }
+          authUsers.push(res.data.user);
+          localStorage.setItem("users", JSON.stringify(authUsers));
           localStorage.setItem("token", res.data.token.token);
         } catch (error) {}
       },
