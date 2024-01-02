@@ -33,7 +33,7 @@ export const LoginForm: React.FC = () => {
   const onSubmit = (data: FormValues) => {
     login(data).then(() => {
       if (!isError) {
-        navigate("/");
+        navigate("/notes");
       }
     });
   };
