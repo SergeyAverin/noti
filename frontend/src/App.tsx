@@ -11,21 +11,21 @@ import GlobalStyleStyled from "./styles/globalStyle.styled";
 import { themeSelector } from "@redux/selectors/theme";
 import { store } from "@redux/store";
 import MainRouter from "./router";
+import { themeDict } from "./styles/themeDict";
 
 import './i18n'
 import "normalize.css";
 import { setTheme } from "@redux/features/themeSlice";
-import { darkTheme } from "./styles/darkTheme";
-import { lightTheme } from "./styles/lightTheme";
 
 
 const Theme: React.FC<PropsWithChildren> = ({ children }) => {
   let themeName = localStorage.getItem("theme");
   let theme = useSelector(themeSelector);
-  theme = themeName=='dark'  ? darkTheme : lightTheme;
   
   if (themeName == null) {
     themeName = 'dark'
+  } else {
+    theme = themeDict[themeName];
   }
   const dispatch = useDispatch()
 
