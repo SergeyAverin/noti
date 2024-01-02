@@ -77,7 +77,6 @@ export const AccountManager: React.FC = () => {
             <AccountManagerItemStyled>
               <Link to="/auth/logout">{t('logout')}</Link>
             </AccountManagerItemStyled>
-            <SettingsPanel />
           </Position>
         </AccountManagerPanelStyled>
       )}

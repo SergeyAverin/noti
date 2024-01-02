@@ -10,6 +10,7 @@ import { RootNotes } from "@molecules/RootNotes"
 import { AccountManager } from "@molecules/AccountManager";
 import { CreateNote } from "@molecules/CreateNote";
 import { SearchPanel } from "@organisms/SearchPanel";
+import { SettingsPanel } from "@organisms/SettingsPanel";
 
 export const SideBar: React.FC = () => {
   return (
@@ -23,6 +24,10 @@ export const SideBar: React.FC = () => {
         <Margin mt={5}>
           <SearchPanel />
         </Margin>
+        <Margin mt={5}>
+          <SettingsPanel />
+        </Margin>
+
         <TrashDropDown />
         <Margin mt={30}>
           <BookmarkDropDown />

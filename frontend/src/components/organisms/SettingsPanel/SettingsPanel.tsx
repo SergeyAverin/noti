@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 
 import { SettingsPanelTabsStyled } from "./SettingsPanelStyled";
-import { Popup } from "@atoms/index";
+import { Icon, Popup } from "@atoms/index";
 import { AccountManagerItemStyled } from "@molecules/AccountManager";
 import { SelectTheme } from "@molecules/SelectTheme/SelectTheme";
 import { SelectLanguage } from "@molecules/SelectLanguage";
 import { useTranslation } from "react-i18next";
+import { SideBarTool } from "@atoms/SideBarTools/SideBarTool";
+
+import SettingsIcon from '@public/SettingsIcon.svg'
 
 
 export const SettingsPanel: React.FC = () => {
@@ -16,9 +19,8 @@ export const SettingsPanel: React.FC = () => {
   };
   return (
     <>
-      <AccountManagerItemStyled onClick={clickHandler}>
-        { t('setting') }
-      </AccountManagerItemStyled>
+      <SideBarTool onClick={clickHandler} icon={<Icon icon={<SettingsIcon />} />} text={t('setting')} />
+
       {isOpen && (
         <Popup closeFunction={clickHandler}>
 
