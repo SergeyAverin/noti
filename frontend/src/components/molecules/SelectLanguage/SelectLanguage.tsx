@@ -9,9 +9,11 @@ export const SelectLanguage: React.FC = () => {
   const onSelect = (selectedLanguage: string) => {
     i18n.changeLanguage(selectedLanguage)
   }
+  const {t} = useTranslation()
+
   return (
     <>
-      <h2>Select theme</h2>
+      <h2>{t('selectLanguage')}</h2>
       <Select selectItem={currentLanguage} onSelect={onSelect} items={['en', 'ru']} />
     </>
   )

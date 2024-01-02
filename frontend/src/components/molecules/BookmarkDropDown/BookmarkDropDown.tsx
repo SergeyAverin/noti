@@ -5,14 +5,16 @@ import { useGetBookmarkQuery } from "@redux/api/libraryApi";
 import { DropDownMenu, Icon, Margin, NoteLink } from "@atoms/index";
 
 import BookmarkIcon from "@public/BookmarkIcon.svg";
+import { useTranslation } from "react-i18next";
 
 export const BookmarkDropDown: React.FC = () => {
   const theme = useContext(ThemeContext);
   const { data, isLoading, isError } = useGetBookmarkQuery();
+  const { t } = useTranslation()
 
   return (
     <DropDownMenu
-      text="Bookmark"
+      text={t('bookmark')}
       icon={<Icon icon={<BookmarkIcon />} />}
       isOpenDefaultValue={true}
     >
@@ -28,7 +30,7 @@ export const BookmarkDropDown: React.FC = () => {
               {note.title}
             </NoteLink>
           ))}
-        {!isLoading && data?.length == 0 && <div>Bookmark is empty</div>}
+        {!isLoading && data?.length == 0 && <div>{t('bookmarkEmpty')}</div>}
       </Margin>
     </DropDownMenu>
   );

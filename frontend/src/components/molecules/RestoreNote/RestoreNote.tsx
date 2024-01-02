@@ -2,6 +2,7 @@ import React from "react";
 
 import { useRemoveTrashMutation } from "@redux/api/libraryApi";
 import { Button } from "@atoms/index";
+import { useTranslation } from "react-i18next";
 
 interface IRestoreNoteProps {
   slug: string;
@@ -21,9 +22,11 @@ export const RestoreNote: React.FC<IRestoreNoteProps> = ({
     restoreTrash(slug);
   };
 
+  const { t } = useTranslation()
+
   return (
     <Button danger={danger} fill={fill} onClick={onClickHeandler}>
-      restoreTrash
+      {t('restoreTrash')}
     </Button>
   );
 };

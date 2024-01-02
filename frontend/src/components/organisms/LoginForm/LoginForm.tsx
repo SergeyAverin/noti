@@ -12,6 +12,7 @@ import {
   LinkBG,
 } from "@atoms/index";
 import { InputLabelController } from "@molecules/InputLabel";
+import { useTranslation } from "react-i18next";
 
 type FormValues = {
   email: string;
@@ -27,6 +28,8 @@ export const LoginForm: React.FC = () => {
   const [login, { isError, error }] = useLoginMutation();
   const navigate = useNavigate();
 
+  const { t } = useTranslation()
+
   const onSubmit = (data: FormValues) => {
     login(data).then(() => {
       if (!isError) {
@@ -37,38 +40,38 @@ export const LoginForm: React.FC = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <InputLabelController
-        text="Email"
+        text={t('email')}
         control={control}
         name="email"
         rules={{
-          required: "Email is required",
+          required: t('requiredEmail'),
           pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message: "Invalid email address",
+            message: t('invalidEmail'),
           },
         }}
       />
       <Margin mt={15}>
         <InputLabelController
-          text="Password"
+          text={t('password')}
           attrType="password"
           control={control}
           name="password"
-          rules={{ required: "Password is required" }}
+          rules={{ required: t('requiredPassword') }}
         />
       </Margin>
       <Margin mt={25} mb={15}>
-        <LinkBG href="/auth/registration" text="Registration" />
+        <LinkBG href="/auth/registration" text={t('registration')} />
       </Margin>
       <Margin mt={15}>
-        <SubmitButton value="login" />
+        <SubmitButton value={t('login')} />
       </Margin>
       <Margin mt={30}>
         <Position position="absolute">
           {errors.email && <ErrorText>{errors.email.message}</ErrorText>}
           <br />
           {errors.password && <ErrorText>{errors.password.message}</ErrorText>}
-          {isError && <ErrorText>Wrong login or password</ErrorText>}
+          {isError && <ErrorText>{t('authFail')}</ErrorText>}
         </Position>
       </Margin>
     </Form>

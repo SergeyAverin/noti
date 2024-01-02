@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, Suspense } from "react";
 
 import { ThemeProvider } from "styled-components";
 import { Provider, useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,7 @@ import { themeSelector } from "@redux/selectors/theme";
 import { store } from "@redux/store";
 import MainRouter from "./router";
 
+import './i18n'
 import "normalize.css";
 import { setTheme } from "@redux/features/themeSlice";
 import { darkTheme } from "./styles/darkTheme";
@@ -40,16 +41,18 @@ const Theme: React.FC<PropsWithChildren> = ({ children }) => {
 const App: React.FC = () => {
 
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Theme>
-          <GlobalStyleStyled />
-            <DndProvider backend={HTML5Backend}>
-              <MainRouter />
-            </DndProvider>
-        </Theme>
-      </BrowserRouter>
-    </Provider>
+    <Suspense fallback="loading">
+      <Provider store={store}>
+        <BrowserRouter>
+          <Theme>
+            <GlobalStyleStyled />
+              <DndProvider backend={HTML5Backend}>
+                <MainRouter />
+              </DndProvider>
+          </Theme>
+        </BrowserRouter>
+      </Provider>
+    </Suspense>
   );
 };
 

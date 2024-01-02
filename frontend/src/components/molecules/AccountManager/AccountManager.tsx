@@ -19,12 +19,14 @@ import SelectIcon from "@public/SelectIcon.svg";
 import UserIcon from "@public/UserIcon.svg";
 import TrashIcon from "@public/TrashIcon.svg";
 import { useLoadAccounts } from "@hooks/useLoadAccounts";
+import { useTranslation } from "react-i18next";
 
 export const AccountManager: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const activeUser = useSelector(activeUserSelector);
   const accounts = useSelector(accountsSelector);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useLoadAccounts();
 
@@ -66,10 +68,10 @@ export const AccountManager: React.FC = () => {
             ))}
             <Separator isHorizontal={true} />
             <AccountManagerItemStyled>
-              <Link to="/auth/add-account">add account</Link>
+              <Link to="/auth/add-account">{t('addAccount')}</Link>
             </AccountManagerItemStyled>
             <AccountManagerItemStyled>
-              <Link to="/auth/logout">logout</Link>
+              <Link to="/auth/logout">{t('logout')}</Link>
             </AccountManagerItemStyled>
             <SettingsPanel />
           </Position>
