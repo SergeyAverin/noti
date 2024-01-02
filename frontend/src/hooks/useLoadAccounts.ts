@@ -19,6 +19,6 @@ export const useLoadAccounts = () => {
     }
 
     dispatch(setAccounts(authUsers));
-    // dispatch(setActiveUser(activeUser));
+    dispatch(setActiveUser({ user: activeUser, token: null }));
   }, []);
 };

@@ -20,6 +20,7 @@ import UserIcon from "@public/UserIcon.svg";
 import TrashIcon from "@public/TrashIcon.svg";
 import { useLoadAccounts } from "@hooks/useLoadAccounts";
 import { useTranslation } from "react-i18next";
+import { useUpdateMutation } from "@redux/api/libraryApi";
 
 export const AccountManager: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,6 +31,8 @@ export const AccountManager: React.FC = () => {
 
   useLoadAccounts();
 
+  const [update] = useUpdateMutation()
+
   const clickHeandler = () => {
     setIsOpen((prev) => !prev);
   };
@@ -39,6 +42,7 @@ export const AccountManager: React.FC = () => {
 
   const changeAccountHandler = (user: {user: IUser, token: string}) => {
     dispatch(setActiveUser({user: user.user, token: user.token}));
+    update()
   };
 
   return (
