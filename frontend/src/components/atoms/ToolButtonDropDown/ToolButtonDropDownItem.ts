@@ -8,6 +8,9 @@ export const ToolButtonDropDownItem = styled.div`
   transition: 0.3s;
   min-width: 100px;
   box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   &:hover {
     background: ${(props) => props.theme.color.primary};
     transition: 0.3s;
