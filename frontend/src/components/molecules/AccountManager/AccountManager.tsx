@@ -10,16 +10,15 @@ import {
 } from "./AccountManagerStyled";
 import { Flex, Icon, Position, Separator, ToolButton } from "@atoms/index";
 import { SettingsPanel } from "@organisms/SettingsPanel";
-import { removeUser } from "@redux/features/userSlice";
+import { removeUser, setActiveUser } from "@redux/features/userSlice";
 import { activeUserSelector, accountsSelector } from "@redux/selectors/user";
 import { IUser } from "@redux/types/user";
 import { shortenString } from "@utils/shortenString";
 
 import SelectIcon from "@public/SelectIcon.svg";
 import UserIcon from "@public/UserIcon.svg";
-import TrashIcon from '@public/TrashIcon.svg'
+import TrashIcon from "@public/TrashIcon.svg";
 import { useLoadAccounts } from "@hooks/useLoadAccounts";
-
 
 export const AccountManager: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,13 +28,16 @@ export const AccountManager: React.FC = () => {
 
   useLoadAccounts();
 
-
   const clickHeandler = () => {
     setIsOpen((prev) => !prev);
   };
-  const removeAccountHandler  = (user: IUser) => {
+  const removeAccountHandler = (user: IUser) => {
     dispatch(removeUser(user));
-  }
+  };
+
+  const changeAccountHandler = (user: {user: IUser, token: string}) => {
+    dispatch(setActiveUser({user: user.user, token: user.token}));
+  };
 
   return (
     <AccountManagerStyled>
@@ -48,18 +50,23 @@ export const AccountManager: React.FC = () => {
         <AccountManagerPanelStyled>
           <Position position="absolute" top="0">
             {accounts.map((user) => (
-              <AccountManagerItemStyled>
-                  <Flex justifyContent="flex-start" alignItems="center" >
-                    {shortenString(user.username, 20)}
-                  <ToolButton isActive={false} onClick={() => removeAccountHandler(user)}>
+              <AccountManagerItemStyled
+                onClick={() => changeAccountHandler(user)}
+              >
+                <Flex justifyContent="space-between" alignItems="center">
+                  {shortenString(user.user.username, 20)}
+                  <ToolButton
+                    isActive={false}
+                    onClick={() => removeAccountHandler(user.user)}
+                  >
                     <Icon icon={<TrashIcon />} />
                   </ToolButton>
-                  </Flex>
+                </Flex>
               </AccountManagerItemStyled>
             ))}
             <Separator isHorizontal={true} />
             <AccountManagerItemStyled>
-              <Link to="/auth/login">add account</Link>
+              <Link to="/auth/add-account">add account</Link>
             </AccountManagerItemStyled>
             <AccountManagerItemStyled>
               <Link to="/auth/logout">logout</Link>

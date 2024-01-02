@@ -29,25 +29,29 @@ export const authApi = baseApi.injectEndpoints({
           const res = await queryFulfilled;
           const user = res.data.user as IUser;
 
-          dispatch(setActiveUser(user));
-
           const authUsersFromLocalStorage = localStorage.getItem("users");
-          let authUsers: Array<IUser> = [];
+          let authUsers: Array<{ user: IUser; token: string }> = [];
+
           if (authUsersFromLocalStorage) {
             authUsers = JSON.parse(authUsersFromLocalStorage);
           }
 
           const index = authUsers.findIndex(
-            (item) => item.email === user.email
+            (item) => item.user.email === user.email
           );
+
           if (index < 0) {
-            authUsers.push(res.data.user);
+            authUsers.push({ user: user, token: res.data.token.token });
           }
 
-          localStorage.setItem("users", JSON.stringify(authUsers));
-          localStorage.setItem("activeUser", JSON.stringify(res.data.user));
+          dispatch(setActiveUser({ user, token: res.data.token.token }));
           localStorage.setItem("token", res.data.token.token);
-        } catch (error) {}
+          localStorage.setItem("users", JSON.stringify(authUsers));
+          localStorage.setItem("activeUser", JSON.stringify(user));
+        } catch (error) {
+          console.log("err");
+          console.log(error);
+        }
       },
     }),
     registration: builder.mutation<IUser, createUserDTO>({

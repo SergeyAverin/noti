@@ -16,7 +16,7 @@ export const userApi = baseApi.injectEndpoints({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          dispatch(setActiveUser(data));
+          dispatch(setActiveUser({ user: data, token: null }));
         } catch (error) {}
       },
     }),

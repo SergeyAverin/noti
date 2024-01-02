@@ -2,7 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-import { useRedirectAuthorized } from "@hooks/useRedirectAuthorized";
 import { useLoginMutation } from "@redux/api/authApi";
 import {
   Margin,
@@ -25,7 +24,6 @@ export const LoginForm: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
-  useRedirectAuthorized();
   const [login, { isError, error }] = useLoginMutation();
   const navigate = useNavigate();
 

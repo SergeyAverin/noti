@@ -7,5 +7,5 @@ export interface IUser {
   email: string;
   dataCreated: Date;
   dataUpdatedPassword: Date;
-  tokens: [IToken];
+  token: string;
 }
