@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-interface ICenterProps {
+export interface ICenterProps {
   harezontal?: boolean;
   vertical?: boolean;
 }
