@@ -4,6 +4,7 @@ import NoteIcon from '@public/NoteIcon.svg'
 import { BreadcrumbsStyled, ContentStyled, SearchItemStyled, SearchItemTitleStyled } from "./SearchItemStyled";
 import { TextMarker } from "./TextMarker";
 import { Link } from "react-router-dom";
+import { Icon } from "@atoms/index";
 
 
 interface ISearchItemProps {
@@ -18,7 +19,7 @@ export const SearchItem: React.FC<ISearchItemProps> = ({content, title, searchSt
         <Link to={`/notes/${slug}`}>
             <SearchItemStyled>
                 <SearchItemTitleStyled>
-                    <NoteIcon /> 
+                    <Icon icon={<NoteIcon />} />
                     <TextMarker text={title}  markerString={searchString} />
                 </SearchItemTitleStyled>
                 <BreadcrumbsStyled>

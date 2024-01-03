@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Margin, ToolButton } from "@atoms/index";
+import { Icon, Margin, ToolButton } from "@atoms/index";
 
 import AlignLeftIcon from "@public/AlignLeftIcon.svg";
 import AlignRightIcon from "@public/AlignRightIcon.svg";
@@ -14,21 +14,21 @@ export const AlignTools: React.FC = () => {
   return (
     <>
       <ToolButton isActive={false} onClick={() => execCommand('justifyLeft')}>
-        <AlignLeftIcon />
+        <Icon icon={<AlignLeftIcon />} />
       </ToolButton>
       <Margin ml={10}>
         <ToolButton isActive={false} onClick={() => execCommand('justifyCenter')}>
-          <AlignCenterIcon />
+          <Icon icon={<AlignCenterIcon />} />
         </ToolButton>
       </Margin>
       <Margin ml={10}>
         <ToolButton isActive={false} onClick={() => execCommand('justifyRight')}>
-          <AlignRightIcon />
+          <Icon icon={<AlignRightIcon />} />
         </ToolButton>
       </Margin>
       <Margin ml={10}>
         <ToolButton isActive={false} onClick={() => execCommand('justifyFull')}>
-          <AlignFullIcon />
+          <Icon icon={<AlignFullIcon />} />
         </ToolButton>
       </Margin>
     </>

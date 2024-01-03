@@ -1,8 +1,10 @@
 import React from "react";
 
 import { SideBarTool } from "@atoms/SideBarTools/SideBarTool";
+import { Icon } from "@atoms/index";
 
 import SearchIcon from "@public/Search.svg";
+import { useTranslation } from "react-i18next";
 
 
 interface ISearchButtonProps {
@@ -10,7 +12,8 @@ interface ISearchButtonProps {
 }
 
 export const SearchButton: React.FC<ISearchButtonProps> = ({clickHeandler}) => {
+  const { t } = useTranslation()
   return (
-    <SideBarTool onClick={clickHeandler} icon={<SearchIcon />} text="Search" />
+    <SideBarTool onClick={clickHeandler} icon={<Icon icon={<SearchIcon />} />} text={t('search')} />
   );
 };

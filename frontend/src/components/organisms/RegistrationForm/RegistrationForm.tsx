@@ -13,6 +13,7 @@ import {
 } from "@atoms/index";
 import { InputLabelController } from "@molecules/InputLabel";
 import { useRegistrationMutation } from "@redux/api/authApi";
+import { useTranslation } from "react-i18next";
 
 type FormValues = {
   username: string;
@@ -30,6 +31,7 @@ export const RegistrationForm: React.FC = () => {
   const navigate = useNavigate();
   useRedirectAuthorized();
   const [registration] = useRegistrationMutation();
+  const { t } = useTranslation()
   const onSubmit = (data: FormValues) => {
     registration(data);
     navigate("/auth/login");
@@ -37,50 +39,50 @@ export const RegistrationForm: React.FC = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <InputLabelController
-        text="Username"
+        text={t('username')}
         control={control}
         name="username"
         rules={{
-          required: "Username is required",
+          required: t('requiredUsername'),
         }}
       />
       <Margin mt={15}>
         <InputLabelController
-          text="Email"
+          text={t('email')}
           control={control}
           name="email"
           rules={{
-            required: "Email is required",
+            required: t('requiredEmail'),
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: "Invalid email address",
+              message:  t('invalidEmail'),
             },
           }}
         />
       </Margin>
       <Margin mt={15}>
         <InputLabelController
-          text="Password"
+          text={t('password')}
           attrType="password"
           control={control}
           name="password1"
-          rules={{ required: "Password1 is required" }}
+          rules={{ required: t('requiredPassword') }}
         />
       </Margin>
       <Margin mt={15}>
         <InputLabelController
-          text="Password2"
+          text={t('password2')}
           attrType="password"
           control={control}
           name="password2"
-          rules={{ required: "Password2 is required" }}
+          rules={{ required: t('requiredPassword2') }}
         />
       </Margin>
       <Margin mt={25} mb={15}>
-        <LinkBG href="/auth/login" text="login" />
+        <LinkBG href="/auth/login" text={t('login')} />
       </Margin>
       <Margin mt={15}>
-        <SubmitButton value="login" />
+        <SubmitButton value={t('registration')}/>
       </Margin>
       <Margin mt={30}>
         <Position position="absolute">

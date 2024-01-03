@@ -8,6 +8,7 @@ import {
 
 import ArrowIcon from "@public/ArrowIcon.svg";
 import NoteIcon from "@public/NoteIcon.svg";
+import { Icon } from "..";
 
 interface IToolButtonDropDownProsp {
   children: React.ReactNode;
@@ -33,7 +34,7 @@ export const ToolButtonDropDown: React.FC<IToolButtonDropDownProsp> = ({
     <ToolButtonDropDownWrapperStyled>
       <ToolButtonDropDownStyled onClick={onClickHeandler}>
         <ToolButtonDropDownTextStyled>{icon}</ToolButtonDropDownTextStyled>
-        <ArrowIcon transform={isOpen ? "rotate(0 0 0)" : "rotate(-90 0 0)"} />
+        <Icon icon={<ArrowIcon transform={isOpen ? "rotate(0 0 0)" : "rotate(-90 0 0)"} />} />
       </ToolButtonDropDownStyled>
       {isOpen && <div onMouseDown={onMouseDown}>{children}</div>}
     </ToolButtonDropDownWrapperStyled>

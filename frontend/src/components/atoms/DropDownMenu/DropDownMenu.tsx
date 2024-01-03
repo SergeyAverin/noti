@@ -8,6 +8,7 @@ import {
 
 import ArrowIcon from "@public/ArrowIcon.svg";
 import NoteIcon from "@public/NoteIcon.svg";
+import { Icon } from "..";
 
 interface IDropDownMenuProsp {
   text: string;
@@ -34,7 +35,7 @@ export const DropDownMenu: React.FC<IDropDownMenuProsp> = ({
           {icon}
           {text}
         </DropDownMenuTextStyled>
-        <ArrowIcon transform={isOpen ? "rotate(0 0 0)" : "rotate(-90 0 0)"} />
+        <Icon icon={<ArrowIcon transform={isOpen ? "rotate(0 0 0)" : "rotate(-90 0 0)"} />} />
       </DropDownMenuStyled>
       {isOpen && children}
     </DropDownMenuWrapperStyled>
@@ -42,6 +43,6 @@ export const DropDownMenu: React.FC<IDropDownMenuProsp> = ({
 };
 
 DropDownMenu.defaultProps = {
-  icon: <NoteIcon></NoteIcon>,
+  icon:        <Icon icon={<NoteIcon />} />,
   isOpenDefaultValue: false
 };

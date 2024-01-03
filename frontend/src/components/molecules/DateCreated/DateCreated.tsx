@@ -2,6 +2,7 @@ import React from "react";
 
 import { DateCreatedStyled, DateCreatedMoreStyled } from "./DateCreatedStyled";
 import { formatDate } from "@utils/formatedDate";
+import { useTranslation } from "react-i18next";
 
 interface IDateCreatedProps {
   dataCreated: Date;
@@ -11,15 +12,14 @@ export const DateCreated: React.FC<IDateCreatedProps> = ({
   dataCreated,
   dataEdited,
 }) => {
+  const { t } = useTranslation();
   return (
     <DateCreatedStyled>
-      <div>
-        Last edit at {formatDate(dataEdited)}
-      </div>
+      <div>{t("dateEdited", { date: formatDate(dataEdited) })}</div>
       <DateCreatedMoreStyled>
-        Created at {formatDate(dataCreated)}
+        {t("dateCreated", { date: formatDate(dataCreated) })}
         <br />
-        Last edit at {formatDate(dataEdited)}
+        {t("dateEdited", { date: formatDate(dataEdited) })}
       </DateCreatedMoreStyled>
     </DateCreatedStyled>
   );

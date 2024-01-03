@@ -5,6 +5,8 @@ import { INote } from "@redux/types/note";
 import { Flex, Margin, Button } from "@atoms/index";
 import { RestoreNote } from "@molecules/RestoreNote";
 import { RemoveNote } from "@molecules/RemoveNote";
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 
 interface ITrashAlertProps {
@@ -12,10 +14,11 @@ interface ITrashAlertProps {
 }
 
 export const TrashAlert: React.FC<ITrashAlertProps> = ({ note }) => {
+    const { t } = useTranslation();
     return <TrashAlertStyled>
         <Flex justifyContent="space-between" alignItems="center">
             <div>
-                Note in trash
+                {t('trashAlert')}
             </div>
             <Flex justifyContent="flex-start" alignItems="center">
                 <RestoreNote slug={note.slug} />

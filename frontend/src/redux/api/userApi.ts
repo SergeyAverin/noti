@@ -1,5 +1,5 @@
 import { baseApi } from "../baseApi";
-import { setUser } from "../features/userSlice";
+import { setActiveUser } from "../features/userSlice";
 import { IUser } from "../types/user";
 
 export const userApi = baseApi.injectEndpoints({
@@ -16,7 +16,7 @@ export const userApi = baseApi.injectEndpoints({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          dispatch(setUser(data));
+          dispatch(setActiveUser({ user: data, token: null }));
         } catch (error) {}
       },
     }),

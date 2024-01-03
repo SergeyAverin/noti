@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Margin, ToolButton } from "@atoms/index";
+import { Icon, Margin, ToolButton } from "@atoms/index";
 import { useExecCommand } from "@hooks/useExecCommand";
 
 import ArrowBeforeIcon from "@public/ArrowBeforeIcon.svg";
@@ -13,11 +13,11 @@ export const HistoryTools: React.FC = () => {
   return (
     <>
       <ToolButton isActive={false} onClick={() => execCommand('undo')}>
-        <ArrowBeforeIcon />
+        <Icon icon={<ArrowBeforeIcon />} />
       </ToolButton>
       <Margin ml={10}>
         <ToolButton isActive={false} onClick={() => execCommand('redo')}>
-          <ArrowAfterIcon />
+          <Icon icon={<ArrowAfterIcon />} />
         </ToolButton>
       </Margin>
     </>

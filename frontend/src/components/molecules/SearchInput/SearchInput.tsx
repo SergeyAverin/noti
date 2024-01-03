@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { SerachInputWrapperStyled, SerachInputStyled } from "./SearchInputStyled";
 
 import SearchIcon from '@public/Search.svg'
+import { Icon } from "@atoms/index";
+import { useTranslation } from "react-i18next";
 
 
 interface ISearchInputProps {
@@ -15,10 +17,11 @@ export const SearchInput: React.FC<ISearchInputProps> = ({onSearch, searchString
         setSearchString(event.target.value)
         onSearch(searchString)
     }
+    const { t } = useTranslation()
     return (
         <SerachInputWrapperStyled>
-            <SearchIcon />
-            <SerachInputStyled placeholder="write search query" value={searchString} onChange={onChange} />
+            <Icon icon={<SearchIcon />} />
+            <SerachInputStyled placeholder={t('searchPlaceholder')} value={searchString} onChange={onChange} />
         </SerachInputWrapperStyled>
     )
 }

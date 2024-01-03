@@ -2,25 +2,27 @@ import React, { useContext } from "react";
 import { ThemeContext } from "styled-components";
 
 import { useGetTrashQuery } from "@redux/api/libraryApi";
-import { DropDownMenu, Margin, NoteLink } from "@atoms/index";
+import { DropDownMenu, Icon, Margin, NoteLink } from "@atoms/index";
 import { SideBarTool } from "@atoms/SideBarTools/SideBarTool";
 
 import TrashIcon from "@public/TrashIcon.svg";
 import TableIcon from "@public/TableIcon.svg";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export const TrashDropDown: React.FC = () => {
   const theme = useContext(ThemeContext);
   const { data, isLoading } = useGetTrashQuery();
+  const { t } = useTranslation()
 
   return (
-    <DropDownMenu text="Trash" icon={<TrashIcon stroke={theme?.color.fg} />}>
+    <DropDownMenu text={t('trash')} icon={<Icon icon={<TrashIcon stroke={theme?.color.fg} />} />}>
       <Margin ml={15} mb={5}>
         <Link to="/notes/trash">
           <SideBarTool
-            icon={<TableIcon />}
+            icon={<Icon icon={<TableIcon />} />}
             onClick={() => {}}
-            text="Trash table"
+            text={t('trashTable')}
           />
         </Link>
       </Margin>
@@ -36,7 +38,7 @@ export const TrashDropDown: React.FC = () => {
               {note.title}
             </NoteLink>
           ))}
-        {!isLoading && data?.length == 0 && <div>Trash is empty</div>}
+        {!isLoading && data?.length == 0 && <div>{t('trashEmpty')}</div>}
       </Margin>
     </DropDownMenu>
   );
