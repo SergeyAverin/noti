@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV='development' webpack serve",
-    "build": "NODE_ENV='production' webpack serve"
+    "build": "NODE_ENV='production' webpack serve",
+    "storybook": "storybook dev -p 6006 -h 0.0.0.0",
+    "build-storybook": "storybook build"
   },
   "repository": {
     "type": "git",
@@ -18,13 +20,23 @@
   },
   "homepage": "https://github.com/SergeyAverin/noti#readme",
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.6.7",
+    "@storybook/addon-interactions": "^7.6.7",
+    "@storybook/addon-links": "^7.6.7",
+    "@storybook/addon-onboarding": "^1.0.10",
+    "@storybook/blocks": "^7.6.7",
+    "@storybook/react": "^7.6.7",
+    "@storybook/react-webpack5": "^7.6.7",
+    "@storybook/test": "^7.6.7",
     "@types/react-dnd": "^3.0.2",
     "@types/react-dom": "^18.2.6",
     "@types/sanitize-html": "^2.9.5",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.3",
+    "prop-types": "^15.8.1",
     "react-svg-loader": "^3.0.3",
+    "storybook": "^7.6.7",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.4.3",
     "webpack-cli": "^5.1.4",
