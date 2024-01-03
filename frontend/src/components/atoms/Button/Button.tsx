@@ -2,7 +2,7 @@ import React from "react";
 
 import { ButtonStyled } from "./ButtonStyled";
 
-interface IButtonProps {
+export interface IButtonProps {
   onClick?: React.MouseEventHandler;
   children: React.ReactNode;
   fill?: boolean;
