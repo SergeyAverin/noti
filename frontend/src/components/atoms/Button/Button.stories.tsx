@@ -5,36 +5,44 @@ import { Button, IButtonProps } from "./Button";
 
 export default {
   title: 'atom/Button',
+  tags: ['autodocs'],
   component: Button,
-} as Meta
+  argTypes: { 
+    onClick: { 
+      control: 'select',
+      options: ['alertFunction', 'emptyFunction'],
+      mapping: {
+        alertFunction: ()=> {alert('Click!')},
+        emptyFunction: ()=> {},
+      },
+      action: 'clicked',
+    },  
+    children: {
+      type: 'string'
+    }
+  },
+  args: {
+    children: 'test',
+  }
+} as Meta<IButtonProps>
 
 
-const Template: StoryFn<IButtonProps> = (args) =>  <Button {...args} />
+const Template: StoryFn<IButtonProps> = (args) =>  <div style={{minWidth: '150px'}}><Button {...args} /></div>
 
 export const Default = Template.bind({})
-Default.args = {
-  onClick: ()=> {alert('Click')},
-  children: 'test'
-}
 
 export const Danger = Template.bind({})
 Danger.args = {
-  onClick: ()=> {alert('Click')},
-  children: 'test',
   danger: true
 }
 
 export const DangerFill = Template.bind({})
 DangerFill.args = {
-  onClick: ()=> {alert('Click')},
-  children: 'test',
   danger: true,
   fill: true
 }
 
 export const Fill = Template.bind({})
 Fill.args = {
-  onClick: ()=> {alert('Click')},
-  children: 'test',
   fill: true
 }
