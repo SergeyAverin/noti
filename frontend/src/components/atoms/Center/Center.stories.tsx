@@ -16,6 +16,6 @@ const Template: StoryFn<ICenterProps> = (args) =>  <Center {...args}>Text</Cente
 
 export const Default = Template.bind({})
 Default.args = {
- harezontal: true,
+  horizontal: true,
  vertical: true
 }

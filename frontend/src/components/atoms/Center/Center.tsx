@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export interface ICenterProps {
-  harezontal?: boolean;
+  horizontal?: boolean;
   vertical?: boolean;
 }
 
@@ -12,7 +12,7 @@ export const Center = styled.div<ICenterProps>`
   height: 100%;
   
   ${(props) =>
-    props.harezontal &&
+    props.horizontal &&
     css`
       justify-content: center;
     `}
@@ -25,6 +25,6 @@ export const Center = styled.div<ICenterProps>`
 `;
 
 Center.defaultProps = {
-  harezontal: true,
+  horizontal: true,
   vertical: true,
 };
