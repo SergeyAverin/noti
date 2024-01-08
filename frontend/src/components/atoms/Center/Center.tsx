@@ -1,30 +1,29 @@
-import styled, { css } from "styled-components";
+import React, { Children } from "react";
 
-export interface ICenterProps {
-  horizontal?: boolean;
-  vertical?: boolean;
+import { CenterStyled } from "./CenterStyled";
+
+export interface ICenterProps extends React.PropsWithChildren {
+  /** This prop alignment by horizontal */
+  horizontal?: true;
+
+  /** This prop alignment by vertical */
+  vertical?: true;
 }
 
-export const Center = styled.div<ICenterProps>`
-  display: flex;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+/** Center component. This component align content */
+export const Center: React.FC<ICenterProps> = ({
+  children,
+  horizontal,
+  vertical,
+}) => {
+  return (
+    <CenterStyled horizontal={horizontal} vertical={vertical}>
+      {children}
+    </CenterStyled>
+  );
+};
 
-  ${(props) =>
-    props.horizontal &&
-    css`
-      justify-content: center;
-    `}
-
-  ${(props) =>
-    props.vertical &&
-    css`
-      align-items: center;
-    `}
-`;
-
-Center.defaultProps = {
+CenterStyled.defaultProps = {
   horizontal: true,
   vertical: true,
 };

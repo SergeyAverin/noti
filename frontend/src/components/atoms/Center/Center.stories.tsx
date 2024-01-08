@@ -6,10 +6,12 @@ import { Center, ICenterProps } from "./Center";
 export default {
   title: "atom/Center",
   component: Center,
+  tags: ["autodocs"],
   argTypes: {
-    theme: { disable: true },
+    horizontal: { type: "boolean" },
+    vertical: { type: "boolean" },
   },
-} as Meta;
+} as Meta<ICenterProps>;
 
 const Template: StoryFn<ICenterProps> = (args) => (
   <Center {...args}>Text</Center>
@@ -19,4 +21,5 @@ export const Default = Template.bind({});
 Default.args = {
   horizontal: true,
   vertical: true,
+  children: "test",
 };

@@ -18,6 +18,7 @@ export default {
       action: 'clicked',
     },  
     children: {
+      description: "Component's content",
       type: 'string'
     }
   },

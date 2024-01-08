@@ -9,7 +9,7 @@ import { darkTheme } from "../../../styles/darkTheme";
 
 
 describe("Button component", () => {
-  it("should render button and changed 'isClicked' flag after click on button", async () => {
+  it("Should render button and changed 'isClicked' flag after click on button", async () => {
     let isClicked = false;
 
     render(

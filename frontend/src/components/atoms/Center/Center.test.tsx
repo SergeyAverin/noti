@@ -7,7 +7,7 @@ import { Center } from "./Center";
 import { darkTheme } from "../../../styles/darkTheme";
 
 describe("Center component", () => {
-  it("should render center component", async () => {
+  it("Should render center component", async () => {
     render(
       <ThemeProvider theme={darkTheme}>
         <Center>test</Center>

@@ -2,12 +2,9 @@ import React from "react";
 
 import { ButtonStyled } from "./ButtonStyled";
 
-export interface IButtonProps {
+export interface IButtonProps extends React.PropsWithChildren {
   /** Callback function to be triggered when the button is clicked */
   onClick?: React.MouseEventHandler;
-
-  /** Button's content */
-  children: React.ReactNode;
 
   /** This arg filled button's background */
   fill?: boolean;
