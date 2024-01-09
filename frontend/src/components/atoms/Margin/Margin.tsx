@@ -1,23 +1,28 @@
-import styled from 'styled-components';
+import React from "react";
+import { MarginStyled } from "./MarginStyled";
 
+export interface IMarginProps extends React.PropsWithChildren {
+  /** css margin-top */
+  mt?: Number;
 
-interface IMarginProps {
-    mt?: Number,
-    ml?: Number,
-    mr?: Number,
-    mb?: Number
+  /** css margin-left */
+  ml?: Number;
+  
+  /** css margin-right */
+  mr?: Number;
+
+  /** css margin-bottom */
+  mb?: Number;
 }
 
-export const Margin = styled.div<IMarginProps>`
-    margin-top: ${(props) => props.mt + 'px'};
-    margin-right: ${(props) => props.mr + 'px'};
-    margin-left: ${(props) => props.ml + 'px'};
-    margin-bottom: ${(props) => props.mb + 'px'};
-`;
+/** This component added margin direction in wrapped content */
+export const Margin: React.FC<IMarginProps> = (props) => {
+  return <MarginStyled {...props} />;
+};
 
 Margin.defaultProps = {
-    mt: 0,
-    ml: 0,
-    mr: 0,
-    mb: 0
+  mt: 0,
+  ml: 0,
+  mr: 0,
+  mb: 0,
 };
