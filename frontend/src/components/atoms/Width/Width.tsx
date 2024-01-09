@@ -12,7 +12,11 @@ export interface IWidthProps extends React.PropsWithChildren {
 
 /** This component added css width in wrapped content */
 export const Width: React.FC<IWidthProps> = (props) => {
-  return <WidthStyled {...props} />;
+  return (
+    <div data-testid="width">
+      <WidthStyled {...props} />
+    </div>
+  );
 };
 
 Width.defaultProps = {
