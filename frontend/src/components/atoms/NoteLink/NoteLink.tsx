@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
 
 import { NoteLinkStyled, NoteLinkWrapperStyled } from "./NoteLinkStyled";
 import { shortenString } from "@utils/shortenString";
@@ -24,19 +23,17 @@ export const NoteLink: React.FC<INoteLinkProps> = ({
   children,
   href,
   haveBackground,
-  icon
+  icon,
 }) => {
   return (
-    <BrowserRouter>
-      <Link to={href}>
-        <NoteLinkStyled haveBackground={haveBackground}>
-          <NoteLinkWrapperStyled>
-            <Icon icon={icon} />
-            {shortenString(children as string, 20)}
-          </NoteLinkWrapperStyled>
-        </NoteLinkStyled>
-      </Link>
-    </BrowserRouter>
+    <Link to={href}>
+      <NoteLinkStyled haveBackground={haveBackground}>
+        <NoteLinkWrapperStyled>
+          <Icon icon={icon} />
+          {shortenString(children as string, 20)}
+        </NoteLinkWrapperStyled>
+      </NoteLinkStyled>
+    </Link>
   );
 };
 

@@ -5,6 +5,7 @@ import { NoteLink, INoteLinkProps } from "./NoteLink";
 import NoteIcon from "../../../../public/NoteIcon.svg";
 import SearchIcon from "../../../../public/Search.svg";
 import BookmarkIcon from "../../../../public/BookmarkIcon.svg";
+import { BrowserRouter } from "react-router-dom";
 
 export default {
   title: "atom/NoteLink",
@@ -23,11 +24,15 @@ export default {
         SearchIcon: <SearchIcon />,
         BookmarkIcon: <BookmarkIcon />,
       },
-    }
+    },
   },
 } as Meta<INoteLinkProps>;
 
-const Template: StoryFn<INoteLinkProps> = (args) => <NoteLink {...args} />;
+const Template: StoryFn<INoteLinkProps> = (args) => (
+  <BrowserRouter>
+    <NoteLink {...args} />
+  </BrowserRouter>
+);
 
 export const Default = Template.bind({});
 Default.args = {
