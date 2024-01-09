@@ -6,6 +6,7 @@ export const SelectTitleStyled = styled.div`
   align-items: center;
   font-size: 18px;
   cursor: pointer;
+  user-select: none;
 `;
 
 interface ISelectItemStyledProps {
@@ -14,6 +15,7 @@ interface ISelectItemStyledProps {
 
 export const SelectItemsStyled = styled.div<ISelectItemStyledProps>`
   display: block;
+  user-select: none;
 
   ${(props) =>
     props.isOpen &&
