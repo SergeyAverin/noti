@@ -13,7 +13,7 @@ describe("Center component", () => {
         <Center>test</Center>
       </ThemeProvider>
     );
-    const centerElement = screen.getByText("test");
+    const centerElement = await screen.findByText("test");
     expect(centerElement).toBeInTheDocument();
   });
 });

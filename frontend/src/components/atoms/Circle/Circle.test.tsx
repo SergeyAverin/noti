@@ -15,7 +15,7 @@ describe("Circle component", () => {
         </div>
       </ThemeProvider>
     )
-    const circleElement = screen.getByTestId('circle-element')
+    const circleElement = await screen.findByTestId('circle-element')
     expect(circleElement).toBeInTheDocument()
   });
 });

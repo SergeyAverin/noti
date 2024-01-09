@@ -18,7 +18,7 @@ describe("LinkBG component", () => {
       </BrowserRouter>
     );
 
-    const buttonElement = screen.getByText("test");
+    const buttonElement = await screen.findByText("test");
 
     expect(window.location.pathname).not.toEqual("/test");
 

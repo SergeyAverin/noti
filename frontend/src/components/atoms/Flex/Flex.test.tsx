@@ -22,9 +22,9 @@ describe("Flex component", () => {
       </ThemeProvider>
     );
 
-    const div1 = screen.getByText("1");
-    const div2 = screen.getByText("2");
-    const div3 = screen.getByText("3");
+    const div1 = await screen.findByText("1");
+    const div2 = await screen.findByText("2");
+    const div3 = await screen.findByText("3");
 
     expect(div1).toBeInTheDocument();
     expect(div2).toBeInTheDocument();

@@ -13,7 +13,7 @@ describe("ErrorText component", () => {
         <ErrorText>test</ErrorText>
       </ThemeProvider>
     );
-    const errorTextElement = screen.getByText("test");
+    const errorTextElement = await screen.findByText("test");
     expect(errorTextElement).toBeInTheDocument();
   });
 });

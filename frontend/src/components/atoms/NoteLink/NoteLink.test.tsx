@@ -18,7 +18,7 @@ describe("NoteLink component", () => {
       </BrowserRouter>
     );
 
-    const buttonElement = screen.getByText("Link");
+    const buttonElement = await screen.findByText("Link");
 
     expect(window.location.pathname).not.toEqual("/test");
 

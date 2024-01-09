@@ -20,7 +20,7 @@ describe("Label component", () => {
       </ThemeProvider>
     );
 
-    const buttonElement = screen.getByText("test");
+    const buttonElement = await screen.findByText("test");
     await userEvent.click(buttonElement);
 
     expect(buttonElement).toBeInTheDocument();

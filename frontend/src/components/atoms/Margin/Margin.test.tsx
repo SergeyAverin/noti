@@ -16,7 +16,7 @@ describe("Margin component", () => {
       </ThemeProvider>
     );
 
-    const marginElement = screen.getByText("1");
+    const marginElement = await screen.findByText("1");
     expect(marginElement).toBeInTheDocument();
   });
 });
