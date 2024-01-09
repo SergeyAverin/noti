@@ -9,7 +9,11 @@ export interface ISeparatorProps {
 
 /** This component is separator line */
 export const Separator: React.FC<ISeparatorProps> = (props) => {
-  return <SeparatorStyled {...props} />;
+  return (
+    <div data-testid="separator">
+      <SeparatorStyled {...props} />
+    </div>
+  );
 };
 
 Separator.defaultProps = {

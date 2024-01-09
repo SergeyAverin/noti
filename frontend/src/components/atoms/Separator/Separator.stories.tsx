@@ -6,7 +6,7 @@ import { Separator, ISeparatorProps } from "./Separator";
 export default {
   title: "atom/Separator",
   component: Separator,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 } as Meta<ISeparatorProps>;
 
 const Template: StoryFn<ISeparatorProps> = (args) => (
