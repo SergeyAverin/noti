@@ -1,19 +1,23 @@
-import styled from 'styled-components';
+import React from "react";
 
+import { FlexStyled } from "./FlexStyled";
 
-interface IFlexProps {
-    justifyContent: string,
-    alignItems: string,
-    flexDirection?: string,
+export interface IFlexProps extends React.PropsWithChildren {
+  /** This props is justifyContent of css */
+  justifyContent: string;
+
+  /** This props is alignItems of css */
+  alignItems: string;
+
+  /** This props is flexDirection of css */
+  flexDirection?: string;
 }
 
-export const Flex = styled.div<IFlexProps>`
-    display: flex;
-    justify-content: ${props => props.justifyContent};
-    align-items: ${props => props.alignItems};
-    flex-direction: ${props => props.flexDirection};
-`;
+/** This component added flex direction in wrapped content */
+export const Flex: React.FC<IFlexProps> = (props) => {
+  return <FlexStyled {...props} />;
+};
 
 Flex.defaultProps = {
-    flexDirection: 'row',
+  flexDirection: "row",
 };
