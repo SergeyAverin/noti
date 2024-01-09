@@ -3,16 +3,19 @@ import { Link } from "react-router-dom";
 
 import { LinkBGStyled } from "./LinkBGStyled";
 
+export interface ILinkBGProps {
+  /** Text on link */
+  text: string;
 
-interface ILinkBGProps {
-    text: string,
-    href: string
+  /** Link href */
+  href: string;
 }
 
-export const LinkBG:React.FC<ILinkBGProps> = ({ text, href }) => {
-    return (
-        <LinkBGStyled>
-            <Link to={href}>{ text }</Link>
-        </LinkBGStyled>
-    )
-} 
+/** This component is fill the background when you hover */
+export const LinkBG: React.FC<ILinkBGProps> = ({ text, href }) => {
+  return (
+    <LinkBGStyled>
+      <Link to={href}>{text}</Link>
+    </LinkBGStyled>
+  );
+};
