@@ -1,7 +1,8 @@
-import styled from 'styled-components'
+import React from "react";
 
+import { ErrorTextStyled } from "./ErrorTextStyled";
 
-export const ErrorText = styled.span`
-    color: ${(props) => props.theme.color.dangerous};
-    font-size: ${(props) => props.theme.fontSizes.medium};
-`
+/** This component contains text with an error */
+export const ErrorText: React.FC<React.PropsWithChildren> = ({ children }) => {
+  return <ErrorTextStyled>{children}</ErrorTextStyled>;
+};
