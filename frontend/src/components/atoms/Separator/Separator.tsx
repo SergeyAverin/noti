@@ -1,24 +1,16 @@
-import styled, { css } from "styled-components";
+import React from "react";
 
-interface ISeparatorProps {
+import { SeparatorStyled } from "./SeparatorStyled";
+
+export interface ISeparatorProps {
+  /** If true this component is horizontal  */
   isHorizontal?: boolean;
 }
 
-export const Separator = styled.div<ISeparatorProps>`
-  ${(props) =>
-    props.isHorizontal
-      ? css`
-          border-bottom: 1px solid ${(props) => props.theme.color.fg};
-          margin-top: 0;
-          margin-left: 0;
-        `
-      : css`
-          border-right: 1px solid ${(props) => props.theme.color.fg};
-          height: 25px;
-          margin-left: 15px;
-          margin-right: 15px;
-        `}
-`;
+/** This component is separator line */
+export const Separator: React.FC<ISeparatorProps> = (props) => {
+  return <SeparatorStyled {...props} />;
+};
 
 Separator.defaultProps = {
   isHorizontal: false,
