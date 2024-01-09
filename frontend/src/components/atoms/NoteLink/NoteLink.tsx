@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import { NoteLinkStyled, NoteLinkWrapperStyled } from "./NoteLinkStyled";
 import { shortenString } from "@utils/shortenString";
@@ -7,27 +8,39 @@ import { shortenString } from "@utils/shortenString";
 import NoteIcon from "@public/NoteIcon.svg";
 import { Icon } from "..";
 
-interface INoteLinkProsp {
+export interface INoteLinkProps extends React.PropsWithChildren {
+  /** href in link */
   href: string;
-  children: React.ReactNode;
-  icon?: any;
-  haveBackground?: boolean
+
+  /** icon in link */
+  icon?: React.ReactNode;
+
+  /** filled background */
+  haveBackground?: boolean;
 }
 
-export const NoteLink: React.FC<INoteLinkProsp> = ({ children, href, haveBackground }) => {
+/** LInk with icon to note */
+export const NoteLink: React.FC<INoteLinkProps> = ({
+  children,
+  href,
+  haveBackground,
+  icon
+}) => {
   return (
+    <BrowserRouter>
       <Link to={href}>
-    <NoteLinkStyled  haveBackground={haveBackground}>
-        <NoteLinkWrapperStyled>
-          <Icon icon={<NoteIcon />} />
-          {shortenString(children as string, 20)}
-        </NoteLinkWrapperStyled>
-    </NoteLinkStyled>
+        <NoteLinkStyled haveBackground={haveBackground}>
+          <NoteLinkWrapperStyled>
+            <Icon icon={icon} />
+            {shortenString(children as string, 20)}
+          </NoteLinkWrapperStyled>
+        </NoteLinkStyled>
       </Link>
+    </BrowserRouter>
   );
 };
 
 NoteLink.defaultProps = {
   icon: <NoteIcon></NoteIcon>,
-  haveBackground: false
+  haveBackground: false,
 };
