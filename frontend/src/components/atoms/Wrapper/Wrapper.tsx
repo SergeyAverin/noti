@@ -1,10 +1,12 @@
-import { styled } from "styled-components";
+import React from "react";
 
+import { WrapperStyled } from "./WrapperStyled";
 
-export const Wrapper = styled.div`
-    position: fixed;
-    margin-left: ${props => props.theme.panelsSize.sideBarSize};
-    margin-top: ${props => props.theme.panelsSize.headerSize};
-    display: flex;
-    flex-direction: column;
-`
+/** This component adds indents to the header and sidebar*/
+export const Wrapper: React.FC<React.PropsWithChildren> = (props) => {
+  return (
+    <div date-testid="wrapper">
+      <WrapperStyled {...props} />
+    </div>
+  );
+};
