@@ -10,6 +10,9 @@ export default {
   argTypes: {
     horizontal: { type: "boolean" },
     vertical: { type: "boolean" },
+    children: {
+      description: "Component's content"
+    }
   },
 } as Meta<ICenterProps>;
 
