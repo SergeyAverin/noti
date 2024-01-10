@@ -4,7 +4,7 @@ import { StoryFn, Meta } from "@storybook/react";
 import { Wrapper } from "./Wrapper";
 
 export default {
-  title: "atom/Wrapper",
+  title: "atom/cover/Wrapper",
   tags: ["autodocs"],
   component: Wrapper,
   argTypes: {

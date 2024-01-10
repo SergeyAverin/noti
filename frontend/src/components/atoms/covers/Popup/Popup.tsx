@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { PopupBackground, PopupContent } from "./PopupStyled";
-import { Position } from "..";
+import { Position } from "../Position/Position";
 
-interface IPopupProps {
+export interface IPopupProps {
   children: React.ReactNode;
   closeFunction?: Function;
 }

@@ -25,7 +25,7 @@ const alignItemsOption = [
 ];
 
 export default {
-  title: "atom/Flex",
+  title: "atom/cover/Flex",
   component: Flex,
   tags: ["autodocs"],
   argTypes: {

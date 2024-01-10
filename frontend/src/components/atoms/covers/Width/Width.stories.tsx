@@ -5,7 +5,7 @@ import { Width, IWidthProps } from "./Width";
 import styled from "styled-components";
 
 export default {
-  title: "atom/Width",
+  title: "atom/cover/Width",
   component: Width,
   tags: ["autodocs"],
 } as Meta<IWidthProps>;

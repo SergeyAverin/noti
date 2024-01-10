@@ -4,7 +4,7 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 
 import { Wrapper } from "./Wrapper";
-import { darkTheme } from "../../../styles/darkTheme";
+import { darkTheme } from "../../../../styles/darkTheme";
 
 describe("Spinner Wrapper", () => {
   it("Should render Wrapper component", async () => {

@@ -4,7 +4,7 @@ import { StoryFn, Meta } from "@storybook/react";
 import { Center, ICenterProps } from "./Center";
 
 export default {
-  title: "atom/Center",
+  title: "atom/cover/Center",
   component: Center,
   tags: ["autodocs"],
   argTypes: {
@@ -17,7 +17,7 @@ export default {
 } as Meta<ICenterProps>;
 
 const Template: StoryFn<ICenterProps> = (args) => (
-  <Center {...args}>Text</Center>
+  <Center {...args} />
 );
 
 export const Default = Template.bind({});

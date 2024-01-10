@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Margin, IMarginProps } from "./Margin";
 
 export default {
-  title: "atom/Margin",
+  title: "atom/cover/Margin",
   tags: ["autodocs"],
   component: Margin,
   argTypes: {

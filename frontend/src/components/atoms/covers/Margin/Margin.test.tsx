@@ -4,7 +4,7 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 
 import { Margin } from "./Margin";
-import { darkTheme } from "../../../styles/darkTheme";
+import { darkTheme } from "../../../../styles/darkTheme";
 
 describe("Margin component", () => {
   it("Should render Margin component", async () => {

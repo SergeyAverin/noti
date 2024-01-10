@@ -4,7 +4,7 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 
 import { Width } from "./Width";
-import { darkTheme } from "../../../styles/darkTheme";
+import { darkTheme } from "../../../../styles/darkTheme";
 
 describe("Width component", () => {
   it("Should render Width component", async () => {

@@ -4,7 +4,7 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 
 import { Flex } from "./Flex";
-import { darkTheme } from "../../../styles/darkTheme";
+import { darkTheme } from "../../../../styles/darkTheme";
 
 describe("Flex component", () => {
   it("Should render Flex component and content of this component", async () => {
