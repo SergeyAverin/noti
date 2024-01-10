@@ -2,17 +2,18 @@ import React, { useRef } from "react";
 import { PopupBackground, PopupContent } from "./PopupStyled";
 import { Position } from "../Position/Position";
 
-export interface IPopupProps {
-  children: React.ReactNode;
-  closeFunction?: Function;
+export interface IPopupProps extends React.PropsWithChildren {
+  /** This function called on close popup */
+  onClose?: Function;
 }
 
-export const Popup: React.FC<IPopupProps> = ({ children, closeFunction }) => {
+/** Popup component. This component wraps the content in a popup. */
+export const Popup: React.FC<IPopupProps> = ({ children, onClose }) => {
   const popupRef = useRef<HTMLDivElement>(null);
   const onBackgroundClick = (event: React.MouseEvent) => {
     event.stopPropagation();
-    if (closeFunction && popupRef.current == (event.target as Node)) {
-      closeFunction();
+    if (onClose && popupRef.current == (event.target as Node)) {
+      onClose();
     }
   };
   return (
