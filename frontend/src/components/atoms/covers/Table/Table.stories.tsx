@@ -5,11 +5,12 @@ import { Table } from "./Table";
 
 export default {
   title: "atom/cover/Table",
+  tags: ["autodocs"],
   component: Table,
 } as Meta;
 
 const Template: StoryFn = () => (
-  <Table style={{width: '150px'}}>
+  <Table>
     <thead>
       <tr>
         <th>test</th>
