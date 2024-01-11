@@ -2,21 +2,21 @@ import React from "react";
 
 import { ToolButtonStyled } from "./ToolButtonStyled";
 
-interface IToolButtonProps {
-  children: React.ReactNode;
+export interface IToolButtonProps extends React.PropsWithChildren {
   onClick: Function;
   isActive: boolean;
 }
+
 export const ToolButton: React.FC<IToolButtonProps> = ({
   children,
   onClick,
   isActive,
 }) => {
-  const onClickHeandler = () => {
+  const onClickHandler = () => {
     onClick();
   };
   return (
-    <ToolButtonStyled isActive={isActive} onClick={onClickHeandler}>
+    <ToolButtonStyled isActive={isActive} onClick={onClickHandler}>
       <div>{children}</div>
     </ToolButtonStyled>
   );

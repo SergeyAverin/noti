@@ -1,4 +1,4 @@
-import React, { Children, useState } from "react";
+import React, { useState } from "react";
 
 import {
   ToolButtonDropDownStyled,
@@ -10,19 +10,19 @@ import ArrowIcon from "@public/ArrowIcon.svg";
 import NoteIcon from "@public/NoteIcon.svg";
 import { Icon } from "..";
 
-interface IToolButtonDropDownProsp {
+interface IToolButtonDropDownProps {
   children: React.ReactNode;
   isOpenDefaultValue?: boolean;
   icon?: any;
 }
 
-export const ToolButtonDropDown: React.FC<IToolButtonDropDownProsp> = ({
+export const ToolButtonDropDown: React.FC<IToolButtonDropDownProps> = ({
   icon,
   children,
   isOpenDefaultValue,
 }) => {
   const [isOpen, setIsOpen] = useState(isOpenDefaultValue);
-  const onClickHeandler = (event: React.MouseEvent) => {
+  const onClick = (event: React.MouseEvent) => {
     event.preventDefault();
     setIsOpen((prev) => !prev);
   };
@@ -32,7 +32,7 @@ export const ToolButtonDropDown: React.FC<IToolButtonDropDownProsp> = ({
   };
   return (
     <ToolButtonDropDownWrapperStyled>
-      <ToolButtonDropDownStyled onClick={onClickHeandler}>
+      <ToolButtonDropDownStyled onClick={onClick}>
         <ToolButtonDropDownTextStyled>{icon}</ToolButtonDropDownTextStyled>
         <Icon icon={<ArrowIcon transform={isOpen ? "rotate(0 0 0)" : "rotate(-90 0 0)"} />} />
       </ToolButtonDropDownStyled>

@@ -6,7 +6,6 @@ import { ThemeProvider } from "styled-components";
 import { Separator } from "./Separator";
 import { darkTheme } from "../../../styles/darkTheme";
 
-
 describe("Separator component", () => {
   it("Should render Separator component", async () => {
     render(

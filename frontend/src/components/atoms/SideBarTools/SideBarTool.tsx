@@ -4,7 +4,7 @@ import { Width } from "@atoms/index";
 import { SideBarToolStyled } from "./SideBarToolStyled";
 
 
-interface ISideBarToolProps {
+export interface ISideBarToolProps {
   onClick: Function,
   icon: React.ReactNode,
   text: string

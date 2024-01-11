@@ -41,14 +41,18 @@ export const Select: React.FC<ISelectProps> = ({
 
   return (
     <div>
-      <SelectTitleStyled onClick={() => setIsOpen((prev) => !prev)}>
-        <Arrow transform={isOpen ? "rotate(-90 0 0)" : "rotate(0 0 0)"} />
-        {activeItem}
-      </SelectTitleStyled>
+      <div data-testid="selected-item">
+        <SelectTitleStyled onClick={() => setIsOpen((prev) => !prev)}>
+          <Arrow transform={isOpen ? "rotate(-90 0 0)" : "rotate(0 0 0)"} />
+          {activeItem}
+        </SelectTitleStyled>
+      </div>
       <SelectItemsStyled isOpen={isOpen}>
         <ul onClick={setActiveItemHandler}>
           {items.map((item) => (
-            <SelectItemStyled key={item}>{item}</SelectItemStyled>
+            <div data-testid="select-item">
+              <SelectItemStyled key={item}>{item}</SelectItemStyled>
+            </div>
           ))}
         </ul>
       </SelectItemsStyled>

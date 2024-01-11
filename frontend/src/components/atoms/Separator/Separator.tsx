@@ -17,5 +17,5 @@ export const Separator: React.FC<ISeparatorProps> = (props) => {
 };
 
 Separator.defaultProps = {
-  isHorizontal: false,
+  isHorizontal: true,
 };

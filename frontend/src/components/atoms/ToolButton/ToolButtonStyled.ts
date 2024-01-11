@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 interface IToolButtonStyledProps {
   isActive: boolean;
 }
+
 export const ToolButtonStyled = styled.div<IToolButtonStyledProps>`
   ${(props) =>
     props.isActive &&

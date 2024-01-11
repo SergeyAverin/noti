@@ -3,14 +3,14 @@ import { Controller, Control, FieldValues } from "react-hook-form";
 
 import { InputStyled } from "./inputStyled";
 
-type InputControllerProps = {
+export interface IInputControllerProps  {
   control: Control<FieldValues>;
   name: string;
   rules?: Record<string, unknown>;
 };
 
 export 
-const InputController: React.FC<InputControllerProps> = ({
+const InputController: React.FC<IInputControllerProps> = ({
   control,
   name,
   rules,
