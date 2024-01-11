@@ -2,34 +2,47 @@ import React, { useState, useEffect } from "react";
 
 import { ToggleButtonStyled } from "./ToggleButtonStyled";
 
-interface IToggleButtonProps {
+export interface IToggleButtonProps {
+  /** This icon show when button is enable */
   iconEnable: any;
+
+  /** This icon show when button is disable */
   iconDisable: any;
+
+  /** Enable state */
   isEnable: boolean;
+
+  /** Callback function to be triggered when the button is enable */
   onEnable: Function;
+
+  /** Callback function to be triggered when the button is disable */
   onDisable: Function;
+
+  /** Button's text */
   text?: string;
 }
 
+/** This component is button to which you can turn enable and disable
+ * by calling functions onEnable and onDisable */
 export const ToggleButton: React.FC<IToggleButtonProps> = ({
   text,
   iconEnable,
   iconDisable,
   isEnable,
-  onEnable, 
-  onDisable
+  onEnable,
+  onDisable,
 }) => {
   const [isEnableState, setIsEnableState] = useState(isEnable);
-  const clickHeandler = () => {
-    setIsEnableState(prev => !prev)
+  const onClick = () => {
+    setIsEnableState((prev) => !prev);
     isEnableState == true ? onDisable() : onEnable();
-  }
-  useEffect(()=> {
-    setIsEnableState(isEnable)
-  }, [isEnable])
+  };
+  useEffect(() => {
+    setIsEnableState(isEnable);
+  }, [isEnable]);
 
   return (
-    <ToggleButtonStyled isEnable={isEnableState} onClick={clickHeandler}>
+    <ToggleButtonStyled isEnable={isEnableState} onClick={onClick}>
       {isEnableState ? iconEnable : iconDisable}
       {text}
     </ToggleButtonStyled>
