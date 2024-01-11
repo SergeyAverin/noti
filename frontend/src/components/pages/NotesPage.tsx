@@ -6,11 +6,11 @@ import { withAuth } from "@hocs/withAuth";
 import { useGetNoteQuery } from "@redux/api/noteApi";
 import { Spinner, Center, Margin } from "@atoms/index";
 import { NotePageTemplate } from "@templates/NotePageTemplate";
-import { Header } from "@organisms/Header";
+import { Header } from "@organisms/collection/Header";
 import { setNote } from "@redux/features/noteSlice";
 import { noteSelector } from "@redux/selectors/note";
 import { useTheme } from "styled-components";
-import { ToolsBar } from "@organisms/ToolsBar";
+import { ToolsBar } from "@organisms/editor/ToolsBar";
 
 
 const NotesPage: React.FC = () => {

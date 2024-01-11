@@ -1,6 +1,6 @@
 import React from "react";
 import { Center, Flex } from "@atoms/index";
-import { LoginForm } from "@organisms/LoginForm";
+import { LoginForm } from "@organisms/account/LoginForm";
 import { useTranslation } from "react-i18next";
 
 const AddAccountPage: React.FC = () => {

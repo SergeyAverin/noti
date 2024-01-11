@@ -1,6 +1,6 @@
 import React from "react";
 import { Flex, Center, Margin, Label } from "@atoms/index";
-import { LoginForm } from "@organisms/LoginForm";
+import { LoginForm } from "@organisms/account/LoginForm";
 import { useRedirectAuthorized } from "@hooks/useRedirectAuthorized";
 
 const LoginPage: React.FC = () => {

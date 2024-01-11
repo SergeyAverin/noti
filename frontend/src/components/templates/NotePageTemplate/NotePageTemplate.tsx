@@ -2,12 +2,12 @@ import React from "react";
 
 import { NoteStyled } from "./NotePageTemplateStyled";
 import { Margin, Position, Spinner, Width } from "@atoms/index";
-import { Title } from "@molecules/Title";
-import { DebugAlert } from "@molecules/DebugAlert";
-import { TrashAlert } from "@organisms/TrashAlert";
-import { NotificationList } from "@organisms/NotificationList";
+import { Title } from "@molecules/editor/Title";
+import { DebugAlert } from "@molecules/account/DebugAlert";
+import { TrashAlert } from "@organisms/collection/TrashAlert";
+import { NotificationList } from "@organisms/account/NotificationList";
 import { INote } from "@redux/types/note";
-import { Editor } from "@organisms/Editor/Editor";
+import { Editor } from "@organisms/editor/Editor/Editor";
 import { useLoadNote } from "@hooks/useLoadNote";
 import { useSaveNote } from "@hooks/useSaveNote";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Center } from "@atoms/index";
-import { RegistrationForm } from "@organisms/RegistrationForm";
+import { RegistrationForm } from "@organisms/account/RegistrationForm";
 
 const RegistrationPage: React.FC = () => {
   return (

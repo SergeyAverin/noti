@@ -3,8 +3,8 @@ import React from "react";
 import { useCleanTrashMutation } from "@redux/api/libraryApi";
 import { INote } from "@redux/types/note";
 import { Button, Margin, Wrapper } from "@atoms/index";
-import { CleanTrash } from "@molecules/CleanTrash";
-import { TrashTable } from "@organisms/TrashTable/TrashTable";
+import { CleanTrash } from "@molecules/collection/CleanTrash";
+import { TrashTable } from "@organisms/collection/TrashTable/TrashTable";
 
 interface ITrashPageTemplateProps {
   notes: INote[];
