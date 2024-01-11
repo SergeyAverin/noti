@@ -1,24 +1,36 @@
-import styled from 'styled-components';
+import React from "react";
 
+import { PositionStyled } from "./PositionStyled";
 
-interface IPositionProps {
-    position: string,
-    top?: string,
-    right?: string,
-    bottom?: string,
-    left?: string,
-    zIndex?: number,
+export interface IPositionProps extends React.PropsWithChildren {
+  /** css position value */
+  position: string;
+
+  /** css top value */
+  top?: string;
+
+  /** css right value */
+  right?: string;
+
+  /** css bottom value */
+  bottom?: string;
+
+  /** css left value */
+  left?: string;
+
+  /** css z-index value */
+  zIndex?: number;
 }
 
-export const Position = styled.div<IPositionProps>`
-    position: ${props => props.position};
-    top: ${props => props.top};
-    right: ${props => props.right};
-    bottom: ${props => props.bottom};
-    left: ${props => props.left};
-    z-index: ${props => props.zIndex};
-`;
+/** This component added css position in wrapped content */
+export const Position: React.FC<IPositionProps> = (props) => {
+  return (
+    <div data-testid="position">
+      <PositionStyled {...props} />
+    </div>
+  );
+};
 
 Position.defaultProps = {
-    position: 'static',
+  position: "static",
 };
