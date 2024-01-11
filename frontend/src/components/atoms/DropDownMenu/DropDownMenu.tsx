@@ -10,32 +10,43 @@ import ArrowIcon from "@public/ArrowIcon.svg";
 import NoteIcon from "@public/NoteIcon.svg";
 import { Icon } from "..";
 
-interface IDropDownMenuProsp {
+export interface IDropDownMenuProps extends React.PropsWithChildren {
+  /** This is text in button */
   text: string;
-  children: React.ReactNode;
+
+  /** default open state */
   isOpenDefaultValue?: boolean;
+
+  /** Icon in button */
   icon?: any;
 }
 
-export const DropDownMenu: React.FC<IDropDownMenuProsp> = ({
+/** This component open or close content */
+export const DropDownMenu: React.FC<IDropDownMenuProps> = ({
   text,
   icon,
   children,
-  isOpenDefaultValue
+  isOpenDefaultValue,
 }) => {
   const [isOpen, setIsOpen] = useState(isOpenDefaultValue);
-  const onClickHeandler = (event: React.MouseEvent) => {
+  const onClick = (event: React.MouseEvent) => {
     event.preventDefault();
     setIsOpen((prev) => !prev);
   };
   return (
     <DropDownMenuWrapperStyled>
-      <DropDownMenuStyled onClick={onClickHeandler}>
+      <DropDownMenuStyled onClick={onClick}>
         <DropDownMenuTextStyled>
           {icon}
           {text}
         </DropDownMenuTextStyled>
-        <Icon icon={<ArrowIcon transform={isOpen ? "rotate(0 0 0)" : "rotate(-90 0 0)"} />} />
+        <Icon
+          icon={
+            <ArrowIcon
+              transform={isOpen ? "rotate(0 0 0)" : "rotate(-90 0 0)"}
+            />
+          }
+        />
       </DropDownMenuStyled>
       {isOpen && children}
     </DropDownMenuWrapperStyled>
@@ -43,6 +54,6 @@ export const DropDownMenu: React.FC<IDropDownMenuProsp> = ({
 };
 
 DropDownMenu.defaultProps = {
-  icon:        <Icon icon={<NoteIcon />} />,
-  isOpenDefaultValue: false
+  icon: <Icon icon={<NoteIcon />} />,
+  isOpenDefaultValue: false,
 };
