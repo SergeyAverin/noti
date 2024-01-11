@@ -1,9 +1,8 @@
 import { styled } from "styled-components";
 
-export const TableStyled = styled.form`
+export const TableStyled = styled.table`
   width: 100%;
   height: 100%;
-  display: table;
   border: 4px solid #18181d;
   color: ${(props) => props.theme.color.fg};
   background-color: ${(props) => props.theme.color.primary};
