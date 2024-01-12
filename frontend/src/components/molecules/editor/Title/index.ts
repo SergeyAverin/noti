@@ -1,1 +1,1 @@
-export { TitleContainer as Title } from "./TitleContainer";
+export { TitleContainer as default } from "./TitleContainer";
