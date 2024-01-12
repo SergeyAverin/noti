@@ -1,1 +1,1 @@
-export { BackColorTools } from "./BackColorTools";
+export { BackColorToolsContainer as default } from "./BackColorToolsContainer";
