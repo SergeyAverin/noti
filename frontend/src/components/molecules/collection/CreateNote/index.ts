@@ -1,1 +1,1 @@
-export { CreateNote } from "./CreateNote";
+export { CreateNoteContainer as default } from "./CreateNoteContainer";
