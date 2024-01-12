@@ -1,1 +1,1 @@
-export { AlignTools } from "./AlignTools";
+export { AlignToolsContainer as default } from "./AlignToolsContainer";
