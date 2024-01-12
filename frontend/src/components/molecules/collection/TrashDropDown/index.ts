@@ -1,1 +1,1 @@
-export { TrashDropDown } from "./TrashDropDown";
+export { TrashDropDownContainer as default } from "./TrashDropDownContainer";
