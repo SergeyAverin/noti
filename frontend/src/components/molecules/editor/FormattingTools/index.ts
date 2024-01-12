@@ -1,1 +1,1 @@
-export { FormattingTools } from "./FormattingTools";
+export { FormattingToolsContainer as default } from "./FormattingToolsContainer";

@@ -1,11 +1,14 @@
 import React from "react";
 
 import { Margin, ToolButton } from "@atoms/index";
-import { useExecCommand } from "@hooks/useExecCommand";
 
-export const FormattingTools: React.FC = () => {
-  const execCommand = useExecCommand();
+interface IFormattingToolsPresentationalProps {
+  execCommand: Function;
+}
 
+export const FormattingToolsPresentational: React.FC<
+  IFormattingToolsPresentationalProps
+> = ({ execCommand }) => {
   return (
     <>
       <ToolButton isActive={false} onClick={() => execCommand("italic")}>
@@ -22,7 +25,10 @@ export const FormattingTools: React.FC = () => {
         </ToolButton>
       </Margin>
       <Margin ml={10}>
-        <ToolButton isActive={false} onClick={() => execCommand("strikethrough")}>
+        <ToolButton
+          isActive={false}
+          onClick={() => execCommand("strikethrough")}
+        >
           S
         </ToolButton>
       </Margin>
