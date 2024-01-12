@@ -4,8 +4,9 @@ import { StoryFn, Meta } from "@storybook/react";
 import { Title } from "./index";
 import { ITitleContainerProps } from './TitleContainer'
 
+
 export default {
-  title: "atom/Title",
+  title: "molecules/editor/Title",
   component: Title,
   tags: ["autodocs"],
 } as Meta<ITitleContainerProps>;
