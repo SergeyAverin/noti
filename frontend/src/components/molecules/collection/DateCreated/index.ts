@@ -1,1 +1,1 @@
-export { DateCreated } from "./DateCreated";
+export { DateCreatedContainer as default } from "./DateCreatedContainer";
