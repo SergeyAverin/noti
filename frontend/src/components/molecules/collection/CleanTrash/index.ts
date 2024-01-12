@@ -1,1 +1,1 @@
-export { CleanTrash } from "./CleanTrash";
+export { CleanTrashContainer as default } from "./CleanTrashComponent";
