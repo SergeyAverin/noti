@@ -1,1 +1,1 @@
-export { RootNotes } from "./RootNotes";
+export { RootNotesContainer as default } from "./RootNotesContainer";
