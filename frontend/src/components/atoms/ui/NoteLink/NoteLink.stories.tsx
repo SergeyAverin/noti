@@ -1,6 +1,5 @@
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
-import { BrowserRouter } from "react-router-dom";
 
 import { NoteLink, INoteLinkProps } from "./NoteLink";
 
@@ -30,9 +29,7 @@ export default {
 } as Meta<INoteLinkProps>;
 
 const Template: StoryFn<INoteLinkProps> = (args) => (
-  <BrowserRouter>
     <NoteLink {...args} />
-  </BrowserRouter>
 );
 
 export const Default = Template.bind({});

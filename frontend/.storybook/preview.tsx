@@ -1,11 +1,16 @@
 /** @type { import('@storybook/react').Preview } */
-import { ThemeProvider } from "styled-components";
+import React, { Suspense } from "react";
+import { StoryFn } from '@storybook/react'
 import { withThemeFromJSXProvider } from "@storybook/addon-themes";
+import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+import { Provider } from "react-redux";
 
 import GlobalStyleStyled from "../src/styles/globalStyle.styled";
 import { darkTheme } from "../src/styles/darkTheme";
 import { coffeeTheme } from "../src/styles/coffeeTheme";
 import { lightTheme } from "../src/styles/lightTheme";
+import { store } from "../src/redux/store";
 
 const preview  = {
   parameters: {
@@ -28,6 +33,21 @@ const preview  = {
 export default preview;
 
 export const decorators = [
+  (Story: StoryFn) => (
+    <Suspense fallback="loading">
+      <Story />
+    </Suspense>
+  ),
+  (Story: StoryFn) => (
+    <Provider store={store}>
+      <Story />
+    </Provider>
+  ),
+  (Story: StoryFn) => (
+    <BrowserRouter>
+      <Story />
+    </BrowserRouter>
+  ),
   withThemeFromJSXProvider({
     themes: {
       light: lightTheme,
