@@ -5,12 +5,12 @@ import { Icon, Margin, ToolButton } from "@atoms/index";
 import ArrowBeforeIcon from "@public/ArrowBeforeIcon.svg";
 import ArrowAfterIcon from "@public/ArrowAfterIcon.svg";
 
-interface IHistoryToolsPresentational {
+interface IHistoryToolsPresentationalProps {
   execCommand: Function;
 }
 
 export const HistoryToolsPresentational: React.FC<
-  IHistoryToolsPresentational
+IHistoryToolsPresentationalProps
 > = ({ execCommand }) => {
   return (
     <>

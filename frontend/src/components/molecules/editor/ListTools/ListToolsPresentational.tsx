@@ -5,11 +5,11 @@ import { Icon, Margin, ToolButton } from "@atoms/index";
 import MarkerListIcon from "@public/MarkerListIcon.svg";
 import NumberListIcon from "@public/NumberListIcon.svg";
 
-interface IListToolsPresentational {
+interface IListToolsPresentationalProps {
   execCommand: Function;
 }
 
-export const ListToolsPresentational: React.FC<IListToolsPresentational> = ({
+export const ListToolsPresentational: React.FC<IListToolsPresentationalProps> = ({
   execCommand,
 }) => {
   return (
