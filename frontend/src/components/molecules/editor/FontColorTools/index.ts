@@ -1,1 +1,1 @@
-export { FontColorTools } from "./FontColorTools";
+export { FontColorToolsContainer as default } from "./FontColorToolsContainer";
