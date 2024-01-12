@@ -1,1 +1,1 @@
-export { FormatBlockTools } from "./FormatBlockTools";
+export { FormatBlockToolsContainer as default } from "./ FormatBlockToolsContainer";
