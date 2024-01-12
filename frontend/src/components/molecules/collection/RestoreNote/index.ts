@@ -1,1 +1,1 @@
-export { RestoreNote } from "./RestoreNote";
+export { RestoreNoteContainer as default } from "./RestoreNoteContainer";

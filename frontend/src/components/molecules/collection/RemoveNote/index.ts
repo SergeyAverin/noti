@@ -1,1 +1,1 @@
-export { RemoveNote } from "./RemoveNote";
+export { RemoveNoteContainer as default } from "./RemoveNoteContainer";
