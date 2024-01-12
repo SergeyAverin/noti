@@ -1,10 +1,9 @@
-import React from "react";
-
-import { Margin, ToolButton } from "@atoms/index";
 import { useExecCommand } from "@hooks/useExecCommand";
 
-export const CreateBlocksTools: React.FC = () => {
+/** This hook return function, that function on call create line in text editor */
+export const useCreateLineBlocks = (): Function => {
   const execCommand = useExecCommand();
+
   const createLine = () => {
     const selection = window.getSelection();
     if (selection) {
@@ -14,16 +13,5 @@ export const CreateBlocksTools: React.FC = () => {
     }
   };
 
-  return (
-    <>
-      <ToolButton
-        isActive={false}
-        onClick={() => {
-          createLine();
-        }}
-      >
-        Line
-      </ToolButton>
-    </>
-  );
+  return createLine;
 };

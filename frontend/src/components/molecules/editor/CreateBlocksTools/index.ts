@@ -1,1 +1,1 @@
-export { CreateBlocksTools } from "./CreateBlocksTools";
+export { CreateBlocksToolsContainer as default } from "./CreateBlocksToolsContainer";
