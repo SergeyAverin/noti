@@ -1,1 +1,1 @@
-export { BookmarkDropDown } from "./BookmarkDropDown";
+export { BookmarkDropDownContainer as default } from "./BookmarkDropDownContainer";
