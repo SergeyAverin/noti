@@ -1,1 +1,1 @@
-export { AddBookmark } from "./AddBookmark";
+export { AddBookmarkContainer as default } from "./AddBookmarkContainer";
