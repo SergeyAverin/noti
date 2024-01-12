@@ -3,25 +3,28 @@ import { DefaultTheme } from "styled-components";
 
 import { Icon, ToggleButton } from "@atoms/index";
 
-import BookmarkIcon from "@public/BookmarkIcon.svg";
+import TrashIcon from "@public/TrashIcon.svg";
 
-interface IAddBookmarkPresentationalProps {
+interface IAddTrashPresentationalProps {
   theme: DefaultTheme;
   isEnable: boolean;
   addBookmark: Function;
   removeBookmark: Function;
 }
 
-export const AddBookmarkPresentational: React.FC<
-  IAddBookmarkPresentationalProps
-> = ({ theme, isEnable, addBookmark, removeBookmark }) => {
+export const AddTrashPresentational: React.FC<IAddTrashPresentationalProps> = ({
+  theme,
+  isEnable,
+  addBookmark,
+  removeBookmark,
+}) => {
   return (
     <ToggleButton
-      iconDisable={<Icon icon={<BookmarkIcon stroke={theme?.color.fg} />} />}
+      iconDisable={<TrashIcon stroke={theme?.color.fg} />}
       iconEnable={
         <Icon
           icon={
-            <BookmarkIcon
+            <TrashIcon
               fill={theme?.color.highlight}
               stroke={theme?.color.highlight}
             />

@@ -1,1 +1,1 @@
-export { AddTrash } from "./AddTrash";
+export { AddTrashContainer as default } from "./AddTrashContainer";
