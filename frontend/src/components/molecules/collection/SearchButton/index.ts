@@ -1,1 +1,1 @@
-export { SearchButton } from "./SearchButton";
+export { SearchButtonContainer as default } from "./SearchButtonContainer";
