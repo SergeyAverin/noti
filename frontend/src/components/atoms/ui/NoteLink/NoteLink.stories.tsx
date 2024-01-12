@@ -1,11 +1,12 @@
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
+import { BrowserRouter } from "react-router-dom";
 
 import { NoteLink, INoteLinkProps } from "./NoteLink";
-import NoteIcon from "../../../../public/NoteIcon.svg";
-import SearchIcon from "../../../../public/Search.svg";
-import BookmarkIcon from "../../../../public/BookmarkIcon.svg";
-import { BrowserRouter } from "react-router-dom";
+
+import NoteIcon from "@public/NoteIcon.svg";
+import SearchIcon from "@public/Search.svg";
+import BookmarkIcon from "@public/BookmarkIcon.svg";
 
 export default {
   title: "atom/NoteLink",

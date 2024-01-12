@@ -2,9 +2,10 @@ import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
 
 import { Icon as IconComponent, IIconProps } from "./Icon";
-import NoteIcon from "../../../../public/NoteIcon.svg";
-import SearchIcon from "../../../../public/Search.svg";
-import BookmarkIcon from "../../../../public/BookmarkIcon.svg";
+
+import NoteIcon from "@public/NoteIcon.svg";
+import SearchIcon from "@public/Search.svg";
+import BookmarkIcon from "@public/BookmarkIcon.svg";
 
 export default {
   title: "atom/Icon",

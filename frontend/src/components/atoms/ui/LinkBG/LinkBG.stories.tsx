@@ -1,8 +1,8 @@
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
+import { BrowserRouter } from "react-router-dom";
 
 import { LinkBG, ILinkBGProps } from "./LinkBG";
-import { BrowserRouter } from "react-router-dom";
 
 export default {
   title: "atom/LinkBG",

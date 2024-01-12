@@ -2,8 +2,9 @@ import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
 
 import { SideBarTool, ISideBarToolProps } from "./SideBarTool";
-import AlignCenterIcon from '@public/AlignCenterIcon.svg'
 import { Icon } from "../Icon/Icon";
+
+import AlignCenterIcon from '@public/AlignCenterIcon.svg'
 
 export default {
   title: "atom/SideBarTool",

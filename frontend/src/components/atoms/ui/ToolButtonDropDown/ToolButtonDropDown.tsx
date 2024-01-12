@@ -5,10 +5,10 @@ import {
   ToolButtonDropDownTextStyled,
   ToolButtonDropDownWrapperStyled,
 } from "./ToolButtonDropDownStyled";
+import { Icon } from "../Icon/Icon";
 
 import ArrowIcon from "@public/ArrowIcon.svg";
 import NoteIcon from "@public/NoteIcon.svg";
-import { Icon } from "../Icon/Icon";
 
 interface IToolButtonDropDownProps {
   children: React.ReactNode;

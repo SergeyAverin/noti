@@ -3,6 +3,7 @@ import { StoryFn, Meta } from "@storybook/react";
 
 import { ToggleButton, IToggleButtonProps } from "./ToggleButton";
 import { Icon } from "../Icon/Icon";
+
 import TrashIcon from "@public/TrashIcon.svg";
 import BookmarkIcon from "@public/BookmarkIcon.svg";
 

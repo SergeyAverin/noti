@@ -4,7 +4,7 @@ import { SpinnerStyled } from "./SpinnerStyled";
 
 
 /** This component show on load */
-export const Spinner = () => {
+export const Spinner: React.FC = () => {
   return (
     <div data-testid="spinner">
       <SpinnerStyled>
