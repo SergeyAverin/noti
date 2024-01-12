@@ -7,10 +7,14 @@ import { useControlInput } from "@hooks/useControlState";
 
 
 export interface ITitleContainerProps {
+  /** Note's title  */
   title: string;
+
+  /** Note's slug */
   slug: string;
 }
 
+/** This component is note's title in note page. */
 export const TitleContainer: React.FC<ITitleContainerProps> = ({ title, slug }) => {
   const [titleState, setTitleState, onChange] = useControlInput(title)
 
