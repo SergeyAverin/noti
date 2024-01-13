@@ -1,6 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-import NoteIcon from "@public/NoteIcon.svg";
 import {
   BreadcrumbsStyled,
   ContentStyled,
@@ -8,22 +8,20 @@ import {
   SearchItemTitleStyled,
 } from "./SearchItemStyled";
 import { TextMarker } from "./TextMarker";
-import { Link } from "react-router-dom";
 import { Icon } from "@atoms/index";
 
-interface ISearchItemProps {
+import NoteIcon from "@public/NoteIcon.svg";
+
+interface ISearchItemPresentationalProps {
   title: string;
   content: string;
   searchString: string;
   slug: string;
 }
 
-export const SearchItem: React.FC<ISearchItemProps> = ({
-  content,
-  title,
-  searchString,
-  slug,
-}) => {
+export const SearchItemPresentational: React.FC<
+  ISearchItemPresentationalProps
+> = ({ content, title, searchString, slug }) => {
   return (
     <Link to={`/notes/${slug}`}>
       <SearchItemStyled>

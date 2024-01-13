@@ -1,1 +1,1 @@
-export { SearchItem } from "./SearchItem";
+export { SearchItemContainer as default } from "./SearchItemContainer";
