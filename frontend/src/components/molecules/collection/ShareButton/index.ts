@@ -1,1 +1,1 @@
-export { ShareButton } from "./ShareButton";
+export { ShareButtonContainer as default } from "./ShareButtonContainer";

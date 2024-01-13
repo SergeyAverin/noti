@@ -1,7 +1,7 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import { SearchInputPresentational } from "./SearchInputPresentational";
-import { useTranslation } from "react-i18next";
 import { useSearchInput } from "./hooks/useSearchInput";
 
 interface ISearchInputContainerProps {

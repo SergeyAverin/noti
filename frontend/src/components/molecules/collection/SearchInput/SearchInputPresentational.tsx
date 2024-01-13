@@ -5,7 +5,6 @@ import {
   SearchInputStyled,
   SearchInputWrapperStyled,
 } from "./SearchInputStyled";
-
 import { Icon } from "@atoms/index";
 
 import SearchIcon from "@public/Search.svg";
