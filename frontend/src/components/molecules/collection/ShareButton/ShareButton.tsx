@@ -6,14 +6,17 @@ import ShareIcon from "@public/ShareIcon.svg";
 import { SelectPermission } from "./ShareButtonStyled";
 
 export const ShareButton: React.FC = () => {
+  
   const [isOpen, setIsOpen] = useState(false);
   const openPopupHeandler = () => {
     setIsOpen((prev) => !prev);
   };
+  
   const copyLink  = () => {
     const url = window.location.href;
     navigator.clipboard.writeText(url);
   }
+
   return (
     <div>
       <ShareButtonStyled onClick={openPopupHeandler}>
