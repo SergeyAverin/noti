@@ -1,1 +1,1 @@
-export { TrashAlert } from "./TrashAlert";
+export { TrashAlertComponent as default } from "./TrashAlertComponent";
