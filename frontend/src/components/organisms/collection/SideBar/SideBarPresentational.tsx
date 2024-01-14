@@ -8,7 +8,7 @@ import BookmarkDropDown from "@molecules/collection/BookmarkDropDown";
 import RootNotes from "@molecules/collection/RootNotes";
 import { AccountManager } from "@molecules/account/AccountManager";
 import CreateNote from "@molecules/collection/CreateNote";
-import { SearchPanel } from "@organisms/collection/SearchPanel";
+import SearchPanel  from "@organisms/collection/SearchPanel";
 import { SettingsPanel } from "@organisms/account/SettingsPanel";
 
 export const SideBarPresentational: React.FC = () => {

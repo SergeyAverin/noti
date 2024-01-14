@@ -1,1 +1,1 @@
-export { SearchPanel } from "./SearchPanel";
+export { SearchPanelContainer as default } from "./SearchPanelContainer";
