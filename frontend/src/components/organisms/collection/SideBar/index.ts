@@ -1,1 +1,1 @@
-export { SideBar } from "./SideBar";
+export { SideBarContainer as default } from "./SideBarContainer";
