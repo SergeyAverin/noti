@@ -1,1 +1,1 @@
-export { ToolsBar } from "./ToolsBar";
+export { ToolBarContainer as default } from "./ToolBarContainer";
