@@ -18,7 +18,7 @@ export const HeaderPresentational: React.FC<IHeaderPresentationalProps> = ({
   return (
     <HeaderStyled>
       <div></div>
-      <Flex justifyContent="flex-start" alignItems="center">
+      <Flex justifyContent="flex-end" alignItems="center">
         <Margin mr={30}>
           <DateCreated
             dataCreated={new Date(note.metadata.dataCreated)}
