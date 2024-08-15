@@ -1,0 +1,52 @@
+version: '3.1'
+
+services:
+  noti_backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    container_name: noti_backend
+    restart: always
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - "mongodb"
+      - "s3minio"
+    ports:
+      - 8080:8080
+    env_file:
+      - .env
+
+  noti_frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    container_name: noti_frontend
+    restart: always
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - "noti_backend"
+    ports:
+      - 3000:3000
+      - 6006:6006
+    env_file:
+      - .env
+
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    restart: always
+    env_file:
+      - .env
+
+  s3minio:
+    container_name: s3minio
+    image: 'minio/minio:latest'
+    command: server /data --console-address ":9001"
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    env_file:
+      - .env
+
