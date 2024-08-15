@@ -24,3 +24,4 @@ export { ToolButtonDropDown } from "./ui/ToolButtonDropDown/ToolButtonDropDown";
 export { ToolButtonDropDownItem } from "./ui/ToolButtonDropDown/ToolButtonDropDownItem";
 export { Icon } from "./ui/Icon/Icon";
 export { Circle } from "./ui/Circle/Circle";
+export { SideBarTool } from "./ui/SideBarTools/SideBarTool";

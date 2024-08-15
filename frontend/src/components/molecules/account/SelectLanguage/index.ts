@@ -1,1 +1,1 @@
-export { SelectLanguage } from "./SelectLanguage";
+export { SelectLanguageContainer as default } from "./SelectLanguageContainer";

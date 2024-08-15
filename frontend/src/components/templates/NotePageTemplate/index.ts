@@ -1,1 +1,1 @@
-export { NotePageTemplate } from "./NotePageTemplate";
+export { NotePageTemplateContainer as default } from "./NotePageTemplateContainer";

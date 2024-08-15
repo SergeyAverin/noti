@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { SettingsPanelTabsStyled } from "./SettingsPanelStyled";
 import { Icon, Popup } from "@atoms/index";
 import { AccountManagerItemStyled } from "@molecules/account/AccountManager";
-import { SelectTheme } from "@molecules/account/SelectTheme/SelectTheme";
-import { SelectLanguage } from "@molecules/account/SelectLanguage";
+import SelectTheme  from "@molecules/account/SelectTheme";
+import SelectLanguage from "@molecules/account/SelectLanguage";
 import { useTranslation } from "react-i18next";
 import { SideBarTool } from "@atoms/ui/SideBarTools/SideBarTool";
 

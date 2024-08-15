@@ -18,7 +18,7 @@ const fadeOut = keyframes`
   }
 `;
 interface INotificationStyledProps {
-  fadeOutAnimation: boolean;
+  isFadeOutAnimation: boolean;
 }
 export const NotificationStyled = styled.div<INotificationStyledProps>`
   background: ${(props) => props.theme.color.primary};
@@ -30,7 +30,7 @@ export const NotificationStyled = styled.div<INotificationStyledProps>`
   /*
   animation: 1s ${fadeIn} ease;
   ${(props) =>
-    props.fadeOutAnimation &&
+    props.isFadeOutAnimation &&
     css`
       animation: 0.5s ${fadeOut} ease;
     `}

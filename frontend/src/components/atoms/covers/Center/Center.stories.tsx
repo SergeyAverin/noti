@@ -11,14 +11,12 @@ export default {
     horizontal: { type: "boolean" },
     vertical: { type: "boolean" },
     children: {
-      description: "Component's content"
-    }
+      description: "Component's content",
+    },
   },
 } as Meta<ICenterProps>;
 
-const Template: StoryFn<ICenterProps> = (args) => (
-  <Center {...args} />
-);
+const Template: StoryFn<ICenterProps> = (args) => <Center {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

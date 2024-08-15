@@ -1,5 +1,7 @@
 import "styled-components";
 
+import { IPropertyColor } from "@styles/propertyColors";
+
 declare module "styled-components" {
   export interface DefaultTheme {
     color: {
@@ -12,28 +14,8 @@ declare module "styled-components" {
       dangerous: string;
     };
     propertyColor: {
-      bg: {
-        grey: string;
-        brown: string;
-        orange: string;
-        yellow: string;
-        green: string;
-        blue: string;
-        purple: string;
-        pink: string;
-        red: string;
-      };
-      fg: {
-        grey: string;
-        brown: string;
-        orange: string;
-        yellow: string;
-        green: string;
-        blue: string;
-        purple: string;
-        pink: string;
-        red: string;
-      };
+      bg: IPropertyColor;
+      fg: IPropertyColor;
     };
     panelsSize: {
       sideBarSize: string;

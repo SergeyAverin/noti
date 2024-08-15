@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import LoginPage from "@pages/LoginPage";
 import LogoutPage from "@pages/LogoutPage";
 import RegistrationPage from "@pages/RegistrationPage";
-import AddAccountPage from "@pages/AddAccountPage";
+import AddAccountPage from "@pages/AddAccount";
 
 const AuthRouter: React.FC = () => {
     return (

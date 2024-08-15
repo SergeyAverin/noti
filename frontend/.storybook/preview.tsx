@@ -6,11 +6,15 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
 
+import { enableMocking } from '../src/mocks/index'
 import GlobalStyleStyled from "../src/styles/globalStyle.styled";
 import { darkTheme } from "../src/styles/darkTheme";
 import { coffeeTheme } from "../src/styles/coffeeTheme";
 import { lightTheme } from "../src/styles/lightTheme";
 import { store } from "../src/redux/store";
+
+
+enableMocking()
 
 const preview  = {
   parameters: {

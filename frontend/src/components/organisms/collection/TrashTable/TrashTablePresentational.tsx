@@ -13,7 +13,6 @@ export const TrashTablePresentational: React.FC<
   ITrashTablePresentationalProps
 > = ({ notes }) => {
   return (
-    <Center>
       <Table>
         <thead>
           <tr>
@@ -36,6 +35,5 @@ export const TrashTablePresentational: React.FC<
           ))}
         </tbody>
       </Table>
-    </Center>
   );
 };

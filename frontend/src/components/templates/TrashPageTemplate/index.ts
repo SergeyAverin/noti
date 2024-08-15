@@ -1,1 +1,1 @@
-export { TrashPageTemplate } from "./TrashPageTemplate";
+export { TrashPageTemplateContainer as default } from "./TrashPageTemplateContainer";
